@@ -1,0 +1,479 @@
+supplier,amount,transaction_date,disruption_type,procurement_category,invoice_number,po_number,source_file_name,ingestion_timestamp,ariba_supplier_id
+Rich's,299249.0,2025-06-05,None,Distribution,INV-001000,PO-001000,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.700548,1000
+Indo Autotech Limited,29190.0,2025-04-05,None,Manufacturing,INV-001001,PO-001001,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.700548,1001
+Indo Autotech Limited,29190.0,2026-02-03,None,Manufacturing,INV-001002,PO-001002,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.700548,1001
+Indo Autotech Limited,29190.0,2025-09-25,None,Manufacturing,INV-001003,PO-001003,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.700548,1001
+Cirque du Soleil,75848.0,2026-02-15,None,Entertainment,INV-001004,PO-001004,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.700548,1002
+Cirque du Soleil,75848.0,2025-12-10,None,Entertainment,INV-001005,PO-001005,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.700548,1002
+Zentis GmbH & Co. KG,315709.5,2026-02-21,None,Manufacturing,INV-001006,PO-001006,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.700548,1003
+Zentis GmbH & Co. KG,315709.5,2026-02-17,None,Manufacturing,INV-001007,PO-001007,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.700548,1003
+Flint Group,197453.66666666666,2025-07-23,None,Manufacturing,INV-001008,PO-001008,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.700548,1004
+Flint Group,197453.66666666666,2025-12-14,None,Manufacturing,INV-001009,PO-001009,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.700548,1004
+Flint Group,197453.66666666666,2025-06-06,None,Manufacturing,INV-001010,PO-001010,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.700548,1004
+Amazon Business Services US,474010.0,2025-10-31,None,Retail/Distribution,INV-001011,PO-001011,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1005
+Fisher Scientific,56768.666666666664,2026-02-22,None,Laboratory Equipment,INV-001012,PO-001012,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1006
+Fisher Scientific,56768.666666666664,2025-05-19,None,Laboratory Equipment,INV-001013,PO-001013,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1006
+Fisher Scientific,56768.666666666664,2026-02-09,None,Laboratory Equipment,INV-001014,PO-001014,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1006
+Merck Life Sciences,369830.0,2025-10-29,None,Pharmaceuticals,INV-001015,PO-001015,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1007
+Merck Life Sciences,369830.0,2025-09-14,None,Pharmaceuticals,INV-001016,PO-001016,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1007
+Office Depot,64594.666666666664,2025-04-26,None,Office Supplies,INV-001017,PO-001017,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1008
+Office Depot,64594.666666666664,2025-11-19,None,Office Supplies,INV-001018,PO-001018,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1008
+Office Depot,64594.666666666664,2025-05-13,None,Office Supplies,INV-001019,PO-001019,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1008
+RS Components,311838.0,2025-12-24,None,Electronics Distribution,INV-001020,PO-001020,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1009
+Eppendorf,102635.0,2025-10-19,None,Laboratory Equipment,INV-001021,PO-001021,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1010
+Grainger,479602.0,2025-11-18,None,Distribution,INV-001022,PO-001022,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1011
+Qiagen,198403.33333333334,2025-07-02,None,Life Sciences,INV-001023,PO-001023,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1012
+Qiagen,198403.33333333334,2026-01-26,None,Life Sciences,INV-001024,PO-001024,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1012
+Qiagen,198403.33333333334,2025-08-29,None,Life Sciences,INV-001025,PO-001025,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1012
+CDW,313009.0,2025-11-01,None,IT Distribution,INV-001026,PO-001026,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1013
+CDW,313009.0,2025-08-04,None,IT Distribution,INV-001027,PO-001027,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1013
+Manutan,490307.0,2025-08-23,None,Office Supplies,INV-001028,PO-001028,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1014
+Siemens,359957.0,2025-09-20,None,Industrial Manufacturing,INV-001029,PO-001029,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1015
+Siemens,359957.0,2025-04-10,None,Industrial Manufacturing,INV-001030,PO-001030,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1015
+ABB,359993.0,2025-09-21,None,Robotics & Automation,INV-001031,PO-001031,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1016
+Continuum,298545.6666666667,2025-12-25,None,IT Services,INV-001032,PO-001032,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1017
+Continuum,298545.6666666667,2025-10-11,None,IT Services,INV-001033,PO-001033,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1017
+Continuum,298545.6666666667,2025-08-03,None,IT Services,INV-001034,PO-001034,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1017
+Cisco,210691.5,2025-09-18,None,Networking & IT,INV-001035,PO-001035,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1018
+Cisco,210691.5,2025-11-24,None,Networking & IT,INV-001036,PO-001036,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1018
+Apple,169932.66666666666,2026-01-22,None,Electronics & Computing,INV-001037,PO-001037,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1019
+Apple,169932.66666666666,2025-11-16,None,Electronics & Computing,INV-001038,PO-001038,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1019
+Apple,169932.66666666666,2026-01-20,None,Electronics & Computing,INV-001039,PO-001039,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1019
+Graybar,128076.0,2026-02-11,None,Electrical Distribution,INV-001040,PO-001040,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1020
+Graybar,128076.0,2025-05-29,None,Electrical Distribution,INV-001041,PO-001041,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1020
+Walmart,106710.0,2025-08-15,None,Retail,INV-001042,PO-001042,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1021
+Walmart,106710.0,2025-09-22,None,Retail,INV-001043,PO-001043,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1021
+Air Liquide,199759.33333333334,2025-12-12,None,Other,INV-001044,PO-001044,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1022
+Air Liquide,199759.33333333334,2025-10-06,None,Other,INV-001045,PO-001045,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1022
+Air Liquide,199759.33333333334,2026-03-21,None,Other,INV-001046,PO-001046,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1022
+Binder,189808.0,2025-05-14,None,Laboratory Equipment,INV-001047,PO-001047,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1023
+Binder,189808.0,2025-08-12,None,Laboratory Equipment,INV-001048,PO-001048,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1023
+Binder,189808.0,2026-02-20,None,Laboratory Equipment,INV-001049,PO-001049,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1023
+AstraZeneca,77642.5,2025-03-22,None,Pharmaceuticals,INV-001050,PO-001050,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1024
+AstraZeneca,77642.5,2025-06-14,None,Pharmaceuticals,INV-001051,PO-001051,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1024
+Saint-Gobain,113819.0,2025-12-17,None,Building Materials,INV-001052,PO-001052,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1025
+Tesla,892865.0,2025-04-15,None,Electronics & Vehicles,INV-001053,PO-001053,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1026
+Intel,240758.0,2025-03-31,None,Electronics & Semiconductors,INV-001054,PO-001054,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1027
+Intel,240758.0,2025-05-09,None,Electronics & Semiconductors,INV-001055,PO-001055,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1027
+BASF,341773.0,2025-06-29,None,Chemicals,INV-001056,PO-001056,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1028
+Dow Chemical,221916.0,2026-02-11,None,Chemicals,INV-001057,PO-001057,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1029
+SABIC,361639.0,2025-07-28,None,Chemicals,INV-001058,PO-001058,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.701548,1030
+LyondellBasell,485020.0,2025-05-27,None,Chemicals,INV-001059,PO-001059,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1031
+ExxonMobil,273119.0,2025-11-04,None,Energy & Oil,INV-001060,PO-001060,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1032
+Unilever,417341.0,2025-05-06,None,Consumer Goods,INV-001061,PO-001061,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1033
+Nestlé,259681.5,2025-05-25,None,Food & Beverage,INV-001062,PO-001062,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1034
+Nestlé,259681.5,2026-02-17,None,Food & Beverage,INV-001063,PO-001063,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1034
+Aldo Group,302390.0,2025-09-07,None,Retail,INV-001064,PO-001064,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1035
+The Coca-Cola Company,258554.0,2025-06-25,None,Food & Beverage,INV-001065,PO-001065,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1036
+The Coca-Cola Company,258554.0,2025-09-22,None,Food & Beverage,INV-001066,PO-001066,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1036
+The Coca-Cola Company,258554.0,2026-03-15,None,Food & Beverage,INV-001067,PO-001067,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1036
+Lidl (Schwarz Group),720751.0,2026-01-09,None,Retail,INV-001068,PO-001068,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1037
+Shell,198538.0,2025-12-01,None,Energy & Oil,INV-001069,PO-001069,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1038
+Shell,198538.0,2025-12-07,None,Energy & Oil,INV-001070,PO-001070,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1038
+Shell,198538.0,2025-07-18,None,Energy & Oil,INV-001071,PO-001071,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1038
+Chevron,261977.33333333334,2026-03-08,None,Energy & Oil,INV-001072,PO-001072,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1039
+Chevron,261977.33333333334,2025-06-03,None,Energy & Oil,INV-001073,PO-001073,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1039
+Chevron,261977.33333333334,2026-02-27,None,Energy & Oil,INV-001074,PO-001074,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1039
+Novartis,366948.0,2025-03-23,None,Pharmaceuticals,INV-001075,PO-001075,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1040
+Johnson and Johnson,419189.0,2025-12-11,None,Pharmaceuticals,INV-001076,PO-001076,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1041
+Reckitt Benkiser,267370.0,2025-04-18,None,Consumer Goods,INV-001077,PO-001077,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1042
+DHL Supply Chain,229977.0,2026-03-17,None,Logistics,INV-001078,PO-001078,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1043
+FedEx,56896.333333333336,2025-06-22,None,Logistics,INV-001079,PO-001079,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1044
+FedEx,56896.333333333336,2025-12-28,None,Logistics,INV-001080,PO-001080,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1044
+FedEx,56896.333333333336,2025-03-26,None,Logistics,INV-001081,PO-001081,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1044
+Nippon Express,251305.0,2025-05-07,None,Logistics,INV-001082,PO-001082,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1045
+Nippon Express,251305.0,2025-06-16,None,Logistics,INV-001083,PO-001083,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1045
+Nippon Express,251305.0,2025-11-22,None,Logistics,INV-001084,PO-001084,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1045
+Maersk Line,151695.5,2025-09-02,None,Shipping & Maritime,INV-001085,PO-001085,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1046
+Maersk Line,151695.5,2025-05-07,None,Shipping & Maritime,INV-001086,PO-001086,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1046
+Kellogg Company,497979.5,2025-06-23,None,Food & Beverage,INV-001087,PO-001087,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1047
+Kellogg Company,497979.5,2025-04-20,None,Food & Beverage,INV-001088,PO-001088,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1047
+PepsiCo Inc,455240.0,2026-02-13,None,Food & Beverage,INV-001089,PO-001089,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1048
+Monte Carlo Fashions,64074.333333333336,2026-03-18,None,Other,INV-001090,PO-001090,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1049
+Monte Carlo Fashions,64074.333333333336,2025-10-18,None,Other,INV-001091,PO-001091,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1049
+Monte Carlo Fashions,64074.333333333336,2025-09-22,None,Other,INV-001092,PO-001092,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1049
+Fluor Corporation,172733.33333333334,2025-12-01,None,Engineering & Construction,INV-001093,PO-001093,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1050
+Fluor Corporation,172733.33333333334,2025-03-22,None,Engineering & Construction,INV-001094,PO-001094,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1050
+Fluor Corporation,172733.33333333334,2025-07-27,None,Engineering & Construction,INV-001095,PO-001095,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1050
+Dow Inc,189750.66666666666,2025-10-02,None,Chemicals,INV-001096,PO-001096,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1051
+Dow Inc,189750.66666666666,2025-04-28,None,Chemicals,INV-001097,PO-001097,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1051
+Dow Inc,189750.66666666666,2025-12-05,None,Chemicals,INV-001098,PO-001098,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1051
+DuPont de Nemours Inc,129736.33333333333,2025-12-04,None,Other,INV-001099,PO-001099,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1052
+DuPont de Nemours Inc,129736.33333333333,2025-08-08,None,Other,INV-001100,PO-001100,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1052
+DuPont de Nemours Inc,129736.33333333333,2025-03-25,None,Other,INV-001101,PO-001101,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1052
+Eastman Chemical Company,818530.0,2025-06-11,None,Chemicals,INV-001102,PO-001102,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1053
+JPMorgan Chase,281736.5,2025-07-14,None,Financial Services,INV-001103,PO-001103,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1054
+JPMorgan Chase,281736.5,2025-12-15,None,Financial Services,INV-001104,PO-001104,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1054
+Sanofi S.A,313791.0,2025-10-09,None,Pharmaceuticals,INV-001105,PO-001105,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1055
+Valero Energy Corporation,537554.0,2025-11-11,None,Energy & Oil,INV-001106,PO-001106,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.702547,1056
+Rich's Inc,220640.0,2025-10-29,None,Distribution,INV-001107,PO-001107,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1057
+Rich's Inc,220640.0,2026-03-07,None,Distribution,INV-001108,PO-001108,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1057
+Indo Autotech Limited International,89451.0,2025-11-03,None,Manufacturing,INV-001109,PO-001109,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1058
+Indo Autotech Limited International,89451.0,2025-05-26,None,Manufacturing,INV-001110,PO-001110,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1058
+Indo Autotech Limited Ltd,61020.0,2025-06-03,None,Manufacturing,INV-001111,PO-001111,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1059
+Indo Autotech Limited Corporation,98805.5,2025-09-03,None,Manufacturing,INV-001112,PO-001112,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1060
+Indo Autotech Limited Corporation,98805.5,2026-03-12,None,Manufacturing,INV-001113,PO-001113,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1060
+Indo Autotech Limited Inc,180426.0,2025-10-15,None,Manufacturing,INV-001114,PO-001114,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1061
+Cirque du Soleil International,121809.66666666667,2025-09-06,None,Entertainment,INV-001115,PO-001115,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1062
+Cirque du Soleil International,121809.66666666667,2025-03-29,None,Entertainment,INV-001116,PO-001116,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1062
+Cirque du Soleil International,121809.66666666667,2026-02-03,None,Entertainment,INV-001117,PO-001117,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1062
+Cirque,117475.66666666667,2025-10-10,None,Entertainment,INV-001118,PO-001118,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1063
+Cirque,117475.66666666667,2026-02-01,None,Entertainment,INV-001119,PO-001119,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1063
+Cirque,117475.66666666667,2025-03-28,None,Entertainment,INV-001120,PO-001120,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1063
+Cirque,232959.0,2026-02-13,None,Entertainment,INV-001121,PO-001121,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1064
+Cirque du Soleil Global,75801.0,2025-06-16,None,Entertainment,INV-001122,PO-001122,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1065
+Cirque du Soleil Global,75801.0,2025-10-13,None,Entertainment,INV-001123,PO-001123,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1065
+Cirque du Soleil Global,110259.5,2026-02-21,None,Entertainment,INV-001124,PO-001124,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1066
+Cirque du Soleil Global,110259.5,2025-09-12,None,Entertainment,INV-001125,PO-001125,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1066
+Zentis,510056.0,2025-06-25,None,Manufacturing,INV-001126,PO-001126,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1067
+Zentis GmbH & Co. KG Global,73615.66666666667,2026-02-21,None,Manufacturing,INV-001127,PO-001127,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1068
+Zentis GmbH & Co. KG Global,73615.66666666667,2025-12-29,None,Manufacturing,INV-001128,PO-001128,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1068
+Zentis GmbH & Co. KG Global,73615.66666666667,2026-01-05,None,Manufacturing,INV-001129,PO-001129,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1068
+Zentis GmbH & Co. KG Inc,149834.66666666666,2025-11-22,None,Manufacturing,INV-001130,PO-001130,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1069
+Zentis GmbH & Co. KG Inc,149834.66666666666,2025-07-14,None,Manufacturing,INV-001131,PO-001131,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1069
+Zentis GmbH & Co. KG Inc,149834.66666666666,2025-05-20,None,Manufacturing,INV-001132,PO-001132,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1069
+Zentis GmbH & Co. KG Ltd,666617.0,2025-12-03,None,Manufacturing,INV-001133,PO-001133,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1070
+Flint Group International,203875.0,2025-10-23,None,Manufacturing,INV-001134,PO-001134,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1071
+Flint Group International,203875.0,2026-01-11,None,Manufacturing,INV-001135,PO-001135,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1071
+Flint Group Inc,52202.0,2025-12-31,None,Manufacturing,INV-001136,PO-001136,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1072
+Flint Group Inc,52202.0,2026-02-07,None,Manufacturing,INV-001137,PO-001137,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1072
+Amazon Business Services US Corpora,589715.0,2025-10-15,None,Retail/Distribution,INV-001138,PO-001138,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1073
+Amazon Business Services US Inc,522326.0,2025-06-02,None,Retail/Distribution,INV-001139,PO-001139,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1074
+Fisher,233563.0,2026-01-27,None,Laboratory Equipment,INV-001140,PO-001140,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1075
+Fisher Scientific International,441246.5,2025-07-27,None,Laboratory Equipment,INV-001141,PO-001141,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1076
+Fisher Scientific International,441246.5,2026-02-27,None,Laboratory Equipment,INV-001142,PO-001142,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1076
+Fisher Scientific Corporation,145937.33333333334,2025-11-23,None,Laboratory Equipment,INV-001143,PO-001143,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1077
+Fisher Scientific Corporation,145937.33333333334,2025-08-11,None,Laboratory Equipment,INV-001144,PO-001144,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1077
+Fisher Scientific Corporation,145937.33333333334,2025-07-06,None,Laboratory Equipment,INV-001145,PO-001145,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1077
+Fisher Scientific Global,516316.0,2025-04-07,None,Laboratory Equipment,INV-001146,PO-001146,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1078
+Merck Life Sciences International,338316.0,2026-02-12,None,Pharmaceuticals,INV-001147,PO-001147,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1079
+Merck Life Sciences International,338316.0,2025-09-19,None,Pharmaceuticals,INV-001148,PO-001148,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1079
+Merck Life Sciences Corporation,228271.0,2026-03-14,None,Pharmaceuticals,INV-001149,PO-001149,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1080
+Merck Life Sciences Corporation,228271.0,2025-05-08,None,Pharmaceuticals,INV-001150,PO-001150,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1080
+Merck Life Sciences Corporation,228271.0,2026-01-31,None,Pharmaceuticals,INV-001151,PO-001151,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1080
+Merck Life Sciences Ltd,87905.33333333333,2025-05-28,None,Pharmaceuticals,INV-001152,PO-001152,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1081
+Merck Life Sciences Ltd,87905.33333333333,2025-10-23,None,Pharmaceuticals,INV-001153,PO-001153,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1081
+Merck Life Sciences Ltd,87905.33333333333,2025-11-02,None,Pharmaceuticals,INV-001154,PO-001154,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1081
+Office Depot Corporation,404367.0,2025-08-10,None,Office Supplies,INV-001155,PO-001155,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1082
+Office Depot Global,463598.5,2026-02-17,None,Office Supplies,INV-001156,PO-001156,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1083
+Office Depot Global,463598.5,2025-11-09,None,Office Supplies,INV-001157,PO-001157,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.703548,1083
+Office,719204.0,2026-03-16,None,Office Supplies,INV-001158,PO-001158,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1084
+Office Depot Corporation,309975.5,2026-02-16,None,Office Supplies,INV-001159,PO-001159,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1085
+Office Depot Corporation,309975.5,2025-11-25,None,Office Supplies,INV-001160,PO-001160,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1085
+Office Depot Ltd,199195.0,2025-07-26,None,Office Supplies,INV-001161,PO-001161,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1086
+Office Depot Ltd,199195.0,2025-04-04,None,Office Supplies,INV-001162,PO-001162,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1086
+RS Components Inc,96460.5,2025-11-09,None,Electronics Distribution,INV-001163,PO-001163,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1087
+RS Components Inc,96460.5,2025-10-01,None,Electronics Distribution,INV-001164,PO-001164,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1087
+RS Components Ltd,531839.0,2025-05-15,None,Electronics Distribution,INV-001165,PO-001165,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1088
+RS,39819.0,2025-05-03,None,Electronics Distribution,INV-001166,PO-001166,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1089
+RS,39819.0,2025-08-09,None,Electronics Distribution,INV-001167,PO-001167,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1089
+RS,39819.0,2025-04-16,None,Electronics Distribution,INV-001168,PO-001168,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1089
+RS Components Global,171165.5,2025-03-27,None,Electronics Distribution,INV-001169,PO-001169,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1090
+RS Components Global,171165.5,2025-11-24,None,Electronics Distribution,INV-001170,PO-001170,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1090
+Eppendorf Global,202166.0,2026-02-09,None,Laboratory Equipment,INV-001171,PO-001171,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1091
+Eppendorf Global,202166.0,2025-09-09,None,Laboratory Equipment,INV-001172,PO-001172,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1091
+Eppendorf International,95313.5,2025-06-21,None,Laboratory Equipment,INV-001173,PO-001173,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1092
+Eppendorf International,95313.5,2025-05-27,None,Laboratory Equipment,INV-001174,PO-001174,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1092
+Eppendorf Global,585542.0,2025-09-10,None,Laboratory Equipment,INV-001175,PO-001175,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1093
+Grainger Ltd,157301.0,2025-11-01,None,Distribution,INV-001176,PO-001176,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1094
+Grainger Global,913564.0,2026-03-07,None,Distribution,INV-001177,PO-001177,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1095
+Grainger International,643691.0,2026-01-16,None,Distribution,INV-001178,PO-001178,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1096
+Qiagen Global,328068.0,2025-09-23,None,Life Sciences,INV-001179,PO-001179,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1097
+QIA,345344.0,2026-03-12,None,Life Sciences,INV-001180,PO-001180,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1098
+QIA,345344.0,2026-02-22,None,Life Sciences,INV-001181,PO-001181,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1098
+Qiagen Corporation,251561.0,2026-01-30,None,Life Sciences,INV-001182,PO-001182,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1099
+Qiagen Inc,293384.5,2025-03-29,None,Life Sciences,INV-001183,PO-001183,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1100
+Qiagen Inc,293384.5,2025-04-26,None,Life Sciences,INV-001184,PO-001184,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1100
+CDW Corporation,139941.0,2026-01-17,None,IT Distribution,INV-001185,PO-001185,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1101
+CDW Corporation,139941.0,2025-08-22,None,IT Distribution,INV-001186,PO-001186,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1101
+CDW Corporation,139941.0,2025-12-10,None,IT Distribution,INV-001187,PO-001187,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1101
+MAN,32652.0,2026-01-20,None,Office Supplies,INV-001188,PO-001188,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1102
+MAN,32652.0,2025-08-29,None,Office Supplies,INV-001189,PO-001189,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1102
+MAN,32652.0,2025-11-19,None,Office Supplies,INV-001190,PO-001190,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1102
+Manutan Ltd,171127.5,2026-02-26,None,Office Supplies,INV-001191,PO-001191,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1103
+Manutan Ltd,171127.5,2026-02-27,None,Office Supplies,INV-001192,PO-001192,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1103
+Manutan Inc,685687.0,2025-03-27,None,Office Supplies,INV-001193,PO-001193,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1104
+Manutan Global,189095.0,2026-01-06,None,Office Supplies,INV-001194,PO-001194,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1105
+Siemens International,258681.66666666666,2025-11-13,None,Industrial Manufacturing,INV-001195,PO-001195,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1106
+Siemens International,258681.66666666666,2025-11-12,None,Industrial Manufacturing,INV-001196,PO-001196,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1106
+Siemens International,258681.66666666666,2025-08-03,None,Industrial Manufacturing,INV-001197,PO-001197,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1106
+SIE,745120.0,2025-10-02,None,Industrial Manufacturing,INV-001198,PO-001198,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1107
+Siemens Corporation,390044.0,2025-09-28,None,Industrial Manufacturing,INV-001199,PO-001199,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1108
+Siemens Corporation,390044.0,2026-02-06,None,Industrial Manufacturing,INV-001200,PO-001200,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1108
+Siemens Inc,742254.0,2026-02-02,None,Industrial Manufacturing,INV-001201,PO-001201,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.704547,1109
+ABB Global,368580.0,2025-05-13,None,Robotics & Automation,INV-001202,PO-001202,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1110
+ABB International,116545.33333333333,2025-06-26,None,Robotics & Automation,INV-001203,PO-001203,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1111
+ABB International,116545.33333333333,2026-02-09,None,Robotics & Automation,INV-001204,PO-001204,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1111
+ABB International,116545.33333333333,2026-02-21,None,Robotics & Automation,INV-001205,PO-001205,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1111
+ABB Corporation,214967.0,2025-09-24,None,Robotics & Automation,INV-001206,PO-001206,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1112
+ABB Corporation,214967.0,2026-03-22,None,Robotics & Automation,INV-001207,PO-001207,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1112
+ABB Corporation,454539.0,2025-11-20,None,Robotics & Automation,INV-001208,PO-001208,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1113
+Continuum Inc,799614.0,2025-12-01,None,IT Services,INV-001209,PO-001209,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1114
+Continuum Corporation,711341.0,2025-12-29,None,IT Services,INV-001210,PO-001210,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1115
+Continuum Global,575263.0,2026-02-28,None,IT Services,INV-001211,PO-001211,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1116
+CON,466788.5,2025-06-28,None,IT Services,INV-001212,PO-001212,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1117
+CON,466788.5,2026-03-07,None,IT Services,INV-001213,PO-001213,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1117
+Cisco International,207169.33333333334,2025-03-25,None,Networking & IT,INV-001214,PO-001214,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1118
+Cisco International,207169.33333333334,2025-10-26,None,Networking & IT,INV-001215,PO-001215,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1118
+Cisco International,207169.33333333334,2025-11-08,None,Networking & IT,INV-001216,PO-001216,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1118
+Cisco Global,92589.0,2025-07-10,None,Networking & IT,INV-001217,PO-001217,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1119
+Cisco Global,92589.0,2025-06-21,None,Networking & IT,INV-001218,PO-001218,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1119
+Cisco Global,92589.0,2025-03-24,None,Networking & IT,INV-001219,PO-001219,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1119
+Cisco Corporation,222103.66666666666,2025-12-31,None,Networking & IT,INV-001220,PO-001220,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1120
+Cisco Corporation,222103.66666666666,2025-08-13,None,Networking & IT,INV-001221,PO-001221,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1120
+Cisco Corporation,222103.66666666666,2026-01-09,None,Networking & IT,INV-001222,PO-001222,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1120
+APP,178488.0,2026-02-20,None,Electronics & Computing,INV-001223,PO-001223,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1121
+Apple Inc,405288.0,2025-09-26,None,Electronics & Computing,INV-001224,PO-001224,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1122
+Apple International,387124.5,2025-12-06,None,Electronics & Computing,INV-001225,PO-001225,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1123
+Apple International,387124.5,2025-07-14,None,Electronics & Computing,INV-001226,PO-001226,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1123
+Apple Inc,174756.0,2025-11-17,None,Electronics & Computing,INV-001227,PO-001227,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.705547,1124
+Graybar Inc,271412.0,2026-01-20,None,Electrical Distribution,INV-001228,PO-001228,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1125
+Graybar Inc,376482.5,2025-06-13,None,Electrical Distribution,INV-001229,PO-001229,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1126
+Graybar Inc,376482.5,2026-02-13,None,Electrical Distribution,INV-001230,PO-001230,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1126
+Graybar International,183218.33333333334,2025-05-27,None,Electrical Distribution,INV-001231,PO-001231,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1127
+Graybar International,183218.33333333334,2025-05-04,None,Electrical Distribution,INV-001232,PO-001232,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1127
+Graybar International,183218.33333333334,2026-01-15,None,Electrical Distribution,INV-001233,PO-001233,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1127
+Walmart Ltd,425476.0,2025-03-24,None,Retail,INV-001234,PO-001234,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1128
+Walmart Ltd,425476.0,2026-03-06,None,Retail,INV-001235,PO-001235,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1128
+Walmart International,606781.0,2025-09-29,None,Retail,INV-001236,PO-001236,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1129
+WAL,190606.0,2025-10-07,None,Retail,INV-001237,PO-001237,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1130
+WAL,190606.0,2025-05-19,None,Retail,INV-001238,PO-001238,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1130
+WAL,190606.0,2026-01-18,None,Retail,INV-001239,PO-001239,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1130
+Air Liquide Global,117120.0,2025-04-18,None,Other,INV-001240,PO-001240,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1131
+Air Liquide International,237974.0,2025-08-03,None,Other,INV-001241,PO-001241,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1132
+Air Liquide International,237974.0,2026-02-11,None,Other,INV-001242,PO-001242,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1132
+Air Liquide Global,198130.0,2025-11-30,None,Other,INV-001243,PO-001243,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1133
+Binder Global,665964.0,2025-11-21,None,Laboratory Equipment,INV-001244,PO-001244,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1134
+Binder Global,134915.0,2025-10-09,None,Laboratory Equipment,INV-001245,PO-001245,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1135
+Binder International,185144.0,2025-05-03,None,Laboratory Equipment,INV-001246,PO-001246,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1136
+Binder International,185144.0,2025-12-22,None,Laboratory Equipment,INV-001247,PO-001247,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1136
+Binder International,185144.0,2026-01-13,None,Laboratory Equipment,INV-001248,PO-001248,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1136
+BIN,104932.66666666667,2025-09-13,None,Laboratory Equipment,INV-001249,PO-001249,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1137
+BIN,104932.66666666667,2025-04-17,None,Laboratory Equipment,INV-001250,PO-001250,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1137
+BIN,104932.66666666667,2025-10-21,None,Laboratory Equipment,INV-001251,PO-001251,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1137
+AstraZeneca Inc,149268.66666666666,2026-02-14,None,Pharmaceuticals,INV-001252,PO-001252,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1138
+AstraZeneca Inc,149268.66666666666,2026-03-10,None,Pharmaceuticals,INV-001253,PO-001253,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1138
+AstraZeneca Inc,149268.66666666666,2025-08-25,None,Pharmaceuticals,INV-001254,PO-001254,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1138
+AstraZeneca Global,115861.0,2025-05-17,None,Pharmaceuticals,INV-001255,PO-001255,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1139
+AstraZeneca Corporation,319634.0,2026-03-03,None,Pharmaceuticals,INV-001256,PO-001256,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1140
+Saint-Gobain Ltd,471369.0,2025-04-06,None,Building Materials,INV-001257,PO-001257,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1141
+Saint-Gobain Inc,631104.0,2026-02-16,None,Building Materials,INV-001258,PO-001258,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1142
+Saint-Gobain Inc,30476.333333333332,2026-03-17,None,Building Materials,INV-001259,PO-001259,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.706548,1143
+Saint-Gobain Inc,30476.333333333332,2025-07-29,None,Building Materials,INV-001260,PO-001260,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.707771,1143
+Saint-Gobain Inc,30476.333333333332,2025-09-22,None,Building Materials,INV-001261,PO-001261,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.707771,1143
+TES,538889.0,2025-07-28,None,Electronics & Vehicles,INV-001262,PO-001262,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.707771,1144
+Tesla Corporation,265027.6666666667,2025-07-27,None,Electronics & Vehicles,INV-001263,PO-001263,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.707771,1145
+Tesla Corporation,265027.6666666667,2025-07-09,None,Electronics & Vehicles,INV-001264,PO-001264,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.707771,1145
+Tesla Corporation,265027.6666666667,2025-09-22,None,Electronics & Vehicles,INV-001265,PO-001265,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.707771,1145
+Tesla Global,164576.33333333334,2026-03-18,None,Electronics & Vehicles,INV-001266,PO-001266,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.707771,1146
+Tesla Global,164576.33333333334,2025-10-24,None,Electronics & Vehicles,INV-001267,PO-001267,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.707771,1146
+Tesla Global,164576.33333333334,2025-04-24,None,Electronics & Vehicles,INV-001268,PO-001268,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.707771,1146
+Tesla Corporation,248908.66666666666,2025-04-17,None,Electronics & Vehicles,INV-001269,PO-001269,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.707771,1147
+Tesla Corporation,248908.66666666666,2025-09-06,None,Electronics & Vehicles,INV-001270,PO-001270,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.707771,1147
+Tesla Corporation,248908.66666666666,2025-09-06,None,Electronics & Vehicles,INV-001271,PO-001271,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.707771,1147
+Tesla Ltd,316545.0,2025-03-26,None,Electronics & Vehicles,INV-001272,PO-001272,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.707771,1148
+Intel Ltd,518670.0,2026-01-05,None,Electronics & Semiconductors,INV-001273,PO-001273,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1149
+INT,494285.0,2025-12-29,None,Electronics & Semiconductors,INV-001274,PO-001274,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1150
+INT,494285.0,2025-10-13,None,Electronics & Semiconductors,INV-001275,PO-001275,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1150
+Intel Ltd,879193.0,2025-04-14,None,Electronics & Semiconductors,INV-001276,PO-001276,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1151
+BASF Corporation,396504.0,2025-04-29,None,Chemicals,INV-001277,PO-001277,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1152
+BASF Corporation,396504.0,2025-09-19,None,Chemicals,INV-001278,PO-001278,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1152
+BASF Inc,155497.0,2026-02-16,None,Chemicals,INV-001279,PO-001279,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1153
+BASF International,64324.5,2025-09-26,None,Chemicals,INV-001280,PO-001280,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1154
+BASF International,64324.5,2025-12-21,None,Chemicals,INV-001281,PO-001281,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1154
+BASF Global,359271.5,2025-04-05,None,Chemicals,INV-001282,PO-001282,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1155
+BASF Global,359271.5,2025-09-17,None,Chemicals,INV-001283,PO-001283,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1155
+Dow Chemical International,76653.66666666667,2025-04-26,None,Chemicals,INV-001284,PO-001284,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1156
+Dow Chemical International,76653.66666666667,2025-06-27,None,Chemicals,INV-001285,PO-001285,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1156
+Dow Chemical International,76653.66666666667,2026-01-15,None,Chemicals,INV-001286,PO-001286,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1156
+Dow Chemical Corporation,162656.5,2026-01-20,None,Chemicals,INV-001287,PO-001287,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1157
+Dow Chemical Corporation,162656.5,2025-12-06,None,Chemicals,INV-001288,PO-001288,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1157
+Dow Chemical Corporation,478827.5,2025-06-13,None,Chemicals,INV-001289,PO-001289,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1158
+Dow Chemical Corporation,478827.5,2025-07-04,None,Chemicals,INV-001290,PO-001290,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1158
+SABIC Ltd,204808.0,2025-04-20,None,Chemicals,INV-001291,PO-001291,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1159
+SABIC Inc,1017142.0,2025-09-01,None,Chemicals,INV-001292,PO-001292,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.708814,1160
+LyondellBasell Ltd,337210.5,2025-10-29,None,Chemicals,INV-001293,PO-001293,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1161
+LyondellBasell Ltd,337210.5,2026-02-28,None,Chemicals,INV-001294,PO-001294,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1161
+LYO,233013.66666666666,2025-12-30,None,Chemicals,INV-001295,PO-001295,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1162
+LYO,233013.66666666666,2025-09-24,None,Chemicals,INV-001296,PO-001296,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1162
+LYO,233013.66666666666,2025-05-08,None,Chemicals,INV-001297,PO-001297,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1162
+LyondellBasell Corporation,223566.66666666666,2025-04-21,None,Chemicals,INV-001298,PO-001298,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1163
+LyondellBasell Corporation,223566.66666666666,2025-12-04,None,Chemicals,INV-001299,PO-001299,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1163
+LyondellBasell Corporation,223566.66666666666,2025-07-01,None,Chemicals,INV-001300,PO-001300,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1163
+ExxonMobil Global,492963.5,2025-07-18,None,Energy & Oil,INV-001301,PO-001301,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1164
+ExxonMobil Global,492963.5,2026-03-19,None,Energy & Oil,INV-001302,PO-001302,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1164
+ExxonMobil Global,75288.66666666667,2025-10-11,None,Energy & Oil,INV-001303,PO-001303,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1165
+ExxonMobil Global,75288.66666666667,2025-07-01,None,Energy & Oil,INV-001304,PO-001304,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1165
+ExxonMobil Global,75288.66666666667,2025-04-16,None,Energy & Oil,INV-001305,PO-001305,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1165
+ExxonMobil International,409713.0,2025-11-25,None,Energy & Oil,INV-001306,PO-001306,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1166
+ExxonMobil Global,572913.0,2025-04-05,None,Energy & Oil,INV-001307,PO-001307,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1167
+Unilever Global,286881.0,2025-08-12,None,Consumer Goods,INV-001308,PO-001308,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1168
+Unilever Inc,279785.0,2025-10-18,None,Consumer Goods,INV-001309,PO-001309,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1169
+UNI,66548.33333333333,2026-02-21,None,Consumer Goods,INV-001310,PO-001310,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1170
+UNI,66548.33333333333,2026-01-08,None,Consumer Goods,INV-001311,PO-001311,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1170
+UNI,66548.33333333333,2025-05-05,None,Consumer Goods,INV-001312,PO-001312,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1170
+Nestlé International,120337.0,2025-08-09,None,Food & Beverage,INV-001313,PO-001313,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1171
+Nestlé International,120337.0,2025-10-14,None,Food & Beverage,INV-001314,PO-001314,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1171
+Nestlé International,120337.0,2025-07-04,None,Food & Beverage,INV-001315,PO-001315,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1171
+Nestlé Ltd,122682.0,2025-06-11,None,Food & Beverage,INV-001316,PO-001316,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.709915,1172
+Nestlé Corporation,123323.0,2026-01-19,None,Food & Beverage,INV-001317,PO-001317,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1173
+Nestlé Corporation,123323.0,2026-02-11,None,Food & Beverage,INV-001318,PO-001318,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1173
+Aldo,49812.0,2025-07-02,None,Retail,INV-001319,PO-001319,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1174
+Aldo,49812.0,2025-06-06,None,Retail,INV-001320,PO-001320,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1174
+Aldo,49812.0,2025-08-20,None,Retail,INV-001321,PO-001321,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1174
+Aldo Group Global,166053.0,2025-10-01,None,Retail,INV-001322,PO-001322,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1175
+Aldo Group Corporation,103290.0,2025-04-28,None,Retail,INV-001323,PO-001323,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1176
+Aldo Group Ltd,71185.0,2025-08-17,None,Retail,INV-001324,PO-001324,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1177
+The,135393.33333333334,2025-08-08,None,Food & Beverage,INV-001325,PO-001325,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1178
+The,135393.33333333334,2025-12-13,None,Food & Beverage,INV-001326,PO-001326,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1178
+The,135393.33333333334,2025-03-29,None,Food & Beverage,INV-001327,PO-001327,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1178
+The Coca-Cola Company Global,381100.0,2026-01-12,None,Food & Beverage,INV-001328,PO-001328,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1179
+The Coca-Cola Company Inc,243404.0,2025-06-27,None,Food & Beverage,INV-001329,PO-001329,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1180
+The Coca-Cola Company Inc,243404.0,2025-05-11,None,Food & Beverage,INV-001330,PO-001330,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1180
+The Coca-Cola Company Inc,243404.0,2025-07-11,None,Food & Beverage,INV-001331,PO-001331,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1180
+Lidl (Schwarz Group) International,248447.0,2025-07-03,None,Retail,INV-001332,PO-001332,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1181
+Lidl,403042.0,2025-11-05,None,Retail,INV-001333,PO-001333,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1182
+Lidl (Schwarz Group) Inc,75675.66666666667,2026-03-14,None,Retail,INV-001334,PO-001334,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1183
+Lidl (Schwarz Group) Inc,75675.66666666667,2025-03-30,None,Retail,INV-001335,PO-001335,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1183
+Lidl (Schwarz Group) Inc,75675.66666666667,2025-03-31,None,Retail,INV-001336,PO-001336,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1183
+Lidl (Schwarz Group) Ltd,227229.0,2025-10-07,None,Retail,INV-001337,PO-001337,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1184
+Shell Global,110085.0,2025-04-19,None,Energy & Oil,INV-001338,PO-001338,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1185
+Shell Global,110085.0,2025-08-08,None,Energy & Oil,INV-001339,PO-001339,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1185
+Shell Global,110085.0,2025-09-25,None,Energy & Oil,INV-001340,PO-001340,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1185
+Shell International,306527.0,2026-02-06,None,Energy & Oil,INV-001341,PO-001341,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1186
+Shell International,306527.0,2025-08-31,None,Energy & Oil,INV-001342,PO-001342,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.710928,1186
+Chevron Corporation,90415.0,2025-10-20,None,Energy & Oil,INV-001343,PO-001343,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1187
+Chevron Corporation,90415.0,2025-07-03,None,Energy & Oil,INV-001344,PO-001344,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1187
+Chevron Ltd,331474.0,2025-07-12,None,Energy & Oil,INV-001345,PO-001345,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1188
+Chevron Global,791307.0,2025-12-19,None,Energy & Oil,INV-001346,PO-001346,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1189
+CHE,284938.6666666667,2025-09-16,None,Energy & Oil,INV-001347,PO-001347,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1190
+CHE,284938.6666666667,2025-06-23,None,Energy & Oil,INV-001348,PO-001348,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1190
+CHE,284938.6666666667,2025-12-08,None,Energy & Oil,INV-001349,PO-001349,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1190
+Novartis Ltd,220352.5,2026-01-10,None,Pharmaceuticals,INV-001350,PO-001350,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1191
+Novartis Ltd,220352.5,2025-09-14,None,Pharmaceuticals,INV-001351,PO-001351,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1191
+Novartis Inc,151794.66666666666,2025-04-07,None,Pharmaceuticals,INV-001352,PO-001352,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1192
+Novartis Inc,151794.66666666666,2025-07-06,None,Pharmaceuticals,INV-001353,PO-001353,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1192
+Novartis Inc,151794.66666666666,2025-12-23,None,Pharmaceuticals,INV-001354,PO-001354,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1192
+Novartis Ltd,206701.0,2025-12-10,None,Pharmaceuticals,INV-001355,PO-001355,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1193
+Novartis Ltd,206701.0,2025-08-14,None,Pharmaceuticals,INV-001356,PO-001356,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1193
+Novartis International,74373.66666666667,2025-11-05,None,Pharmaceuticals,INV-001357,PO-001357,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1194
+Novartis International,74373.66666666667,2026-03-17,None,Pharmaceuticals,INV-001358,PO-001358,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1194
+Novartis International,74373.66666666667,2025-11-16,None,Pharmaceuticals,INV-001359,PO-001359,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1194
+Johnson and Johnson Corporation,222126.0,2025-11-07,None,Pharmaceuticals,INV-001360,PO-001360,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1195
+Johnson and Johnson Corporation,222126.0,2025-07-05,None,Pharmaceuticals,INV-001361,PO-001361,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1195
+Johnson,529373.0,2026-02-24,None,Pharmaceuticals,INV-001362,PO-001362,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1196
+Johnson and Johnson Inc,168796.66666666666,2026-02-27,None,Pharmaceuticals,INV-001363,PO-001363,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1197
+Johnson and Johnson Inc,168796.66666666666,2025-07-04,None,Pharmaceuticals,INV-001364,PO-001364,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1197
+Johnson and Johnson Inc,168796.66666666666,2025-05-11,None,Pharmaceuticals,INV-001365,PO-001365,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1197
+Johnson and Johnson Corporation,377489.5,2025-04-14,None,Pharmaceuticals,INV-001366,PO-001366,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1198
+Johnson and Johnson Corporation,377489.5,2025-07-09,None,Pharmaceuticals,INV-001367,PO-001367,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1198
+Reckitt Benkiser Inc,585907.0,2025-08-15,None,Consumer Goods,INV-001368,PO-001368,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.711929,1199
+Reckitt Benkiser Global,109956.0,2025-10-15,None,Consumer Goods,INV-001369,PO-001369,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1200
+DHL,256427.0,2025-07-30,None,Logistics,INV-001370,PO-001370,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1201
+DHL Supply Chain Ltd,178097.0,2025-09-17,None,Logistics,INV-001371,PO-001371,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1202
+DHL Supply Chain Ltd,178097.0,2025-06-21,None,Logistics,INV-001372,PO-001372,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1202
+DHL Supply Chain Ltd,178097.0,2025-04-11,None,Logistics,INV-001373,PO-001373,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1202
+DHL Supply Chain Inc,483371.0,2025-08-14,None,Logistics,INV-001374,PO-001374,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1203
+DHL Supply Chain Corporation,239906.66666666666,2025-06-05,None,Logistics,INV-001375,PO-001375,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1204
+DHL Supply Chain Corporation,239906.66666666666,2025-12-24,None,Logistics,INV-001376,PO-001376,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1204
+DHL Supply Chain Corporation,239906.66666666666,2025-09-18,None,Logistics,INV-001377,PO-001377,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1204
+FedEx Corporation,831585.0,2025-10-10,None,Logistics,INV-001378,PO-001378,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1205
+FedEx Ltd,210436.5,2026-03-07,None,Logistics,INV-001379,PO-001379,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1206
+FedEx Ltd,210436.5,2025-06-05,None,Logistics,INV-001380,PO-001380,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1206
+FED,769053.0,2025-09-21,None,Logistics,INV-001381,PO-001381,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1207
+Nippon Express Ltd,90283.33333333333,2026-02-24,None,Logistics,INV-001382,PO-001382,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1208
+Nippon Express Ltd,90283.33333333333,2025-04-09,None,Logistics,INV-001383,PO-001383,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1208
+Nippon Express Ltd,90283.33333333333,2026-02-11,None,Logistics,INV-001384,PO-001384,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1208
+Nippon Express International,61036.666666666664,2025-09-18,None,Logistics,INV-001385,PO-001385,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1209
+Nippon Express International,61036.666666666664,2025-05-06,None,Logistics,INV-001386,PO-001386,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1209
+Nippon Express International,61036.666666666664,2025-07-14,None,Logistics,INV-001387,PO-001387,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1209
+Nippon Express Corporation,853058.0,2025-12-04,None,Logistics,INV-001388,PO-001388,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1210
+Maersk Line International,554082.0,2025-12-02,None,Shipping & Maritime,INV-001389,PO-001389,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1211
+Maersk Line Global,158323.0,2026-02-09,None,Shipping & Maritime,INV-001390,PO-001390,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1212
+Maersk Line Global,158323.0,2025-04-18,None,Shipping & Maritime,INV-001391,PO-001391,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1212
+Maersk Line Inc,195450.5,2025-03-30,None,Shipping & Maritime,INV-001392,PO-001392,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1213
+Maersk Line Inc,195450.5,2025-06-30,None,Shipping & Maritime,INV-001393,PO-001393,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.712931,1213
+Kellogg Company Global,211521.66666666666,2025-07-29,None,Food & Beverage,INV-001394,PO-001394,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1214
+Kellogg Company Global,211521.66666666666,2025-06-20,None,Food & Beverage,INV-001395,PO-001395,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1214
+Kellogg Company Global,211521.66666666666,2025-05-16,None,Food & Beverage,INV-001396,PO-001396,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1214
+Kellogg Company Corporation,64525.333333333336,2025-05-30,None,Food & Beverage,INV-001397,PO-001397,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1215
+Kellogg Company Corporation,64525.333333333336,2026-03-15,None,Food & Beverage,INV-001398,PO-001398,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1215
+Kellogg Company Corporation,64525.333333333336,2025-07-24,None,Food & Beverage,INV-001399,PO-001399,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1215
+Kellogg,649437.0,2025-09-10,None,Food & Beverage,INV-001400,PO-001400,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1216
+Kellogg Company Inc,493938.0,2026-01-22,None,Food & Beverage,INV-001401,PO-001401,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1217
+Kellogg Company Inc,493938.0,2025-05-07,None,Food & Beverage,INV-001402,PO-001402,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1217
+PepsiCo Inc Corporation,172214.33333333334,2025-04-11,None,Food & Beverage,INV-001403,PO-001403,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1218
+PepsiCo Inc Corporation,172214.33333333334,2025-06-16,None,Food & Beverage,INV-001404,PO-001404,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1218
+PepsiCo Inc Corporation,172214.33333333334,2025-08-16,None,Food & Beverage,INV-001405,PO-001405,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1218
+PepsiCo Inc Ltd,474144.0,2025-09-24,None,Food & Beverage,INV-001406,PO-001406,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1219
+PepsiCo Inc Ltd,474144.0,2025-06-07,None,Food & Beverage,INV-001407,PO-001407,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1219
+PepsiCo Inc Global,710288.0,2025-11-27,None,Food & Beverage,INV-001408,PO-001408,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1220
+PepsiCo Inc Corporation,147652.33333333334,2025-08-01,None,Food & Beverage,INV-001409,PO-001409,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1221
+PepsiCo Inc Corporation,147652.33333333334,2025-08-11,None,Food & Beverage,INV-001410,PO-001410,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1221
+PepsiCo Inc Corporation,147652.33333333334,2025-08-10,None,Food & Beverage,INV-001411,PO-001411,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1221
+Monte Carlo Fashions Corporation,23385.666666666668,2025-06-15,None,Other,INV-001412,PO-001412,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1222
+Monte Carlo Fashions Corporation,23385.666666666668,2025-12-17,None,Other,INV-001413,PO-001413,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1222
+Monte Carlo Fashions Corporation,23385.666666666668,2025-06-16,None,Other,INV-001414,PO-001414,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1222
+Monte Carlo Fashions Corporation,98268.5,2025-12-12,None,Other,INV-001415,PO-001415,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1223
+Monte Carlo Fashions Corporation,98268.5,2025-12-31,None,Other,INV-001416,PO-001416,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1223
+Monte Carlo Fashions Global,95771.5,2025-08-15,None,Other,INV-001417,PO-001417,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1224
+Monte Carlo Fashions Global,95771.5,2026-01-13,None,Other,INV-001418,PO-001418,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1224
+Monte,132011.0,2026-02-14,None,Other,INV-001419,PO-001419,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1225
+Monte Carlo Fashions Inc,189830.0,2025-07-12,None,Other,INV-001420,PO-001420,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1226
+Fluor Corporation International,214744.0,2025-12-21,None,Engineering & Construction,INV-001421,PO-001421,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1227
+Fluor Corporation Inc,276447.3333333333,2025-10-05,None,Engineering & Construction,INV-001422,PO-001422,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1228
+Fluor Corporation Inc,276447.3333333333,2025-04-24,None,Engineering & Construction,INV-001423,PO-001423,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1228
+Fluor Corporation Inc,276447.3333333333,2025-09-24,None,Engineering & Construction,INV-001424,PO-001424,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1228
+Fluor Corporation International,168410.33333333334,2026-01-11,None,Engineering & Construction,INV-001425,PO-001425,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1229
+Fluor Corporation International,168410.33333333334,2025-06-18,None,Engineering & Construction,INV-001426,PO-001426,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1229
+Fluor Corporation International,168410.33333333334,2025-05-04,None,Engineering & Construction,INV-001427,PO-001427,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1229
+Fluor Corporation Ltd,113851.0,2025-07-08,None,Engineering & Construction,INV-001428,PO-001428,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1230
+Fluor Corporation Ltd,113851.0,2025-08-31,None,Engineering & Construction,INV-001429,PO-001429,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1230
+Fluor Corporation Ltd,113851.0,2025-05-24,None,Engineering & Construction,INV-001430,PO-001430,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1230
+Dow Inc Corporation,110987.0,2025-12-19,None,Chemicals,INV-001431,PO-001431,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1231
+Dow Inc Corporation,110987.0,2025-09-13,None,Chemicals,INV-001432,PO-001432,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1231
+Dow Inc International,425700.0,2026-03-13,None,Chemicals,INV-001433,PO-001433,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1232
+Dow Inc Corporation,330403.3333333333,2025-09-24,None,Chemicals,INV-001434,PO-001434,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1233
+Dow Inc Corporation,330403.3333333333,2025-12-31,None,Chemicals,INV-001435,PO-001435,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1233
+Dow Inc Corporation,330403.3333333333,2025-08-21,None,Chemicals,INV-001436,PO-001436,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1233
+DuPont de Nemours Inc Corporation,522691.0,2025-10-16,None,Other,INV-001437,PO-001437,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1234
+DuPont de Nemours Inc International,160466.33333333334,2025-11-24,None,Other,INV-001438,PO-001438,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1235
+DuPont de Nemours Inc International,160466.33333333334,2025-03-22,None,Other,INV-001439,PO-001439,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1235
+DuPont de Nemours Inc International,160466.33333333334,2026-01-16,None,Other,INV-001440,PO-001440,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.713932,1235
+DuPont de Nemours Inc International,191775.5,2025-12-10,None,Other,INV-001441,PO-001441,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1236
+DuPont de Nemours Inc International,191775.5,2025-11-13,None,Other,INV-001442,PO-001442,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1236
+Eastman Chemical Company Internatio,197869.0,2025-04-28,None,Chemicals,INV-001443,PO-001443,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1237
+Eastman Chemical Company Inc,222009.33333333334,2025-04-01,None,Chemicals,INV-001444,PO-001444,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1238
+Eastman Chemical Company Inc,222009.33333333334,2025-05-28,None,Chemicals,INV-001445,PO-001445,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1238
+Eastman Chemical Company Inc,222009.33333333334,2025-09-23,None,Chemicals,INV-001446,PO-001446,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1238
+Eastman,476542.0,2025-12-19,None,Chemicals,INV-001447,PO-001447,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1239
+Eastman Chemical Company Ltd,428497.5,2025-03-31,None,Chemicals,INV-001448,PO-001448,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1240
+Eastman Chemical Company Ltd,428497.5,2025-12-03,None,Chemicals,INV-001449,PO-001449,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1240
+JPMorgan Chase Corporation,97509.33333333333,2025-12-27,None,Financial Services,INV-001450,PO-001450,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1241
+JPMorgan Chase Corporation,97509.33333333333,2025-08-15,None,Financial Services,INV-001451,PO-001451,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1241
+JPMorgan Chase Corporation,97509.33333333333,2026-02-14,None,Financial Services,INV-001452,PO-001452,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1241
+JPMorgan Chase International,94926.0,2025-04-22,None,Financial Services,INV-001453,PO-001453,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1242
+JPMorgan Chase International,94926.0,2025-07-13,None,Financial Services,INV-001454,PO-001454,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1242
+JPMorgan Chase Inc,90831.0,2025-04-06,None,Financial Services,INV-001455,PO-001455,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1243
+JPMorgan Chase Inc,90831.0,2025-11-21,None,Financial Services,INV-001456,PO-001456,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1243
+Sanofi S.A Corporation,113414.33333333333,2026-03-21,None,Pharmaceuticals,INV-001457,PO-001457,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1244
+Sanofi S.A Corporation,113414.33333333333,2025-09-22,None,Pharmaceuticals,INV-001458,PO-001458,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1244
+Sanofi S.A Corporation,113414.33333333333,2025-09-12,None,Pharmaceuticals,INV-001459,PO-001459,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1244
+Sanofi S.A Ltd,32448.0,2026-02-10,None,Pharmaceuticals,INV-001460,PO-001460,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1245
+Sanofi S.A Ltd,32448.0,2025-07-05,None,Pharmaceuticals,INV-001461,PO-001461,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1245
+Sanofi S.A Ltd,32448.0,2026-01-31,None,Pharmaceuticals,INV-001462,PO-001462,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1245
+Sanofi S.A Ltd,308271.0,2025-07-01,None,Pharmaceuticals,INV-001463,PO-001463,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1246
+Sanofi S.A Ltd,308271.0,2025-07-16,None,Pharmaceuticals,INV-001464,PO-001464,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1246
+Valero Energy Corporation Internati,513651.0,2025-08-18,None,Energy & Oil,INV-001465,PO-001465,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1247
+Valero Energy Corporation Internati,108579.66666666667,2025-12-09,None,Energy & Oil,INV-001466,PO-001466,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1248
+Valero Energy Corporation Internati,108579.66666666667,2026-03-04,None,Energy & Oil,INV-001467,PO-001467,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1248
+Valero Energy Corporation Internati,108579.66666666667,2025-09-15,None,Energy & Oil,INV-001468,PO-001468,hybrid_phase1_baseline.csv,2026-03-22T20:56:09.714926,1248
+Intel,0.0,2025-09-20,supply_chain,Electronics & Semiconductors,DISP-001469,DISP-001469,disruption_events_hybrid.csv,2026-03-22T20:56:09.719233,1027
+Johnson & Johnson,0.0,2025-09-15,recall,Pharmaceuticals,DISP-001470,DISP-001470,disruption_events_hybrid.csv,2026-03-22T20:56:09.720238,1041
+Siemens,0.0,2025-09-10,labor_strike,Industrial Manufacturing,DISP-001471,DISP-001471,disruption_events_hybrid.csv,2026-03-22T20:56:09.721238,1015
+Intel,0.0,2025-09-05,shortage,Electronics & Semiconductors,DISP-001472,DISP-001472,disruption_events_hybrid.csv,2026-03-22T20:56:09.721238,1027
+Walmart,0.0,2025-08-25,bankruptcy,Retail,DISP-001473,DISP-001473,disruption_events_hybrid.csv,2026-03-22T20:56:09.725241,1021
+FedEx,0.0,2025-08-20,logistics_delay,Logistics,DISP-001474,DISP-001474,disruption_events_hybrid.csv,2026-03-22T20:56:09.727250,1044
+DHL,0.0,2025-08-20,logistics_delay,Logistics,DISP-001475,DISP-001475,disruption_events_hybrid.csv,2026-03-22T20:56:09.728286,1043
+Maersk,0.0,2025-08-20,logistics_delay,Shipping & Maritime,DISP-001476,DISP-001476,disruption_events_hybrid.csv,2026-03-22T20:56:09.729238,1046
+Chemical Manufacturing,0.0,2025-08-10,bankruptcy,Chemicals,DISP-001477,DISP-001477,disruption_events_hybrid.csv,2026-03-22T20:56:09.730238,1029

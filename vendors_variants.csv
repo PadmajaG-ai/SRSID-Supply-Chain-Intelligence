@@ -1,0 +1,862 @@
+LIFNR,NAME1,NAME2,ORT01,Land1,REGIO,PSTLZ,TELF1,SMTP_ADDR,KTOKK,ZTERM,INCO1,NACE,NACE_DESC,PERF_SCORE,FIN_STAB,RISC,SupplyRiskScore,ProfitImpactScore,KVADRANT,CREA_DATE,CHANGE_DATE
+001000,Rich's,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Distribution,81,81,Medium,0.19,0.87,Leverage,2026-03-19,2026-03-19
+001001,Indo Autotech Limited,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,87,86,Low,0.13,0.87,Leverage,2026-03-19,2026-03-19
+001002,Cirque du Soleil,,Default,US,US,00000,,,Z001,NET30,FOB,9001,Entertainment,77,72,Medium,0.23,0.5,Tactical,2026-03-19,2026-03-19
+001003,Zentis GmbH & Co. KG,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,91,91,Low,0.09,0.64,Leverage,2026-03-19,2026-03-19
+001004,Flint Group,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,73,70,Medium,0.27,0.39,Tactical,2026-03-19,2026-03-19
+001005,Amazon Business Services US,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Retail/Distribution,83,79,Medium,0.17,0.61,Leverage,2026-03-19,2026-03-19
+001006,Fisher Scientific,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,93,89,Low,0.07,0.52,Leverage,2026-03-19,2026-03-19
+001007,Merck Life Sciences,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,98,98,Low,0.02,0.62,Leverage,2026-03-19,2026-03-19
+001008,Office Depot,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,83,79,Medium,0.17,0.53,Leverage,2026-03-19,2026-03-19
+001009,RS Components,,Default,US,US,00000,,,Z001,NET30,FOB,4751,Electronics Distribution,75,71,Medium,0.25,0.32,Tactical,2026-03-19,2026-03-19
+001010,Eppendorf,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,94,92,Low,0.06,0.56,Leverage,2026-03-19,2026-03-19
+001011,Grainger,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Distribution,83,80,Medium,0.17,0.89,Leverage,2026-03-19,2026-03-19
+001012,Qiagen,,Default,US,US,00000,,,Z001,NET30,FOB,2170,Life Sciences,85,82,Low,0.15,0.44,Tactical,2026-03-19,2026-03-19
+001013,CDW,,Default,US,US,00000,,,Z001,NET30,FOB,4759,IT Distribution,84,81,Medium,0.16,0.35,Tactical,2026-03-19,2026-03-19
+001014,Manutan,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,84,82,Medium,0.16,0.53,Leverage,2026-03-19,2026-03-19
+001015,Siemens,,Default,US,US,00000,,,Z001,NET30,FOB,2900,Industrial Manufacturing,95,95,Low,0.05,0.5,Tactical,2026-03-19,2026-03-19
+001016,ABB,,Default,US,US,00000,,,Z001,NET30,FOB,2851,Robotics & Automation,89,86,Low,0.11,0.32,Tactical,2026-03-19,2026-03-19
+001017,Continuum,,Default,US,US,00000,,,Z001,NET30,FOB,6209,IT Services,86,82,Low,0.14,0.84,Leverage,2026-03-19,2026-03-19
+001018,Cisco,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Networking & IT,97,92,Low,0.03,0.47,Tactical,2026-03-19,2026-03-19
+001019,Apple,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Electronics & Semiconductors,88,85,Low,0.12,0.41,Tactical,2026-03-19,2026-03-19
+001020,Graybar,,Default,US,US,00000,,,Z001,NET30,FOB,4755,Electrical Distribution,72,69,Medium,0.28,0.58,Leverage,2026-03-19,2026-03-19
+001021,Walmart,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,77,75,Medium,0.23,0.5,Tactical,2026-03-19,2026-03-19
+001022,Air Liquide,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,69,64,High,0.31,0.88,Leverage,2026-03-19,2026-03-19
+001023,Binder,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,89,86,Low,0.11,0.77,Leverage,2026-03-19,2026-03-19
+001024,AstraZeneca,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,88,87,Low,0.12,0.55,Leverage,2026-03-19,2026-03-19
+001025,Saint-Gobain,,Default,US,US,00000,,,Z001,NET30,FOB,2370,Building Materials,85,84,Low,0.15,0.83,Leverage,2026-03-19,2026-03-19
+001026,Tesla,,Default,US,US,00000,,,Z001,NET30,FOB,2910,Electronics & Vehicles,79,77,Medium,0.21,0.32,Tactical,2026-03-19,2026-03-19
+001027,Intel,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Electronics & Semiconductors,87,85,Low,0.13,0.32,Tactical,2026-03-19,2026-03-19
+001028,BASF,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,83,81,Medium,0.17,0.68,Leverage,2026-03-19,2026-03-19
+001029,Dow Chemical,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,72,69,Medium,0.28,0.7,Leverage,2026-03-19,2026-03-19
+001030,SABIC,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,85,81,Low,0.15,0.6,Leverage,2026-03-19,2026-03-19
+001031,LyondellBasell,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,72,67,Medium,0.28,0.51,Leverage,2026-03-19,2026-03-19
+001032,ExxonMobil,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,65,62,High,0.35,0.46,Tactical,2026-03-19,2026-03-19
+001033,Unilever,,Default,US,US,00000,,,Z001,NET30,FOB,1520,Consumer Goods,80,75,Medium,0.2,0.65,Leverage,2026-03-19,2026-03-19
+001034,Nestlé,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,72,68,Medium,0.28,0.85,Leverage,2026-03-19,2026-03-19
+001035,Aldo Group,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,92,92,Low,0.08,0.4,Tactical,2026-03-19,2026-03-19
+001036,The Coca-Cola Company,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,89,89,Low,0.11,0.64,Leverage,2026-03-19,2026-03-19
+001037,Lidl (Schwarz Group),,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,78,78,Medium,0.22,0.82,Leverage,2026-03-19,2026-03-19
+001038,Shell,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,72,69,Medium,0.28,0.43,Tactical,2026-03-19,2026-03-19
+001039,Chevron,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,77,77,Medium,0.23,0.43,Tactical,2026-03-19,2026-03-19
+001040,Novartis,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,96,94,Low,0.04,0.43,Tactical,2026-03-19,2026-03-19
+001041,Johnson and Johnson,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,92,87,Low,0.08,0.62,Leverage,2026-03-19,2026-03-19
+001042,Reckitt Benkiser,,Default,US,US,00000,,,Z001,NET30,FOB,1520,Consumer Goods,90,88,Low,0.1,0.44,Tactical,2026-03-19,2026-03-19
+001043,DHL Supply Chain,,Default,US,US,00000,,,Z001,NET30,FOB,4939,Logistics,67,63,High,0.33,0.66,Leverage,2026-03-19,2026-03-19
+001044,FedEx,,Default,US,US,00000,,,Z001,NET30,FOB,4939,Logistics,79,79,Medium,0.21,0.65,Leverage,2026-03-19,2026-03-19
+001045,Nippon Express,,Default,US,US,00000,,,Z001,NET30,FOB,4939,Logistics,71,68,Medium,0.29,0.37,Tactical,2026-03-19,2026-03-19
+001046,Maersk Line,,Default,US,US,00000,,,Z001,NET30,FOB,5012,Shipping & Maritime,64,60,High,0.36,0.89,Leverage,2026-03-19,2026-03-19
+001047,Kellogg Company,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,76,75,Medium,0.24,0.48,Tactical,2026-03-19,2026-03-19
+001048,PepsiCo Inc,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,83,79,Medium,0.17,0.87,Leverage,2026-03-19,2026-03-19
+001049,Monte Carlo Fashions,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,77,76,Medium,0.23,0.62,Leverage,2026-03-19,2026-03-19
+001050,Fluor Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,4120,Engineering & Construction,73,73,Medium,0.27,0.87,Leverage,2026-03-19,2026-03-19
+001051,Dow Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,86,86,Low,0.14,0.5,Tactical,2026-03-19,2026-03-19
+001052,DuPont de Nemours Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,73,70,Medium,0.27,0.83,Leverage,2026-03-19,2026-03-19
+001053,Eastman Chemical Company,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,86,86,Low,0.14,0.8,Leverage,2026-03-19,2026-03-19
+001054,JPMorgan Chase,,Default,US,US,00000,,,Z001,NET30,FOB,6411,Financial Services,93,90,Low,0.07,0.34,Tactical,2026-03-19,2026-03-19
+001055,Sanofi S.A,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,87,84,Low,0.13,0.35,Tactical,2026-03-19,2026-03-19
+001056,Valero Energy Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,63,60,High,0.37,0.37,Tactical,2026-03-19,2026-03-19
+001057,CDW,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Solutions & Services,70,68,Medium,0.3,0.63,Leverage,2026-03-19,2026-03-19
+001058,Eppendorf North America,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory Equipment & Life Sciences,84,79,Medium,0.16,0.84,Leverage,2026-03-19,2026-03-19
+001059,"Exogro Co., Ltd",,Default,US,US,00000,,,Z001,NET30,FOB,9999,Agriculture / Biotechnology,74,74,Medium,0.26,0.33,Tactical,2026-03-19,2026-03-19
+001060,Reliper S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Supplies / Maintenance,88,85,Low,0.12,0.75,Leverage,2026-03-19,2026-03-19
+001061,Alseda Consulting,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT & SAP Consulting,72,69,Medium,0.28,0.33,Tactical,2026-03-19,2026-03-19
+001062,Kong Studio,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Animation & Design,74,71,Medium,0.26,0.72,Leverage,2026-03-19,2026-03-19
+001063,Omniscient Digital,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Digital Marketing & SEO,76,76,Medium,0.24,0.74,Leverage,2026-03-19,2026-03-19
+001064,Fore Excel Private Limited,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Logistics & Supply Chain,86,85,Low,0.14,0.87,Leverage,2026-03-19,2026-03-19
+001065,Peoplebank & Leaders IT,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Recruitment & Staffing,88,88,Low,0.12,0.88,Leverage,2026-03-19,2026-03-19
+001066,Computacenter,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Infrastructure Services,72,72,Medium,0.28,0.78,Leverage,2026-03-19,2026-03-19
+001067,"PVD Solutions, LLC",,Default,US,US,00000,,,Z001,NET30,FOB,9999,Surface Coating & Technology,83,83,Medium,0.17,0.41,Tactical,2026-03-19,2026-03-19
+001068,Vertical Green,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Landscaping & Sustainable Design,71,66,Medium,0.29,0.43,Tactical,2026-03-19,2026-03-19
+001069,MonotaRO,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial MRO E-commerce,81,79,Medium,0.19,0.67,Leverage,2026-03-19,2026-03-19
+001070,Unite,,Default,US,US,00000,,,Z001,NET30,FOB,9999,B2B Procurement Platform,90,89,Low,0.1,0.83,Leverage,2026-03-19,2026-03-19
+001071,Kimberly-Clark,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Consumer Goods (Personal Care),88,84,Low,0.12,0.64,Leverage,2026-03-19,2026-03-19
+001072,Brenntag,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,76,73,Medium,0.24,0.7,Leverage,2026-03-19,2026-03-19
+001073,Univar Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,72,67,Medium,0.28,0.9,Leverage,2026-03-19,2026-03-19
+001074,UPL Limited,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Agrochemicals,79,74,Medium,0.21,0.5,Tactical,2026-03-19,2026-03-19
+001075,Tata Chemicals,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,80,79,Medium,0.2,0.33,Tactical,2026-03-19,2026-03-19
+001076,Mitsubishi Chemical Group,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,78,77,Medium,0.22,0.65,Leverage,2026-03-19,2026-03-19
+001077,IMCD Group,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals Distribution,88,85,Low,0.12,0.7,Leverage,2026-03-19,2026-03-19
+001078,Evonik / Evonik Industries,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,80,80,Medium,0.2,0.5,Tactical,2026-03-19,2026-03-19
+001079,Huntsman,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,82,78,Medium,0.18,0.78,Leverage,2026-03-19,2026-03-19
+001080,Shin-Etsu,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemicals & Silicones,83,78,Medium,0.17,0.39,Tactical,2026-03-19,2026-03-19
+001081,Manuchar,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Logistics & Trading (Chemicals),81,78,Medium,0.19,0.79,Leverage,2026-03-19,2026-03-19
+001082,Helm AG,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution & Marketing,71,66,Medium,0.29,0.72,Leverage,2026-03-19,2026-03-19
+001083,DKSH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Market Expansion Services (Specialty Chemicals),78,74,Medium,0.22,0.65,Leverage,2026-03-19,2026-03-19
+001084,Nippon Kayaku,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals & Pharmaceuticals,75,72,Medium,0.25,0.52,Leverage,2026-03-19,2026-03-19
+001085,Azelis,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals Distribution,77,74,Medium,0.23,0.62,Leverage,2026-03-19,2026-03-19
+001086,ICC Chemical,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,87,87,Low,0.13,0.49,Tactical,2026-03-19,2026-03-19
+001087,Cargill Beauty,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Personal Care Ingredients,75,75,Medium,0.25,0.73,Leverage,2026-03-19,2026-03-19
+001088,Worlee,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Raw Materials,84,80,Medium,0.16,0.67,Leverage,2026-03-19,2026-03-19
+001089,Rahn Cosmetics,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals (Cosmetics),70,69,Medium,0.3,0.66,Leverage,2026-03-19,2026-03-19
+001090,Zydus Lifesciences,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,86,82,Low,0.14,0.89,Leverage,2026-03-19,2026-03-19
+001091,Hikma Pharmaceuticals,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,89,86,Low,0.11,0.73,Leverage,2026-03-19,2026-03-19
+001092,Supriya Lifesciences,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceuticals (APIs),80,77,Medium,0.2,0.53,Leverage,2026-03-19,2026-03-19
+001093,Ipca Laboratories,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,88,88,Low,0.12,0.87,Leverage,2026-03-19,2026-03-19
+001094,Glenmark Pharmaceuticals,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,87,83,Low,0.13,0.34,Tactical,2026-03-19,2026-03-19
+001095,Refarmed Chemicals,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceutical Intermediates,78,73,Medium,0.22,0.53,Leverage,2026-03-19,2026-03-19
+001096,Biosynth Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences (Biochemicals),88,84,Low,0.12,0.36,Tactical,2026-03-19,2026-03-19
+001097,Chemo Iberica SA,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,97,95,Low,0.03,0.62,Leverage,2026-03-19,2026-03-19
+001098,Deretil SA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceutical Raw Materials,85,81,Low,0.15,0.41,Tactical,2026-03-19,2026-03-19
+001099,Friedrichshafen (ZF),,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Parts & Systems,70,66,Medium,0.3,0.53,Leverage,2026-03-19,2026-03-19
+001100,Hyundai Mobis,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,76,73,Medium,0.24,0.57,Leverage,2026-03-19,2026-03-19
+001101,Bosch / Bosch Rexroth,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engineering & Automotive Technology,75,74,Medium,0.25,0.67,Leverage,2026-03-19,2026-03-19
+001102,Denso Corporation / Denso Corp,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,85,80,Low,0.15,0.31,Tactical,2026-03-19,2026-03-19
+001103,Magna International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,83,81,Medium,0.17,0.88,Leverage,2026-03-19,2026-03-19
+001104,Continental AG,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Parts & Tires,72,72,Medium,0.28,0.6,Leverage,2026-03-19,2026-03-19
+001105,Aisin Seiki Co.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,79,74,Medium,0.21,0.42,Tactical,2026-03-19,2026-03-19
+001106,Valeo SA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,77,74,Medium,0.23,0.64,Leverage,2026-03-19,2026-03-19
+001107,Faurecia,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,90,86,Low,0.1,0.55,Leverage,2026-03-19,2026-03-19
+001108,CATL,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Battery Manufacturing (EVs),82,79,Medium,0.18,0.76,Leverage,2026-03-19,2026-03-19
+001109,Magneti Marelli,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,74,74,Medium,0.26,0.83,Leverage,2026-03-19,2026-03-19
+001110,Thyssenkrupp,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Engineering & Steel,89,88,Low,0.11,0.81,Leverage,2026-03-19,2026-03-19
+001111,Bharat Forge Limited,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive & Industrial Components,88,86,Low,0.12,0.62,Leverage,2026-03-19,2026-03-19
+001112,KPMG,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services (Accounting/Audit),73,73,Medium,0.27,0.66,Leverage,2026-03-19,2026-03-19
+001113,Price Water Coopers (PwC),,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services (Accounting/Audit),77,72,Medium,0.23,0.65,Leverage,2026-03-19,2026-03-19
+001114,IBM,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Technology & Consulting,71,71,Medium,0.29,0.4,Tactical,2026-03-19,2026-03-19
+001115,Croda International Plc (UK),,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,83,79,Medium,0.17,0.76,Leverage,2026-03-19,2026-03-19
+001116,Lubrizol Corporation (USA),,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,88,85,Low,0.12,0.9,Leverage,2026-03-19,2026-03-19
+001117,Clariant AG,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,89,89,Low,0.11,0.32,Tactical,2026-03-19,2026-03-19
+001118,Kao Chemicals,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals / Consumer Goods,84,79,Medium,0.16,0.56,Leverage,2026-03-19,2026-03-19
+001119,Givaudan Active Beauty,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Fragrances & Cosmetic Ingredients,84,84,Medium,0.16,0.7,Leverage,2026-03-19,2026-03-19
+001120,Seppic,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals (Health/Beauty),86,85,Low,0.14,0.58,Leverage,2026-03-19,2026-03-19
+001121,Ashland Global Holdings Inc.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,72,69,Medium,0.28,0.69,Leverage,2026-03-19,2026-03-19
+001122,I.M.A. Industria Macchine,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Machinery (Packaging),85,80,Low,0.15,0.58,Leverage,2026-03-19,2026-03-19
+001123,Syntegon Technology GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Processing & Packaging Technology,84,82,Medium,0.16,0.83,Leverage,2026-03-19,2026-03-19
+001124,Marchesini Group S.p.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,74,74,Medium,0.26,0.49,Tactical,2026-03-19,2026-03-19
+001125,Coesia S.p.A (PackSys Global),,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging & Industrial Solutions,86,81,Low,0.14,0.39,Tactical,2026-03-19,2026-03-19
+001126,Norden Machinery AB,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery (Tube Filling),73,73,Medium,0.27,0.66,Leverage,2026-03-19,2026-03-19
+001127,Optima Packaging Group,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,88,84,Low,0.12,0.76,Leverage,2026-03-19,2026-03-19
+001128,Jinhu Ginhong Machinery Co.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Mixing Equipment,76,76,Medium,0.24,0.36,Tactical,2026-03-19,2026-03-19
+001129,"Lianhe Machinery Co., Ltd",,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetic & Pharma Machinery,84,84,Medium,0.16,0.68,Leverage,2026-03-19,2026-03-19
+001130,Promach Inc.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,78,76,Medium,0.22,0.58,Leverage,2026-03-19,2026-03-19
+001131,Neologic Engineers (India),,Default,US,US,00000,,,Z001,NET30,FOB,9999,Process Engineering (Dairy/Food),86,85,Low,0.14,0.52,Leverage,2026-03-19,2026-03-19
+001132,Knowlton Development Corp (KDC/ONE),,Default,US,US,00000,,,Z001,NET30,FOB,9999,Contract Manufacturing (Beauty/Personal Care),80,75,Medium,0.2,0.43,Tactical,2026-03-19,2026-03-19
+001133,Intercos S.p.A,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetics Manufacturing (ODM),84,84,Medium,0.16,0.69,Leverage,2026-03-19,2026-03-19
+001134,Fareva,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Contract Manufacturing (Pharma/Cosmetics),86,86,Low,0.14,0.3,Tactical,2026-03-19,2026-03-19
+001135,Kolmar Korea,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetics & Pharma (ODM/OEM),80,76,Medium,0.2,0.7,Leverage,2026-03-19,2026-03-19
+001136,Albea,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging (Beauty & Personal Care),90,88,Low,0.1,0.55,Leverage,2026-03-19,2026-03-19
+001137,Staples,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Supplies & Services,73,71,Medium,0.27,0.8,Leverage,2026-03-19,2026-03-19
+001138,Lyreco,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Supplies & Services,76,75,Medium,0.24,0.83,Leverage,2026-03-19,2026-03-19
+001139,Quill Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,82,80,Medium,0.18,0.71,Leverage,2026-03-19,2026-03-19
+001140,ACCO Brands,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Products,77,74,Medium,0.23,0.6,Leverage,2026-03-19,2026-03-19
+001141,Adecco,,Default,US,US,00000,,,Z001,NET30,FOB,9999,HR & Staffing Services,85,84,Low,0.15,0.4,Tactical,2026-03-19,2026-03-19
+001142,Dell,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hardware & IT Services,90,89,Low,0.1,0.65,Leverage,2026-03-19,2026-03-19
+001143,HP,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hardware & IT Services,72,69,Medium,0.28,0.65,Leverage,2026-03-19,2026-03-19
+001144,Genpact,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Business Process Outsourcing (BPO),83,82,Medium,0.17,0.32,Tactical,2026-03-19,2026-03-19
+001145,Accenture,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services & Consulting,85,82,Low,0.15,0.54,Leverage,2026-03-19,2026-03-19
+001146,Avantor,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences Supplies & Chemicals,89,84,Low,0.11,0.74,Leverage,2026-03-19,2026-03-19
+001147,Bio-Rad Laboratories,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Science Research & Diagnostics,80,76,Medium,0.2,0.76,Leverage,2026-03-19,2026-03-19
+001148,Sartorius,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Biopharmaceutical Equipment,87,82,Low,0.13,0.46,Tactical,2026-03-19,2026-03-19
+001149,PerkinElmer,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Diagnostics & Life Sciences,75,71,Medium,0.25,0.35,Tactical,2026-03-19,2026-03-19
+001150,Cole-Parmer,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory & Industrial Equipment,75,74,Medium,0.25,0.42,Tactical,2026-03-19,2026-03-19
+001151,Corning Life Sciences,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory Glassware & Equipment,89,86,Low,0.11,0.65,Leverage,2026-03-19,2026-03-19
+001152,Agilent Technologies,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Analytical Instrumentation,73,73,Medium,0.27,0.37,Tactical,2026-03-19,2026-03-19
+001153,Calibre Scientific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences & Diagnostics,79,76,Medium,0.21,0.84,Leverage,2026-03-19,2026-03-19
+001154,Labconco,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,85,81,Low,0.15,0.42,Tactical,2026-03-19,2026-03-19
+001155,Costco Wholesale,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Retail / Warehouse Club,78,74,Medium,0.22,0.65,Leverage,2026-03-19,2026-03-19
+001156,BJ's Wholesale Club,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Retail / Warehouse Club,75,74,Medium,0.25,0.75,Leverage,2026-03-19,2026-03-19
+001157,Metso,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Machinery (Mining/Aggregates),84,83,Medium,0.16,0.33,Tactical,2026-03-19,2026-03-19
+001158,Schaeffler,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive & Industrial Bearings,84,83,Medium,0.16,0.83,Leverage,2026-03-19,2026-03-19
+001159,Cummins,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engines & Power Generation,73,73,Medium,0.27,0.47,Tactical,2026-03-19,2026-03-19
+001160,TVH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Parts for Material Handling & Industrial,76,73,Medium,0.24,0.7,Leverage,2026-03-19,2026-03-19
+001161,Unispares,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engineering & Automotive Components,82,80,Medium,0.18,0.73,Leverage,2026-03-19,2026-03-19
+001162,Gemsons Precision Engineering,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Precision Machined Components,70,70,Medium,0.3,0.35,Tactical,2026-03-19,2026-03-19
+001163,Parker Hannifin,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Motion & Control Technologies,80,76,Medium,0.2,0.78,Leverage,2026-03-19,2026-03-19
+001164,Eaton,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Power Management / Electrical,77,73,Medium,0.23,0.71,Leverage,2026-03-19,2026-03-19
+001165,Poclain Hydraulics,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Power & Transmission,80,80,Medium,0.2,0.4,Tactical,2026-03-19,2026-03-19
+001166,Hawe Hydraulik,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Systems,88,87,Low,0.12,0.31,Tactical,2026-03-19,2026-03-19
+001167,Hydro Leduc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Components,88,83,Low,0.12,0.6,Leverage,2026-03-19,2026-03-19
+001168,Sea Hydrosystems India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Cylinders,87,87,Low,0.13,0.6,Leverage,2026-03-19,2026-03-19
+001169,Rich's Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Distribution,78,74,Medium,0.22,0.48,Tactical,2026-03-19,2026-03-19
+001170,Rich's EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Distribution,75,71,Medium,0.25,0.88,Leverage,2026-03-19,2026-03-19
+001171,RIC Inc,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Distribution,84,80,Medium,0.16,0.45,Tactical,2026-03-19,2026-03-19
+001172,Rich's GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Distribution,71,68,Medium,0.29,0.86,Leverage,2026-03-19,2026-03-19
+001173,Rich's Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Distribution,75,72,Medium,0.25,0.39,Tactical,2026-03-19,2026-03-19
+001174,Indo Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,89,86,Low,0.11,0.31,Tactical,2026-03-19,2026-03-19
+001175,Indo Autotech Limited Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,84,81,Medium,0.16,0.85,Leverage,2026-03-19,2026-03-19
+001176,Indo Autotech Limited EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,83,82,Medium,0.17,0.76,Leverage,2026-03-19,2026-03-19
+001177,Indo Autotech Limited International,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,75,72,Medium,0.25,0.66,Leverage,2026-03-19,2026-03-19
+001178,Cirque du Soleil Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9001,Entertainment,82,77,Medium,0.18,0.4,Tactical,2026-03-19,2026-03-19
+001179,Cirque du Soleil EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9001,Entertainment,72,67,Medium,0.28,0.78,Leverage,2026-03-19,2026-03-19
+001180,Cirque du Soleil Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9001,Entertainment,68,68,High,0.32,0.77,Leverage,2026-03-19,2026-03-19
+001181,Zentis GmbH & Co. KG EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,89,87,Low,0.11,0.62,Leverage,2026-03-19,2026-03-19
+001182,Zentis GmbH & Co. KG International,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,73,69,Medium,0.27,0.36,Tactical,2026-03-19,2026-03-19
+001183,Zentis Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,88,88,Low,0.12,0.31,Tactical,2026-03-19,2026-03-19
+001184,Zentis GmbH & Co. KG International,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,81,78,Medium,0.19,0.33,Tactical,2026-03-19,2026-03-19
+001185,Zentis GmbH & Co. KG Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,71,71,Medium,0.29,0.87,Leverage,2026-03-19,2026-03-19
+001186,Flint Group GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,72,67,Medium,0.28,0.8,Leverage,2026-03-19,2026-03-19
+001187,Flint Group Global,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,79,75,Medium,0.21,0.88,Leverage,2026-03-19,2026-03-19
+001188,Flint Group Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,82,78,Medium,0.18,0.6,Leverage,2026-03-19,2026-03-19
+001189,Flint Group S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,70,66,Medium,0.3,0.74,Leverage,2026-03-19,2026-03-19
+001190,Flint Group Europe,,Default,US,US,00000,,,Z001,NET30,FOB,2500,Manufacturing,76,74,Medium,0.24,0.43,Tactical,2026-03-19,2026-03-19
+001191,Amazon Business Services US GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Retail/Distribution,82,79,Medium,0.18,0.84,Leverage,2026-03-19,2026-03-19
+001192,Amazon Business Services US Asia Pa,cific,Default,US,US,00000,,,Z001,NET30,FOB,4610,Retail/Distribution,85,83,Low,0.15,0.73,Leverage,2026-03-19,2026-03-19
+001193,Amazon Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Retail/Distribution,87,86,Low,0.13,0.44,Tactical,2026-03-19,2026-03-19
+001194,Amazon Business Services US Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Retail/Distribution,88,88,Low,0.12,0.43,Tactical,2026-03-19,2026-03-19
+001195,Fisher Scientific S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,86,81,Low,0.14,0.8,Leverage,2026-03-19,2026-03-19
+001196,Fisher Scientific India,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,96,94,Low,0.04,0.87,Leverage,2026-03-19,2026-03-19
+001197,Fisher Scientific International,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,83,79,Medium,0.17,0.76,Leverage,2026-03-19,2026-03-19
+001198,Fisher Scientific Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,80,75,Medium,0.2,0.65,Leverage,2026-03-19,2026-03-19
+001199,Fisher Scientific Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,91,86,Low,0.09,0.71,Leverage,2026-03-19,2026-03-19
+001200,Merck Life Sciences India,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,91,86,Low,0.09,0.67,Leverage,2026-03-19,2026-03-19
+001201,Merck Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,97,92,Low,0.03,0.45,Tactical,2026-03-19,2026-03-19
+001202,Merck Life Sciences International,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,96,93,Low,0.04,0.86,Leverage,2026-03-19,2026-03-19
+001203,Merck Life Sciences GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,94,90,Low,0.06,0.5,Tactical,2026-03-19,2026-03-19
+001204,Merck Life Sciences EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,91,86,Low,0.09,0.7,Leverage,2026-03-19,2026-03-19
+001205,Office Inc,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,71,68,Medium,0.29,0.86,Leverage,2026-03-19,2026-03-19
+001206,Office Depot International,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,78,75,Medium,0.22,0.35,Tactical,2026-03-19,2026-03-19
+001207,Office Depot Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,73,69,Medium,0.27,0.44,Tactical,2026-03-19,2026-03-19
+001208,Office Depot GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,84,81,Medium,0.16,0.64,Leverage,2026-03-19,2026-03-19
+001209,RS Components Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4751,Electronics Distribution,80,75,Medium,0.2,0.84,Leverage,2026-03-19,2026-03-19
+001210,RS Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4751,Electronics Distribution,80,80,Medium,0.2,0.49,Tactical,2026-03-19,2026-03-19
+001211,RS Components Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4751,Electronics Distribution,85,85,Low,0.15,0.43,Tactical,2026-03-19,2026-03-19
+001212,RS Components Europe,,Default,US,US,00000,,,Z001,NET30,FOB,4751,Electronics Distribution,71,69,Medium,0.29,0.85,Leverage,2026-03-19,2026-03-19
+001213,EPP Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,91,88,Low,0.09,0.54,Leverage,2026-03-19,2026-03-19
+001214,Eppendorf Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,96,95,Low,0.04,0.36,Tactical,2026-03-19,2026-03-19
+001215,Eppendorf GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,83,79,Medium,0.17,0.73,Leverage,2026-03-19,2026-03-19
+001216,Eppendorf Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,92,89,Low,0.08,0.34,Tactical,2026-03-19,2026-03-19
+001217,Eppendorf India,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,90,86,Low,0.1,0.85,Leverage,2026-03-19,2026-03-19
+001218,Grainger India,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Distribution,85,82,Low,0.15,0.34,Tactical,2026-03-19,2026-03-19
+001219,Grainger India,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Distribution,74,73,Medium,0.26,0.84,Leverage,2026-03-19,2026-03-19
+001220,Grainger EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Distribution,71,67,Medium,0.29,0.55,Leverage,2026-03-19,2026-03-19
+001221,Grainger Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Distribution,84,84,Medium,0.16,0.78,Leverage,2026-03-19,2026-03-19
+001222,GRA,,Default,US,US,00000,,,Z001,NET30,FOB,4610,Distribution,78,77,Medium,0.22,0.56,Leverage,2026-03-19,2026-03-19
+001223,Qiagen Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,2170,Life Sciences,94,94,Low,0.06,0.46,Tactical,2026-03-19,2026-03-19
+001224,QIA Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2170,Life Sciences,85,83,Low,0.15,0.68,Leverage,2026-03-19,2026-03-19
+001225,QIA Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2170,Life Sciences,95,90,Low,0.05,0.73,Leverage,2026-03-19,2026-03-19
+001226,Qiagen Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2170,Life Sciences,94,89,Low,0.06,0.46,Tactical,2026-03-19,2026-03-19
+001227,CDW USA,,Default,US,US,00000,,,Z001,NET30,FOB,4759,IT Distribution,90,89,Low,0.1,0.57,Leverage,2026-03-19,2026-03-19
+001228,CDW Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,4759,IT Distribution,83,78,Medium,0.17,0.45,Tactical,2026-03-19,2026-03-19
+001229,CDW Inc,,Default,US,US,00000,,,Z001,NET30,FOB,4759,IT Distribution,89,88,Low,0.11,0.48,Tactical,2026-03-19,2026-03-19
+001230,CDW Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4759,IT Distribution,92,92,Low,0.08,0.51,Leverage,2026-03-19,2026-03-19
+001231,Manutan Global,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,81,76,Medium,0.19,0.36,Tactical,2026-03-19,2026-03-19
+001232,Manutan EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,70,65,Medium,0.3,0.6,Leverage,2026-03-19,2026-03-19
+001233,MAN Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,75,72,Medium,0.25,0.4,Tactical,2026-03-19,2026-03-19
+001234,Manutan S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,83,78,Medium,0.17,0.42,Tactical,2026-03-19,2026-03-19
+001235,Manutan Europe,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,83,78,Medium,0.17,0.61,Leverage,2026-03-19,2026-03-19
+001236,SIE Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2900,Industrial Manufacturing,80,78,Medium,0.2,0.62,Leverage,2026-03-19,2026-03-19
+001237,Siemens Europe,,Default,US,US,00000,,,Z001,NET30,FOB,2900,Industrial Manufacturing,81,81,Medium,0.19,0.6,Leverage,2026-03-19,2026-03-19
+001238,Siemens Global,,Default,US,US,00000,,,Z001,NET30,FOB,2900,Industrial Manufacturing,81,77,Medium,0.19,0.44,Tactical,2026-03-19,2026-03-19
+001239,ABB Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2851,Robotics & Automation,82,82,Medium,0.18,0.38,Tactical,2026-03-19,2026-03-19
+001240,ABB Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,2851,Robotics & Automation,93,91,Low,0.07,0.67,Leverage,2026-03-19,2026-03-19
+001241,ABB Global,,Default,US,US,00000,,,Z001,NET30,FOB,2851,Robotics & Automation,83,79,Medium,0.17,0.5,Tactical,2026-03-19,2026-03-19
+001242,Continuum Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,6209,IT Services,93,89,Low,0.07,0.41,Tactical,2026-03-19,2026-03-19
+001243,Continuum Inc,,Default,US,US,00000,,,Z001,NET30,FOB,6209,IT Services,92,87,Low,0.08,0.33,Tactical,2026-03-19,2026-03-19
+001244,Continuum Global,,Default,US,US,00000,,,Z001,NET30,FOB,6209,IT Services,79,79,Medium,0.21,0.49,Tactical,2026-03-19,2026-03-19
+001245,Continuum Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,6209,IT Services,89,84,Low,0.11,0.43,Tactical,2026-03-19,2026-03-19
+001246,Continuum USA,,Default,US,US,00000,,,Z001,NET30,FOB,6209,IT Services,85,82,Low,0.15,0.44,Tactical,2026-03-19,2026-03-19
+001247,Cisco India,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Networking & IT,87,85,Low,0.13,0.51,Leverage,2026-03-19,2026-03-19
+001248,Cisco International,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Networking & IT,83,83,Medium,0.17,0.55,Leverage,2026-03-19,2026-03-19
+001249,Cisco India,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Networking & IT,95,91,Low,0.05,0.81,Leverage,2026-03-19,2026-03-19
+001250,Apple International,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Electronics & Semiconductors,87,87,Low,0.13,0.46,Tactical,2026-03-19,2026-03-19
+001251,Apple Europe,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Electronics & Semiconductors,92,89,Low,0.08,0.83,Leverage,2026-03-19,2026-03-19
+001252,Apple Global,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Electronics & Semiconductors,83,82,Medium,0.17,0.35,Tactical,2026-03-19,2026-03-19
+001253,Apple Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Electronics & Semiconductors,87,84,Low,0.13,0.65,Leverage,2026-03-19,2026-03-19
+001254,Graybar Inc,,Default,US,US,00000,,,Z001,NET30,FOB,4755,Electrical Distribution,76,74,Medium,0.24,0.87,Leverage,2026-03-19,2026-03-19
+001255,Graybar USA,,Default,US,US,00000,,,Z001,NET30,FOB,4755,Electrical Distribution,81,80,Medium,0.19,0.41,Tactical,2026-03-19,2026-03-19
+001256,Graybar Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,4755,Electrical Distribution,83,82,Medium,0.17,0.55,Leverage,2026-03-19,2026-03-19
+001257,Walmart Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,75,71,Medium,0.25,0.31,Tactical,2026-03-19,2026-03-19
+001258,WAL Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,77,77,Medium,0.23,0.49,Tactical,2026-03-19,2026-03-19
+001259,Walmart Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,77,74,Medium,0.23,0.74,Leverage,2026-03-19,2026-03-19
+001260,Air Liquide Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,64,64,High,0.36,0.34,Tactical,2026-03-19,2026-03-19
+001261,Air Liquide EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,82,78,Medium,0.18,0.77,Leverage,2026-03-19,2026-03-19
+001262,Air Liquide EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,65,62,High,0.35,0.81,Leverage,2026-03-19,2026-03-19
+001263,Binder GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,89,89,Low,0.11,0.48,Tactical,2026-03-19,2026-03-19
+001264,Binder Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,81,80,Medium,0.19,0.67,Leverage,2026-03-19,2026-03-19
+001265,Binder Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,87,82,Low,0.13,0.61,Leverage,2026-03-19,2026-03-19
+001266,Binder Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,89,88,Low,0.11,0.33,Tactical,2026-03-19,2026-03-19
+001267,AstraZeneca International,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,91,89,Low,0.09,0.63,Leverage,2026-03-19,2026-03-19
+001268,AstraZeneca Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,86,85,Low,0.14,0.42,Tactical,2026-03-19,2026-03-19
+001269,AstraZeneca Europe,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,91,89,Low,0.09,0.51,Leverage,2026-03-19,2026-03-19
+001270,AST Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,88,84,Low,0.12,0.55,Leverage,2026-03-19,2026-03-19
+001271,AstraZeneca Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,87,85,Low,0.13,0.77,Leverage,2026-03-19,2026-03-19
+001272,SAI Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2370,Building Materials,74,74,Medium,0.26,0.61,Leverage,2026-03-19,2026-03-19
+001273,Saint-Gobain Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2370,Building Materials,80,79,Medium,0.2,0.48,Tactical,2026-03-19,2026-03-19
+001274,Saint-Gobain India,,Default,US,US,00000,,,Z001,NET30,FOB,2370,Building Materials,69,64,High,0.31,0.89,Leverage,2026-03-19,2026-03-19
+001275,Saint-Gobain India,,Default,US,US,00000,,,Z001,NET30,FOB,2370,Building Materials,81,76,Medium,0.19,0.6,Leverage,2026-03-19,2026-03-19
+001276,Saint-Gobain USA,,Default,US,US,00000,,,Z001,NET30,FOB,2370,Building Materials,67,63,High,0.33,0.55,Leverage,2026-03-19,2026-03-19
+001277,Tesla Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,2910,Electronics & Vehicles,77,74,Medium,0.23,0.35,Tactical,2026-03-19,2026-03-19
+001278,Tesla Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,2910,Electronics & Vehicles,83,80,Medium,0.17,0.72,Leverage,2026-03-19,2026-03-19
+001279,Tesla EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,2910,Electronics & Vehicles,84,80,Medium,0.16,0.8,Leverage,2026-03-19,2026-03-19
+001280,Tesla Europe,,Default,US,US,00000,,,Z001,NET30,FOB,2910,Electronics & Vehicles,79,75,Medium,0.21,0.45,Tactical,2026-03-19,2026-03-19
+001281,INT Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Electronics & Semiconductors,89,85,Low,0.11,0.66,Leverage,2026-03-19,2026-03-19
+001282,Intel USA,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Electronics & Semiconductors,79,78,Medium,0.21,0.55,Leverage,2026-03-19,2026-03-19
+001283,Intel Europe,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Electronics & Semiconductors,82,77,Medium,0.18,0.68,Leverage,2026-03-19,2026-03-19
+001284,Intel Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Electronics & Semiconductors,75,70,Medium,0.25,0.89,Leverage,2026-03-19,2026-03-19
+001285,Intel S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2620,Electronics & Semiconductors,76,72,Medium,0.24,0.86,Leverage,2026-03-19,2026-03-19
+001286,BASF Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,74,74,Medium,0.26,0.61,Leverage,2026-03-19,2026-03-19
+001287,BAS Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,66,66,High,0.34,0.33,Tactical,2026-03-19,2026-03-19
+001288,BASF S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,71,66,Medium,0.29,0.63,Leverage,2026-03-19,2026-03-19
+001289,Dow Chemical Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,69,66,High,0.31,0.87,Leverage,2026-03-19,2026-03-19
+001290,Dow Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,65,64,High,0.35,0.89,Leverage,2026-03-19,2026-03-19
+001291,Dow,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,82,77,Medium,0.18,0.38,Tactical,2026-03-19,2026-03-19
+001292,Dow Chemical S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,85,84,Low,0.15,0.75,Leverage,2026-03-19,2026-03-19
+001293,Dow Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,78,78,Medium,0.22,0.74,Leverage,2026-03-19,2026-03-19
+001294,SABIC Global,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,72,72,Medium,0.28,0.64,Leverage,2026-03-19,2026-03-19
+001295,SABIC Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,77,77,Medium,0.23,0.88,Leverage,2026-03-19,2026-03-19
+001296,SABIC S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,64,64,High,0.36,0.79,Leverage,2026-03-19,2026-03-19
+001297,SABIC India,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,86,85,Low,0.14,0.35,Tactical,2026-03-19,2026-03-19
+001298,LyondellBasell India,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,64,59,High,0.36,0.42,Tactical,2026-03-19,2026-03-19
+001299,LyondellBasell Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,69,65,High,0.31,0.77,Leverage,2026-03-19,2026-03-19
+001300,LyondellBasell Europe,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,67,66,High,0.33,0.66,Leverage,2026-03-19,2026-03-19
+001301,LyondellBasell S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,67,66,High,0.33,0.42,Tactical,2026-03-19,2026-03-19
+001302,LyondellBasell International,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,80,76,Medium,0.2,0.48,Tactical,2026-03-19,2026-03-19
+001303,ExxonMobil Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,58,53,High,0.42,0.48,Tactical,2026-03-19,2026-03-19
+001304,ExxonMobil Inc,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,80,78,Medium,0.2,0.7,Leverage,2026-03-19,2026-03-19
+001305,ExxonMobil Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,83,80,Medium,0.17,0.55,Leverage,2026-03-19,2026-03-19
+001306,ExxonMobil USA,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,81,81,Medium,0.19,0.63,Leverage,2026-03-19,2026-03-19
+001307,ExxonMobil Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,63,60,High,0.37,0.59,Leverage,2026-03-19,2026-03-19
+001308,Unilever Global,,Default,US,US,00000,,,Z001,NET30,FOB,1520,Consumer Goods,74,71,Medium,0.26,0.38,Tactical,2026-03-19,2026-03-19
+001309,Unilever International,,Default,US,US,00000,,,Z001,NET30,FOB,1520,Consumer Goods,71,66,Medium,0.29,0.45,Tactical,2026-03-19,2026-03-19
+001310,Unilever Inc,,Default,US,US,00000,,,Z001,NET30,FOB,1520,Consumer Goods,71,66,Medium,0.29,0.45,Tactical,2026-03-19,2026-03-19
+001311,Unilever Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,1520,Consumer Goods,86,85,Low,0.14,0.86,Leverage,2026-03-19,2026-03-19
+001312,UNI Inc,,Default,US,US,00000,,,Z001,NET30,FOB,1520,Consumer Goods,81,80,Medium,0.19,0.5,Tactical,2026-03-19,2026-03-19
+001313,Nestlé International,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,86,83,Low,0.14,0.83,Leverage,2026-03-19,2026-03-19
+001314,Nestlé S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,72,71,Medium,0.28,0.57,Leverage,2026-03-19,2026-03-19
+001315,Nestlé Inc,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,88,84,Low,0.12,0.77,Leverage,2026-03-19,2026-03-19
+001316,Aldo Group India,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,89,88,Low,0.11,0.67,Leverage,2026-03-19,2026-03-19
+001317,Aldo Group USA,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,76,76,Medium,0.24,0.42,Tactical,2026-03-19,2026-03-19
+001318,Aldo Inc,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,79,76,Medium,0.21,0.61,Leverage,2026-03-19,2026-03-19
+001319,Aldo Group International,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,82,80,Medium,0.18,0.57,Leverage,2026-03-19,2026-03-19
+001320,Aldo Group Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,83,79,Medium,0.17,0.41,Tactical,2026-03-19,2026-03-19
+001321,The Coca-Cola Company Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,74,72,Medium,0.26,0.77,Leverage,2026-03-19,2026-03-19
+001322,The Coca-Cola Company USA,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,77,73,Medium,0.23,0.69,Leverage,2026-03-19,2026-03-19
+001323,The Coca-Cola Company Europe,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,88,84,Low,0.12,0.4,Tactical,2026-03-19,2026-03-19
+001324,The Coca-Cola Company Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,84,80,Medium,0.16,0.87,Leverage,2026-03-19,2026-03-19
+001325,Lidl (Schwarz Group) Business Servi,ces,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,72,67,Medium,0.28,0.36,Tactical,2026-03-19,2026-03-19
+001326,Lidl (Schwarz Group) EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,78,76,Medium,0.22,0.64,Leverage,2026-03-19,2026-03-19
+001327,Lidl (Schwarz Group) S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,78,73,Medium,0.22,0.42,Tactical,2026-03-19,2026-03-19
+001328,Lidl Inc,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,90,89,Low,0.1,0.66,Leverage,2026-03-19,2026-03-19
+001329,Lidl (Schwarz Group) India,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,80,80,Medium,0.2,0.45,Tactical,2026-03-19,2026-03-19
+001330,Shell Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,73,73,Medium,0.27,0.4,Tactical,2026-03-19,2026-03-19
+001331,Shell Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,80,79,Medium,0.2,0.81,Leverage,2026-03-19,2026-03-19
+001332,Shell Europe,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,79,75,Medium,0.21,0.67,Leverage,2026-03-19,2026-03-19
+001333,Shell Inc,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,72,69,Medium,0.28,0.55,Leverage,2026-03-19,2026-03-19
+001334,Chevron Global,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,62,59,High,0.38,0.44,Tactical,2026-03-19,2026-03-19
+001335,Chevron Europe,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,78,78,Medium,0.22,0.4,Tactical,2026-03-19,2026-03-19
+001336,Chevron Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,59,57,High,0.41,0.35,Tactical,2026-03-19,2026-03-19
+001337,Novartis Europe,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,84,84,Medium,0.16,0.62,Leverage,2026-03-19,2026-03-19
+001338,Novartis S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,86,82,Low,0.14,0.41,Tactical,2026-03-19,2026-03-19
+001339,Novartis USA,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,92,87,Low,0.08,0.33,Tactical,2026-03-19,2026-03-19
+001340,Novartis Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,91,89,Low,0.09,0.64,Leverage,2026-03-19,2026-03-19
+001341,NOV,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,89,85,Low,0.11,0.65,Leverage,2026-03-19,2026-03-19
+001342,Johnson and Johnson Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,95,90,Low,0.05,0.78,Leverage,2026-03-19,2026-03-19
+001343,Johnson and Johnson Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,91,91,Low,0.09,0.64,Leverage,2026-03-19,2026-03-19
+001344,Johnson and Johnson Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,83,78,Medium,0.17,0.55,Leverage,2026-03-19,2026-03-19
+001345,Johnson Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,89,88,Low,0.11,0.84,Leverage,2026-03-19,2026-03-19
+001346,Johnson and Johnson Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,84,79,Medium,0.16,0.65,Leverage,2026-03-19,2026-03-19
+001347,Reckitt Benkiser India,,Default,US,US,00000,,,Z001,NET30,FOB,1520,Consumer Goods,85,84,Low,0.15,0.64,Leverage,2026-03-19,2026-03-19
+001348,Reckitt Benkiser India,,Default,US,US,00000,,,Z001,NET30,FOB,1520,Consumer Goods,85,81,Low,0.15,0.79,Leverage,2026-03-19,2026-03-19
+001349,Reckitt Benkiser International,,Default,US,US,00000,,,Z001,NET30,FOB,1520,Consumer Goods,72,68,Medium,0.28,0.44,Tactical,2026-03-19,2026-03-19
+001350,Reckitt Benkiser Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,1520,Consumer Goods,74,71,Medium,0.26,0.88,Leverage,2026-03-19,2026-03-19
+001351,Reckitt Benkiser India,,Default,US,US,00000,,,Z001,NET30,FOB,1520,Consumer Goods,75,72,Medium,0.25,0.8,Leverage,2026-03-19,2026-03-19
+001352,DHL Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4939,Logistics,85,82,Low,0.15,0.46,Tactical,2026-03-19,2026-03-19
+001353,DHL Supply Chain Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,4939,Logistics,72,70,Medium,0.28,0.77,Leverage,2026-03-19,2026-03-19
+001354,DHL Supply Chain GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,4939,Logistics,82,79,Medium,0.18,0.52,Leverage,2026-03-19,2026-03-19
+001355,FED,,Default,US,US,00000,,,Z001,NET30,FOB,4939,Logistics,71,66,Medium,0.29,0.84,Leverage,2026-03-19,2026-03-19
+001356,FedEx USA,,Default,US,US,00000,,,Z001,NET30,FOB,4939,Logistics,86,82,Low,0.14,0.69,Leverage,2026-03-19,2026-03-19
+001357,FedEx USA,,Default,US,US,00000,,,Z001,NET30,FOB,4939,Logistics,82,81,Medium,0.18,0.36,Tactical,2026-03-19,2026-03-19
+001358,FedEx USA,,Default,US,US,00000,,,Z001,NET30,FOB,4939,Logistics,76,71,Medium,0.24,0.54,Leverage,2026-03-19,2026-03-19
+001359,Nippon Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4939,Logistics,71,70,Medium,0.29,0.8,Leverage,2026-03-19,2026-03-19
+001360,Nippon Inc,,Default,US,US,00000,,,Z001,NET30,FOB,4939,Logistics,71,66,Medium,0.29,0.89,Leverage,2026-03-19,2026-03-19
+001361,Nippon Express S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,4939,Logistics,74,72,Medium,0.26,0.65,Leverage,2026-03-19,2026-03-19
+001362,Maersk,,Default,US,US,00000,,,Z001,NET30,FOB,5012,Shipping & Maritime,59,57,High,0.41,0.84,Leverage,2026-03-19,2026-03-19
+001363,Maersk Line Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,5012,Shipping & Maritime,82,78,Medium,0.18,0.89,Leverage,2026-03-19,2026-03-19
+001364,Maersk Line Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,5012,Shipping & Maritime,80,79,Medium,0.2,0.6,Leverage,2026-03-19,2026-03-19
+001365,Maersk Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,5012,Shipping & Maritime,70,69,Medium,0.3,0.5,Tactical,2026-03-19,2026-03-19
+001366,Kellogg,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,83,79,Medium,0.17,0.31,Tactical,2026-03-19,2026-03-19
+001367,Kellogg Company India,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,79,79,Medium,0.21,0.89,Leverage,2026-03-19,2026-03-19
+001368,Kellogg Company India,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,87,87,Low,0.13,0.58,Leverage,2026-03-19,2026-03-19
+001369,Kellogg Company GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,73,70,Medium,0.27,0.85,Leverage,2026-03-19,2026-03-19
+001370,PepsiCo Inc EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,84,83,Medium,0.16,0.31,Tactical,2026-03-19,2026-03-19
+001371,PepsiCo Inc Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,87,85,Low,0.13,0.78,Leverage,2026-03-19,2026-03-19
+001372,PepsiCo Inc EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,88,83,Low,0.12,0.43,Tactical,2026-03-19,2026-03-19
+001373,PepsiCo Inc International,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,79,76,Medium,0.21,0.78,Leverage,2026-03-19,2026-03-19
+001374,PepsiCo Inc EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,1000,Food & Beverage,83,83,Medium,0.17,0.69,Leverage,2026-03-19,2026-03-19
+001375,Monte Carlo Fashions S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,87,86,Low,0.13,0.48,Tactical,2026-03-19,2026-03-19
+001376,Monte,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,85,84,Low,0.15,0.73,Leverage,2026-03-19,2026-03-19
+001377,Monte Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,90,87,Low,0.1,0.63,Leverage,2026-03-19,2026-03-19
+001378,Monte Carlo Fashions GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,4711,Retail,73,68,Medium,0.27,0.43,Tactical,2026-03-19,2026-03-19
+001379,Fluor Corporation Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,4120,Engineering & Construction,73,72,Medium,0.27,0.84,Leverage,2026-03-19,2026-03-19
+001380,Fluor Corporation Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4120,Engineering & Construction,77,74,Medium,0.23,0.42,Tactical,2026-03-19,2026-03-19
+001381,Fluor Corporation Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,4120,Engineering & Construction,81,80,Medium,0.19,0.39,Tactical,2026-03-19,2026-03-19
+001382,Fluor Corporation Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,4120,Engineering & Construction,67,63,High,0.33,0.51,Leverage,2026-03-19,2026-03-19
+001383,Fluor Corporation Inc,,Default,US,US,00000,,,Z001,NET30,FOB,4120,Engineering & Construction,65,64,High,0.35,0.88,Leverage,2026-03-19,2026-03-19
+001384,Dow Inc Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,81,81,Medium,0.19,0.57,Leverage,2026-03-19,2026-03-19
+001385,Dow Inc Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,65,62,High,0.35,0.85,Leverage,2026-03-19,2026-03-19
+001386,Dow Inc India,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,75,71,Medium,0.25,0.55,Leverage,2026-03-19,2026-03-19
+001387,DuPont de Nemours Inc Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,66,65,High,0.34,0.36,Tactical,2026-03-19,2026-03-19
+001388,DuPont de Nemours Inc Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,79,74,Medium,0.21,0.52,Leverage,2026-03-19,2026-03-19
+001389,DuPont,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,85,85,Low,0.15,0.66,Leverage,2026-03-19,2026-03-19
+001390,DuPont de Nemours Inc S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,86,86,Low,0.14,0.6,Leverage,2026-03-19,2026-03-19
+001391,Eastman Chemical Company GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,76,72,Medium,0.24,0.55,Leverage,2026-03-19,2026-03-19
+001392,Eastman Chemical Company Internatio,nal,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,74,73,Medium,0.26,0.7,Leverage,2026-03-19,2026-03-19
+001393,Eastman Chemical Company Corporatio,n,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,68,65,High,0.32,0.52,Leverage,2026-03-19,2026-03-19
+001394,Eastman Chemical Company Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,67,63,High,0.33,0.89,Leverage,2026-03-19,2026-03-19
+001395,Eastman Chemical Company Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,68,65,High,0.32,0.71,Leverage,2026-03-19,2026-03-19
+001396,JPMorgan Chase Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,6411,Financial Services,89,87,Low,0.11,0.63,Leverage,2026-03-19,2026-03-19
+001397,JPMorgan Chase Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,6411,Financial Services,84,81,Medium,0.16,0.35,Tactical,2026-03-19,2026-03-19
+001398,JPMorgan Chase Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,6411,Financial Services,79,79,Medium,0.21,0.82,Leverage,2026-03-19,2026-03-19
+001399,JPMorgan Chase Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,6411,Financial Services,82,81,Medium,0.18,0.39,Tactical,2026-03-19,2026-03-19
+001400,Sanofi S.A India,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,95,93,Low,0.05,0.85,Leverage,2026-03-19,2026-03-19
+001401,Sanofi S.A International,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,97,92,Low,0.03,0.31,Tactical,2026-03-19,2026-03-19
+001402,Sanofi S.A Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,92,87,Low,0.08,0.85,Leverage,2026-03-19,2026-03-19
+001403,Sanofi S.A Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,95,94,Low,0.05,0.7,Leverage,2026-03-19,2026-03-19
+001404,Sanofi S.A GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,86,81,Low,0.14,0.57,Leverage,2026-03-19,2026-03-19
+001405,Valero Energy Corporation Inc,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,81,77,Medium,0.19,0.41,Tactical,2026-03-19,2026-03-19
+001406,Valero Energy Corporation Inc,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,81,76,Medium,0.19,0.68,Leverage,2026-03-19,2026-03-19
+001407,Valero Energy Corporation India,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,73,68,Medium,0.27,0.89,Leverage,2026-03-19,2026-03-19
+001408,Valero Energy Corporation EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,0600,Energy & Oil,62,58,High,0.38,0.59,Leverage,2026-03-19,2026-03-19
+001409,CDW GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Solutions & Services,89,87,Low,0.11,0.58,Leverage,2026-03-19,2026-03-19
+001410,CDW EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Solutions & Services,84,82,Medium,0.16,0.59,Leverage,2026-03-19,2026-03-19
+001411,CDW Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Solutions & Services,85,80,Low,0.15,0.69,Leverage,2026-03-19,2026-03-19
+001412,CDW Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Solutions & Services,81,76,Medium,0.19,0.32,Tactical,2026-03-19,2026-03-19
+001413,Eppendorf North America S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory Equipment & Life Sciences,70,69,Medium,0.3,0.68,Leverage,2026-03-19,2026-03-19
+001414,Eppendorf North America EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory Equipment & Life Sciences,73,71,Medium,0.27,0.59,Leverage,2026-03-19,2026-03-19
+001415,Eppendorf North America USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory Equipment & Life Sciences,86,81,Low,0.14,0.81,Leverage,2026-03-19,2026-03-19
+001416,Eppendorf North America Internation,al,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory Equipment & Life Sciences,74,73,Medium,0.26,0.44,Tactical,2026-03-19,2026-03-19
+001417,Eppendorf North America Business Se,rvices,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory Equipment & Life Sciences,87,82,Low,0.13,0.39,Tactical,2026-03-19,2026-03-19
+001418,"Exogro Co., Ltd Europe",,Default,US,US,00000,,,Z001,NET30,FOB,9999,Agriculture / Biotechnology,84,84,Medium,0.16,0.8,Leverage,2026-03-19,2026-03-19
+001419,Exogro Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Agriculture / Biotechnology,74,69,Medium,0.26,0.59,Leverage,2026-03-19,2026-03-19
+001420,"Exogro Co., Ltd GmbH",,Default,US,US,00000,,,Z001,NET30,FOB,9999,Agriculture / Biotechnology,82,79,Medium,0.18,0.47,Tactical,2026-03-19,2026-03-19
+001421,"Exogro Co., Ltd Business Services",,Default,US,US,00000,,,Z001,NET30,FOB,9999,Agriculture / Biotechnology,75,75,Medium,0.25,0.63,Leverage,2026-03-19,2026-03-19
+001422,Exogro Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Agriculture / Biotechnology,90,90,Low,0.1,0.43,Tactical,2026-03-19,2026-03-19
+001423,Reliper S.A. Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Supplies / Maintenance,74,69,Medium,0.26,0.6,Leverage,2026-03-19,2026-03-19
+001424,Reliper S.A. EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Supplies / Maintenance,81,79,Medium,0.19,0.64,Leverage,2026-03-19,2026-03-19
+001425,Reliper S.A. GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Supplies / Maintenance,81,79,Medium,0.19,0.51,Leverage,2026-03-19,2026-03-19
+001426,Reliper S.A. GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Supplies / Maintenance,74,71,Medium,0.26,0.41,Tactical,2026-03-19,2026-03-19
+001427,Alseda Consulting International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT & SAP Consulting,71,70,Medium,0.29,0.38,Tactical,2026-03-19,2026-03-19
+001428,Alseda Consulting Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT & SAP Consulting,74,70,Medium,0.26,0.53,Leverage,2026-03-19,2026-03-19
+001429,Alseda Consulting Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT & SAP Consulting,81,76,Medium,0.19,0.47,Tactical,2026-03-19,2026-03-19
+001430,Kong Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Animation & Design,72,71,Medium,0.28,0.72,Leverage,2026-03-19,2026-03-19
+001431,Kong Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Animation & Design,74,69,Medium,0.26,0.7,Leverage,2026-03-19,2026-03-19
+001432,Kong Studio Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Animation & Design,85,85,Low,0.15,0.59,Leverage,2026-03-19,2026-03-19
+001433,Kong,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Animation & Design,85,82,Low,0.15,0.34,Tactical,2026-03-19,2026-03-19
+001434,Omniscient Digital Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Digital Marketing & SEO,75,75,Medium,0.25,0.73,Leverage,2026-03-19,2026-03-19
+001435,Omniscient Digital Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Digital Marketing & SEO,86,85,Low,0.14,0.48,Tactical,2026-03-19,2026-03-19
+001436,Omniscient Digital Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Digital Marketing & SEO,80,76,Medium,0.2,0.62,Leverage,2026-03-19,2026-03-19
+001437,Omniscient Digital India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Digital Marketing & SEO,72,71,Medium,0.28,0.52,Leverage,2026-03-19,2026-03-19
+001438,Omniscient,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Digital Marketing & SEO,79,77,Medium,0.21,0.7,Leverage,2026-03-19,2026-03-19
+001439,Fore Excel Private Limited Corporat,ion,Default,US,US,00000,,,Z001,NET30,FOB,9999,Logistics & Supply Chain,69,69,High,0.31,0.35,Tactical,2026-03-19,2026-03-19
+001440,Fore Excel Private Limited EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Logistics & Supply Chain,69,69,High,0.31,0.89,Leverage,2026-03-19,2026-03-19
+001441,Fore Excel Private Limited GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Logistics & Supply Chain,84,84,Medium,0.16,0.31,Tactical,2026-03-19,2026-03-19
+001442,Fore Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Logistics & Supply Chain,76,76,Medium,0.24,0.39,Tactical,2026-03-19,2026-03-19
+001443,Peoplebank Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Recruitment & Staffing,79,79,Medium,0.21,0.59,Leverage,2026-03-19,2026-03-19
+001444,Peoplebank & Leaders IT Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Recruitment & Staffing,80,76,Medium,0.2,0.73,Leverage,2026-03-19,2026-03-19
+001445,Peoplebank Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Recruitment & Staffing,72,71,Medium,0.28,0.88,Leverage,2026-03-19,2026-03-19
+001446,Computacenter Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Infrastructure Services,67,65,High,0.33,0.88,Leverage,2026-03-19,2026-03-19
+001447,COM Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Infrastructure Services,72,69,Medium,0.28,0.38,Tactical,2026-03-19,2026-03-19
+001448,Computacenter Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Infrastructure Services,74,74,Medium,0.26,0.83,Leverage,2026-03-19,2026-03-19
+001449,COM,,Default,US,US,00000,,,Z001,NET30,FOB,9999,IT Infrastructure Services,82,81,Medium,0.18,0.56,Leverage,2026-03-19,2026-03-19
+001450,"PVD Solutions, LLC EMEA",,Default,US,US,00000,,,Z001,NET30,FOB,9999,Surface Coating & Technology,88,86,Low,0.12,0.82,Leverage,2026-03-19,2026-03-19
+001451,"PVD Solutions, LLC USA",,Default,US,US,00000,,,Z001,NET30,FOB,9999,Surface Coating & Technology,85,81,Low,0.15,0.43,Tactical,2026-03-19,2026-03-19
+001452,"PVD Solutions, LLC Europe",,Default,US,US,00000,,,Z001,NET30,FOB,9999,Surface Coating & Technology,74,70,Medium,0.26,0.35,Tactical,2026-03-19,2026-03-19
+001453,Vertical Green EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Landscaping & Sustainable Design,80,80,Medium,0.2,0.9,Leverage,2026-03-19,2026-03-19
+001454,Vertical Green Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Landscaping & Sustainable Design,82,77,Medium,0.18,0.41,Tactical,2026-03-19,2026-03-19
+001455,Vertical Green International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Landscaping & Sustainable Design,69,64,High,0.31,0.68,Leverage,2026-03-19,2026-03-19
+001456,MonotaRO S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial MRO E-commerce,81,79,Medium,0.19,0.48,Tactical,2026-03-19,2026-03-19
+001457,MonotaRO Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial MRO E-commerce,75,74,Medium,0.25,0.5,Tactical,2026-03-19,2026-03-19
+001458,MonotaRO Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial MRO E-commerce,90,87,Low,0.1,0.53,Leverage,2026-03-19,2026-03-19
+001459,MonotaRO USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial MRO E-commerce,88,87,Low,0.12,0.69,Leverage,2026-03-19,2026-03-19
+001460,Unite EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,B2B Procurement Platform,83,78,Medium,0.17,0.54,Leverage,2026-03-19,2026-03-19
+001461,Unite Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,B2B Procurement Platform,80,77,Medium,0.2,0.58,Leverage,2026-03-19,2026-03-19
+001462,Unite Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,B2B Procurement Platform,81,76,Medium,0.19,0.32,Tactical,2026-03-19,2026-03-19
+001463,KIM,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Consumer Goods (Personal Care),73,72,Medium,0.27,0.68,Leverage,2026-03-19,2026-03-19
+001464,KIM Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Consumer Goods (Personal Care),78,74,Medium,0.22,0.81,Leverage,2026-03-19,2026-03-19
+001465,Kimberly-Clark Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Consumer Goods (Personal Care),75,72,Medium,0.25,0.85,Leverage,2026-03-19,2026-03-19
+001466,BRE Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,77,75,Medium,0.23,0.77,Leverage,2026-03-19,2026-03-19
+001467,Brenntag Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,67,62,High,0.33,0.88,Leverage,2026-03-19,2026-03-19
+001468,Brenntag Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,79,78,Medium,0.21,0.32,Tactical,2026-03-19,2026-03-19
+001469,Brenntag Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,76,74,Medium,0.24,0.9,Leverage,2026-03-19,2026-03-19
+001470,Brenntag USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,77,72,Medium,0.23,0.34,Tactical,2026-03-19,2026-03-19
+001471,Univar Solutions India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,81,78,Medium,0.19,0.41,Tactical,2026-03-19,2026-03-19
+001472,Univar Solutions EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,85,85,Low,0.15,0.56,Leverage,2026-03-19,2026-03-19
+001473,Univar Solutions Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,77,77,Medium,0.23,0.71,Leverage,2026-03-19,2026-03-19
+001474,Univar Solutions Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,85,83,Low,0.15,0.67,Leverage,2026-03-19,2026-03-19
+001475,UPL Limited USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Agrochemicals,85,83,Low,0.15,0.35,Tactical,2026-03-19,2026-03-19
+001476,UPL Limited S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Agrochemicals,80,80,Medium,0.2,0.47,Tactical,2026-03-19,2026-03-19
+001477,UPL Limited Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Agrochemicals,72,67,Medium,0.28,0.37,Tactical,2026-03-19,2026-03-19
+001478,Tata Chemicals Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,73,70,Medium,0.27,0.7,Leverage,2026-03-19,2026-03-19
+001479,Tata Chemicals EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,67,64,High,0.33,0.73,Leverage,2026-03-19,2026-03-19
+001480,Tata Chemicals S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,73,70,Medium,0.27,0.81,Leverage,2026-03-19,2026-03-19
+001481,Tata Chemicals Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,63,59,High,0.37,0.41,Tactical,2026-03-19,2026-03-19
+001482,Tata Chemicals Europe,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,76,73,Medium,0.24,0.45,Tactical,2026-03-19,2026-03-19
+001483,Mitsubishi Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,77,76,Medium,0.23,0.3,Tactical,2026-03-19,2026-03-19
+001484,Mitsubishi Chemical Group Asia Paci,fic,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,64,60,High,0.36,0.38,Tactical,2026-03-19,2026-03-19
+001485,Mitsubishi Chemical Group Asia Paci,fic,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,72,69,Medium,0.28,0.66,Leverage,2026-03-19,2026-03-19
+001486,Mitsubishi Chemical Group Global,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,75,75,Medium,0.25,0.39,Tactical,2026-03-19,2026-03-19
+001487,Mitsubishi Chemical Group Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2000,Chemicals,71,66,Medium,0.29,0.48,Tactical,2026-03-19,2026-03-19
+001488,IMCD Group Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals Distribution,88,84,Low,0.12,0.49,Tactical,2026-03-19,2026-03-19
+001489,IMCD Group GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals Distribution,79,76,Medium,0.21,0.86,Leverage,2026-03-19,2026-03-19
+001490,IMCD,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals Distribution,75,72,Medium,0.25,0.47,Tactical,2026-03-19,2026-03-19
+001491,IMCD Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals Distribution,73,71,Medium,0.27,0.68,Leverage,2026-03-19,2026-03-19
+001492,Evonik / Evonik Industries Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,84,80,Medium,0.16,0.57,Leverage,2026-03-19,2026-03-19
+001493,Evonik / Evonik Industries Business, Services,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,87,82,Low,0.13,0.35,Tactical,2026-03-19,2026-03-19
+001494,Evonik Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,73,71,Medium,0.27,0.34,Tactical,2026-03-19,2026-03-19
+001495,Evonik / Evonik Industries Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,71,66,Medium,0.29,0.53,Leverage,2026-03-19,2026-03-19
+001496,Evonik / Evonik Industries India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,83,82,Medium,0.17,0.74,Leverage,2026-03-19,2026-03-19
+001497,Huntsman International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,78,78,Medium,0.22,0.51,Leverage,2026-03-19,2026-03-19
+001498,Huntsman Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,79,74,Medium,0.21,0.53,Leverage,2026-03-19,2026-03-19
+001499,Huntsman Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,71,71,Medium,0.29,0.73,Leverage,2026-03-19,2026-03-19
+001500,Huntsman Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,78,76,Medium,0.22,0.63,Leverage,2026-03-19,2026-03-19
+001501,Shin-Etsu Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemicals & Silicones,75,71,Medium,0.25,0.57,Leverage,2026-03-19,2026-03-19
+001502,Shin-Etsu Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemicals & Silicones,88,85,Low,0.12,0.32,Tactical,2026-03-19,2026-03-19
+001503,Shin-Etsu Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemicals & Silicones,83,81,Medium,0.17,0.71,Leverage,2026-03-19,2026-03-19
+001504,Shin-Etsu Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemicals & Silicones,78,75,Medium,0.22,0.7,Leverage,2026-03-19,2026-03-19
+001505,MAN Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Logistics & Trading (Chemicals),75,70,Medium,0.25,0.73,Leverage,2026-03-19,2026-03-19
+001506,Manuchar S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Logistics & Trading (Chemicals),79,76,Medium,0.21,0.85,Leverage,2026-03-19,2026-03-19
+001507,Manuchar EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Logistics & Trading (Chemicals),76,76,Medium,0.24,0.36,Tactical,2026-03-19,2026-03-19
+001508,Manuchar Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Logistics & Trading (Chemicals),87,85,Low,0.13,0.82,Leverage,2026-03-19,2026-03-19
+001509,Manuchar India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Logistics & Trading (Chemicals),80,79,Medium,0.2,0.5,Tactical,2026-03-19,2026-03-19
+001510,Helm AG Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution & Marketing,72,67,Medium,0.28,0.77,Leverage,2026-03-19,2026-03-19
+001511,Helm Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution & Marketing,69,66,High,0.31,0.36,Tactical,2026-03-19,2026-03-19
+001512,Helm AG Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution & Marketing,72,67,Medium,0.28,0.74,Leverage,2026-03-19,2026-03-19
+001513,Helm AG USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution & Marketing,84,80,Medium,0.16,0.55,Leverage,2026-03-19,2026-03-19
+001514,Helm AG USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution & Marketing,72,70,Medium,0.28,0.37,Tactical,2026-03-19,2026-03-19
+001515,DKSH Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Market Expansion Services (Specialty Chemicals),87,85,Low,0.13,0.68,Leverage,2026-03-19,2026-03-19
+001516,DKSH Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Market Expansion Services (Specialty Chemicals),70,66,Medium,0.3,0.5,Tactical,2026-03-19,2026-03-19
+001517,DKSH International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Market Expansion Services (Specialty Chemicals),80,80,Medium,0.2,0.68,Leverage,2026-03-19,2026-03-19
+001518,Nippon Kayaku International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals & Pharmaceuticals,87,83,Low,0.13,0.33,Tactical,2026-03-19,2026-03-19
+001519,Nippon Kayaku Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals & Pharmaceuticals,74,72,Medium,0.26,0.56,Leverage,2026-03-19,2026-03-19
+001520,Nippon Kayaku EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals & Pharmaceuticals,83,82,Medium,0.17,0.37,Tactical,2026-03-19,2026-03-19
+001521,AZE,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals Distribution,77,73,Medium,0.23,0.81,Leverage,2026-03-19,2026-03-19
+001522,Azelis Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals Distribution,87,86,Low,0.13,0.52,Leverage,2026-03-19,2026-03-19
+001523,AZE,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals Distribution,82,77,Medium,0.18,0.79,Leverage,2026-03-19,2026-03-19
+001524,Azelis Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals Distribution,70,66,Medium,0.3,0.51,Leverage,2026-03-19,2026-03-19
+001525,ICC Chemical Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,69,64,High,0.31,0.73,Leverage,2026-03-19,2026-03-19
+001526,ICC Chemical Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,72,67,Medium,0.28,0.76,Leverage,2026-03-19,2026-03-19
+001527,ICC Chemical Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,73,69,Medium,0.27,0.46,Tactical,2026-03-19,2026-03-19
+001528,ICC Chemical Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Distribution,79,77,Medium,0.21,0.53,Leverage,2026-03-19,2026-03-19
+001529,Cargill Beauty Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Personal Care Ingredients,73,69,Medium,0.27,0.85,Leverage,2026-03-19,2026-03-19
+001530,Cargill Beauty Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Personal Care Ingredients,78,73,Medium,0.22,0.5,Tactical,2026-03-19,2026-03-19
+001531,Cargill Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Personal Care Ingredients,86,86,Low,0.14,0.87,Leverage,2026-03-19,2026-03-19
+001532,Cargill Beauty Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Personal Care Ingredients,87,87,Low,0.13,0.65,Leverage,2026-03-19,2026-03-19
+001533,Worlee Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Raw Materials,69,67,High,0.31,0.49,Tactical,2026-03-19,2026-03-19
+001534,WOR Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Raw Materials,71,66,Medium,0.29,0.84,Leverage,2026-03-19,2026-03-19
+001535,Worlee Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Raw Materials,81,80,Medium,0.19,0.6,Leverage,2026-03-19,2026-03-19
+001536,Worlee India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Chemical Raw Materials,82,81,Medium,0.18,0.8,Leverage,2026-03-19,2026-03-19
+001537,Rahn Cosmetics India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals (Cosmetics),69,67,High,0.31,0.7,Leverage,2026-03-19,2026-03-19
+001538,Rahn Cosmetics Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals (Cosmetics),87,87,Low,0.13,0.86,Leverage,2026-03-19,2026-03-19
+001539,Rahn Cosmetics Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals (Cosmetics),75,75,Medium,0.25,0.52,Leverage,2026-03-19,2026-03-19
+001540,Rahn Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals (Cosmetics),77,77,Medium,0.23,0.79,Leverage,2026-03-19,2026-03-19
+001541,Zydus Lifesciences India,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,97,93,Low,0.03,0.42,Tactical,2026-03-19,2026-03-19
+001542,Zydus Lifesciences USA,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,94,89,Low,0.06,0.52,Leverage,2026-03-19,2026-03-19
+001543,Zydus Lifesciences Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,87,85,Low,0.13,0.65,Leverage,2026-03-19,2026-03-19
+001544,Zydus Lifesciences Business Service,s,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,93,91,Low,0.07,0.68,Leverage,2026-03-19,2026-03-19
+001545,Zydus Lifesciences S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,87,85,Low,0.13,0.65,Leverage,2026-03-19,2026-03-19
+001546,Hikma Pharmaceuticals S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,97,94,Low,0.03,0.4,Tactical,2026-03-19,2026-03-19
+001547,Hikma Pharmaceuticals GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,95,91,Low,0.05,0.84,Leverage,2026-03-19,2026-03-19
+001548,Hikma Pharmaceuticals USA,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,96,95,Low,0.04,0.88,Leverage,2026-03-19,2026-03-19
+001549,Hikma Pharmaceuticals International,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,94,91,Low,0.06,0.62,Leverage,2026-03-19,2026-03-19
+001550,Hikma Pharmaceuticals S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,87,84,Low,0.13,0.43,Tactical,2026-03-19,2026-03-19
+001551,Supriya Lifesciences Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceuticals (APIs),69,67,High,0.31,0.76,Leverage,2026-03-19,2026-03-19
+001552,Supriya Lifesciences S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceuticals (APIs),75,75,Medium,0.25,0.31,Tactical,2026-03-19,2026-03-19
+001553,Supriya,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceuticals (APIs),83,80,Medium,0.17,0.57,Leverage,2026-03-19,2026-03-19
+001554,Ipca Laboratories Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,92,90,Low,0.08,0.72,Leverage,2026-03-19,2026-03-19
+001555,Ipca Laboratories S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,88,87,Low,0.12,0.65,Leverage,2026-03-19,2026-03-19
+001556,Ipca Laboratories Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,91,91,Low,0.09,0.51,Leverage,2026-03-19,2026-03-19
+001557,Ipca Laboratories Europe,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,88,84,Low,0.12,0.58,Leverage,2026-03-19,2026-03-19
+001558,Glenmark Pharmaceuticals Inc,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,86,85,Low,0.14,0.46,Tactical,2026-03-19,2026-03-19
+001559,Glenmark Pharmaceuticals Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,95,90,Low,0.05,0.44,Tactical,2026-03-19,2026-03-19
+001560,Glenmark Pharmaceuticals Global,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,94,92,Low,0.06,0.49,Tactical,2026-03-19,2026-03-19
+001561,Glenmark Pharmaceuticals GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,95,91,Low,0.05,0.66,Leverage,2026-03-19,2026-03-19
+001562,Refarmed Chemicals Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceutical Intermediates,85,82,Low,0.15,0.68,Leverage,2026-03-19,2026-03-19
+001563,Refarmed Chemicals International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceutical Intermediates,79,76,Medium,0.21,0.84,Leverage,2026-03-19,2026-03-19
+001564,Refarmed Chemicals Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceutical Intermediates,80,77,Medium,0.2,0.61,Leverage,2026-03-19,2026-03-19
+001565,Biosynth Ltd Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences (Biochemicals),67,62,High,0.33,0.63,Leverage,2026-03-19,2026-03-19
+001566,Biosynth Ltd Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences (Biochemicals),89,89,Low,0.11,0.34,Tactical,2026-03-19,2026-03-19
+001567,Biosynth Ltd EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences (Biochemicals),73,72,Medium,0.27,0.5,Tactical,2026-03-19,2026-03-19
+001568,Chemo Iberica SA Europe,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,90,90,Low,0.1,0.57,Leverage,2026-03-19,2026-03-19
+001569,Chemo,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,95,90,Low,0.05,0.37,Tactical,2026-03-19,2026-03-19
+001570,Chemo Iberica SA Europe,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,94,91,Low,0.06,0.73,Leverage,2026-03-19,2026-03-19
+001571,Chemo Iberica SA International,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,97,93,Low,0.03,0.7,Leverage,2026-03-19,2026-03-19
+001572,Chemo Iberica SA India,,Default,US,US,00000,,,Z001,NET30,FOB,2100,Pharmaceuticals,88,87,Low,0.12,0.79,Leverage,2026-03-19,2026-03-19
+001573,Deretil SA Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceutical Raw Materials,76,75,Medium,0.24,0.65,Leverage,2026-03-19,2026-03-19
+001574,Deretil SA S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceutical Raw Materials,71,70,Medium,0.29,0.53,Leverage,2026-03-19,2026-03-19
+001575,Deretil SA EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceutical Raw Materials,80,76,Medium,0.2,0.58,Leverage,2026-03-19,2026-03-19
+001576,Deretil SA USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceutical Raw Materials,87,82,Low,0.13,0.7,Leverage,2026-03-19,2026-03-19
+001577,Deretil Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Pharmaceutical Raw Materials,88,85,Low,0.12,0.44,Tactical,2026-03-19,2026-03-19
+001578,Friedrichshafen (ZF) Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Parts & Systems,69,69,High,0.31,0.5,Tactical,2026-03-19,2026-03-19
+001579,Friedrichshafen Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Parts & Systems,89,86,Low,0.11,0.41,Tactical,2026-03-19,2026-03-19
+001580,Friedrichshafen (ZF) India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Parts & Systems,70,70,Medium,0.3,0.62,Leverage,2026-03-19,2026-03-19
+001581,Friedrichshafen Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Parts & Systems,78,75,Medium,0.22,0.37,Tactical,2026-03-19,2026-03-19
+001582,Hyundai Mobis Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,77,75,Medium,0.23,0.84,Leverage,2026-03-19,2026-03-19
+001583,Hyundai Mobis International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,82,80,Medium,0.18,0.88,Leverage,2026-03-19,2026-03-19
+001584,Hyundai,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,73,68,Medium,0.27,0.89,Leverage,2026-03-19,2026-03-19
+001585,Bosch / Bosch Rexroth Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engineering & Automotive Technology,75,72,Medium,0.25,0.64,Leverage,2026-03-19,2026-03-19
+001586,Bosch / Bosch Rexroth Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engineering & Automotive Technology,83,83,Medium,0.17,0.54,Leverage,2026-03-19,2026-03-19
+001587,Bosch / Bosch Rexroth Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engineering & Automotive Technology,73,70,Medium,0.27,0.49,Tactical,2026-03-19,2026-03-19
+001588,Bosch / Bosch Rexroth USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engineering & Automotive Technology,73,68,Medium,0.27,0.33,Tactical,2026-03-19,2026-03-19
+001589,Bosch / Bosch Rexroth S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engineering & Automotive Technology,71,67,Medium,0.29,0.79,Leverage,2026-03-19,2026-03-19
+001590,Denso Corporation / Denso Corp Solu,tions,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,81,78,Medium,0.19,0.84,Leverage,2026-03-19,2026-03-19
+001591,Denso Corporation / Denso Corp Glob,al,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,78,78,Medium,0.22,0.35,Tactical,2026-03-19,2026-03-19
+001592,Denso Corporation / Denso Corp EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,77,74,Medium,0.23,0.5,Tactical,2026-03-19,2026-03-19
+001593,Denso Corporation / Denso Corp Inte,rnational,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,75,71,Medium,0.25,0.64,Leverage,2026-03-19,2026-03-19
+001594,Magna International Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,77,77,Medium,0.23,0.65,Leverage,2026-03-19,2026-03-19
+001595,Magna International S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,74,74,Medium,0.26,0.78,Leverage,2026-03-19,2026-03-19
+001596,Magna International Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,72,70,Medium,0.28,0.72,Leverage,2026-03-19,2026-03-19
+001597,Magna International USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,73,68,Medium,0.27,0.38,Tactical,2026-03-19,2026-03-19
+001598,Continental AG Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Parts & Tires,80,79,Medium,0.2,0.79,Leverage,2026-03-19,2026-03-19
+001599,Continental AG Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Parts & Tires,88,84,Low,0.12,0.42,Tactical,2026-03-19,2026-03-19
+001600,Continental AG Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Parts & Tires,88,88,Low,0.12,0.38,Tactical,2026-03-19,2026-03-19
+001601,Continental AG Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Parts & Tires,89,86,Low,0.11,0.4,Tactical,2026-03-19,2026-03-19
+001602,Aisin Seiki Co. Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,86,83,Low,0.14,0.62,Leverage,2026-03-19,2026-03-19
+001603,Aisin Seiki Co. EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,69,69,High,0.31,0.8,Leverage,2026-03-19,2026-03-19
+001604,Aisin Seiki Co. Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,86,81,Low,0.14,0.41,Tactical,2026-03-19,2026-03-19
+001605,Valeo SA USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,70,66,Medium,0.3,0.33,Tactical,2026-03-19,2026-03-19
+001606,Valeo SA GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,74,70,Medium,0.26,0.33,Tactical,2026-03-19,2026-03-19
+001607,Valeo,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,79,78,Medium,0.21,0.81,Leverage,2026-03-19,2026-03-19
+001608,Valeo SA Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,80,76,Medium,0.2,0.33,Tactical,2026-03-19,2026-03-19
+001609,Valeo SA S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,87,85,Low,0.13,0.77,Leverage,2026-03-19,2026-03-19
+001610,Faurecia International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,78,74,Medium,0.22,0.66,Leverage,2026-03-19,2026-03-19
+001611,Faurecia Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,84,83,Medium,0.16,0.89,Leverage,2026-03-19,2026-03-19
+001612,FAU Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,68,68,High,0.32,0.89,Leverage,2026-03-19,2026-03-19
+001613,Faurecia USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,76,74,Medium,0.24,0.87,Leverage,2026-03-19,2026-03-19
+001614,FAU Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,69,65,High,0.31,0.56,Leverage,2026-03-19,2026-03-19
+001615,CAT Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Battery Manufacturing (EVs),77,75,Medium,0.23,0.42,Tactical,2026-03-19,2026-03-19
+001616,CATL Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Battery Manufacturing (EVs),86,83,Low,0.14,0.51,Leverage,2026-03-19,2026-03-19
+001617,CATL India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Battery Manufacturing (EVs),83,80,Medium,0.17,0.82,Leverage,2026-03-19,2026-03-19
+001618,Magneti,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,78,76,Medium,0.22,0.72,Leverage,2026-03-19,2026-03-19
+001619,Magneti Marelli Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,77,73,Medium,0.23,0.71,Leverage,2026-03-19,2026-03-19
+001620,Magneti Marelli S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive Components,75,74,Medium,0.25,0.46,Tactical,2026-03-19,2026-03-19
+001621,Thyssenkrupp International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Engineering & Steel,74,72,Medium,0.26,0.49,Tactical,2026-03-19,2026-03-19
+001622,Thyssenkrupp Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Engineering & Steel,87,83,Low,0.13,0.49,Tactical,2026-03-19,2026-03-19
+001623,Thyssenkrupp Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Engineering & Steel,77,72,Medium,0.23,0.89,Leverage,2026-03-19,2026-03-19
+001624,THY Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Engineering & Steel,88,87,Low,0.12,0.64,Leverage,2026-03-19,2026-03-19
+001625,Thyssenkrupp Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Engineering & Steel,83,82,Medium,0.17,0.55,Leverage,2026-03-19,2026-03-19
+001626,Bharat Forge Limited USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive & Industrial Components,84,84,Medium,0.16,0.44,Tactical,2026-03-19,2026-03-19
+001627,Bharat Forge Limited Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive & Industrial Components,85,84,Low,0.15,0.77,Leverage,2026-03-19,2026-03-19
+001628,Bharat Forge Limited Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive & Industrial Components,82,81,Medium,0.18,0.64,Leverage,2026-03-19,2026-03-19
+001629,KPMG Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services (Accounting/Audit),71,66,Medium,0.29,0.6,Leverage,2026-03-19,2026-03-19
+001630,KPMG Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services (Accounting/Audit),76,76,Medium,0.24,0.33,Tactical,2026-03-19,2026-03-19
+001631,KPMG Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services (Accounting/Audit),78,73,Medium,0.22,0.55,Leverage,2026-03-19,2026-03-19
+001632,KPMG EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services (Accounting/Audit),69,65,High,0.31,0.48,Tactical,2026-03-19,2026-03-19
+001633,KPMG EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services (Accounting/Audit),79,76,Medium,0.21,0.33,Tactical,2026-03-19,2026-03-19
+001634,Price Water Coopers (PwC) Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services (Accounting/Audit),87,85,Low,0.13,0.59,Leverage,2026-03-19,2026-03-19
+001635,Price Water Coopers (PwC) Internati,onal,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services (Accounting/Audit),83,79,Medium,0.17,0.41,Tactical,2026-03-19,2026-03-19
+001636,Price Water Coopers (PwC) India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services (Accounting/Audit),72,68,Medium,0.28,0.77,Leverage,2026-03-19,2026-03-19
+001637,Price Water Coopers (PwC) GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services (Accounting/Audit),73,70,Medium,0.27,0.45,Tactical,2026-03-19,2026-03-19
+001638,IBM Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Technology & Consulting,72,69,Medium,0.28,0.61,Leverage,2026-03-19,2026-03-19
+001639,IBM EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Technology & Consulting,88,87,Low,0.12,0.54,Leverage,2026-03-19,2026-03-19
+001640,IBM Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Technology & Consulting,85,84,Low,0.15,0.75,Leverage,2026-03-19,2026-03-19
+001641,IBM Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Technology & Consulting,73,72,Medium,0.27,0.69,Leverage,2026-03-19,2026-03-19
+001642,Croda,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,84,80,Medium,0.16,0.43,Tactical,2026-03-19,2026-03-19
+001643,Croda International Plc (UK) Soluti,ons,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,68,66,High,0.32,0.59,Leverage,2026-03-19,2026-03-19
+001644,Croda International Plc (UK) Busine,ss Services,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,89,89,Low,0.11,0.46,Tactical,2026-03-19,2026-03-19
+001645,Lubrizol Corporation (USA) Internat,ional,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,79,75,Medium,0.21,0.76,Leverage,2026-03-19,2026-03-19
+001646,Lubrizol Corporation (USA) Corporat,ion,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,85,82,Low,0.15,0.87,Leverage,2026-03-19,2026-03-19
+001647,Lubrizol Corporation (USA) Asia Pac,ific,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,75,70,Medium,0.25,0.87,Leverage,2026-03-19,2026-03-19
+001648,Lubrizol Corporation (USA) Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,81,80,Medium,0.19,0.75,Leverage,2026-03-19,2026-03-19
+001649,Lubrizol Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,82,81,Medium,0.18,0.39,Tactical,2026-03-19,2026-03-19
+001650,Clariant AG Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,81,77,Medium,0.19,0.9,Leverage,2026-03-19,2026-03-19
+001651,Clariant Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,79,79,Medium,0.21,0.6,Leverage,2026-03-19,2026-03-19
+001652,Clariant Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,84,79,Medium,0.16,0.38,Tactical,2026-03-19,2026-03-19
+001653,Clariant AG International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,78,75,Medium,0.22,0.74,Leverage,2026-03-19,2026-03-19
+001654,Clariant AG Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,80,78,Medium,0.2,0.61,Leverage,2026-03-19,2026-03-19
+001655,Kao Chemicals Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals / Consumer Goods,85,85,Low,0.15,0.79,Leverage,2026-03-19,2026-03-19
+001656,Kao Chemicals S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals / Consumer Goods,71,68,Medium,0.29,0.66,Leverage,2026-03-19,2026-03-19
+001657,Kao Chemicals Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals / Consumer Goods,68,64,High,0.32,0.36,Tactical,2026-03-19,2026-03-19
+001658,Givaudan Active Beauty Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Fragrances & Cosmetic Ingredients,67,65,High,0.33,0.78,Leverage,2026-03-19,2026-03-19
+001659,Givaudan Active Beauty Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Fragrances & Cosmetic Ingredients,78,75,Medium,0.22,0.51,Leverage,2026-03-19,2026-03-19
+001660,Givaudan Active Beauty Business Ser,vices,Default,US,US,00000,,,Z001,NET30,FOB,9999,Fragrances & Cosmetic Ingredients,69,69,High,0.31,0.4,Tactical,2026-03-19,2026-03-19
+001661,Givaudan,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Fragrances & Cosmetic Ingredients,86,81,Low,0.14,0.63,Leverage,2026-03-19,2026-03-19
+001662,Seppic India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals (Health/Beauty),75,74,Medium,0.25,0.81,Leverage,2026-03-19,2026-03-19
+001663,Seppic Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals (Health/Beauty),75,70,Medium,0.25,0.48,Tactical,2026-03-19,2026-03-19
+001664,Seppic USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals (Health/Beauty),84,83,Medium,0.16,0.79,Leverage,2026-03-19,2026-03-19
+001665,SEP Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals (Health/Beauty),88,83,Low,0.12,0.42,Tactical,2026-03-19,2026-03-19
+001666,Ashland Global Holdings Inc. Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,80,78,Medium,0.2,0.44,Tactical,2026-03-19,2026-03-19
+001667,Ashland Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,75,71,Medium,0.25,0.39,Tactical,2026-03-19,2026-03-19
+001668,Ashland Global Holdings Inc. Intern,ational,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,85,82,Low,0.15,0.79,Leverage,2026-03-19,2026-03-19
+001669,Ashland Global Holdings Inc. Soluti,ons,Default,US,US,00000,,,Z001,NET30,FOB,9999,Specialty Chemicals,82,77,Medium,0.18,0.66,Leverage,2026-03-19,2026-03-19
+001670,I.M.A. Industria Macchine GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Machinery (Packaging),75,73,Medium,0.25,0.46,Tactical,2026-03-19,2026-03-19
+001671,I.M.A. Industria Macchine Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Machinery (Packaging),88,87,Low,0.12,0.42,Tactical,2026-03-19,2026-03-19
+001672,I.M.A. Industria Macchine USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Machinery (Packaging),78,76,Medium,0.22,0.84,Leverage,2026-03-19,2026-03-19
+001673,I.M.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Machinery (Packaging),68,63,High,0.32,0.86,Leverage,2026-03-19,2026-03-19
+001674,Syntegon Technology GmbH Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Processing & Packaging Technology,87,83,Low,0.13,0.32,Tactical,2026-03-19,2026-03-19
+001675,Syntegon Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Processing & Packaging Technology,88,85,Low,0.12,0.58,Leverage,2026-03-19,2026-03-19
+001676,Syntegon Technology GmbH Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Processing & Packaging Technology,79,77,Medium,0.21,0.7,Leverage,2026-03-19,2026-03-19
+001677,Syntegon Technology GmbH Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Processing & Packaging Technology,71,70,Medium,0.29,0.61,Leverage,2026-03-19,2026-03-19
+001678,Syntegon Technology GmbH Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Processing & Packaging Technology,82,77,Medium,0.18,0.76,Leverage,2026-03-19,2026-03-19
+001679,Marchesini Group S.p.A. Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,76,73,Medium,0.24,0.43,Tactical,2026-03-19,2026-03-19
+001680,Marchesini Group S.p.A. Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,80,80,Medium,0.2,0.69,Leverage,2026-03-19,2026-03-19
+001681,Marchesini Group S.p.A. Asia Pacifi,c,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,78,76,Medium,0.22,0.52,Leverage,2026-03-19,2026-03-19
+001682,Marchesini Group S.p.A. Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,68,65,High,0.32,0.3,Tactical,2026-03-19,2026-03-19
+001683,Marchesini Group S.p.A. Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,78,77,Medium,0.22,0.6,Leverage,2026-03-19,2026-03-19
+001684,Coesia S.p.A (PackSys Global) India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging & Industrial Solutions,68,65,High,0.32,0.83,Leverage,2026-03-19,2026-03-19
+001685,Coesia S.p.A (PackSys Global) S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging & Industrial Solutions,83,78,Medium,0.17,0.37,Tactical,2026-03-19,2026-03-19
+001686,Coesia S.p.A (PackSys Global) USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging & Industrial Solutions,70,68,Medium,0.3,0.56,Leverage,2026-03-19,2026-03-19
+001687,Norden Machinery AB International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery (Tube Filling),84,79,Medium,0.16,0.68,Leverage,2026-03-19,2026-03-19
+001688,Norden Machinery AB Business Servic,es,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery (Tube Filling),82,79,Medium,0.18,0.46,Tactical,2026-03-19,2026-03-19
+001689,Norden Machinery AB USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery (Tube Filling),86,85,Low,0.14,0.83,Leverage,2026-03-19,2026-03-19
+001690,Norden,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery (Tube Filling),73,69,Medium,0.27,0.82,Leverage,2026-03-19,2026-03-19
+001691,Norden Machinery AB India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery (Tube Filling),76,71,Medium,0.24,0.61,Leverage,2026-03-19,2026-03-19
+001692,Optima Packaging Group Internationa,l,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,85,80,Low,0.15,0.84,Leverage,2026-03-19,2026-03-19
+001693,Optima Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,71,70,Medium,0.29,0.42,Tactical,2026-03-19,2026-03-19
+001694,Optima Packaging Group Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,67,63,High,0.33,0.76,Leverage,2026-03-19,2026-03-19
+001695,Optima Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,79,77,Medium,0.21,0.81,Leverage,2026-03-19,2026-03-19
+001696,Jinhu Ginhong Machinery Co. India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Mixing Equipment,85,85,Low,0.15,0.84,Leverage,2026-03-19,2026-03-19
+001697,Jinhu Ginhong Machinery Co. Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Mixing Equipment,72,71,Medium,0.28,0.8,Leverage,2026-03-19,2026-03-19
+001698,Jinhu Ginhong Machinery Co. Asia Pa,cific,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Mixing Equipment,78,75,Medium,0.22,0.61,Leverage,2026-03-19,2026-03-19
+001699,"Lianhe Machinery Co., Ltd Asia Paci",fic,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetic & Pharma Machinery,78,74,Medium,0.22,0.37,Tactical,2026-03-19,2026-03-19
+001700,"Lianhe Machinery Co., Ltd Corporati",on,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetic & Pharma Machinery,68,64,High,0.32,0.53,Leverage,2026-03-19,2026-03-19
+001701,Lianhe Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetic & Pharma Machinery,72,68,Medium,0.28,0.86,Leverage,2026-03-19,2026-03-19
+001702,"Lianhe Machinery Co., Ltd Business ",Services,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetic & Pharma Machinery,70,67,Medium,0.3,0.7,Leverage,2026-03-19,2026-03-19
+001703,Promach Inc. Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,88,87,Low,0.12,0.79,Leverage,2026-03-19,2026-03-19
+001704,Promach Inc. Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,87,85,Low,0.13,0.6,Leverage,2026-03-19,2026-03-19
+001705,Promach Inc. India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,77,75,Medium,0.23,0.31,Tactical,2026-03-19,2026-03-19
+001706,Promach Inc. USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging Machinery,78,76,Medium,0.22,0.6,Leverage,2026-03-19,2026-03-19
+001707,Neologic Engineers (India) Asia Pac,ific,Default,US,US,00000,,,Z001,NET30,FOB,9999,Process Engineering (Dairy/Food),71,71,Medium,0.29,0.41,Tactical,2026-03-19,2026-03-19
+001708,Neologic Engineers (India) Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Process Engineering (Dairy/Food),72,70,Medium,0.28,0.66,Leverage,2026-03-19,2026-03-19
+001709,Neologic Engineers (India) S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Process Engineering (Dairy/Food),83,80,Medium,0.17,0.88,Leverage,2026-03-19,2026-03-19
+001710,Neologic Engineers (India) USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Process Engineering (Dairy/Food),80,79,Medium,0.2,0.73,Leverage,2026-03-19,2026-03-19
+001711,Knowlton Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Contract Manufacturing (Beauty/Personal Care),67,65,High,0.33,0.7,Leverage,2026-03-19,2026-03-19
+001712,Knowlton Development Corp (KDC/ONE), S.A.,Default,US,US,00000,,,Z001,NET30,FOB,9999,Contract Manufacturing (Beauty/Personal Care),82,80,Medium,0.18,0.51,Leverage,2026-03-19,2026-03-19
+001713,Knowlton Development Corp (KDC/ONE), USA,Default,US,US,00000,,,Z001,NET30,FOB,9999,Contract Manufacturing (Beauty/Personal Care),82,81,Medium,0.18,0.51,Leverage,2026-03-19,2026-03-19
+001714,Knowlton Development Corp (KDC/ONE), International,Default,US,US,00000,,,Z001,NET30,FOB,9999,Contract Manufacturing (Beauty/Personal Care),87,82,Low,0.13,0.83,Leverage,2026-03-19,2026-03-19
+001715,Intercos S.p.A S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetics Manufacturing (ODM),82,82,Medium,0.18,0.55,Leverage,2026-03-19,2026-03-19
+001716,Intercos S.p.A Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetics Manufacturing (ODM),69,64,High,0.31,0.4,Tactical,2026-03-19,2026-03-19
+001717,Intercos S.p.A S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetics Manufacturing (ODM),83,79,Medium,0.17,0.31,Tactical,2026-03-19,2026-03-19
+001718,FAR Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Contract Manufacturing (Pharma/Cosmetics),79,77,Medium,0.21,0.67,Leverage,2026-03-19,2026-03-19
+001719,FAR Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Contract Manufacturing (Pharma/Cosmetics),67,66,High,0.33,0.83,Leverage,2026-03-19,2026-03-19
+001720,Fareva S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Contract Manufacturing (Pharma/Cosmetics),70,66,Medium,0.3,0.8,Leverage,2026-03-19,2026-03-19
+001721,Fareva Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Contract Manufacturing (Pharma/Cosmetics),72,69,Medium,0.28,0.73,Leverage,2026-03-19,2026-03-19
+001722,Kolmar Korea EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetics & Pharma (ODM/OEM),83,83,Medium,0.17,0.35,Tactical,2026-03-19,2026-03-19
+001723,Kolmar Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetics & Pharma (ODM/OEM),78,74,Medium,0.22,0.61,Leverage,2026-03-19,2026-03-19
+001724,Kolmar Korea Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetics & Pharma (ODM/OEM),67,66,High,0.33,0.85,Leverage,2026-03-19,2026-03-19
+001725,Kolmar Korea Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Cosmetics & Pharma (ODM/OEM),67,62,High,0.33,0.47,Tactical,2026-03-19,2026-03-19
+001726,Albea Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging (Beauty & Personal Care),71,67,Medium,0.29,0.65,Leverage,2026-03-19,2026-03-19
+001727,Albea Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging (Beauty & Personal Care),86,84,Low,0.14,0.56,Leverage,2026-03-19,2026-03-19
+001728,ALB,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging (Beauty & Personal Care),80,76,Medium,0.2,0.69,Leverage,2026-03-19,2026-03-19
+001729,ALB Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Packaging (Beauty & Personal Care),87,85,Low,0.13,0.39,Tactical,2026-03-19,2026-03-19
+001730,Staples Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Supplies & Services,75,75,Medium,0.25,0.38,Tactical,2026-03-19,2026-03-19
+001731,Staples Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Supplies & Services,72,71,Medium,0.28,0.81,Leverage,2026-03-19,2026-03-19
+001732,Staples Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Supplies & Services,81,80,Medium,0.19,0.44,Tactical,2026-03-19,2026-03-19
+001733,Staples Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Supplies & Services,74,72,Medium,0.26,0.55,Leverage,2026-03-19,2026-03-19
+001734,LYR Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Supplies & Services,67,66,High,0.33,0.78,Leverage,2026-03-19,2026-03-19
+001735,Lyreco Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Supplies & Services,87,85,Low,0.13,0.49,Tactical,2026-03-19,2026-03-19
+001736,Lyreco S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Supplies & Services,67,66,High,0.33,0.83,Leverage,2026-03-19,2026-03-19
+001737,LYR Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Supplies & Services,73,70,Medium,0.27,0.89,Leverage,2026-03-19,2026-03-19
+001738,Quill Corporation Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,74,71,Medium,0.26,0.34,Tactical,2026-03-19,2026-03-19
+001739,Quill Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,82,78,Medium,0.18,0.37,Tactical,2026-03-19,2026-03-19
+001740,Quill Inc,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,70,68,Medium,0.3,0.51,Leverage,2026-03-19,2026-03-19
+001741,Quill Corporation USA,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,80,80,Medium,0.2,0.37,Tactical,2026-03-19,2026-03-19
+001742,Quill Corporation International,,Default,US,US,00000,,,Z001,NET30,FOB,4762,Office Supplies,88,83,Low,0.12,0.89,Leverage,2026-03-19,2026-03-19
+001743,ACCO Brands EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Products,74,74,Medium,0.26,0.58,Leverage,2026-03-19,2026-03-19
+001744,ACCO Brands S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Products,78,73,Medium,0.22,0.39,Tactical,2026-03-19,2026-03-19
+001745,ACCO Brands Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Products,81,77,Medium,0.19,0.42,Tactical,2026-03-19,2026-03-19
+001746,ACCO Brands Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Office Products,71,69,Medium,0.29,0.57,Leverage,2026-03-19,2026-03-19
+001747,ADE Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,HR & Staffing Services,79,74,Medium,0.21,0.6,Leverage,2026-03-19,2026-03-19
+001748,Adecco USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,HR & Staffing Services,77,72,Medium,0.23,0.45,Tactical,2026-03-19,2026-03-19
+001749,Adecco GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,HR & Staffing Services,84,83,Medium,0.16,0.3,Tactical,2026-03-19,2026-03-19
+001750,ADE Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,HR & Staffing Services,76,73,Medium,0.24,0.63,Leverage,2026-03-19,2026-03-19
+001751,DEL,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hardware & IT Services,82,78,Medium,0.18,0.51,Leverage,2026-03-19,2026-03-19
+001752,DEL,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hardware & IT Services,82,80,Medium,0.18,0.75,Leverage,2026-03-19,2026-03-19
+001753,Dell Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hardware & IT Services,83,83,Medium,0.17,0.52,Leverage,2026-03-19,2026-03-19
+001754,Dell Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hardware & IT Services,70,68,Medium,0.3,0.34,Tactical,2026-03-19,2026-03-19
+001755,DEL Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hardware & IT Services,89,84,Low,0.11,0.79,Leverage,2026-03-19,2026-03-19
+001756,HP EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hardware & IT Services,70,65,Medium,0.3,0.34,Tactical,2026-03-19,2026-03-19
+001757,HP Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hardware & IT Services,85,82,Low,0.15,0.31,Tactical,2026-03-19,2026-03-19
+001758,HP Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hardware & IT Services,84,82,Medium,0.16,0.57,Leverage,2026-03-19,2026-03-19
+001759,HP International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hardware & IT Services,84,84,Medium,0.16,0.77,Leverage,2026-03-19,2026-03-19
+001760,GEN Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Business Process Outsourcing (BPO),74,71,Medium,0.26,0.41,Tactical,2026-03-19,2026-03-19
+001761,GEN,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Business Process Outsourcing (BPO),88,88,Low,0.12,0.87,Leverage,2026-03-19,2026-03-19
+001762,Genpact International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Business Process Outsourcing (BPO),72,72,Medium,0.28,0.35,Tactical,2026-03-19,2026-03-19
+001763,Genpact Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Business Process Outsourcing (BPO),84,84,Medium,0.16,0.79,Leverage,2026-03-19,2026-03-19
+001764,Genpact Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Business Process Outsourcing (BPO),87,87,Low,0.13,0.63,Leverage,2026-03-19,2026-03-19
+001765,Accenture Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services & Consulting,76,74,Medium,0.24,0.39,Tactical,2026-03-19,2026-03-19
+001766,Accenture Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services & Consulting,86,82,Low,0.14,0.33,Tactical,2026-03-19,2026-03-19
+001767,ACC,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services & Consulting,87,84,Low,0.13,0.77,Leverage,2026-03-19,2026-03-19
+001768,Accenture Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Professional Services & Consulting,78,73,Medium,0.22,0.67,Leverage,2026-03-19,2026-03-19
+001769,AVA Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences Supplies & Chemicals,74,74,Medium,0.26,0.52,Leverage,2026-03-19,2026-03-19
+001770,AVA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences Supplies & Chemicals,82,79,Medium,0.18,0.56,Leverage,2026-03-19,2026-03-19
+001771,Avantor Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences Supplies & Chemicals,85,85,Low,0.15,0.36,Tactical,2026-03-19,2026-03-19
+001772,Avantor International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences Supplies & Chemicals,82,78,Medium,0.18,0.57,Leverage,2026-03-19,2026-03-19
+001773,Avantor USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences Supplies & Chemicals,84,83,Medium,0.16,0.79,Leverage,2026-03-19,2026-03-19
+001774,Bio-Rad Laboratories International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Science Research & Diagnostics,81,81,Medium,0.19,0.68,Leverage,2026-03-19,2026-03-19
+001775,Bio-Rad Laboratories Business Servi,ces,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Science Research & Diagnostics,90,85,Low,0.1,0.35,Tactical,2026-03-19,2026-03-19
+001776,Bio-Rad Laboratories Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Science Research & Diagnostics,68,67,High,0.32,0.75,Leverage,2026-03-19,2026-03-19
+001777,Bio-Rad Laboratories Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Science Research & Diagnostics,80,75,Medium,0.2,0.39,Tactical,2026-03-19,2026-03-19
+001778,Bio-Rad Laboratories Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Science Research & Diagnostics,88,87,Low,0.12,0.55,Leverage,2026-03-19,2026-03-19
+001779,Sartorius S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Biopharmaceutical Equipment,70,67,Medium,0.3,0.54,Leverage,2026-03-19,2026-03-19
+001780,Sartorius Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Biopharmaceutical Equipment,77,73,Medium,0.23,0.71,Leverage,2026-03-19,2026-03-19
+001781,Sartorius Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Biopharmaceutical Equipment,90,89,Low,0.1,0.77,Leverage,2026-03-19,2026-03-19
+001782,Sartorius Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Biopharmaceutical Equipment,84,82,Medium,0.16,0.87,Leverage,2026-03-19,2026-03-19
+001783,Sartorius GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Biopharmaceutical Equipment,83,79,Medium,0.17,0.54,Leverage,2026-03-19,2026-03-19
+001784,PerkinElmer Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Diagnostics & Life Sciences,75,72,Medium,0.25,0.66,Leverage,2026-03-19,2026-03-19
+001785,PerkinElmer GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Diagnostics & Life Sciences,84,83,Medium,0.16,0.66,Leverage,2026-03-19,2026-03-19
+001786,PerkinElmer Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Diagnostics & Life Sciences,78,73,Medium,0.22,0.69,Leverage,2026-03-19,2026-03-19
+001787,PerkinElmer Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Diagnostics & Life Sciences,79,78,Medium,0.21,0.54,Leverage,2026-03-19,2026-03-19
+001788,Cole-Parmer India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory & Industrial Equipment,71,68,Medium,0.29,0.52,Leverage,2026-03-19,2026-03-19
+001789,Cole-Parmer Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory & Industrial Equipment,74,73,Medium,0.26,0.77,Leverage,2026-03-19,2026-03-19
+001790,Cole-Parmer S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory & Industrial Equipment,75,75,Medium,0.25,0.83,Leverage,2026-03-19,2026-03-19
+001791,Cole-Parmer Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory & Industrial Equipment,89,87,Low,0.11,0.87,Leverage,2026-03-19,2026-03-19
+001792,Cole-Parmer Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory & Industrial Equipment,75,73,Medium,0.25,0.33,Tactical,2026-03-19,2026-03-19
+001793,Corning Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory Glassware & Equipment,89,84,Low,0.11,0.51,Leverage,2026-03-19,2026-03-19
+001794,Corning Life Sciences India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory Glassware & Equipment,73,68,Medium,0.27,0.8,Leverage,2026-03-19,2026-03-19
+001795,Corning Life Sciences International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory Glassware & Equipment,78,75,Medium,0.22,0.63,Leverage,2026-03-19,2026-03-19
+001796,Corning Life Sciences GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Laboratory Glassware & Equipment,70,66,Medium,0.3,0.87,Leverage,2026-03-19,2026-03-19
+001797,Agilent Technologies India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Analytical Instrumentation,79,75,Medium,0.21,0.87,Leverage,2026-03-19,2026-03-19
+001798,Agilent Technologies Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Analytical Instrumentation,71,71,Medium,0.29,0.57,Leverage,2026-03-19,2026-03-19
+001799,Agilent Technologies Business Servi,ces,Default,US,US,00000,,,Z001,NET30,FOB,9999,Analytical Instrumentation,86,81,Low,0.14,0.37,Tactical,2026-03-19,2026-03-19
+001800,Calibre Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences & Diagnostics,90,85,Low,0.1,0.31,Tactical,2026-03-19,2026-03-19
+001801,Calibre Scientific Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences & Diagnostics,79,77,Medium,0.21,0.75,Leverage,2026-03-19,2026-03-19
+001802,Calibre Scientific Corporation,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Life Sciences & Diagnostics,67,65,High,0.33,0.65,Leverage,2026-03-19,2026-03-19
+001803,Labconco GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,81,81,Medium,0.19,0.41,Tactical,2026-03-19,2026-03-19
+001804,Labconco S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,95,95,Low,0.05,0.37,Tactical,2026-03-19,2026-03-19
+001805,Labconco India,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,95,93,Low,0.05,0.33,Tactical,2026-03-19,2026-03-19
+001806,Labconco Global,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,90,85,Low,0.1,0.47,Tactical,2026-03-19,2026-03-19
+001807,Labconco EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,2841,Laboratory Equipment,89,89,Low,0.11,0.31,Tactical,2026-03-19,2026-03-19
+001808,Costco Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Retail / Warehouse Club,74,74,Medium,0.26,0.61,Leverage,2026-03-19,2026-03-19
+001809,Costco Wholesale Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Retail / Warehouse Club,84,81,Medium,0.16,0.37,Tactical,2026-03-19,2026-03-19
+001810,Costco,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Retail / Warehouse Club,80,78,Medium,0.2,0.76,Leverage,2026-03-19,2026-03-19
+001811,BJ's Wholesale Club Business Servic,es,Default,US,US,00000,,,Z001,NET30,FOB,9999,Retail / Warehouse Club,87,82,Low,0.13,0.54,Leverage,2026-03-19,2026-03-19
+001812,BJ's Wholesale Club Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Retail / Warehouse Club,75,74,Medium,0.25,0.52,Leverage,2026-03-19,2026-03-19
+001813,BJ's,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Retail / Warehouse Club,75,71,Medium,0.25,0.43,Tactical,2026-03-19,2026-03-19
+001814,BJ's Wholesale Club Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Retail / Warehouse Club,69,67,High,0.31,0.71,Leverage,2026-03-19,2026-03-19
+001815,Metso International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Machinery (Mining/Aggregates),71,68,Medium,0.29,0.83,Leverage,2026-03-19,2026-03-19
+001816,Metso India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Machinery (Mining/Aggregates),82,81,Medium,0.18,0.48,Tactical,2026-03-19,2026-03-19
+001817,Metso International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Machinery (Mining/Aggregates),86,82,Low,0.14,0.61,Leverage,2026-03-19,2026-03-19
+001818,Metso Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Machinery (Mining/Aggregates),73,71,Medium,0.27,0.59,Leverage,2026-03-19,2026-03-19
+001819,Metso GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Industrial Machinery (Mining/Aggregates),83,80,Medium,0.17,0.84,Leverage,2026-03-19,2026-03-19
+001820,Schaeffler GmbH,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive & Industrial Bearings,73,73,Medium,0.27,0.49,Tactical,2026-03-19,2026-03-19
+001821,Schaeffler India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive & Industrial Bearings,82,77,Medium,0.18,0.46,Tactical,2026-03-19,2026-03-19
+001822,SCH Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive & Industrial Bearings,87,82,Low,0.13,0.61,Leverage,2026-03-19,2026-03-19
+001823,SCH Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Automotive & Industrial Bearings,83,78,Medium,0.17,0.84,Leverage,2026-03-19,2026-03-19
+001824,Cummins S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engines & Power Generation,70,69,Medium,0.3,0.61,Leverage,2026-03-19,2026-03-19
+001825,Cummins Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engines & Power Generation,87,87,Low,0.13,0.6,Leverage,2026-03-19,2026-03-19
+001826,Cummins Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engines & Power Generation,76,73,Medium,0.24,0.75,Leverage,2026-03-19,2026-03-19
+001827,Cummins India,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engines & Power Generation,77,77,Medium,0.23,0.62,Leverage,2026-03-19,2026-03-19
+001828,TVH USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Parts for Material Handling & Industrial,86,84,Low,0.14,0.51,Leverage,2026-03-19,2026-03-19
+001829,TVH International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Parts for Material Handling & Industrial,73,70,Medium,0.27,0.36,Tactical,2026-03-19,2026-03-19
+001830,TVH Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Parts for Material Handling & Industrial,70,67,Medium,0.3,0.81,Leverage,2026-03-19,2026-03-19
+001831,TVH Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Parts for Material Handling & Industrial,83,79,Medium,0.17,0.8,Leverage,2026-03-19,2026-03-19
+001832,Unispares Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engineering & Automotive Components,89,85,Low,0.11,0.57,Leverage,2026-03-19,2026-03-19
+001833,Unispares Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engineering & Automotive Components,68,63,High,0.32,0.78,Leverage,2026-03-19,2026-03-19
+001834,Unispares S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engineering & Automotive Components,88,84,Low,0.12,0.33,Tactical,2026-03-19,2026-03-19
+001835,Unispares Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Engineering & Automotive Components,74,74,Medium,0.26,0.3,Tactical,2026-03-19,2026-03-19
+001836,Gemsons Precision Engineering EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Precision Machined Components,83,80,Medium,0.17,0.54,Leverage,2026-03-19,2026-03-19
+001837,Gemsons Precision Engineering EMEA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Precision Machined Components,76,76,Medium,0.24,0.52,Leverage,2026-03-19,2026-03-19
+001838,Gemsons Precision Engineering Solut,ions,Default,US,US,00000,,,Z001,NET30,FOB,9999,Precision Machined Components,79,78,Medium,0.21,0.42,Tactical,2026-03-19,2026-03-19
+001839,Parker Hannifin International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Motion & Control Technologies,87,82,Low,0.13,0.37,Tactical,2026-03-19,2026-03-19
+001840,Parker Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Motion & Control Technologies,75,73,Medium,0.25,0.38,Tactical,2026-03-19,2026-03-19
+001841,Parker Hannifin International,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Motion & Control Technologies,70,66,Medium,0.3,0.8,Leverage,2026-03-19,2026-03-19
+001842,Parker Hannifin Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Motion & Control Technologies,71,70,Medium,0.29,0.3,Tactical,2026-03-19,2026-03-19
+001843,Eaton Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Power Management / Electrical,87,87,Low,0.13,0.34,Tactical,2026-03-19,2026-03-19
+001844,Eaton Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Power Management / Electrical,74,70,Medium,0.26,0.71,Leverage,2026-03-19,2026-03-19
+001845,Eaton Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Power Management / Electrical,71,66,Medium,0.29,0.86,Leverage,2026-03-19,2026-03-19
+001846,Poclain Hydraulics USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Power & Transmission,80,79,Medium,0.2,0.46,Tactical,2026-03-19,2026-03-19
+001847,Poclain Hydraulics Business Service,s,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Power & Transmission,73,68,Medium,0.27,0.68,Leverage,2026-03-19,2026-03-19
+001848,Poclain Hydraulics Ltd,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Power & Transmission,89,89,Low,0.11,0.61,Leverage,2026-03-19,2026-03-19
+001849,Hawe Hydraulik Europe,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Systems,69,65,High,0.31,0.42,Tactical,2026-03-19,2026-03-19
+001850,Hawe Hydraulik Inc,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Systems,76,73,Medium,0.24,0.56,Leverage,2026-03-19,2026-03-19
+001851,Hawe Hydraulik Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Systems,84,79,Medium,0.16,0.4,Tactical,2026-03-19,2026-03-19
+001852,Hawe Hydraulik Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Systems,73,73,Medium,0.27,0.47,Tactical,2026-03-19,2026-03-19
+001853,Hydro Leduc S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Components,71,68,Medium,0.29,0.84,Leverage,2026-03-19,2026-03-19
+001854,Hydro Leduc Business Services,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Components,88,85,Low,0.12,0.5,Tactical,2026-03-19,2026-03-19
+001855,Hydro Leduc Global,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Components,90,85,Low,0.1,0.44,Tactical,2026-03-19,2026-03-19
+001856,Sea Hydrosystems India Internationa,l,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Cylinders,73,71,Medium,0.27,0.4,Tactical,2026-03-19,2026-03-19
+001857,Sea Hydrosystems India Solutions,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Cylinders,69,68,High,0.31,0.71,Leverage,2026-03-19,2026-03-19
+001858,Sea Hydrosystems India S.A.,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Cylinders,77,76,Medium,0.23,0.87,Leverage,2026-03-19,2026-03-19
+001859,Sea Hydrosystems India USA,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Cylinders,87,85,Low,0.13,0.54,Leverage,2026-03-19,2026-03-19
+001860,Sea Hydrosystems India Asia Pacific,,Default,US,US,00000,,,Z001,NET30,FOB,9999,Hydraulic Cylinders,82,78,Medium,0.18,0.37,Tactical,2026-03-19,2026-03-19

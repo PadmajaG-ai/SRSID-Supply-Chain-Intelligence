@@ -1,0 +1,35 @@
+MasterLIFNR,MasterName,VariantLIFNR,VariantName,MergeType,Similarity
+1001,Indo Autotech Limited,1059,Indo Autotech Limited Ltd,TRUE_DUPLICATE,0.9217
+1001,Indo Autotech Limited,1061,Indo Autotech Limited Inc,TRUE_DUPLICATE,0.9217
+1003,Zentis GmbH & Co. KG,1068,Zentis GmbH & Co. KG Global,TRUE_DUPLICATE,0.866
+1003,Zentis GmbH & Co. KG,1069,Zentis GmbH & Co. KG Inc,TRUE_DUPLICATE,0.9182
+1003,Zentis GmbH & Co. KG,1070,Zentis GmbH & Co. KG Ltd,TRUE_DUPLICATE,0.9182
+1004,Flint Group,1072,Flint Group Inc,TRUE_DUPLICATE,0.8615
+1007,Merck Life Sciences,1081,Merck Life Sciences Ltd,TRUE_DUPLICATE,0.9143
+1008,Office Depot,1086,Office Depot Ltd,TRUE_DUPLICATE,0.8714
+1009,RS Components,1087,RS Components Inc,TRUE_DUPLICATE,0.88
+1009,RS Components,1088,RS Components Ltd,TRUE_DUPLICATE,0.88
+1024,AstraZeneca,1138,AstraZeneca Inc,TRUE_DUPLICATE,0.8615
+1025,Saint-Gobain,1141,Saint-Gobain Ltd,TRUE_DUPLICATE,0.8714
+1025,Saint-Gobain,1142,Saint-Gobain Inc,TRUE_DUPLICATE,0.8714
+1031,LyondellBasell,1161,LyondellBasell Ltd,TRUE_DUPLICATE,0.8875
+1035,Aldo Group,1177,Aldo Group Ltd,TRUE_DUPLICATE,0.85
+1036,The Coca-Cola Company,1179,The Coca-Cola Company Global,TRUE_DUPLICATE,0.8714
+1036,The Coca-Cola Company,1180,The Coca-Cola Company Inc,TRUE_DUPLICATE,0.9217
+1037,Lidl (Schwarz Group),1183,Lidl (Schwarz Group) Inc,TRUE_DUPLICATE,0.9182
+1037,Lidl (Schwarz Group),1184,Lidl (Schwarz Group) Ltd,TRUE_DUPLICATE,0.9182
+1041,Johnson and Johnson,1197,Johnson and Johnson Inc,TRUE_DUPLICATE,0.9143
+1042,Reckitt Benkiser,1199,Reckitt Benkiser Inc,TRUE_DUPLICATE,0.9
+1043,DHL Supply Chain,1202,DHL Supply Chain Ltd,TRUE_DUPLICATE,0.9
+1043,DHL Supply Chain,1203,DHL Supply Chain Inc,TRUE_DUPLICATE,0.9
+1045,Nippon Express,1208,Nippon Express Ltd,TRUE_DUPLICATE,0.8875
+1046,Maersk Line,1213,Maersk Line Inc,TRUE_DUPLICATE,0.8615
+1047,Kellogg Company,1217,Kellogg Company Inc,TRUE_DUPLICATE,0.8941
+1049,Monte Carlo Fashions,1224,Monte Carlo Fashions Global,TRUE_DUPLICATE,0.866
+1049,Monte Carlo Fashions,1226,Monte Carlo Fashions Inc,TRUE_DUPLICATE,0.9182
+1050,Fluor Corporation,1228,Fluor Corporation Inc,TRUE_DUPLICATE,0.9053
+1050,Fluor Corporation,1230,Fluor Corporation Ltd,TRUE_DUPLICATE,0.9053
+1053,Eastman Chemical Company,1238,Eastman Chemical Company Inc,TRUE_DUPLICATE,0.9308
+1053,Eastman Chemical Company,1240,Eastman Chemical Company Ltd,TRUE_DUPLICATE,0.9308
+1054,JPMorgan Chase,1243,JPMorgan Chase Inc,TRUE_DUPLICATE,0.8875
+1055,Sanofi S.A,1245,Sanofi S.A Ltd,TRUE_DUPLICATE,0.85

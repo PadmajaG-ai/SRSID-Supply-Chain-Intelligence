@@ -1,0 +1,250 @@
+supplier_name,financial_stability_score,delivery_performance,historical_risk_category,source_file_name,source_file_hash,ingestion_timestamp,ariba_supplier_id,supplier_country,supplier_city,industry,is_variant
+Rich's,0.74,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.626890,1000,US,Los Angeles,Distribution,False
+Indo Autotech Limited,0.79,0.73,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.627885,1001,IN,Bangalore,Manufacturing,False
+Cirque du Soleil,0.76,0.73,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.627885,1002,CA,Montreal,Entertainment,False
+Zentis GmbH & Co. KG,0.75,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.627885,1003,DE,Aachen,Manufacturing,False
+Flint Group,0.7,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.627885,1004,DE,Wilnsdorf,Manufacturing,False
+Amazon Business Services US,0.76,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.628901,1005,US,Seattle,Retail/Distribution,False
+Fisher Scientific,0.78,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.628901,1006,US,Waltham,Laboratory Equipment,False
+Merck Life Sciences,0.92,0.83,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.628901,1007,DE,Darmstadt,Pharmaceuticals,False
+Office Depot,0.74,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.628901,1008,US,Boca Raton,Office Supplies,False
+RS Components,0.79,0.71,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.629900,1009,GB,Corby,Electronics Distribution,False
+Eppendorf,0.72,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.629900,1010,DE,Hamburg,Laboratory Equipment,False
+Grainger,0.83,0.73,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.629900,1011,US,Lake Forest,Distribution,False
+Qiagen,0.7,0.73,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.629900,1012,DE,Hilden,Life Sciences,False
+CDW,0.76,0.8,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.629900,1013,US,Vernon Hills,IT Distribution,False
+Manutan,0.8,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.630883,1014,FR,Gonesse,Office Supplies,False
+Siemens,0.82,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.630883,1015,DE,Munich,Industrial Manufacturing,False
+ABB,0.74,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.630883,1016,CH,Zurich,Robotics & Automation,False
+Continuum,0.7,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.631905,1017,US,Cambridge,IT Services,False
+Cisco,0.79,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.631905,1018,US,San Jose,Networking & IT,False
+Apple,0.76,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.631905,1019,US,Cupertino,Electronics & Computing,False
+Graybar,0.71,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.632891,1020,US,Clayton,Electrical Distribution,False
+Walmart,0.73,0.83,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.632891,1021,US,Bentonville,Retail,False
+Air Liquide,0.77,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.632891,1022,FR,Paris,Other,False
+Binder,0.72,0.8,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.633882,1023,DE,Tuttlingen,Laboratory Equipment,False
+AstraZeneca,0.86,0.84,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.633882,1024,GB,Cambridge,Pharmaceuticals,False
+Saint-Gobain,0.72,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.633882,1025,FR,Courbevoie,Building Materials,False
+Tesla,0.71,0.71,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.633882,1026,US,Austin,Electronics & Vehicles,False
+Intel,0.85,0.86,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.633882,1027,US,Santa Clara,Electronics & Semiconductors,False
+BASF,0.68,0.73,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.634883,1028,DE,Ludwigshafen,Chemicals,False
+Dow Chemical,0.74,0.63,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.634883,1029,US,Midland,Chemicals,False
+SABIC,0.76,0.69,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.634883,1030,SA,Riyadh,Chemicals,False
+LyondellBasell,0.76,0.64,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.634883,1031,NL,Rotterdam,Chemicals,False
+ExxonMobil,0.83,0.71,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.634883,1032,US,Houston,Energy & Oil,False
+Unilever,0.85,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.635899,1033,GB,London,Consumer Goods,False
+Nestlé,0.76,0.84,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.635899,1034,CH,Vevey,Food & Beverage,False
+Aldo Group,0.74,0.83,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.635899,1035,CA,Montreal,Retail,False
+The Coca-Cola Company,0.82,0.81,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.635899,1036,US,Atlanta,Food & Beverage,False
+Lidl (Schwarz Group),0.7,0.82,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.635899,1037,DE,Ludwigsburg,Retail,False
+Shell,0.85,0.71,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.636899,1038,NL,The Hague,Energy & Oil,False
+Chevron,0.81,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.636899,1039,US,San Ramon,Energy & Oil,False
+Novartis,0.92,0.88,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.636899,1040,CH,Basel,Pharmaceuticals,False
+Johnson and Johnson,0.84,0.88,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.636899,1041,US,New Brunswick,Pharmaceuticals,False
+Reckitt Benkiser,0.82,0.82,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.636899,1042,GB,Slough,Consumer Goods,False
+DHL Supply Chain,0.84,0.8,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.636899,1043,DE,Bonn,Logistics,False
+FedEx,0.86,0.83,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.637912,1044,US,Memphis,Logistics,False
+Nippon Express,0.77,0.87,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.637912,1045,JP,Tokyo,Logistics,False
+Maersk Line,0.73,0.7,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.637912,1046,DK,Copenhagen,Shipping & Maritime,False
+Kellogg Company,0.77,0.82,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.637912,1047,US,Battle Creek,Food & Beverage,False
+PepsiCo Inc,0.79,0.81,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.637912,1048,US,Purchase,Food & Beverage,False
+Monte Carlo Fashions,0.74,0.71,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.638899,1049,IN,Mumbai,Other,False
+Fluor Corporation,0.74,0.7,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.638899,1050,US,Irving,Engineering & Construction,False
+Dow Inc,0.77,0.65,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.638899,1051,US,Midland,Chemicals,False
+DuPont de Nemours Inc,0.78,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.638899,1052,US,Wilmington,Other,False
+Eastman Chemical Company,0.74,0.65,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.638899,1053,US,Kingsport,Chemicals,False
+JPMorgan Chase,0.73,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.639897,1054,US,New York,Financial Services,False
+Sanofi S.A,0.86,0.88,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.639897,1055,FR,Paris,Pharmaceuticals,False
+Valero Energy Corporation,0.84,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.639897,1056,US,San Antonio,Energy & Oil,False
+Rich's Inc,0.76,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.639897,1057,US,Los Angeles,Distribution,True
+Indo Autotech Limited International,0.74,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.639897,1058,IN,Bangalore,Manufacturing,True
+Indo Autotech Limited Ltd,0.73,0.73,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.640897,1059,IN,Bangalore,Manufacturing,True
+Indo Autotech Limited Corporation,0.74,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.642095,1060,IN,Bangalore,Manufacturing,True
+Indo Autotech Limited Inc,0.75,0.7,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.642095,1061,IN,Bangalore,Manufacturing,True
+Cirque du Soleil International,0.78,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.643127,1062,CA,Montreal,Entertainment,True
+Cirque,0.76,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.644136,1063,CA,Montreal,Entertainment,True
+Cirque,0.72,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.644136,1064,CA,Montreal,Entertainment,True
+Cirque du Soleil Global,0.74,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.644136,1065,CA,Montreal,Entertainment,True
+Cirque du Soleil Global,0.8,0.7,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.645094,1066,CA,Montreal,Entertainment,True
+Zentis,0.76,0.7,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.645094,1067,DE,Aachen,Manufacturing,True
+Zentis GmbH & Co. KG Global,0.79,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.645094,1068,DE,Aachen,Manufacturing,True
+Zentis GmbH & Co. KG Inc,0.79,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.645094,1069,DE,Aachen,Manufacturing,True
+Zentis GmbH & Co. KG Ltd,0.79,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.646093,1070,DE,Aachen,Manufacturing,True
+Flint Group International,0.72,0.73,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.646093,1071,DE,Wilnsdorf,Manufacturing,True
+Flint Group Inc,0.74,0.71,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.646093,1072,DE,Wilnsdorf,Manufacturing,True
+Amazon Business Services US Corpora,0.79,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.647100,1073,US,Seattle,Retail/Distribution,True
+Amazon Business Services US Inc,0.75,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.647100,1074,US,Seattle,Retail/Distribution,True
+Fisher,0.72,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.647100,1075,US,Waltham,Laboratory Equipment,True
+Fisher Scientific International,0.78,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.647100,1076,US,Waltham,Laboratory Equipment,True
+Fisher Scientific Corporation,0.75,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.647100,1077,US,Waltham,Laboratory Equipment,True
+Fisher Scientific Global,0.76,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.648097,1078,US,Waltham,Laboratory Equipment,True
+Merck Life Sciences International,0.89,0.87,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.648097,1079,DE,Darmstadt,Pharmaceuticals,True
+Merck Life Sciences Corporation,0.89,0.8,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.649096,1080,DE,Darmstadt,Pharmaceuticals,True
+Merck Life Sciences Ltd,0.89,0.85,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.649096,1081,DE,Darmstadt,Pharmaceuticals,True
+Office Depot Corporation,0.75,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.650098,1082,US,Boca Raton,Office Supplies,True
+Office Depot Global,0.75,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.651115,1083,US,Boca Raton,Office Supplies,True
+Office,0.73,0.7,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.651115,1084,US,Boca Raton,Office Supplies,True
+Office Depot Corporation,0.73,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.651115,1085,US,Boca Raton,Office Supplies,True
+Office Depot Ltd,0.78,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.651115,1086,US,Boca Raton,Office Supplies,True
+RS Components Inc,0.8,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.651115,1087,GB,Corby,Electronics Distribution,True
+RS Components Ltd,0.75,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.652187,1088,GB,Corby,Electronics Distribution,True
+RS,0.76,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.652187,1089,GB,Corby,Electronics Distribution,True
+RS Components Global,0.72,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.652187,1090,GB,Corby,Electronics Distribution,True
+Eppendorf Global,0.78,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.652187,1091,DE,Hamburg,Laboratory Equipment,True
+Eppendorf International,0.77,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.653099,1092,DE,Hamburg,Laboratory Equipment,True
+Eppendorf Global,0.79,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.653099,1093,DE,Hamburg,Laboratory Equipment,True
+Grainger Ltd,0.81,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.653099,1094,US,Lake Forest,Distribution,True
+Grainger Global,0.76,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.653099,1095,US,Lake Forest,Distribution,True
+Grainger International,0.83,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.653099,1096,US,Lake Forest,Distribution,True
+Qiagen Global,0.76,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.653099,1097,DE,Hilden,Life Sciences,True
+QIA,0.77,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.654173,1098,DE,Hilden,Life Sciences,True
+Qiagen Corporation,0.71,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.654173,1099,DE,Hilden,Life Sciences,True
+Qiagen Inc,0.75,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.654173,1100,DE,Hilden,Life Sciences,True
+CDW Corporation,0.71,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.654173,1101,US,Vernon Hills,IT Distribution,True
+MAN,0.77,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.654173,1102,FR,Gonesse,Office Supplies,True
+Manutan Ltd,0.76,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.654173,1103,FR,Gonesse,Office Supplies,True
+Manutan Inc,0.78,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.655179,1104,FR,Gonesse,Office Supplies,True
+Manutan Global,0.79,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.655179,1105,FR,Gonesse,Office Supplies,True
+Siemens International,0.78,0.84,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.655179,1106,DE,Munich,Industrial Manufacturing,True
+SIE,0.79,0.82,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.655179,1107,DE,Munich,Industrial Manufacturing,True
+Siemens Corporation,0.8,0.85,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.656092,1108,DE,Munich,Industrial Manufacturing,True
+Siemens Inc,0.79,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.656092,1109,DE,Munich,Industrial Manufacturing,True
+ABB Global,0.72,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.656092,1110,CH,Zurich,Robotics & Automation,True
+ABB International,0.77,0.73,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.657097,1111,CH,Zurich,Robotics & Automation,True
+ABB Corporation,0.73,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.657097,1112,CH,Zurich,Robotics & Automation,True
+ABB Corporation,0.77,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.657097,1113,CH,Zurich,Robotics & Automation,True
+Continuum Inc,0.72,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.659033,1114,US,Cambridge,IT Services,True
+Continuum Corporation,0.79,0.7,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.660033,1115,US,Cambridge,IT Services,True
+Continuum Global,0.75,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.660033,1116,US,Cambridge,IT Services,True
+CON,0.73,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.661046,1117,US,Cambridge,IT Services,True
+Cisco International,0.72,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.661046,1118,US,San Jose,Networking & IT,True
+Cisco Global,0.74,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.661046,1119,US,San Jose,Networking & IT,True
+Cisco Corporation,0.79,0.8,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.661046,1120,US,San Jose,Networking & IT,True
+APP,0.77,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.661046,1121,US,Cupertino,Electronics & Computing,True
+Apple Inc,0.74,0.71,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.661046,1122,US,Cupertino,Electronics & Computing,True
+Apple International,0.79,0.73,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.662109,1123,US,Cupertino,Electronics & Computing,True
+Apple Inc,0.7,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.662109,1124,US,Cupertino,Electronics & Computing,True
+Graybar Inc,0.71,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.662109,1125,US,Clayton,Electrical Distribution,True
+Graybar Inc,0.75,0.71,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.662109,1126,US,Clayton,Electrical Distribution,True
+Graybar International,0.77,0.7,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.662109,1127,US,Clayton,Electrical Distribution,True
+Walmart Ltd,0.77,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.663108,1128,US,Bentonville,Retail,True
+Walmart International,0.78,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.663108,1129,US,Bentonville,Retail,True
+WAL,0.73,0.8,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.663108,1130,US,Bentonville,Retail,True
+Air Liquide Global,0.8,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.663108,1131,FR,Paris,Other,True
+Air Liquide International,0.8,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.663108,1132,FR,Paris,Other,True
+Air Liquide Global,0.79,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.664123,1133,FR,Paris,Other,True
+Binder Global,0.79,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.664123,1134,DE,Tuttlingen,Laboratory Equipment,True
+Binder Global,0.8,0.7,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.664123,1135,DE,Tuttlingen,Laboratory Equipment,True
+Binder International,0.7,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.664123,1136,DE,Tuttlingen,Laboratory Equipment,True
+BIN,0.79,0.71,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.665033,1137,DE,Tuttlingen,Laboratory Equipment,True
+AstraZeneca Inc,0.91,0.81,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.665033,1138,GB,Cambridge,Pharmaceuticals,True
+AstraZeneca Global,0.85,0.81,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.665033,1139,GB,Cambridge,Pharmaceuticals,True
+AstraZeneca Corporation,0.88,0.83,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.665033,1140,GB,Cambridge,Pharmaceuticals,True
+Saint-Gobain Ltd,0.73,0.71,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.665033,1141,FR,Courbevoie,Building Materials,True
+Saint-Gobain Inc,0.77,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.666031,1142,FR,Courbevoie,Building Materials,True
+Saint-Gobain Inc,0.73,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.666031,1143,FR,Courbevoie,Building Materials,True
+TES,0.79,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.666031,1144,US,Austin,Electronics & Vehicles,True
+Tesla Corporation,0.74,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.666031,1145,US,Austin,Electronics & Vehicles,True
+Tesla Global,0.76,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.666031,1146,US,Austin,Electronics & Vehicles,True
+Tesla Corporation,0.73,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.666031,1147,US,Austin,Electronics & Vehicles,True
+Tesla Ltd,0.79,0.71,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.667032,1148,US,Austin,Electronics & Vehicles,True
+Intel Ltd,0.84,0.87,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.667032,1149,US,Santa Clara,Electronics & Semiconductors,True
+INT,0.85,0.82,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.667032,1150,US,Santa Clara,Electronics & Semiconductors,True
+Intel Ltd,0.85,0.86,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.667032,1151,US,Santa Clara,Electronics & Semiconductors,True
+BASF Corporation,0.69,0.66,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.667032,1152,DE,Ludwigshafen,Chemicals,True
+BASF Inc,0.76,0.64,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.668028,1153,DE,Ludwigshafen,Chemicals,True
+BASF International,0.76,0.66,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.668028,1154,DE,Ludwigshafen,Chemicals,True
+BASF Global,0.76,0.67,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.668028,1155,DE,Ludwigshafen,Chemicals,True
+Dow Chemical International,0.76,0.7,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.668028,1156,US,Midland,Chemicals,True
+Dow Chemical Corporation,0.71,0.68,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.668028,1157,US,Midland,Chemicals,True
+Dow Chemical Corporation,0.73,0.65,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.669040,1158,US,Midland,Chemicals,True
+SABIC Ltd,0.75,0.67,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.669040,1159,SA,Riyadh,Chemicals,True
+SABIC Inc,0.75,0.68,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.669040,1160,SA,Riyadh,Chemicals,True
+LyondellBasell Ltd,0.74,0.67,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.669040,1161,NL,Rotterdam,Chemicals,True
+LYO,0.75,0.64,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.669040,1162,NL,Rotterdam,Chemicals,True
+LyondellBasell Corporation,0.7,0.71,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.670057,1163,NL,Rotterdam,Chemicals,True
+ExxonMobil Global,0.82,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.670057,1164,US,Houston,Energy & Oil,True
+ExxonMobil Global,0.76,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.670057,1165,US,Houston,Energy & Oil,True
+ExxonMobil International,0.77,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.670057,1166,US,Houston,Energy & Oil,True
+ExxonMobil Global,0.78,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.670057,1167,US,Houston,Energy & Oil,True
+Unilever Global,0.81,0.85,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.671028,1168,GB,London,Consumer Goods,True
+Unilever Inc,0.83,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.671028,1169,GB,London,Consumer Goods,True
+UNI,0.79,0.83,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.671028,1170,GB,London,Consumer Goods,True
+Nestlé International,0.78,0.83,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.671028,1171,CH,Vevey,Food & Beverage,True
+Nestlé Ltd,0.82,0.8,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.671028,1172,CH,Vevey,Food & Beverage,True
+Nestlé Corporation,0.77,0.81,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.672043,1173,CH,Vevey,Food & Beverage,True
+Aldo,0.78,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.672043,1174,CA,Montreal,Retail,True
+Aldo Group Global,0.73,0.8,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.672043,1175,CA,Montreal,Retail,True
+Aldo Group Corporation,0.74,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.672043,1176,CA,Montreal,Retail,True
+Aldo Group Ltd,0.75,0.73,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.672043,1177,CA,Montreal,Retail,True
+The,0.81,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.673033,1178,US,Atlanta,Food & Beverage,True
+The Coca-Cola Company Global,0.83,0.81,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.673033,1179,US,Atlanta,Food & Beverage,True
+The Coca-Cola Company Inc,0.78,0.81,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.673033,1180,US,Atlanta,Food & Beverage,True
+Lidl (Schwarz Group) International,0.73,0.8,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.673033,1181,DE,Ludwigsburg,Retail,True
+Lidl,0.78,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.673033,1182,DE,Ludwigsburg,Retail,True
+Lidl (Schwarz Group) Inc,0.75,0.82,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.676034,1183,DE,Ludwigsburg,Retail,True
+Lidl (Schwarz Group) Ltd,0.79,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.677088,1184,DE,Ludwigsburg,Retail,True
+Shell Global,0.83,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.677088,1185,NL,The Hague,Energy & Oil,True
+Shell International,0.75,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.678039,1186,NL,The Hague,Energy & Oil,True
+Chevron Corporation,0.79,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.679030,1187,US,San Ramon,Energy & Oil,True
+Chevron Ltd,0.83,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.679030,1188,US,San Ramon,Energy & Oil,True
+Chevron Global,0.76,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.679030,1189,US,San Ramon,Energy & Oil,True
+CHE,0.83,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.679030,1190,US,San Ramon,Energy & Oil,True
+Novartis Ltd,0.83,0.81,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.680034,1191,CH,Basel,Pharmaceuticals,True
+Novartis Inc,0.86,0.83,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.680034,1192,CH,Basel,Pharmaceuticals,True
+Novartis Ltd,0.88,0.88,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.680034,1193,CH,Basel,Pharmaceuticals,True
+Novartis International,0.9,0.89,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.680034,1194,CH,Basel,Pharmaceuticals,True
+Johnson and Johnson Corporation,0.84,0.89,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.681034,1195,US,New Brunswick,Pharmaceuticals,True
+Johnson,0.89,0.82,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.681034,1196,US,New Brunswick,Pharmaceuticals,True
+Johnson and Johnson Inc,0.92,0.81,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.681034,1197,US,New Brunswick,Pharmaceuticals,True
+Johnson and Johnson Corporation,0.88,0.81,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.681034,1198,US,New Brunswick,Pharmaceuticals,True
+Reckitt Benkiser Inc,0.79,0.83,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.682030,1199,GB,Slough,Consumer Goods,True
+Reckitt Benkiser Global,0.83,0.83,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.682030,1200,GB,Slough,Consumer Goods,True
+DHL,0.78,0.88,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.682030,1201,DE,Bonn,Logistics,True
+DHL Supply Chain Ltd,0.77,0.84,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.682030,1202,DE,Bonn,Logistics,True
+DHL Supply Chain Inc,0.77,0.87,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.683031,1203,DE,Bonn,Logistics,True
+DHL Supply Chain Corporation,0.82,0.86,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.683031,1204,DE,Bonn,Logistics,True
+FedEx Corporation,0.81,0.86,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.683031,1205,US,Memphis,Logistics,True
+FedEx Ltd,0.82,0.85,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.683031,1206,US,Memphis,Logistics,True
+FED,0.78,0.86,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.683031,1207,US,Memphis,Logistics,True
+Nippon Express Ltd,0.86,0.88,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.684072,1208,JP,Tokyo,Logistics,True
+Nippon Express International,0.8,0.82,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.684072,1209,JP,Tokyo,Logistics,True
+Nippon Express Corporation,0.87,0.83,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.684072,1210,JP,Tokyo,Logistics,True
+Maersk Line International,0.74,0.7,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.684072,1211,DK,Copenhagen,Shipping & Maritime,True
+Maersk Line Global,0.8,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.685031,1212,DK,Copenhagen,Shipping & Maritime,True
+Maersk Line Inc,0.79,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.685031,1213,DK,Copenhagen,Shipping & Maritime,True
+Kellogg Company Global,0.79,0.82,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.685031,1214,US,Battle Creek,Food & Beverage,True
+Kellogg Company Corporation,0.78,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.685031,1215,US,Battle Creek,Food & Beverage,True
+Kellogg,0.83,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.685031,1216,US,Battle Creek,Food & Beverage,True
+Kellogg Company Inc,0.82,0.8,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.686028,1217,US,Battle Creek,Food & Beverage,True
+PepsiCo Inc Corporation,0.76,0.8,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.686028,1218,US,Purchase,Food & Beverage,True
+PepsiCo Inc Ltd,0.75,0.81,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.686028,1219,US,Purchase,Food & Beverage,True
+PepsiCo Inc Global,0.76,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.686028,1220,US,Purchase,Food & Beverage,True
+PepsiCo Inc Corporation,0.79,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.687029,1221,US,Purchase,Food & Beverage,True
+Monte Carlo Fashions Corporation,0.78,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.687029,1222,IN,Mumbai,Other,True
+Monte Carlo Fashions Corporation,0.78,0.73,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.687029,1223,IN,Mumbai,Other,True
+Monte Carlo Fashions Global,0.78,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.687029,1224,IN,Mumbai,Other,True
+Monte,0.8,0.79,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.687029,1225,IN,Mumbai,Other,True
+Monte Carlo Fashions Inc,0.73,0.75,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.688028,1226,IN,Mumbai,Other,True
+Fluor Corporation International,0.75,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.688028,1227,US,Irving,Engineering & Construction,True
+Fluor Corporation Inc,0.78,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.688028,1228,US,Irving,Engineering & Construction,True
+Fluor Corporation International,0.77,0.8,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.688028,1229,US,Irving,Engineering & Construction,True
+Fluor Corporation Ltd,0.71,0.73,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.688028,1230,US,Irving,Engineering & Construction,True
+Dow Inc Corporation,0.68,0.65,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.689029,1231,US,Midland,Chemicals,True
+Dow Inc International,0.73,0.65,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.689029,1232,US,Midland,Chemicals,True
+Dow Inc Corporation,0.71,0.64,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.689029,1233,US,Midland,Chemicals,True
+DuPont de Nemours Inc Corporation,0.75,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.689029,1234,US,Wilmington,Other,True
+DuPont de Nemours Inc International,0.79,0.71,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.689029,1235,US,Wilmington,Other,True
+DuPont de Nemours Inc International,0.72,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.690027,1236,US,Wilmington,Other,True
+Eastman Chemical Company Internatio,0.67,0.66,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.690027,1237,US,Kingsport,Chemicals,True
+Eastman Chemical Company Inc,0.7,0.7,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.691364,1238,US,Kingsport,Chemicals,True
+Eastman,0.67,0.67,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.692541,1239,US,Kingsport,Chemicals,True
+Eastman Chemical Company Ltd,0.69,0.64,High,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.694548,1240,US,Kingsport,Chemicals,True
+JPMorgan Chase Corporation,0.74,0.76,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.695553,1241,US,New York,Financial Services,True
+JPMorgan Chase International,0.79,0.72,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.696550,1242,US,New York,Financial Services,True
+JPMorgan Chase Inc,0.8,0.77,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.696550,1243,US,New York,Financial Services,True
+Sanofi S.A Corporation,0.83,0.85,Low,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.697549,1244,FR,Paris,Pharmaceuticals,True
+Sanofi S.A Ltd,0.84,0.83,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.697549,1245,FR,Paris,Pharmaceuticals,True
+Sanofi S.A Ltd,0.88,0.83,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.697549,1246,FR,Paris,Pharmaceuticals,True
+Valero Energy Corporation Internati,0.8,0.78,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.697549,1247,US,San Antonio,Energy & Oil,True
+Valero Energy Corporation Internati,0.83,0.74,Medium,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.697549,1248,US,San Antonio,Energy & Oil,True

@@ -1,0 +1,192 @@
+MasterName,Industry,Country,Perf_Score,Fin_Stab,Risk_Category,TotalTransactions,UniqueDisruptions,VariantCount
+Indo Autotech Limited,Manufacturing,IN,0.72,0.76,Medium,0,1,3
+Zentis GmbH & Co. KG,Manufacturing,DE,0.76,0.78,Low,0,1,4
+Flint Group,Manufacturing,DE,0.71,0.72,Medium,0,1,2
+Merck Life Sciences,Pharmaceuticals,DE,0.84,0.91,Low,0,1,2
+Office Depot,Office Supplies,US,0.79,0.76,Low,0,1,2
+RS Components,Electronics Distribution,GB,0.76,0.78,Low,0,1,3
+AstraZeneca,Pharmaceuticals,GB,0.82,0.89,Low,0,1,2
+Saint-Gobain,Building Materials,FR,0.73,0.74,Medium,0,1,3
+LyondellBasell,Chemicals,NL,0.66,0.75,Medium,0,1,2
+Aldo Group,Retail,CA,0.78,0.74,Low,0,1,2
+The Coca-Cola Company,Food & Beverage,US,0.81,0.81,Low,0,1,3
+Lidl (Schwarz Group),Retail,DE,0.8,0.75,Low,0,1,3
+Johnson and Johnson,Pharmaceuticals,US,0.84,0.88,Low,0,1,2
+Reckitt Benkiser,Consumer Goods,GB,0.82,0.8,Low,0,1,2
+DHL Supply Chain,Logistics,DE,0.84,0.79,Low,0,1,3
+Nippon Express,Logistics,JP,0.88,0.81,Low,0,1,2
+Maersk Line,Shipping & Maritime,DK,0.72,0.76,Medium,0,1,2
+Kellogg Company,Food & Beverage,US,0.81,0.79,Low,0,1,2
+Monte Carlo Fashions,Other,IN,0.74,0.75,Medium,0,1,3
+Fluor Corporation,Engineering & Construction,US,0.72,0.74,Medium,0,1,3
+Eastman Chemical Company,Chemicals,US,0.66,0.71,Medium,0,1,3
+JPMorgan Chase,Financial Services,US,0.78,0.77,Low,0,1,2
+Sanofi S.A,Pharmaceuticals,FR,0.85,0.85,Low,0,1,2
+Rich's,Distribution,US,0.74,0.74,Medium,0,1,1
+Cirque du Soleil,Entertainment,CA,0.73,0.76,Medium,0,1,1
+Amazon Business Services US,Retail/Distribution,US,0.79,0.76,Low,0,1,1
+Fisher Scientific,Laboratory Equipment,US,0.72,0.78,Medium,0,1,1
+Eppendorf,Laboratory Equipment,DE,0.72,0.72,Medium,0,1,1
+Grainger,Distribution,US,0.73,0.83,Medium,0,1,1
+Qiagen,Life Sciences,DE,0.73,0.7,Medium,0,1,1
+CDW,IT Distribution,US,0.8,0.76,Low,0,1,1
+Manutan,Office Supplies,FR,0.74,0.8,Medium,0,1,1
+Siemens,Industrial Manufacturing,DE,0.75,0.82,Low,0,1,1
+ABB,Robotics & Automation,CH,0.78,0.74,Low,0,1,1
+Continuum,IT Services,US,0.77,0.7,Low,0,1,1
+Cisco,Networking & IT,US,0.75,0.79,Low,0,1,1
+Apple,Electronics & Computing,US,0.72,0.76,Medium,0,1,1
+Graybar,Electrical Distribution,US,0.74,0.71,Medium,0,1,1
+Walmart,Retail,US,0.83,0.73,Low,0,1,1
+Air Liquide,Other,FR,0.75,0.77,Low,0,1,1
+Binder,Laboratory Equipment,DE,0.8,0.72,Low,0,1,1
+Tesla,Electronics & Vehicles,US,0.71,0.71,Medium,0,1,1
+Intel,Electronics & Semiconductors,US,0.86,0.85,Low,0,1,1
+BASF,Chemicals,DE,0.73,0.68,Medium,0,1,1
+Dow Chemical,Chemicals,US,0.63,0.74,Medium,0,1,1
+SABIC,Chemicals,SA,0.69,0.76,Medium,0,1,1
+ExxonMobil,Energy & Oil,US,0.71,0.83,Medium,0,1,1
+Unilever,Consumer Goods,GB,0.79,0.85,Low,0,1,1
+Nestlé,Food & Beverage,CH,0.84,0.76,Low,0,1,1
+Shell,Energy & Oil,NL,0.71,0.85,Medium,0,1,1
+Chevron,Energy & Oil,US,0.74,0.81,Medium,0,1,1
+Novartis,Pharmaceuticals,CH,0.88,0.92,Low,0,1,1
+FedEx,Logistics,US,0.83,0.86,Low,0,1,1
+PepsiCo Inc,Food & Beverage,US,0.81,0.79,Low,0,1,1
+Dow Inc,Chemicals,US,0.65,0.77,Medium,0,1,1
+DuPont de Nemours Inc,Other,US,0.76,0.78,Low,0,1,1
+Valero Energy Corporation,Energy & Oil,US,0.77,0.84,Low,0,1,1
+Rich's Inc,Distribution,US,0.77,0.76,Low,0,0,1
+Indo Autotech Limited International,Manufacturing,IN,0.74,0.74,Medium,0,0,1
+Indo Autotech Limited Corporation,Manufacturing,IN,0.79,0.74,Low,0,0,1
+Cirque du Soleil International,Entertainment,CA,0.77,0.78,Low,0,0,1
+Cirque,Entertainment,CA,0.75,0.76,Low,0,0,1
+Cirque du Soleil Global,Entertainment,CA,0.75,0.74,Low,0,0,1
+Zentis,Manufacturing,DE,0.7,0.76,Medium,0,0,1
+Flint Group International,Manufacturing,DE,0.73,0.72,Medium,0,0,1
+Amazon Business Services US Corpora,Retail/Distribution,US,0.75,0.79,Low,0,0,1
+Amazon Business Services US Inc,Retail/Distribution,US,0.79,0.75,Low,0,0,1
+Fisher,Laboratory Equipment,US,0.75,0.72,Low,0,0,1
+Fisher Scientific International,Laboratory Equipment,US,0.75,0.78,Low,0,0,1
+Fisher Scientific Corporation,Laboratory Equipment,US,0.77,0.75,Low,0,0,1
+Fisher Scientific Global,Laboratory Equipment,US,0.78,0.76,Low,0,0,1
+Merck Life Sciences International,Pharmaceuticals,DE,0.87,0.89,Low,0,0,1
+Merck Life Sciences Corporation,Pharmaceuticals,DE,0.8,0.89,Low,0,0,1
+Office Depot Corporation,Office Supplies,US,0.74,0.75,Medium,0,0,1
+Office Depot Global,Office Supplies,US,0.77,0.75,Low,0,0,1
+Office,Office Supplies,US,0.7,0.73,Medium,0,0,1
+RS,Electronics Distribution,GB,0.75,0.76,Low,0,0,1
+RS Components Global,Electronics Distribution,GB,0.79,0.72,Low,0,0,1
+Eppendorf Global,Laboratory Equipment,DE,0.76,0.78,Low,0,0,1
+Eppendorf International,Laboratory Equipment,DE,0.74,0.77,Medium,0,0,1
+Grainger Ltd,Distribution,US,0.77,0.81,Low,0,0,1
+Grainger Global,Distribution,US,0.77,0.76,Low,0,0,1
+Grainger International,Distribution,US,0.78,0.83,Low,0,0,1
+Qiagen Global,Life Sciences,DE,0.79,0.76,Low,0,0,1
+QIA,Life Sciences,DE,0.79,0.77,Low,0,0,1
+Qiagen Corporation,Life Sciences,DE,0.77,0.71,Low,0,0,1
+Qiagen Inc,Life Sciences,DE,0.78,0.75,Low,0,0,1
+CDW Corporation,IT Distribution,US,0.78,0.71,Low,0,0,1
+MAN,Office Supplies,FR,0.75,0.77,Low,0,0,1
+Manutan Ltd,Office Supplies,FR,0.72,0.76,Medium,0,0,1
+Manutan Inc,Office Supplies,FR,0.74,0.78,Medium,0,0,1
+Manutan Global,Office Supplies,FR,0.75,0.79,Low,0,0,1
+Siemens International,Industrial Manufacturing,DE,0.84,0.78,Low,0,0,1
+SIE,Industrial Manufacturing,DE,0.82,0.79,Low,0,0,1
+Siemens Corporation,Industrial Manufacturing,DE,0.85,0.8,Low,0,0,1
+Siemens Inc,Industrial Manufacturing,DE,0.77,0.79,Low,0,0,1
+ABB Global,Robotics & Automation,CH,0.77,0.72,Low,0,0,1
+ABB International,Robotics & Automation,CH,0.73,0.77,Medium,0,0,1
+ABB Corporation,Robotics & Automation,CH,0.77,0.73,Low,0,0,1
+Continuum Inc,IT Services,US,0.72,0.72,Medium,0,0,1
+Continuum Corporation,IT Services,US,0.7,0.79,Medium,0,0,1
+Continuum Global,IT Services,US,0.76,0.75,Low,0,0,1
+CON,IT Services,US,0.78,0.73,Low,0,0,1
+Cisco International,Networking & IT,US,0.76,0.72,Low,0,0,1
+Cisco Global,Networking & IT,US,0.76,0.74,Low,0,0,1
+Cisco Corporation,Networking & IT,US,0.8,0.79,Low,0,0,1
+APP,Electronics & Computing,US,0.76,0.77,Low,0,0,1
+Apple Inc,Electronics & Computing,US,0.71,0.74,Medium,0,0,1
+Apple International,Electronics & Computing,US,0.73,0.79,Medium,0,0,1
+Graybar Inc,Electrical Distribution,US,0.79,0.71,Low,0,0,1
+Graybar International,Electrical Distribution,US,0.7,0.77,Medium,0,0,1
+Walmart Ltd,Retail,US,0.77,0.77,Low,0,0,1
+Walmart International,Retail,US,0.79,0.78,Low,0,0,1
+WAL,Retail,US,0.8,0.73,Low,0,0,1
+Air Liquide Global,Other,FR,0.77,0.8,Low,0,0,1
+Air Liquide International,Other,FR,0.75,0.8,Low,0,0,1
+Binder Global,Laboratory Equipment,DE,0.72,0.79,Medium,0,0,1
+Binder International,Laboratory Equipment,DE,0.79,0.7,Low,0,0,1
+BIN,Laboratory Equipment,DE,0.71,0.79,Medium,0,0,1
+AstraZeneca Global,Pharmaceuticals,GB,0.81,0.85,Low,0,0,1
+AstraZeneca Corporation,Pharmaceuticals,GB,0.83,0.88,Low,0,0,1
+TES,Electronics & Vehicles,US,0.75,0.79,Low,0,0,1
+Tesla Corporation,Electronics & Vehicles,US,0.75,0.74,Low,0,0,1
+Tesla Global,Electronics & Vehicles,US,0.78,0.76,Low,0,0,1
+Tesla Ltd,Electronics & Vehicles,US,0.71,0.79,Medium,0,0,1
+Intel Ltd,Electronics & Semiconductors,US,0.87,0.84,Low,0,0,1
+INT,Electronics & Semiconductors,US,0.82,0.85,Low,0,0,1
+BASF Corporation,Chemicals,DE,0.66,0.69,Medium,0,0,1
+BASF Inc,Chemicals,DE,0.64,0.76,Medium,0,0,1
+BASF International,Chemicals,DE,0.66,0.76,Medium,0,0,1
+BASF Global,Chemicals,DE,0.67,0.76,Medium,0,0,1
+Dow Chemical International,Chemicals,US,0.7,0.76,Medium,0,0,1
+Dow Chemical Corporation,Chemicals,US,0.68,0.71,Medium,0,0,1
+SABIC Ltd,Chemicals,SA,0.67,0.75,Medium,0,0,1
+SABIC Inc,Chemicals,SA,0.68,0.75,Medium,0,0,1
+LYO,Chemicals,NL,0.64,0.75,Medium,0,0,1
+LyondellBasell Corporation,Chemicals,NL,0.71,0.7,Medium,0,0,1
+ExxonMobil Global,Energy & Oil,US,0.72,0.82,Medium,0,0,1
+ExxonMobil International,Energy & Oil,US,0.79,0.77,Low,0,0,1
+Unilever Global,Consumer Goods,GB,0.85,0.81,Low,0,0,1
+Unilever Inc,Consumer Goods,GB,0.77,0.83,Low,0,0,1
+UNI,Consumer Goods,GB,0.83,0.79,Low,0,0,1
+Nestlé International,Food & Beverage,CH,0.83,0.78,Low,0,0,1
+Nestlé Ltd,Food & Beverage,CH,0.8,0.82,Low,0,0,1
+Nestlé Corporation,Food & Beverage,CH,0.81,0.77,Low,0,0,1
+Aldo,Retail,CA,0.74,0.78,Medium,0,0,1
+Aldo Group Global,Retail,CA,0.8,0.73,Low,0,0,1
+Aldo Group Corporation,Retail,CA,0.74,0.74,Medium,0,0,1
+The,Food & Beverage,US,0.76,0.81,Low,0,0,1
+Lidl (Schwarz Group) International,Retail,DE,0.8,0.73,Low,0,0,1
+Lidl,Retail,DE,0.77,0.78,Low,0,0,1
+Shell Global,Energy & Oil,NL,0.78,0.83,Low,0,0,1
+Shell International,Energy & Oil,NL,0.75,0.75,Low,0,0,1
+Chevron Corporation,Energy & Oil,US,0.72,0.79,Medium,0,0,1
+Chevron Ltd,Energy & Oil,US,0.77,0.83,Low,0,0,1
+Chevron Global,Energy & Oil,US,0.72,0.76,Medium,0,0,1
+CHE,Energy & Oil,US,0.75,0.83,Low,0,0,1
+Novartis Ltd,Pharmaceuticals,CH,0.81,0.83,Low,0,0,1
+Novartis Inc,Pharmaceuticals,CH,0.83,0.86,Low,0,0,1
+Novartis International,Pharmaceuticals,CH,0.89,0.9,Low,0,0,1
+Johnson and Johnson Corporation,Pharmaceuticals,US,0.89,0.84,Low,0,0,1
+Johnson,Pharmaceuticals,US,0.82,0.89,Low,0,0,1
+Reckitt Benkiser Global,Consumer Goods,GB,0.83,0.83,Low,0,0,1
+DHL,Logistics,DE,0.88,0.78,Low,0,0,1
+DHL Supply Chain Corporation,Logistics,DE,0.86,0.82,Low,0,0,1
+FedEx Corporation,Logistics,US,0.86,0.81,Low,0,0,1
+FedEx Ltd,Logistics,US,0.85,0.82,Low,0,0,1
+FED,Logistics,US,0.86,0.78,Low,0,0,1
+Nippon Express International,Logistics,JP,0.82,0.8,Low,0,0,1
+Nippon Express Corporation,Logistics,JP,0.83,0.87,Low,0,0,1
+Maersk Line International,Shipping & Maritime,DK,0.7,0.74,Medium,0,0,1
+Maersk Line Global,Shipping & Maritime,DK,0.78,0.8,Low,0,0,1
+Kellogg Company Global,Food & Beverage,US,0.82,0.79,Low,0,0,1
+Kellogg Company Corporation,Food & Beverage,US,0.76,0.78,Low,0,0,1
+Kellogg,Food & Beverage,US,0.78,0.83,Low,0,0,1
+PepsiCo Inc Corporation,Food & Beverage,US,0.8,0.76,Low,0,0,1
+PepsiCo Inc Ltd,Food & Beverage,US,0.81,0.75,Low,0,0,1
+PepsiCo Inc Global,Food & Beverage,US,0.77,0.76,Low,0,0,1
+Monte Carlo Fashions Corporation,Other,IN,0.76,0.78,Low,0,0,1
+Monte,Other,IN,0.79,0.8,Low,0,0,1
+Fluor Corporation International,Engineering & Construction,US,0.78,0.75,Low,0,0,1
+Dow Inc Corporation,Chemicals,US,0.65,0.68,Medium,0,0,1
+Dow Inc International,Chemicals,US,0.65,0.73,Medium,0,0,1
+DuPont de Nemours Inc Corporation,Other,US,0.74,0.75,Medium,0,0,1
+DuPont de Nemours Inc International,Other,US,0.71,0.79,Medium,0,0,1
+Eastman Chemical Company Internatio,Chemicals,US,0.66,0.67,Medium,0,0,1
+Eastman,Chemicals,US,0.67,0.67,Medium,0,0,1
+JPMorgan Chase Corporation,Financial Services,US,0.76,0.74,Low,0,0,1
+JPMorgan Chase International,Financial Services,US,0.72,0.79,Medium,0,0,1
+Sanofi S.A Corporation,Pharmaceuticals,FR,0.85,0.83,Low,0,0,1
+Valero Energy Corporation Internati,Energy & Oil,US,0.78,0.8,Low,0,0,1

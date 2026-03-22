@@ -1,0 +1,250 @@
+supplier_name,supply_risk_score,profit_impact_score,kraljic_quadrant,source_file_name,source_file_hash,ingestion_timestamp,ariba_supplier_id,lead_time_days,order_volume
+Rich's,0.45,0.63,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.733243,1000,11,31559
+Indo Autotech Limited,0.46,0.72,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.733243,1001,28,10672
+Cirque du Soleil,0.49,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.734239,1002,32,9369
+Zentis GmbH & Co. KG,0.46,0.72,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.734239,1003,28,10279
+Flint Group,0.45,0.7,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.734239,1004,32,10318
+Amazon Business Services US,0.51,0.76,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.734239,1005,32,9836
+Fisher Scientific,0.46,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.734239,1006,28,10934
+Merck Life Sciences,0.3,0.9,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.735258,1007,17,1055
+Office Depot,0.46,0.79,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.735258,1008,28,10372
+RS Components,0.54,0.7,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.735258,1009,34,10697
+Eppendorf,0.53,0.73,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.735258,1010,33,9049
+Grainger,0.51,0.63,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.735258,1011,4,29109
+Qiagen,0.46,0.71,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.736236,1012,33,9760
+CDW,0.46,0.7,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.736236,1013,25,9524
+Manutan,0.53,0.77,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.736236,1014,31,10367
+Siemens,0.41,0.77,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.736236,1015,39,5273
+ABB,0.49,0.73,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.736236,1016,25,10359
+Continuum,0.52,0.75,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.737257,1017,31,9115
+Cisco,0.49,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.737257,1018,30,10193
+Apple,0.51,0.75,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.737257,1019,32,10225
+Graybar,0.52,0.77,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.737257,1020,27,9059
+Walmart,0.41,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.737257,1021,8,98115
+Air Liquide,0.52,0.71,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.738254,1022,27,10217
+Binder,0.53,0.76,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.738254,1023,33,10037
+AstraZeneca,0.31,0.93,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.738254,1024,22,1036
+Saint-Gobain,0.46,0.79,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.738254,1025,29,9537
+Tesla,0.49,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.738254,1026,33,10099
+Intel,0.37,0.82,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.738254,1027,34,9564
+BASF,0.52,0.64,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.739253,1028,43,5431
+Dow Chemical,0.51,0.64,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.739253,1029,49,4851
+SABIC,0.52,0.66,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.740240,1030,42,5442
+LyondellBasell,0.56,0.65,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.740240,1031,42,4878
+ExxonMobil,0.57,0.86,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.740240,1032,55,18597
+Unilever,0.32,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.741240,1033,9,53344
+Nestlé,0.31,0.73,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.741240,1034,14,54532
+Aldo Group,0.49,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.742241,1035,13,94196
+The Coca-Cola Company,0.38,0.7,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.742241,1036,15,51780
+Lidl (Schwarz Group),0.49,0.77,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.742241,1037,5,103816
+Shell,0.61,0.82,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.742241,1038,58,21530
+Chevron,0.62,0.86,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.743267,1039,55,18940
+Novartis,0.31,0.87,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.743267,1040,20,924
+Johnson and Johnson,0.28,0.87,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.743267,1041,21,1041
+Reckitt Benkiser,0.38,0.71,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.744238,1042,11,54745
+DHL Supply Chain,0.42,0.85,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.744238,1043,9,47612
+FedEx,0.43,0.78,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.744238,1044,5,45418
+Nippon Express,0.44,0.81,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.744238,1045,1,45339
+Maersk Line,0.46,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.744238,1046,27,9575
+Kellogg Company,0.36,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.745239,1047,13,48140
+PepsiCo Inc,0.34,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.745239,1048,11,46194
+Monte Carlo Fashions,0.54,0.8,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.745239,1049,27,10666
+Fluor Corporation,0.53,0.71,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.745239,1050,33,10780
+Dow Inc,0.5,0.68,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.746236,1051,41,5039
+DuPont de Nemours Inc,0.53,0.71,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.746236,1052,30,10668
+Eastman Chemical Company,0.53,0.65,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.746236,1053,45,4594
+JPMorgan Chase,0.48,0.76,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.746236,1054,31,9429
+Sanofi S.A,0.28,0.86,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.746236,1055,22,942
+Valero Energy Corporation,0.62,0.83,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.746236,1056,59,18802
+Rich's Inc,0.49,0.68,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.747257,1057,12,27574
+Indo Autotech Limited International,0.53,0.75,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.747257,1058,29,10102
+Indo Autotech Limited Ltd,0.54,0.73,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.747257,1059,30,10732
+Indo Autotech Limited Corporation,0.54,0.79,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.747257,1060,26,9077
+Indo Autotech Limited Inc,0.48,0.71,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.747257,1061,30,9967
+Cirque du Soleil International,0.53,0.71,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.748239,1062,33,9800
+Cirque,0.5,0.79,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.748239,1063,32,9850
+Cirque,0.49,0.8,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.748239,1064,27,10961
+Cirque du Soleil Global,0.51,0.72,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.748239,1065,28,9743
+Cirque du Soleil Global,0.51,0.77,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.748239,1066,28,9208
+Zentis,0.55,0.73,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.749238,1067,25,9999
+Zentis GmbH & Co. KG Global,0.52,0.75,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.749238,1068,29,9626
+Zentis GmbH & Co. KG Inc,0.45,0.8,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.749238,1069,34,10909
+Zentis GmbH & Co. KG Ltd,0.46,0.7,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.749238,1070,33,10975
+Flint Group International,0.49,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.749238,1071,33,10377
+Flint Group Inc,0.54,0.78,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.750238,1072,34,10222
+Amazon Business Services US Corpora,0.54,0.77,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.750238,1073,25,10181
+Amazon Business Services US Inc,0.5,0.77,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.750238,1074,32,9983
+Fisher,0.46,0.71,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.750238,1075,28,9790
+Fisher Scientific International,0.48,0.8,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.750238,1076,34,9757
+Fisher Scientific Corporation,0.52,0.79,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.750238,1077,34,9030
+Fisher Scientific Global,0.49,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.751238,1078,34,9756
+Merck Life Sciences International,0.28,0.92,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.751238,1079,16,1025
+Merck Life Sciences Corporation,0.3,0.9,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.751238,1080,16,904
+Merck Life Sciences Ltd,0.31,0.86,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.751238,1081,19,1082
+Office Depot Corporation,0.54,0.8,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.751238,1082,28,10616
+Office Depot Global,0.47,0.79,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.752238,1083,27,10453
+Office,0.51,0.77,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.752238,1084,26,10993
+Office Depot Corporation,0.53,0.77,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.752238,1085,29,9600
+Office Depot Ltd,0.51,0.79,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.752238,1086,29,10886
+RS Components Inc,0.46,0.76,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.752238,1087,25,9114
+RS Components Ltd,0.52,0.74,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.753240,1088,33,10896
+RS,0.48,0.79,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.753240,1089,27,10989
+RS Components Global,0.5,0.73,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.753240,1090,26,9362
+Eppendorf Global,0.52,0.76,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.753240,1091,33,10619
+Eppendorf International,0.49,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.754240,1092,29,10717
+Eppendorf Global,0.52,0.73,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.754240,1093,31,9443
+Grainger Ltd,0.5,0.69,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.754240,1094,8,30583
+Grainger Global,0.51,0.61,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.754240,1095,3,30306
+Grainger International,0.47,0.61,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.755241,1096,7,31620
+Qiagen Global,0.51,0.78,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.756248,1097,34,10507
+QIA,0.5,0.74,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.756248,1098,28,10353
+Qiagen Corporation,0.48,0.73,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.758247,1099,25,9132
+Qiagen Inc,0.51,0.75,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.799133,1100,31,10009
+CDW Corporation,0.49,0.78,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.800119,1101,32,9245
+MAN,0.5,0.73,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.800119,1102,32,10894
+Manutan Ltd,0.51,0.73,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.801120,1103,25,9736
+Manutan Inc,0.49,0.8,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.801120,1104,26,10363
+Manutan Global,0.46,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.801120,1105,29,10643
+Siemens International,0.46,0.7,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.803119,1106,41,4613
+SIE,0.48,0.72,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.804120,1107,38,5021
+Siemens Corporation,0.44,0.71,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.804120,1108,40,4973
+Siemens Inc,0.49,0.78,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.804120,1109,42,5410
+ABB Global,0.45,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.804120,1110,29,10802
+ABB International,0.52,0.72,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.805119,1111,30,10265
+ABB Corporation,0.51,0.7,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.806119,1112,26,9445
+ABB Corporation,0.52,0.76,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.806119,1113,28,9834
+Continuum Inc,0.45,0.79,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.806119,1114,28,9066
+Continuum Corporation,0.47,0.78,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.806119,1115,32,9675
+Continuum Global,0.52,0.71,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.806119,1116,26,9667
+CON,0.46,0.71,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.811636,1117,31,10476
+Cisco International,0.49,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.813644,1118,25,9012
+Cisco Global,0.54,0.7,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.813644,1119,34,10904
+Cisco Corporation,0.46,0.77,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.813644,1120,29,9362
+APP,0.54,0.71,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.813644,1121,30,9937
+Apple Inc,0.45,0.72,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.813644,1122,26,9718
+Apple International,0.53,0.72,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.814635,1123,32,10338
+Apple Inc,0.54,0.78,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.814635,1124,30,9769
+Graybar Inc,0.52,0.76,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.814635,1125,25,9652
+Graybar Inc,0.5,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.814635,1126,30,10245
+Graybar International,0.51,0.73,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.814635,1127,26,10011
+Walmart Ltd,0.44,0.78,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.815631,1128,13,107229
+Walmart International,0.48,0.77,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.815631,1129,5,101353
+WAL,0.41,0.72,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.815631,1130,12,99765
+Air Liquide Global,0.47,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.815631,1131,26,10992
+Air Liquide International,0.47,0.78,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.815631,1132,27,9750
+Air Liquide Global,0.48,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.816710,1133,29,9415
+Binder Global,0.51,0.78,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.816710,1134,32,9523
+Binder Global,0.54,0.7,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.816710,1135,31,9013
+Binder International,0.51,0.74,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.816710,1136,25,10673
+BIN,0.52,0.7,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.816710,1137,32,10779
+AstraZeneca Inc,0.27,0.92,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.817632,1138,16,964
+AstraZeneca Global,0.28,0.91,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.817632,1139,15,1041
+AstraZeneca Corporation,0.31,0.93,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.817632,1140,24,951
+Saint-Gobain Ltd,0.46,0.79,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.817632,1141,31,10844
+Saint-Gobain Inc,0.48,0.77,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.817632,1142,31,10931
+Saint-Gobain Inc,0.52,0.75,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.817632,1143,34,10016
+TES,0.48,0.71,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.818632,1144,33,9160
+Tesla Corporation,0.55,0.77,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.818632,1145,30,10854
+Tesla Global,0.54,0.73,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.818632,1146,31,9002
+Tesla Corporation,0.53,0.79,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.818632,1147,34,9127
+Tesla Ltd,0.46,0.73,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.818632,1148,34,9940
+Intel Ltd,0.36,0.79,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.819633,1149,27,9914
+INT,0.4,0.81,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.819633,1150,29,9080
+Intel Ltd,0.44,0.76,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.819633,1151,33,9762
+BASF Corporation,0.55,0.69,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.819633,1152,40,5203
+BASF Inc,0.52,0.67,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.820635,1153,47,5468
+BASF International,0.56,0.66,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.821636,1154,42,5338
+BASF Global,0.58,0.64,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.821636,1155,47,5249
+Dow Chemical International,0.58,0.63,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.823636,1156,42,4970
+Dow Chemical Corporation,0.52,0.63,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.825636,1157,42,5130
+Dow Chemical Corporation,0.56,0.68,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.825636,1158,41,5165
+SABIC Ltd,0.52,0.62,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.826653,1159,47,5158
+SABIC Inc,0.58,0.61,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.827654,1160,46,5029
+LyondellBasell Ltd,0.54,0.66,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.828645,1161,48,4504
+LYO,0.58,0.7,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.829638,1162,43,4615
+LyondellBasell Corporation,0.53,0.67,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.829638,1163,47,5043
+ExxonMobil Global,0.63,0.81,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.829638,1164,63,18503
+ExxonMobil Global,0.6,0.89,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.830635,1165,56,18200
+ExxonMobil International,0.62,0.89,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.830635,1166,56,18849
+ExxonMobil Global,0.62,0.87,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.830635,1167,58,19748
+Unilever Global,0.34,0.68,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.831732,1168,16,48616
+Unilever Inc,0.36,0.71,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.831732,1169,7,53996
+UNI,0.36,0.72,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.831732,1170,11,53613
+Nestlé International,0.35,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.831732,1171,12,45051
+Nestlé Ltd,0.32,0.65,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.831732,1172,12,51528
+Nestlé Corporation,0.38,0.72,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.831732,1173,10,45453
+Aldo,0.45,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.832718,1174,7,106483
+Aldo Group Global,0.43,0.78,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.832718,1175,10,108370
+Aldo Group Corporation,0.46,0.78,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.832718,1176,12,102419
+Aldo Group Ltd,0.49,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.832718,1177,10,103813
+The,0.33,0.65,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.832718,1178,15,48947
+The Coca-Cola Company Global,0.39,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.833722,1179,13,46749
+The Coca-Cola Company Inc,0.33,0.66,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.833722,1180,12,50821
+Lidl (Schwarz Group) International,0.49,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.833722,1181,5,105625
+Lidl,0.48,0.73,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.833722,1182,5,102306
+Lidl (Schwarz Group) Inc,0.41,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.833722,1183,11,100018
+Lidl (Schwarz Group) Ltd,0.46,0.78,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.833722,1184,7,91181
+Shell Global,0.64,0.9,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.834741,1185,63,19446
+Shell International,0.56,0.89,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.834741,1186,61,20727
+Chevron Corporation,0.61,0.82,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.834741,1187,59,18828
+Chevron Ltd,0.56,0.88,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.834741,1188,55,21637
+Chevron Global,0.65,0.85,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.834741,1189,55,21484
+CHE,0.64,0.83,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.835729,1190,58,18219
+Novartis Ltd,0.26,0.92,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.835729,1191,24,1016
+Novartis Inc,0.29,0.92,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.835729,1192,20,940
+Novartis Ltd,0.27,0.93,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.835729,1193,19,963
+Novartis International,0.33,0.9,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.835729,1194,24,1024
+Johnson and Johnson Corporation,0.33,0.94,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.835729,1195,20,1072
+Johnson,0.31,0.94,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.836724,1196,18,994
+Johnson and Johnson Inc,0.3,0.87,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.836724,1197,21,934
+Johnson and Johnson Corporation,0.29,0.93,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.836724,1198,22,1012
+Reckitt Benkiser Inc,0.35,0.7,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.836724,1199,8,51958
+Reckitt Benkiser Global,0.39,0.71,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.837716,1200,9,47857
+DHL,0.35,0.76,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.837716,1201,8,46251
+DHL Supply Chain Ltd,0.42,0.81,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.837716,1202,2,49847
+DHL Supply Chain Inc,0.38,0.85,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.837716,1203,1,45409
+DHL Supply Chain Corporation,0.35,0.85,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.837716,1204,2,51122
+FedEx Corporation,0.43,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.837716,1205,3,52864
+FedEx Ltd,0.42,0.79,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.838727,1206,5,48693
+FED,0.43,0.83,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.838727,1207,7,45597
+Nippon Express Ltd,0.42,0.79,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.838727,1208,0,46756
+Nippon Express International,0.44,0.78,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.838727,1209,0,45049
+Nippon Express Corporation,0.41,0.85,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.838727,1210,8,46305
+Maersk Line International,0.49,0.71,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.839723,1211,26,9107
+Maersk Line Global,0.46,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.839723,1212,33,10020
+Maersk Line Inc,0.47,0.77,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.839723,1213,31,10059
+Kellogg Company Global,0.32,0.66,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.839723,1214,18,51554
+Kellogg Company Corporation,0.32,0.7,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.839723,1215,14,54933
+Kellogg,0.35,0.67,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.839723,1216,10,48540
+Kellogg Company Inc,0.32,0.65,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.840721,1217,14,50298
+PepsiCo Inc Corporation,0.3,0.69,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.840721,1218,16,53629
+PepsiCo Inc Ltd,0.33,0.7,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.841636,1219,10,48172
+PepsiCo Inc Global,0.38,0.66,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.841636,1220,10,47738
+PepsiCo Inc Corporation,0.35,0.72,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.841636,1221,16,53816
+Monte Carlo Fashions Corporation,0.49,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.841636,1222,26,10563
+Monte Carlo Fashions Corporation,0.49,0.73,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.842651,1223,29,9270
+Monte Carlo Fashions Global,0.5,0.77,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.842651,1224,26,10524
+Monte,0.48,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.842651,1225,32,9380
+Monte Carlo Fashions Inc,0.53,0.78,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.842651,1226,28,10197
+Fluor Corporation International,0.49,0.75,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.843634,1227,26,10621
+Fluor Corporation Inc,0.51,0.72,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.843634,1228,29,10473
+Fluor Corporation International,0.54,0.72,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.843634,1229,30,9647
+Fluor Corporation Ltd,0.49,0.8,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.843634,1230,29,9193
+Dow Inc Corporation,0.59,0.6,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.843634,1231,44,4767
+Dow Inc International,0.59,0.62,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.844633,1232,49,4932
+Dow Inc Corporation,0.54,0.63,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.844633,1233,45,4716
+DuPont de Nemours Inc Corporation,0.45,0.78,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.844633,1234,25,9487
+DuPont de Nemours Inc International,0.46,0.8,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.844633,1235,26,9607
+DuPont de Nemours Inc International,0.5,0.76,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.844633,1236,31,9350
+Eastman Chemical Company Internatio,0.52,0.68,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.844633,1237,48,4726
+Eastman Chemical Company Inc,0.53,0.64,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.845632,1238,46,4510
+Eastman,0.53,0.64,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.845632,1239,48,4724
+Eastman Chemical Company Ltd,0.57,0.65,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.845632,1240,42,5364
+JPMorgan Chase Corporation,0.49,0.74,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.845632,1241,31,10968
+JPMorgan Chase International,0.51,0.72,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.845632,1242,31,10189
+JPMorgan Chase Inc,0.45,0.77,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.846633,1243,28,10890
+Sanofi S.A Corporation,0.32,0.9,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.846633,1244,22,902
+Sanofi S.A Ltd,0.28,0.85,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.846633,1245,24,1041
+Sanofi S.A Ltd,0.3,0.86,Leverage,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.846633,1246,24,987
+Valero Energy Corporation Internati,0.62,0.89,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.846633,1247,62,21365
+Valero Energy Corporation Internati,0.65,0.83,Strategic,hybrid_phase1_vendors.csv,hybrid_phase1,2026-03-22T20:56:09.847632,1248,58,19863
