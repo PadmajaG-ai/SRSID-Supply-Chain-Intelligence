@@ -1,0 +1,30 @@
+{
+  "phase": "Phase 2 v2: Entity Resolution with Regional Variant Detection",
+  "timestamp": "2026-03-22T22:38:25.647929",
+  "improvement": "Distinguishes between TRUE DUPLICATES and REGIONAL VARIANTS",
+  "input": {
+    "total_vendors": 225
+  },
+  "process": {
+    "regional_variant_detection": "ENABLED",
+    "regional_variants_kept_separate": 0,
+    "clustering": {
+      "clusters_created": 191,
+      "pairs_consolidated": 34
+    }
+  },
+  "output": {
+    "unified_suppliers": 191,
+    "regional_variants_as_separate_entities": 0,
+    "consolidation_ratio": 1.18,
+    "quality": "PASS",
+    "errors": 0
+  },
+  "files_created": [
+    "phase2_unified_supplier_master_v2.csv",
+    "phase2_supplier_consolidation_mapping_v2.csv",
+    "phase2_consolidated_risk_assessment_v2.csv",
+    "phase2_regional_variants_detected.csv",
+    "phase2_quality_report_v2.json"
+  ]
+}

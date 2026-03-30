@@ -1,0 +1,33 @@
+OTTR (On-Time To Request)	The Requested Date	"Is the vendor actually meeting my business needs?"
+. Operational Performance (The "Reliability" Metrics)
+These track how well the vendor actually does their job day-to-day.
+
+On-Time Delivery (OTD): The percentage of orders delivered on or before the promised date. In Ariba, this is often pulled from Goods Receipt (GR) data.
+
+Supplier Defect Rate: The ratio of substandard products or service failures to the total units/events delivered (measured in PPM—Parts Per Million).
+
+Lead Time Variability: Not just how fast they are, but how predictable they are. High variability ruins your production or project scheduling.
+
+Order Accuracy: The percentage of orders delivered with the correct quantity, items, and documentation (matching the PO).
+
+2. Financial & Strategic Metrics (The "Value" Metrics)
+These measure the economic impact of the partnership.
+
+Purchase Price Variance (PPV): The difference between the standard/contracted price and the actual price paid.
+
+Contract Compliance Rate: The percentage of spend that stays within the negotiated contract terms. This is critical for preventing "Maverick Spend."
+
+Procurement ROI: A comparison of the total cost of managing the vendor vs. the savings and value they generate.
+
+Innovation Contribution: A qualitative score tracking how often the vendor suggests cost-saving designs, sustainable materials, or process improvements.
+
+3. Risk & Compliance (The "Resilience" Metrics)
+Essential for a Supplier Risk Dashboard, which you’ve expressed interest in building.
+
+Financial Stability Score: Uses credit ratings (like D&B or RapidRatings) to predict the likelihood of vendor bankruptcy.
+
+Cybersecurity Posture: Assessment of their data protection standards (ISO 27001, SOC 2) and their history of data breaches.
+
+ESG & Sustainability Score: Measurement of their environmental impact, labor practices, and ethical governance—increasingly a legal requirement in many regions.
+
+Concentration Risk: How much of your critical business depends on this one vendor? Over-reliance creates a single point of failure.

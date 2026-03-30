@@ -1,51 +1,48 @@
-Add this content to `.gitignore`:
-```
-# Python
+# ── Secrets (NEVER commit these) ─────────────────────────────
+.env
+*.env
+
+# ── Python ───────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Virtual Environment
+*.pyo
 venv/
-ENV/
+.venv/
 env/
+venv311/
+.venv311/
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Data files (keep code, exclude large data files)
-data/processed/*.csv
-data/raw/*.csv
+# ── Logs ─────────────────────────────────────────────────────
 logs/
 *.log
 
-# OS
+# ── Models (large binary files) ──────────────────────────────
+models/*.pkl
+models/*.joblib
+
+# ── Generated reports (re-created by pipeline) ───────────────
+reports/*.csv
+reports/*.json
+
+# ── Old synthetic data (scrapped) ────────────────────────────
+phase1_tables/
+phase2_outputs/
+phase3_features/
+phase3_models/
+phase3_risk_predictions/
+phase3_segmentation/
+phase3_forecasting/
+phase3_anomalies/
+phase3_recommendations/
+phase3_xai/
+data/processed/
+data/raw/
+training_datasets/
+
+# ── OS ────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
 
-# Project specific
-*.json
-~$*
-.pytest_cache/
-.coverage
+# ── IDE ───────────────────────────────────────────────────────
+.vscode/
+.idea/
