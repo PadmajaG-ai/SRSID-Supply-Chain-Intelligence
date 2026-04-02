@@ -24,6 +24,9 @@ models/*.joblib
 reports/*.csv
 reports/*.json
 
+# ── RAG vector index (large binary, rebuild with build_index.py) ──────────────
+rag/chroma_store/
+
 # ── Old synthetic data (scrapped) ────────────────────────────
 phase1_tables/
 phase2_outputs/
