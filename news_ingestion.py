@@ -1,261 +1,103 @@
 """
-News Ingestion for SRSID
-==========================
-Queries NewsAPI, Guardian API, and GDELT for every vendor in the
-Postgres `vendors` table, scores sentiment, classifies disruption type,
-and writes results to the `vendor_news` Postgres table.
+SRSID  —  news_ingestion.py
+==============================
+Fetches supplier news from multiple sources and writes to vendor_news table.
 
-This replaces the old fetch_newsapi_disruptions.py /
-fetch_gdelt_disruptions.py scripts with a single, Postgres-aware module.
-
-Features:
-  - Reads vendor names directly from Postgres (no CSV needed)
-  - Batches queries to stay within free API limits
-  - Rate-limit safe (configurable delay between requests)
-  - Deduplicates articles across sources
-  - Scores sentiment (-1 to +1) and classifies disruption type
-  - Writes results to vendor_news table
+Sources:
+    gdelt    GDELT GKG (free, no key needed) — global events
+    newsapi  NewsAPI.org (requires NEWSAPI_KEY in .env)
+    guardian The Guardian (requires GUARDIAN_KEY in .env)
 
 Usage:
-    python news_ingestion.py                        # all vendors
-    python news_ingestion.py --vendor "Siemens"     # single vendor test
-    python news_ingestion.py --days 7               # last 7 days only
-    python news_ingestion.py --source newsapi       # single source
-    python news_ingestion.py --limit 50             # first 50 vendors only
-
-Requirements:
-    pip install requests psycopg2-binary pandas python-dotenv
-
-Environment variables (or .env file):
-    NEWSAPI_KEY=your_newsapi_key
-    GUARDIAN_KEY=your_guardian_key
-    DATABASE_URL=postgresql://user:pass@localhost:5432/srsid_db
+    python news_ingestion.py                          # all sources, 30 days
+    python news_ingestion.py --source gdelt           # GDELT only
+    python news_ingestion.py --source newsapi         # NewsAPI only
+    python news_ingestion.py --days 7                 # last 7 days
+    python news_ingestion.py --limit 100              # first 100 vendors only
+    python news_ingestion.py --vendor "Siemens AG"    # single vendor
 """
 
-import os
 import sys
-import time
+import re
 import json
-import hashlib
+import time
 import logging
 import argparse
+import hashlib
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from datetime import datetime, timedelta
-from typing import Iterator
 
 import requests
 import pandas as pd
 
-# ── Logging ───────────────────────────────────────────────────────────────────
+sys.path.insert(0, str(Path(__file__).parent))
+from db.db_client import DBClient
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SETUP
+# ─────────────────────────────────────────────────────────────────────────────
+Path("logs").mkdir(exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.StreamHandler(sys.stdout),
-        logging.FileHandler("news_ingestion.log", encoding="utf-8"),
+        logging.StreamHandler(),
+        logging.FileHandler("logs/news_ingestion.log", encoding="utf-8"),
     ],
 )
 log = logging.getLogger(__name__)
 
-# Load .env if present
 try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
     pass
 
-# ── Config ────────────────────────────────────────────────────────────────────
-NEWSAPI_KEY  = os.environ.get("NEWSAPI_KEY",  "")
-GUARDIAN_KEY = os.environ.get("GUARDIAN_KEY", "")
-DATABASE_URL = os.environ.get(
-    "DATABASE_URL",
-    "postgresql://srsid_user:srsid_pass@localhost:5432/srsid_db"
-)
+import os
+NEWSAPI_KEY   = os.getenv("NEWSAPI_KEY", "")
+GUARDIAN_KEY  = os.getenv("GUARDIAN_KEY", "")
 
-# API rate limits (free tiers)
-NEWSAPI_DELAY_SEC  = 1.0    # 1 req/sec → ~100 req/day free tier
-GUARDIAN_DELAY_SEC = 0.5    # 12 req/sec free tier
-GDELT_DELAY_SEC    = 2.0    # Be polite — no official rate limit
 
-# Article limits per vendor per source
-MAX_ARTICLES_PER_VENDOR = 5
-
-# Disruption keywords by type
-DISRUPTION_TYPES = {
-    "bankruptcy":        ["bankrupt", "insolvency", "liquidat", "chapter 11",
-                          "administration", "receivership", "default", "debt crisis"],
-    "labor_strike":      ["strike", "walkout", "union dispute", "labor action",
-                          "industrial action", "work stoppage", "picket"],
-    "supply_shortage":   ["shortage", "stock out", "out of stock", "supply crunch",
-                          "component shortage", "material shortage", "scarcity"],
-    "geopolitical":      ["sanction", "trade war", "tariff", "embargo", "ban",
-                          "export control", "geopolit", "conflict", "war", "invasion"],
-    "natural_disaster":  ["earthquake", "flood", "hurricane", "typhoon", "tsunami",
-                          "wildfire", "drought", "storm", "disaster", "climate"],
-    "logistics_delay":   ["shipping delay", "port congestion", "freight",
-                          "logistics disruption", "suez", "panama canal",
-                          "container", "transit delay"],
-    "recall":            ["recall", "safety alert", "product defect", "fda warning",
-                          "quality issue", "contamination"],
-    "cyber_incident":    ["cyberattack", "ransomware", "data breach", "hack",
-                          "cybersecurity incident", "outage", "system failure"],
-    "financial_risk":    ["credit downgrade", "rating cut", "profit warning",
-                          "revenue miss", "earnings miss", "cash flow", "writedown"],
-    "regulatory":        ["fine", "penalty", "investigation", "lawsuit", "compliance",
-                          "regulatory action", "anti-trust", "violation"],
-}
-
-# Positive / negative sentiment keywords (simple lexicon)
+# ─────────────────────────────────────────────────────────────────────────────
+# SENTIMENT SCORING
+# ─────────────────────────────────────────────────────────────────────────────
 POSITIVE_WORDS = {
-    "growth", "expand", "record", "strong", "profit", "surge", "beat",
-    "improve", "recovery", "rise", "gain", "award", "partnership", "invest",
-    "innovate", "launch", "win", "success", "robust", "resilient",
+    "growth","expansion","profit","award","partnership","contract","strong",
+    "increase","record","invest","innovative","sustainable","reliable","approved",
+    "upgrade","acquisition","deal","surplus","outperform","recovery",
 }
 NEGATIVE_WORDS = {
-    "fall", "drop", "decline", "loss", "warn", "cut", "layoff", "close",
-    "bankrupt", "shortage", "delay", "recall", "dispute", "risk", "concern",
-    "crisis", "fail", "miss", "down", "weak", "problem", "issue", "halt",
-    "suspend", "restrict", "sanction", "strike", "defect", "breach",
+    "delay","disruption","shortage","recall","lawsuit","fraud","bankruptcy",
+    "fine","penalty","loss","shutdown","strike","sanction","risk","default",
+    "decline","breach","contamination","accident","halt","suspend","warning",
+    "downgrade","investigation","violation","outage","failure","defect","crash",
+}
+DISRUPTION_TYPES = {
+    "shortage":     ["shortage","scarce","depleted","supply gap"],
+    "delay":        ["delay","late","behind schedule","backlog","slow delivery"],
+    "financial":    ["bankruptcy","default","insolvency","loss","receivership"],
+    "geopolitical": ["sanction","tariff","trade war","embargo","geopolitical"],
+    "natural":      ["earthquake","flood","hurricane","typhoon","disaster","fire"],
+    "labour":       ["strike","walkout","labour dispute","worker","union"],
+    "quality":      ["recall","defect","contamination","quality issue","rejection"],
+    "cyber":        ["cyberattack","data breach","hack","ransomware","phishing"],
+    "regulatory":   ["fine","penalty","investigation","violation","lawsuit","ban"],
 }
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# DATABASE
-# ─────────────────────────────────────────────────────────────────────────────
-
-def get_db_conn():
-    """Return a Postgres connection. Raises clearly if unavailable."""
-    try:
-        import psycopg2
-        conn = psycopg2.connect(DATABASE_URL)
-        return conn
-    except ImportError:
-        log.error("psycopg2 not installed: pip install psycopg2-binary")
-        sys.exit(1)
-    except Exception as e:
-        log.error(f"Cannot connect to Postgres: {e}")
-        log.error(f"  DATABASE_URL = {DATABASE_URL}")
-        log.error("  Run: python db/schema.sql first")
-        sys.exit(1)
-
-
-def ensure_news_table(conn):
-    """Create vendor_news table if it doesn't exist."""
-    with conn.cursor() as cur:
-        cur.execute("""
-        CREATE TABLE IF NOT EXISTS vendor_news (
-            id              SERIAL PRIMARY KEY,
-            vendor_id       VARCHAR(50),
-            supplier_name   VARCHAR(500),
-            article_id      VARCHAR(64) UNIQUE,   -- SHA256 of title+source
-            title           TEXT,
-            description     TEXT,
-            url             TEXT,
-            source_name     VARCHAR(200),
-            api_source      VARCHAR(50),           -- newsapi / guardian / gdelt
-            published_at    TIMESTAMP,
-            fetched_at      TIMESTAMP DEFAULT NOW(),
-            sentiment_score FLOAT,                 -- -1 (negative) to +1 (positive)
-            disruption_type VARCHAR(100),          -- primary disruption category
-            disruption_flag BOOLEAN DEFAULT FALSE,
-            days_lookback   INT
-        );
-        CREATE INDEX IF NOT EXISTS idx_vendor_news_vendor_id
-            ON vendor_news(vendor_id);
-        CREATE INDEX IF NOT EXISTS idx_vendor_news_published
-            ON vendor_news(published_at DESC);
-        CREATE INDEX IF NOT EXISTS idx_vendor_news_disruption
-            ON vendor_news(disruption_flag) WHERE disruption_flag = TRUE;
-        """)
-        conn.commit()
-    log.info("  vendor_news table ready")
-
-
-def get_vendors_from_db(conn, limit: int | None = None,
-                        single: str | None = None) -> list[dict]:
-    """Fetch vendor names + IDs from Postgres."""
-    with conn.cursor() as cur:
-        if single:
-            cur.execute(
-                "SELECT vendor_id, supplier_name, country_code, industry "
-                "FROM vendors WHERE supplier_name ILIKE %s LIMIT 10",
-                (f"%{single}%",)
-            )
-        else:
-            sql = ("SELECT vendor_id, supplier_name, country_code, industry "
-                   "FROM vendors WHERE supplier_name IS NOT NULL "
-                   "ORDER BY total_annual_spend DESC NULLS LAST")
-            if limit:
-                sql += f" LIMIT {limit}"
-            cur.execute(sql)
-
-        rows = cur.fetchall()
-
-    vendors = [
-        {"vendor_id": r[0], "supplier_name": r[1],
-         "country": r[2], "industry": r[3]}   # keep dict key as 'country'
-        for r in rows
-    ]
-    log.info(f"Loaded {len(vendors):,} vendors from Postgres")
-    return vendors
-
-
-def article_id(title: str, source: str) -> str:
-    """Stable deduplification key."""
-    return hashlib.sha256(f"{title}|{source}".encode()).hexdigest()[:24]
-
-
-def upsert_articles(conn, articles: list[dict]):
-    """Insert articles, skip duplicates (ON CONFLICT DO NOTHING)."""
-    if not articles:
-        return
-    with conn.cursor() as cur:
-        for a in articles:
-            try:
-                cur.execute("""
-                INSERT INTO vendor_news
-                    (vendor_id, supplier_name, article_id, title, description,
-                     url, source_name, api_source, published_at,
-                     sentiment_score, disruption_type, disruption_flag, days_lookback)
-                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-                ON CONFLICT (article_id) DO NOTHING
-                """, (
-                    a.get("vendor_id"), a.get("supplier_name"),
-                    a.get("article_id"), a.get("title"), a.get("description"),
-                    a.get("url"), a.get("source_name"), a.get("api_source"),
-                    a.get("published_at"), a.get("sentiment_score"),
-                    a.get("disruption_type"), a.get("disruption_flag", False),
-                    a.get("days_lookback"),
-                ))
-            except Exception as e:
-                log.debug(f"    Skip duplicate/error: {e}")
-        conn.commit()
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# SENTIMENT + DISRUPTION CLASSIFICATION
-# ─────────────────────────────────────────────────────────────────────────────
-
 def score_sentiment(text: str) -> float:
-    """Simple lexicon-based sentiment score: -1 to +1."""
+    """Return sentiment score -1 to +1 based on keyword presence."""
     if not text:
         return 0.0
-    words  = set(text.lower().split())
+    words  = set(re.sub(r"[^a-z\s]", "", text.lower()).split())
     pos    = len(words & POSITIVE_WORDS)
     neg    = len(words & NEGATIVE_WORDS)
     total  = pos + neg
-    if total == 0:
-        return 0.0
-    return round((pos - neg) / total, 3)
+    return round((pos - neg) / total, 3) if total else 0.0
 
 
-def classify_disruption(text: str) -> tuple[str | None, bool]:
-    """
-    Returns (disruption_type, is_disruption_flag).
-    Checks title + description for disruption keyword matches.
-    """
-    if not text:
-        return None, False
+def classify_disruption(text: str):
+    """Return (disruption_type, disruption_flag) from article text."""
     tl = text.lower()
     for dtype, keywords in DISRUPTION_TYPES.items():
         if any(kw in tl for kw in keywords):
@@ -263,306 +105,229 @@ def classify_disruption(text: str) -> tuple[str | None, bool]:
     return None, False
 
 
-def make_article(vendor: dict, title: str, description: str,
-                 url: str, source: str, api: str,
-                 published: str | None, days: int) -> dict:
-    combined  = f"{title} {description}"
-    sentiment = score_sentiment(combined)
-    disr_type, disr_flag = classify_disruption(combined)
-    return {
-        "vendor_id":       vendor["vendor_id"],
-        "supplier_name":   vendor["supplier_name"],
-        "article_id":      article_id(title, source),
-        "title":           title[:500] if title else "",
-        "description":     description[:1000] if description else "",
-        "url":             url,
-        "source_name":     source,
-        "api_source":      api,
-        "published_at":    published,
-        "sentiment_score": sentiment,
-        "disruption_type": disr_type,
-        "disruption_flag": disr_flag,
-        "days_lookback":   days,
-    }
+def make_article_id(vendor_id: str, url: str) -> str:
+    """Stable deduplification ID."""
+    return hashlib.md5(f"{vendor_id}|{url}".encode()).hexdigest()[:16]
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# SOURCE 1 — NEWSAPI
+# GDELT (FREE — no key required)
 # ─────────────────────────────────────────────────────────────────────────────
 
-def fetch_newsapi(vendor: dict, days: int) -> list[dict]:
-    """Fetch up to MAX_ARTICLES_PER_VENDOR articles from NewsAPI for one vendor."""
+def fetch_gdelt(vendor_name: str, days: int) -> list[dict]:
+    """
+    Query GDELT GKG API for vendor mentions.
+    Returns list of article dicts.
+    """
+    query   = requests.utils.quote(f'"{vendor_name}"')
+    since   = (datetime.now(timezone.utc) - timedelta(days=days)
+               ).strftime("%Y%m%d%H%M%S")
+    url     = (
+        f"https://api.gdeltproject.org/api/v2/doc/doc"
+        f"?query={query}&mode=artlist&maxrecords=20"
+        f"&startdatetime={since}&format=json&sort=DateDesc"
+    )
+    try:
+        r = requests.get(url, timeout=15)
+        if r.status_code != 200:
+            return []
+        data     = r.json()
+        articles = data.get("articles", [])
+        results  = []
+        for a in articles:
+            title   = a.get("title", "")
+            full    = f"{title} {a.get('seendescription','')}"
+            sent    = score_sentiment(full)
+            dtype, dflag = classify_disruption(full)
+            results.append({
+                "title":          title[:500],
+                "url":            a.get("url", ""),
+                "source_name":    a.get("domain", "GDELT"),
+                "published_at":   a.get("seendate", "")[:14],
+                "sentiment_score":sent,
+                "disruption_type":dtype,
+                "disruption_flag":dflag,
+                "api_source":     "gdelt",
+                "raw_snippet":    a.get("seendescription","")[:1000],
+            })
+        return results
+    except Exception as e:
+        log.debug(f"    GDELT error for {vendor_name}: {e}")
+        return []
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NEWSAPI
+# ─────────────────────────────────────────────────────────────────────────────
+
+def fetch_newsapi(vendor_name: str, days: int) -> list[dict]:
     if not NEWSAPI_KEY:
         return []
-
-    from_date = (datetime.utcnow() - timedelta(days=days)).strftime("%Y-%m-%d")
+    since = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
+    url   = "https://newsapi.org/v2/everything"
     params = {
-        "q":        f'"{vendor["supplier_name"]}"',
-        "from":     from_date,
-        "sortBy":   "relevancy",
-        "pageSize": MAX_ARTICLES_PER_VENDOR,
-        "language": "en",
+        "q":        f'"{vendor_name}"',
+        "from":     since,
+        "sortBy":   "publishedAt",
+        "pageSize": 10,
         "apiKey":   NEWSAPI_KEY,
+        "language": "en",
     }
     try:
-        resp = requests.get(
-            "https://newsapi.org/v2/everything",
-            params=params, timeout=10
-        )
-        resp.raise_for_status()
-        data = resp.json()
-
-        articles = []
-        for a in data.get("articles", [])[:MAX_ARTICLES_PER_VENDOR]:
-            articles.append(make_article(
-                vendor,
-                title       = a.get("title", ""),
-                description = a.get("description", "") or a.get("content", ""),
-                url         = a.get("url", ""),
-                source      = a.get("source", {}).get("name", "NewsAPI"),
-                api         = "newsapi",
-                published   = a.get("publishedAt"),
-                days        = days,
-            ))
-        return articles
-
-    except requests.exceptions.HTTPError as e:
-        if "429" in str(e) or "rateLimited" in str(e):
-            log.warning(f"  NewsAPI rate limit hit — sleeping 60s")
-            time.sleep(60)
-        else:
-            log.debug(f"  NewsAPI error for {vendor['supplier_name']}: {e}")
-        return []
+        r = requests.get(url, params=params, timeout=15)
+        if r.status_code != 200:
+            return []
+        results = []
+        for a in r.json().get("articles", []):
+            full    = f"{a.get('title','')} {a.get('description','')}"
+            sent    = score_sentiment(full)
+            dtype, dflag = classify_disruption(full)
+            results.append({
+                "title":          (a.get("title") or "")[:500],
+                "url":            a.get("url", ""),
+                "source_name":    a.get("source", {}).get("name","NewsAPI"),
+                "published_at":   (a.get("publishedAt") or "")[:19],
+                "sentiment_score":sent,
+                "disruption_type":dtype,
+                "disruption_flag":dflag,
+                "api_source":     "newsapi",
+                "raw_snippet":    (a.get("description") or "")[:1000],
+            })
+        return results
     except Exception as e:
-        log.debug(f"  NewsAPI exception for {vendor['supplier_name']}: {e}")
+        log.debug(f"    NewsAPI error for {vendor_name}: {e}")
         return []
-    finally:
-        time.sleep(NEWSAPI_DELAY_SEC)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# SOURCE 2 — GUARDIAN API
+# THE GUARDIAN
 # ─────────────────────────────────────────────────────────────────────────────
 
-def fetch_guardian(vendor: dict, days: int) -> list[dict]:
-    """Fetch articles from The Guardian API for one vendor."""
-    key = GUARDIAN_KEY or "test"   # Guardian allows test key with limited results
-
-    from_date = (datetime.utcnow() - timedelta(days=days)).strftime("%Y-%m-%d")
+def fetch_guardian(vendor_name: str, days: int) -> list[dict]:
+    if not GUARDIAN_KEY:
+        return []
+    since  = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
+    url    = "https://content.guardianapis.com/search"
     params = {
-        "q":           vendor["supplier_name"],
-        "from-date":   from_date,
-        "page-size":   MAX_ARTICLES_PER_VENDOR,
-        "show-fields": "headline,trailText,bodyText",
-        "api-key":     key,
+        "q":           vendor_name,
+        "from-date":   since,
+        "order-by":    "newest",
+        "page-size":   10,
+        "api-key":     GUARDIAN_KEY,
+        "show-fields": "headline,trailText",
     }
     try:
-        resp = requests.get(
-            "https://content.guardianapis.com/search",
-            params=params, timeout=10
-        )
-        resp.raise_for_status()
-        data = resp.json()
-
-        articles = []
-        for a in data.get("response", {}).get("results", [])[:MAX_ARTICLES_PER_VENDOR]:
-            fields = a.get("fields", {})
-            articles.append(make_article(
-                vendor,
-                title       = fields.get("headline", a.get("webTitle", "")),
-                description = fields.get("trailText", "") or fields.get("bodyText", "")[:500],
-                url         = a.get("webUrl", ""),
-                source      = "The Guardian",
-                api         = "guardian",
-                published   = a.get("webPublicationDate"),
-                days        = days,
-            ))
-        return articles
-
+        r = requests.get(url, params=params, timeout=15)
+        if r.status_code != 200:
+            return []
+        results = []
+        for a in r.json().get("response", {}).get("results", []):
+            title   = a.get("fields", {}).get("headline", a.get("webTitle",""))
+            snippet = a.get("fields", {}).get("trailText","")
+            full    = f"{title} {snippet}"
+            sent    = score_sentiment(full)
+            dtype, dflag = classify_disruption(full)
+            results.append({
+                "title":          title[:500],
+                "url":            a.get("webUrl",""),
+                "source_name":    "The Guardian",
+                "published_at":   a.get("webPublicationDate","")[:19],
+                "sentiment_score":sent,
+                "disruption_type":dtype,
+                "disruption_flag":dflag,
+                "api_source":     "guardian",
+                "raw_snippet":    snippet[:1000],
+            })
+        return results
     except Exception as e:
-        log.debug(f"  Guardian error for {vendor['supplier_name']}: {e}")
+        log.debug(f"    Guardian error for {vendor_name}: {e}")
         return []
-    finally:
-        time.sleep(GUARDIAN_DELAY_SEC)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# SOURCE 3 — GDELT
+# WRITE TO POSTGRES
 # ─────────────────────────────────────────────────────────────────────────────
 
-def fetch_gdelt(vendor: dict, days: int) -> list[dict]:
-    """
-    Query GDELT 2.0 DOC API for articles mentioning the vendor.
-    Uses the free, unauthenticated endpoint.
-    """
-    from_date = (datetime.utcnow() - timedelta(days=days)).strftime("%Y%m%d%H%M%S")
-    params = {
-        "query":   f'"{vendor["supplier_name"]}" sourcelang:english',
-        "mode":    "ArtList",
-        "maxrecords": MAX_ARTICLES_PER_VENDOR,
-        "startdatetime": from_date,
-        "format": "json",
-    }
-    try:
-        resp = requests.get(
-            "https://api.gdeltproject.org/api/v2/doc/doc",
-            params=params, timeout=15
-        )
-        resp.raise_for_status()
-        data = resp.json()
+def write_articles(db: DBClient, articles: list[dict],
+                   vendor_id: str, vendor_name: str) -> int:
+    """Insert articles, skip duplicates by URL."""
+    if not articles:
+        return 0
 
-        articles = []
-        for a in data.get("articles", [])[:MAX_ARTICLES_PER_VENDOR]:
-            articles.append(make_article(
-                vendor,
-                title       = a.get("title", ""),
-                description = a.get("seendescription", ""),
-                url         = a.get("url", ""),
-                source      = a.get("domain", "GDELT"),
-                api         = "gdelt",
-                published   = a.get("seendate"),
-                days        = days,
-            ))
-        return articles
-
-    except Exception as e:
-        log.debug(f"  GDELT error for {vendor['supplier_name']}: {e}")
-        return []
-    finally:
-        time.sleep(GDELT_DELAY_SEC)
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# ORCHESTRATOR
-# ─────────────────────────────────────────────────────────────────────────────
-
-def ingest_vendor(vendor: dict, sources: list[str], days: int) -> list[dict]:
-    """Fetch from all requested sources for one vendor. Returns article list."""
-    all_articles = []
-    seen_ids     = set()
-
-    fetchers = {
-        "newsapi":  fetch_newsapi,
-        "guardian": fetch_guardian,
-        "gdelt":    fetch_gdelt,
-    }
-
-    for src in sources:
-        if src not in fetchers:
+    inserted = 0
+    for a in articles:
+        url = a.get("url","")
+        if not url:
             continue
-        fetcher   = fetchers[src]
-        articles  = fetcher(vendor, days)
-        # Deduplicate
-        for a in articles:
-            if a["article_id"] not in seen_ids:
-                seen_ids.add(a["article_id"])
-                all_articles.append(a)
 
-    return all_articles
+        # Parse published_at
+        pub_raw = a.get("published_at","")
+        try:
+            if len(pub_raw) == 14:       # GDELT format YYYYMMDDHHMMSS
+                pub = datetime.strptime(pub_raw, "%Y%m%d%H%M%S")
+            elif "T" in pub_raw:
+                pub = datetime.fromisoformat(pub_raw.replace("Z","+00:00"))
+            else:
+                pub = datetime.strptime(pub_raw[:10], "%Y-%m-%d")
+        except Exception:
+            pub = datetime.now(timezone.utc)
 
+        try:
+            db.execute("""
+                INSERT INTO vendor_news (
+                    vendor_id, supplier_name, title, url,
+                    source_name, published_at,
+                    sentiment_score, disruption_type, disruption_flag,
+                    api_source, raw_snippet
+                ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                ON CONFLICT DO NOTHING
+            """, (
+                vendor_id, vendor_name,
+                a.get("title","")[:500],
+                url[:2000],
+                a.get("source_name","")[:200],
+                pub,
+                float(a.get("sentiment_score",0)),
+                a.get("disruption_type"),
+                bool(a.get("disruption_flag", False)),
+                a.get("api_source",""),
+                a.get("raw_snippet","")[:1000],
+            ))
+            inserted += 1
+        except Exception as e:
+            log.debug(f"    Insert error: {e}")
+            db.conn.rollback()
+            continue
 
-def run_ingestion(vendors: list[dict], sources: list[str],
-                  days: int, conn) -> dict:
-    """Main ingestion loop over all vendors."""
-    total_articles   = 0
-    total_disruptions = 0
-    vendor_coverage  = 0
-
-    log.info(f"\nIngesting news for {len(vendors):,} vendors | "
-             f"Sources: {sources} | Last {days} days")
-    log.info("─" * 60)
-
-    for i, vendor in enumerate(vendors, 1):
-        name = vendor["supplier_name"]
-        articles = ingest_vendor(vendor, sources, days)
-
-        if articles:
-            upsert_articles(conn, articles)
-            disruptive = sum(1 for a in articles if a["disruption_flag"])
-            total_articles    += len(articles)
-            total_disruptions += disruptive
-            vendor_coverage   += 1
-
-            avg_sentiment = sum(a["sentiment_score"] for a in articles) / len(articles)
-            sentiment_label = "🔴 neg" if avg_sentiment < -0.1 else \
-                              "🟢 pos" if avg_sentiment >  0.1 else "⚪ neu"
-            log.info(
-                f"  [{i:>4}/{len(vendors)}] {name:<45} "
-                f"{len(articles):>2} articles | {disruptive:>1} disruptions | {sentiment_label}"
-            )
-        else:
-            log.debug(f"  [{i:>4}/{len(vendors)}] {name:<45} no articles")
-
-        # Progress checkpoint every 50 vendors
-        if i % 50 == 0:
-            log.info(f"  ── Checkpoint: {total_articles:,} articles so far ──")
-
-    return {
-        "total_vendors":      len(vendors),
-        "vendors_with_news":  vendor_coverage,
-        "total_articles":     total_articles,
-        "total_disruptions":  total_disruptions,
-        "sources":            sources,
-        "days_lookback":      days,
-        "run_at":             datetime.utcnow().isoformat(),
-    }
+    db.conn.commit()
+    return inserted
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# POST-INGESTION RISK UPDATE
-# ─────────────────────────────────────────────────────────────────────────────
-
-def update_news_risk_scores(conn):
+def update_vendor_signals(db: DBClient):
     """
-    After ingestion, update the vendors table with news-derived signals:
-    - news_sentiment_score  (avg of last 30 days)
-    - disruption_count_30d  (count of disruptive articles in 30 days)
-    - last_disruption_type  (most recent disruption category)
-    - last_news_at          (most recent article date)
+    Update vendors.news_sentiment_30d and disruption_count_30d
+    from the vendor_news table.
     """
-    log.info("\nUpdating vendor news risk scores in Postgres...")
-    with conn.cursor() as cur:
-        # Check columns exist, add if missing
-        for col, dtype in [
-            ("news_sentiment_30d", "FLOAT"),
-            ("disruption_count_30d", "INT"),
-            ("last_disruption_type", "VARCHAR(100)"),
-            ("last_news_at", "TIMESTAMP"),
-        ]:
-            cur.execute(f"""
-            DO $$ BEGIN
-                IF NOT EXISTS (
-                    SELECT 1 FROM information_schema.columns
-                    WHERE table_name='vendors' AND column_name='{col}'
-                ) THEN
-                    ALTER TABLE vendors ADD COLUMN {col} {dtype};
-                END IF;
-            END $$;
-            """)
-
-        # Update each vendor
-        cur.execute("""
+    log.info("Updating vendor news signals...")
+    db.execute("""
         UPDATE vendors v
         SET
-            news_sentiment_30d = sub.avg_sentiment,
-            disruption_count_30d = sub.disr_count,
-            last_disruption_type = sub.last_disr,
-            last_news_at = sub.latest_date
+            news_sentiment_30d   = sub.avg_sentiment,
+            disruption_count_30d = sub.disruption_count
         FROM (
-            SELECT
-                vendor_id,
-                AVG(sentiment_score)        AS avg_sentiment,
-                COUNT(*) FILTER (WHERE disruption_flag) AS disr_count,
-                MAX(disruption_type) FILTER (WHERE disruption_flag) AS last_disr,
-                MAX(published_at)           AS latest_date
+            SELECT vendor_id,
+                   ROUND(AVG(sentiment_score)::NUMERIC, 4) AS avg_sentiment,
+                   COUNT(*) FILTER (WHERE disruption_flag) AS disruption_count
             FROM vendor_news
             WHERE published_at >= NOW() - INTERVAL '30 days'
             GROUP BY vendor_id
         ) sub
         WHERE v.vendor_id = sub.vendor_id
-        """)
-        conn.commit()
-    log.info("  ✅ vendor news scores updated")
+    """)
+    updated = db.scalar(
+        "SELECT COUNT(*) FROM vendors WHERE news_sentiment_30d IS NOT NULL"
+    )
+    log.info(f"  Updated signals for {updated:,} vendors")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -570,86 +335,113 @@ def update_news_risk_scores(conn):
 # ─────────────────────────────────────────────────────────────────────────────
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Fetch news for all SRSID vendors from NewsAPI/Guardian/GDELT")
-    parser.add_argument("--vendor",  type=str,   default=None,
-                        help="Test with a single vendor name")
-    parser.add_argument("--days",    type=int,   default=30,
+    parser = argparse.ArgumentParser(description="SRSID News Ingestion")
+    parser.add_argument("--source", choices=["gdelt","newsapi","guardian","all"],
+                        default="all", help="News source to query")
+    parser.add_argument("--days",   type=int, default=30,
                         help="Lookback window in days (default: 30)")
-    parser.add_argument("--source",  type=str,   default="all",
-                        choices=["newsapi","guardian","gdelt","all"],
-                        help="Which API to use (default: all)")
-    parser.add_argument("--limit",   type=int,   default=None,
-                        help="Max number of vendors to process")
-    parser.add_argument("--no-update", action="store_true",
-                        help="Skip updating vendor risk scores after ingestion")
+    parser.add_argument("--limit",  type=int, default=None,
+                        help="Max vendors to process (default: all)")
+    parser.add_argument("--vendor", type=str, default=None,
+                        help="Process a single vendor name")
     args = parser.parse_args()
 
-    sources = ["newsapi","guardian","gdelt"] if args.source == "all" \
-              else [args.source]
+    log.info("=" * 60)
+    log.info("SRSID News Ingestion")
+    log.info("=" * 60)
+    log.info(f"  Source  : {args.source}")
+    log.info(f"  Lookback: {args.days} days")
 
-    print()
-    print("╔══════════════════════════════════════════════════════════════════╗")
-    print("║   SRSID News Ingestion — Vendor Risk Intelligence               ║")
-    print("╚══════════════════════════════════════════════════════════════════╝")
-    print()
+    # Check API keys
+    if args.source in ("newsapi","all") and not NEWSAPI_KEY:
+        log.warning("  NEWSAPI_KEY not set — skipping NewsAPI")
+    if args.source in ("guardian","all") and not GUARDIAN_KEY:
+        log.warning("  GUARDIAN_KEY not set — skipping Guardian")
 
-    # API key status
-    print("  API status:")
-    print(f"    NewsAPI  : {'✅ key found' if NEWSAPI_KEY  else '❌ no key (set NEWSAPI_KEY)'}")
-    print(f"    Guardian : {'✅ key found' if GUARDIAN_KEY else '⚠️  using test key (limited)'}")
-    print(f"    GDELT    : ✅ free (no key needed)")
-    print()
+    with DBClient() as db:
+        # Ensure raw_snippet column exists (added in new script, may be missing)
+        db.add_column_if_missing("vendor_news", "raw_snippet", "TEXT")
+        db.conn.commit()
 
-    if not NEWSAPI_KEY and not GUARDIAN_KEY and "gdelt" not in sources:
-        log.error("No API keys configured and GDELT not in sources. Nothing to fetch.")
-        log.error("Set NEWSAPI_KEY and/or GUARDIAN_KEY environment variables.")
-        sys.exit(1)
+        # Ensure URL uniqueness constraint exists
+        try:
+            db.execute(
+                "ALTER TABLE vendor_news ADD CONSTRAINT vendor_news_url_unique UNIQUE (url)"
+            )
+            db.conn.commit()
+        except Exception:
+            db.conn.rollback()   # already exists
 
-    conn = get_db_conn()
-    ensure_news_table(conn)
+        # Load vendor list
+        if args.vendor:
+            vendors = db.fetch_df(
+                "SELECT vendor_id, supplier_name FROM vendors "
+                "WHERE is_active = TRUE AND supplier_name ILIKE %s",
+                (f"%{args.vendor}%",)
+            )
+        else:
+            vendors = db.fetch_df(
+                "SELECT vendor_id, supplier_name FROM vendors "
+                "WHERE is_active = TRUE ORDER BY total_annual_spend DESC NULLS LAST"
+            )
 
-    vendors = get_vendors_from_db(
-        conn,
-        limit  = args.limit,
-        single = args.vendor,
-    )
+        if vendors.empty:
+            log.error("No vendors found in database. Run sap_loader.py first.")
+            sys.exit(1)
 
-    if not vendors:
-        log.error("No vendors found in Postgres. Run sap_phase1_rebuild.py first.")
-        sys.exit(1)
+        if args.limit:
+            vendors = vendors.head(args.limit)
 
-    summary = run_ingestion(vendors, sources, args.days, conn)
+        log.info(f"  Processing {len(vendors):,} vendors")
 
-    if not args.no_update:
-        update_news_risk_scores(conn)
+        # Source functions to call
+        fetchers = []
+        if args.source in ("gdelt","all"):
+            fetchers.append(("GDELT", fetch_gdelt))
+        if args.source in ("newsapi","all") and NEWSAPI_KEY:
+            fetchers.append(("NewsAPI", fetch_newsapi))
+        if args.source in ("guardian","all") and GUARDIAN_KEY:
+            fetchers.append(("Guardian", fetch_guardian))
 
-    conn.close()
+        if not fetchers:
+            log.error("No valid news sources available. Check API keys in .env")
+            sys.exit(1)
 
-    # Print summary
-    print()
-    print("=" * 70)
-    print("  NEWS INGESTION COMPLETE")
-    print("=" * 70)
-    print(f"  Vendors processed    : {summary['total_vendors']:,}")
-    print(f"  Vendors with news    : {summary['vendors_with_news']:,} "
-          f"({summary['vendors_with_news']/summary['total_vendors']*100:.1f}%)")
-    print(f"  Total articles       : {summary['total_articles']:,}")
-    print(f"  Disruption articles  : {summary['total_disruptions']:,}")
-    print(f"  Sources used         : {', '.join(summary['sources'])}")
-    print(f"  Lookback window      : {summary['days_lookback']} days")
-    print()
-    print("  Results stored in Postgres table: vendor_news")
-    print("  Vendor risk scores updated in: vendors.news_sentiment_30d")
-    print()
-    print("  NEXT:")
-    print("    python ml/features.py   → re-run feature engineering with news signals")
-    print()
+        # Process each vendor
+        total_inserted = 0
+        total_vendors  = 0
 
-    # Save summary
-    Path("reports").mkdir(exist_ok=True)
-    with open("reports/news_ingestion_summary.json", "w") as f:
-        json.dump(summary, f, indent=2)
+        for i, (_, row) in enumerate(vendors.iterrows(), 1):
+            vid   = str(row["vendor_id"])
+            vname = str(row["supplier_name"])
+
+            if i % 50 == 0 or i <= 5:
+                log.info(f"  [{i}/{len(vendors)}] {vname}")
+
+            all_articles = []
+            for src_name, fetcher in fetchers:
+                articles = fetcher(vname, args.days)
+                all_articles.extend(articles)
+                if articles:
+                    log.debug(f"    {src_name}: {len(articles)} articles")
+
+            n = write_articles(db, all_articles, vid, vname)
+            if n:
+                total_inserted += n
+                total_vendors  += 1
+
+            # Polite rate limiting
+            time.sleep(0.2)
+
+        # Update vendor signals
+        update_vendor_signals(db)
+
+    log.info("\n" + "=" * 60)
+    log.info("NEWS INGESTION COMPLETE")
+    log.info("=" * 60)
+    log.info(f"  Vendors with news : {total_vendors:,}")
+    log.info(f"  Articles inserted : {total_inserted:,}")
+    log.info(f"\n  Next: streamlit run app/dashboard.py")
 
 
 if __name__ == "__main__":

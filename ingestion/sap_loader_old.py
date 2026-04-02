@@ -185,15 +185,20 @@ def load_vendors(folder: Path, db: DBClient, dry_run: bool) -> int:
     v["city"]            = lfa1["ORT01"].astype(str).str.strip() \
                            if "ORT01" in lfa1.columns else None
 
-    # Decode industry
+    # Decode industry — log actual values first to diagnose mapping gaps
     if "BRSCH" in lfa1.columns:
         v["industry_code"] = lfa1["BRSCH"].astype(str).str.strip()
+        actual_codes = v["industry_code"].value_counts().head(10).to_dict()
+        log.info(f"  Actual BRSCH values (top 10): {actual_codes}")
         v["industry"]      = v["industry_code"].map(
             {k: vv[0] for k, vv in INDUSTRY_MAP.items()}
         ).fillna("Other")
         v["industry_category"] = v["industry_code"].map(
             {k: vv[1] for k, vv in INDUSTRY_MAP.items()}
         ).fillna("Other")
+        mapped = (v["industry"] != "Other").sum()
+        log.info(f"  Industry codes mapped: {mapped} / {len(v)} "
+                 f"({mapped/len(v)*100:.1f}%)")
     else:
         v["industry_code"]     = None
         v["industry"]          = "Other"
@@ -329,12 +334,18 @@ def load_transactions(folder: Path, db: DBClient, dry_run: bool) -> int:
     ]
     tx = tx[[c for c in schema_cols if c in tx.columns]]
 
-    # Quality filter
+    # Quality filter — drop zero spend, no date, AND invalid vendor_id
     before = len(tx)
     tx = tx[tx["transaction_amount"] > 0]
     if "po_date" in tx.columns:
         tx = tx[tx["po_date"].notna()]
-    log.info(f"  Dropped {before - len(tx):,} zero-value / no-date rows")
+    # Drop rows where vendor_id is null/nan — would violate FK constraint
+    if "vendor_id" in tx.columns:
+        tx = tx[
+            tx["vendor_id"].notna() &
+            (tx["vendor_id"].astype(str).str.strip().isin(["", "nan", "NaN", "None"]) == False)
+        ]
+    log.info(f"  Dropped {before - len(tx):,} invalid rows (zero/no-date/no-vendor)")
     log.info(f"  Final: {len(tx):,} transaction rows")
 
     total_spend = tx["transaction_amount"].sum()
@@ -478,6 +489,17 @@ def load_delivery_events(folder: Path, db: DBClient, dry_run: bool) -> int:
     ]
     ev = ev[[c for c in schema_cols if c in ev.columns]]
 
+    # Drop rows with invalid vendor_id — would violate FK constraint
+    if "vendor_id" in ev.columns:
+        before = len(ev)
+        ev = ev[
+            ev["vendor_id"].notna() &
+            (ev["vendor_id"].astype(str).str.strip().isin(["", "nan", "NaN", "None"]) == False)
+        ]
+        dropped = before - len(ev)
+        if dropped:
+            log.info(f"  Dropped {dropped:,} rows with no vendor_id")
+
     if "otif" in ev.columns:
         otif_pct = ev["otif"].mean() * 100
         late_pct = (1 - ev["on_time"].mean()) * 100
@@ -512,12 +534,20 @@ def load_contracts(folder: Path, db: DBClient, dry_run: bool) -> int:
 
     ekko["LIFNR"] = normalise_lifnr(ekko["LIFNR"])
 
-    # Filter to contracts (BSTYP = K)
+    # Filter to contracts — first log actual BSTYP values to diagnose
     if "BSTYP" in ekko.columns:
+        bstyp_counts = ekko["BSTYP"].value_counts().to_dict()
+        log.info(f"  BSTYP values in EKKO: {bstyp_counts}")
         contracts = ekko[
-            ekko["BSTYP"].astype(str).str.upper().isin(["K","MK","L"])
+            ekko["BSTYP"].astype(str).str.upper().isin(["K","MK","L","KK","WK"])
         ].copy()
-        log.info(f"  Contract records: {len(contracts):,} of {len(ekko):,} EKKO rows")
+        if contracts.empty:
+            # Some datasets encode contracts differently — try numeric or blank
+            log.warning("  No K/MK/L contracts — trying all non-F records as contracts")
+            contracts = ekko[
+                ~ekko["BSTYP"].astype(str).str.upper().isin(["F","NB",""])
+            ].copy()
+        log.info(f"  Contract records found: {len(contracts):,} of {len(ekko):,}")
     else:
         log.warning("  BSTYP column missing — cannot identify contracts")
         return 0
@@ -648,8 +678,8 @@ def update_vendor_scores(db: DBClient, dry_run: bool):
         ("Spend concentration", """
             UPDATE vendors
             SET spend_pct_of_portfolio = ROUND(
-                total_annual_spend::NUMERIC /
-                NULLIF((SELECT SUM(total_annual_spend) FROM vendors), 0) * 100,
+                (total_annual_spend::NUMERIC /
+                NULLIF((SELECT SUM(total_annual_spend)::NUMERIC FROM vendors), 0) * 100)::NUMERIC,
                 4
             )
             WHERE total_annual_spend IS NOT NULL
@@ -747,6 +777,125 @@ def update_vendor_scores(db: DBClient, dry_run: bool):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# VENDOR EVALUATION METRICS
+# Computes the 4 SAP-derivable metrics after delivery_events is loaded
+# ─────────────────────────────────────────────────────────────────────────────
+
+def compute_evaluation_metrics(db: DBClient, dry_run: bool):
+    """
+    Compute vendor evaluation metrics from loaded SAP data:
+      - OTTR rate (On-Time To Request)
+      - Lead Time Variability (STDDEV of delay days)
+      - Order Accuracy rate (actual qty / promised qty)
+      - Purchase Price Variance % (PPV)
+    """
+    log.info("\n" + "="*60)
+    log.info("COMPUTING: Vendor Evaluation Metrics")
+    log.info("="*60)
+
+    if dry_run:
+        log.info("  [DRY RUN] Would compute evaluation metrics")
+        return
+
+    # Ensure columns exist
+    for col, dtype in [
+        ("ottr_rate",              "FLOAT"),
+        ("lead_time_variability",  "FLOAT"),
+        ("order_accuracy_rate",    "FLOAT"),
+        ("avg_price_variance_pct", "FLOAT"),
+    ]:
+        db.add_column_if_missing("vendors", col, dtype)
+
+    steps = [
+        ("OTTR rate", """
+            UPDATE vendors v
+            SET ottr_rate = sub.ottr
+            FROM (
+                SELECT vendor_id,
+                       ROUND(AVG(CASE WHEN delay_days <= 0 THEN 1.0 ELSE 0.0 END)::NUMERIC, 4)
+                       AS ottr
+                FROM delivery_events
+                WHERE promised_date IS NOT NULL
+                  AND actual_date   IS NOT NULL
+                GROUP BY vendor_id
+            ) sub
+            WHERE v.vendor_id = sub.vendor_id
+        """),
+        ("Lead time variability", """
+            UPDATE vendors v
+            SET lead_time_variability = sub.variability
+            FROM (
+                SELECT vendor_id,
+                       ROUND(STDDEV(delay_days)::NUMERIC, 2) AS variability
+                FROM delivery_events
+                WHERE delay_days IS NOT NULL
+                GROUP BY vendor_id
+                HAVING COUNT(*) >= 3
+            ) sub
+            WHERE v.vendor_id = sub.vendor_id
+        """),
+        ("Order accuracy rate", """
+            UPDATE vendors v
+            SET order_accuracy_rate = sub.accuracy
+            FROM (
+                SELECT vendor_id,
+                       ROUND(AVG(
+                           CASE
+                               WHEN promised_qty > 0 AND actual_qty IS NOT NULL
+                               THEN LEAST(actual_qty / promised_qty, 1.0)
+                               ELSE NULL
+                           END
+                       )::NUMERIC, 4) AS accuracy
+                FROM delivery_events
+                WHERE promised_qty > 0
+                GROUP BY vendor_id
+            ) sub
+            WHERE v.vendor_id = sub.vendor_id
+        """),
+        ("Purchase price variance", """
+            UPDATE vendors v
+            SET avg_price_variance_pct = sub.ppv_pct
+            FROM (
+                SELECT vendor_id,
+                       ROUND((
+                           (MAX(unit_price) - MIN(unit_price)) /
+                           NULLIF(AVG(unit_price), 0) * 100
+                       )::NUMERIC, 2) AS ppv_pct
+                FROM transactions
+                WHERE unit_price > 0
+                GROUP BY vendor_id
+                HAVING COUNT(DISTINCT unit_price) > 1
+            ) sub
+            WHERE v.vendor_id = sub.vendor_id
+        """),
+    ]
+
+    for label, sql in steps:
+        log.info(f"  Calculating {label}...")
+        try:
+            db.execute(sql)
+            log.info(f"  ✅ {label} updated")
+        except Exception as e:
+            log.error(f"  ❌ {label} failed: {e}")
+
+    # Summary
+    try:
+        summary = db.fetch_df("""
+            SELECT
+                COUNT(*) FILTER (WHERE ottr_rate IS NOT NULL)              AS has_ottr,
+                ROUND(AVG(ottr_rate)::NUMERIC, 3)                          AS avg_ottr,
+                COUNT(*) FILTER (WHERE lead_time_variability IS NOT NULL)  AS has_lt_var,
+                ROUND(AVG(lead_time_variability)::NUMERIC, 2)              AS avg_lt_var,
+                COUNT(*) FILTER (WHERE order_accuracy_rate IS NOT NULL)    AS has_accuracy,
+                ROUND(AVG(order_accuracy_rate)::NUMERIC, 3)                AS avg_accuracy
+            FROM vendors
+        """)
+        log.info(f"\n  Evaluation metrics summary:\n{summary.to_string(index=False)}")
+    except Exception as e:
+        log.warning(f"  Could not fetch summary: {e}")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # MAIN
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -800,6 +949,7 @@ def main():
         # Update vendor scores after all data is loaded
         if not args.table and not args.dry_run:
             update_vendor_scores(db, args.dry_run)
+            compute_evaluation_metrics(db, args.dry_run)
 
     # Summary
     print()

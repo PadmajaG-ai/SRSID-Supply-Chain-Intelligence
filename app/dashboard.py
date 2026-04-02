@@ -38,25 +38,286 @@ except ImportError:
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title=APP_CONFIG["page_title"],
-    page_icon=APP_CONFIG["page_icon"],
-    layout=APP_CONFIG["layout"],
+    page_title="SRSID — Supplier Risk & Spend Intelligence",
+    page_icon="assets/favicon.png" if Path("assets/favicon.png").exists() else None,
+    layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# ── Colors ────────────────────────────────────────────────────────────────────
-COLORS = {
-    "High":       "#E74C3C",
-    "Medium":     "#F39C12",
-    "Low":        "#27AE60",
-    "Strategic":  "#8E44AD",
-    "Leverage":   "#2ECC71",
-    "Bottleneck": "#E74C3C",
-    "Tactical":   "#95A5A6",
-    "A":          "#E74C3C",
-    "B":          "#F39C12",
-    "C":          "#27AE60",
+# ── Professional Design System ────────────────────────────────────────────────
+# Corporate colour palette — dark navy primary, clean greys, semantic accents
+BRAND = {
+    "navy":       "#0F2644",   # primary brand
+    "navy_light": "#1A3A5C",   # sidebar bg
+    "navy_mid":   "#2E5484",   # active elements
+    "accent":     "#1A6FBF",   # interactive blue
+    "accent_light":"#E8F2FB",  # blue tint bg
+    "gold":       "#C9A84C",   # secondary accent
+    "bg":         "#F5F7FA",   # page background
+    "card":       "#FFFFFF",   # card surface
+    "border":     "#E2E8F0",   # subtle borders
+    "text_primary":"#1A202C",  # main text
+    "text_muted":  "#64748B",  # secondary text
 }
+
+COLORS = {
+    "High":       "#C0392B",   # deep red
+    "Medium":     "#B7670A",   # amber-brown (accessible on white)
+    "Low":        "#1E7E4B",   # forest green
+    "Strategic":  "#5B3FA0",   # deep purple
+    "Leverage":   "#1E7E4B",   # green
+    "Bottleneck": "#C0392B",   # red
+    "Tactical":   "#64748B",   # slate
+    "A":          "#C0392B",
+    "B":          "#B7670A",
+    "C":          "#1E7E4B",
+}
+
+st.markdown(f"""
+<style>
+/* ── Google Font ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── Global ── */
+html, body, [class*="css"] {{
+    font-family: 'Inter', -apple-system, sans-serif !important;
+    color: {BRAND['text_primary']};
+}}
+.stApp {{
+    background: {BRAND['bg']} !important;
+}}
+
+/* ── Sidebar ── */
+[data-testid="stSidebar"] {{
+    background: {BRAND['navy']} !important;
+    border-right: none !important;
+}}
+[data-testid="stSidebar"] * {{
+    color: #FFFFFF !important;
+}}
+[data-testid="stSidebar"] .stSelectbox label,
+[data-testid="stSidebar"] .stSlider label {{
+    color: #B8C9DB !important;
+    font-size: 0.78rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}}
+[data-testid="stSidebar"] [data-testid="stMetricValue"] {{
+    color: #FFFFFF !important;
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+}}
+[data-testid="stSidebar"] [data-testid="stMetricLabel"] {{
+    color: #B8C9DB !important;
+    font-size: 0.75rem !important;
+}}
+[data-testid="stSidebar"] hr {{
+    border-color: rgba(255,255,255,0.12) !important;
+}}
+[data-testid="stSidebar"] .stButton > button {{
+    background: rgba(255,255,255,0.08) !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    color: #FFFFFF !important;
+    border-radius: 6px !important;
+    font-size: 0.82rem !important;
+    transition: all 0.15s !important;
+}}
+[data-testid="stSidebar"] .stButton > button:hover {{
+    background: rgba(255,255,255,0.16) !important;
+    border-color: rgba(255,255,255,0.30) !important;
+}}
+
+/* ── Main content ── */
+.block-container {{
+    padding: 2rem 2.5rem 2rem 2.5rem !important;
+    max-width: 1440px !important;
+}}
+
+/* ── Page header ── */
+.page-header {{
+    background: {BRAND['card']};
+    border-bottom: 3px solid {BRAND['accent']};
+    border-radius: 8px 8px 0 0;
+    padding: 1.25rem 1.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}}
+.page-header h2 {{
+    margin: 0;
+    color: {BRAND['navy']};
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}}
+.page-header p {{
+    margin: 0.25rem 0 0;
+    color: {BRAND['text_muted']};
+    font-size: 0.82rem;
+}}
+
+/* ── Tabs ── */
+.stTabs [data-baseweb="tab-list"] {{
+    background: {BRAND['card']} !important;
+    border-bottom: 2px solid {BRAND['border']} !important;
+    gap: 0 !important;
+    border-radius: 8px 8px 0 0;
+    padding: 0 0.5rem;
+}}
+.stTabs [data-baseweb="tab"] {{
+    background: transparent !important;
+    color: {BRAND['text_muted']} !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    padding: 0.8rem 1.2rem !important;
+    border-bottom: 3px solid transparent !important;
+    border-radius: 0 !important;
+    transition: all 0.15s !important;
+}}
+.stTabs [aria-selected="true"] {{
+    color: {BRAND['accent']} !important;
+    border-bottom: 3px solid {BRAND['accent']} !important;
+    background: transparent !important;
+}}
+.stTabs [data-baseweb="tab-panel"] {{
+    background: {BRAND['card']};
+    border-radius: 0 0 8px 8px;
+    padding: 1.5rem;
+    border: 1px solid {BRAND['border']};
+    border-top: none;
+}}
+
+/* ── Cards / sections ── */
+div[data-testid="stVerticalBlock"] > div[data-testid="element-container"] > div {{
+    border-radius: 6px;
+}}
+
+/* ── Metric cards ── */
+[data-testid="stMetric"] {{
+    background: {BRAND['card']};
+    border: 1px solid {BRAND['border']};
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}}
+[data-testid="stMetricValue"] {{
+    color: {BRAND['navy']} !important;
+    font-weight: 700 !important;
+}}
+[data-testid="stMetricLabel"] {{
+    color: {BRAND['text_muted']} !important;
+    font-size: 0.78rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}}
+
+/* ── Dataframes ── */
+[data-testid="stDataFrame"] {{
+    border: 1px solid {BRAND['border']} !important;
+    border-radius: 6px;
+    overflow: hidden;
+}}
+
+/* ── Buttons ── */
+.stButton > button {{
+    background: {BRAND['accent']} !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+    padding: 0.5rem 1.25rem !important;
+    transition: all 0.15s !important;
+}}
+.stButton > button:hover {{
+    background: {BRAND['navy_mid']} !important;
+    box-shadow: 0 2px 8px rgba(26,111,191,0.3) !important;
+}}
+
+/* ── Selectbox / inputs ── */
+.stSelectbox [data-baseweb="select"] {{
+    border-radius: 6px !important;
+    border-color: {BRAND['border']} !important;
+    font-size: 0.85rem !important;
+}}
+
+/* ── Section headers inside tabs ── */
+h3 {{
+    color: {BRAND['navy']} !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    margin-top: 1.25rem !important;
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid {BRAND['border']};
+}}
+
+/* ── Dividers ── */
+hr {{
+    border-color: {BRAND['border']} !important;
+    margin: 1rem 0 !important;
+}}
+
+/* ── Expanders ── */
+.streamlit-expanderHeader {{
+    background: {BRAND['bg']} !important;
+    border: 1px solid {BRAND['border']} !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    color: {BRAND['navy']} !important;
+}}
+
+/* ── Success / warning / info ── */
+.stSuccess {{ background: #F0FDF4 !important; border-left: 4px solid #1E7E4B !important; }}
+.stWarning {{ background: #FFFBEB !important; border-left: 4px solid #B7670A !important; }}
+.stInfo    {{ background: {BRAND['accent_light']} !important; border-left: 4px solid {BRAND['accent']} !important; }}
+
+/* ── Download button ── */
+.stDownloadButton > button {{
+    background: transparent !important;
+    color: {BRAND['accent']} !important;
+    border: 1px solid {BRAND['accent']} !important;
+}}
+.stDownloadButton > button:hover {{
+    background: {BRAND['accent_light']} !important;
+}}
+</style>
+""", unsafe_allow_html=True)
+
+# ── Colors ────────────────────────────────────────────────────────────────────
+
+# ── Plotly chart defaults ──────────────────────────────────────────────────────
+PLOTLY_LAYOUT = dict(
+    font=dict(family="Inter, -apple-system, sans-serif", size=12, color="#1A202C"),
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+    margin=dict(t=40, b=20, l=10, r=10),
+    legend=dict(
+        bgcolor="rgba(255,255,255,0.9)",
+        bordercolor="#E2E8F0",
+        borderwidth=1,
+        font=dict(size=11),
+    ),
+    xaxis=dict(
+        gridcolor="#F1F5F9",
+        linecolor="#E2E8F0",
+        tickfont=dict(size=11, color="#64748B"),
+    ),
+    yaxis=dict(
+        gridcolor="#F1F5F9",
+        linecolor="#E2E8F0",
+        tickfont=dict(size=11, color="#64748B"),
+    ),
+)
+
+def apply_layout(fig, title=None, height=300):
+    fig.update_layout(**PLOTLY_LAYOUT, height=height)
+    if title:
+        fig.update_layout(
+            title=dict(text=title, font=dict(size=13, color="#0F2644", weight=600),
+                       x=0, xanchor="left", pad=dict(l=0, b=8))
+        )
+    return fig
+
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -125,9 +386,15 @@ def load_risk_scores() -> pd.DataFrame:
 
 
 @st.cache_data(ttl=300)
-def load_segments() -> pd.DataFrame:
+def load_segments(vendor_ids: tuple = None) -> pd.DataFrame:
     with DBClient() as db:
-        return db.fetch_df("""
+        where = ""
+        params = None
+        if vendor_ids:
+            placeholders = ",".join(["%s"] * len(vendor_ids))
+            where  = f"WHERE s.vendor_id IN ({placeholders})"
+            params = vendor_ids
+        return db.fetch_df(f"""
             SELECT s.vendor_id, s.supplier_name,
                    s.kraljic_segment, s.supply_risk_score,
                    s.profit_impact_score, s.cluster_label,
@@ -137,8 +404,9 @@ def load_segments() -> pd.DataFrame:
                    v.country_code, v.industry_category
             FROM latest_segments s
             LEFT JOIN vendors v ON s.vendor_id = v.vendor_id
+            {where}
             ORDER BY v.total_annual_spend DESC NULLS LAST
-        """)
+        """, params)
 
 
 @st.cache_data(ttl=300)
@@ -159,9 +427,25 @@ def load_explanations() -> pd.DataFrame:
 
 
 @st.cache_data(ttl=120)
-def load_news(days: int = 30, disruption_only: bool = False) -> pd.DataFrame:
+def load_news(days: int = 30, disruption_only: bool = False,
+              vendor_ids: tuple = None) -> pd.DataFrame:
     with DBClient() as db:
-        return db.get_recent_news(days=days, disruption_only=disruption_only)
+        extra_where = ""
+        params_extra = ()
+        if vendor_ids:
+            placeholders = ",".join(["%s"] * len(vendor_ids))
+            extra_where  = f"AND n.vendor_id IN ({placeholders})"
+            params_extra = vendor_ids
+        return db.fetch_df(f"""
+            SELECT n.vendor_id, n.supplier_name, n.title, n.source_name,
+                   n.published_at, n.sentiment_score, n.disruption_type,
+                   n.disruption_flag, n.url
+            FROM vendor_news n
+            WHERE n.published_at >= NOW() - INTERVAL '{days} days'
+            {"AND n.disruption_flag = TRUE" if disruption_only else ""}
+            {extra_where}
+            ORDER BY n.published_at DESC
+        """, params_extra if params_extra else None)
 
 
 @st.cache_data(ttl=300)
@@ -211,13 +495,18 @@ def load_model_eval() -> dict:
 # UI HELPERS
 # ─────────────────────────────────────────────────────────────────────────────
 
-def metric_card(label: str, value, delta=None, color="#2C3E50"):
-    delta_html = f"<small style='color:gray'>{delta}</small>" if delta else ""
+def metric_card(label: str, value, delta=None, color="#1A6FBF", border_top=True):
+    border = f"border-top: 3px solid {color};" if border_top else ""
+    delta_html = (f"<div style='font-size:0.72rem;color:#64748B;"
+                  f"margin-top:4px'>{delta}</div>") if delta else ""
     st.markdown(
-        f"""<div style='background:{color}22;border-left:4px solid {color};
-                        padding:12px 16px;border-radius:6px;margin-bottom:8px'>
-            <div style='font-size:0.8rem;color:#666'>{label}</div>
-            <div style='font-size:1.6rem;font-weight:700;color:{color}'>{value}</div>
+        f"""<div style='background:#FFFFFF;{border}border-radius:6px;
+                        padding:1rem 1.25rem;border:1px solid #E2E8F0;
+                        box-shadow:0 1px 3px rgba(0,0,0,0.05)'>
+            <div style='font-size:0.72rem;color:#64748B;text-transform:uppercase;
+                        letter-spacing:0.05em;font-weight:500'>{label}</div>
+            <div style='font-size:1.6rem;font-weight:700;color:{color};
+                        margin-top:4px;letter-spacing:-0.02em'>{value}</div>
             {delta_html}</div>""",
         unsafe_allow_html=True,
     )
@@ -242,57 +531,167 @@ def risk_badge(tier: str) -> str:
 # ─────────────────────────────────────────────────────────────────────────────
 
 def render_sidebar() -> dict:
-    st.sidebar.image(
-        "https://img.icons8.com/fluency/48/supply-chain.png", width=48
+    st.sidebar.markdown(
+        f"""<div style='padding:1.25rem 1rem 0.75rem;
+                        border-bottom:1px solid rgba(255,255,255,0.12);
+                        margin-bottom:1rem'>
+            <div style='font-size:1.1rem;font-weight:700;color:#FFFFFF;
+                        letter-spacing:0.02em'>SRSID</div>
+            <div style='font-size:0.72rem;color:#B8C9DB;margin-top:2px;
+                        text-transform:uppercase;letter-spacing:0.08em'>
+                Supplier Risk Intelligence</div>
+        </div>""",
+        unsafe_allow_html=True,
     )
-    st.sidebar.title("SRSID")
-    st.sidebar.caption("Supplier Risk & Spend Intelligence")
-    st.sidebar.divider()
 
-    # Portfolio KPIs
+    # Portfolio KPIs — custom HTML cards (st.metric is invisible on dark bg)
     summary = load_portfolio_summary()
     if summary:
-        st.sidebar.metric("Total Vendors",  summary.get("total_vendors", "—"))
-        st.sidebar.metric("🔴 High Risk",   summary.get("high_risk_count", "—"))
-        st.sidebar.metric("🟡 Medium Risk", summary.get("medium_risk_count", "—"))
-        total = summary.get("total_portfolio_spend")
-        if total:
-            st.sidebar.metric("Portfolio Spend", fmt_spend(total))
-        otif = summary.get("avg_otif_rate")
-        if otif:
-            st.sidebar.metric("Avg OTIF", f"{otif*100:.1f}%")
-    st.sidebar.divider()
+        total_vendors  = summary.get("total_vendors", "—")
+        high_risk      = summary.get("high_risk_count", "—")
+        medium_risk    = summary.get("medium_risk_count", "—")
+        total_spend    = fmt_spend(summary.get("total_portfolio_spend")) \
+                         if summary.get("total_portfolio_spend") else "—"
+        otif           = summary.get("avg_otif_rate")
+        otif_str       = f"{otif*100:.1f}%" if otif else "—"
 
-    # Filters
-    st.sidebar.subheader("Filters")
+        def kpi_card(label, value, accent="#1A6FBF"):
+            return (
+                f"<div style='background:rgba(255,255,255,0.07);"
+                f"border-radius:6px;padding:10px 12px;margin-bottom:6px;"
+                f"border-left:3px solid {accent}'>"
+                f"<div style='font-size:0.68rem;color:#B8C9DB;text-transform:uppercase;"
+                f"letter-spacing:0.07em;margin-bottom:3px'>{label}</div>"
+                f"<div style='font-size:1.2rem;font-weight:700;color:#FFFFFF'>{value}</div>"
+                f"</div>"
+            )
+
+        st.sidebar.markdown(
+            "<div style='padding:0 0.1rem;font-size:0.68rem;color:#B8C9DB;"
+            "text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px'>"
+            "Portfolio Overview</div>",
+            unsafe_allow_html=True,
+        )
+        col1, col2 = st.sidebar.columns(2)
+        col1.markdown(kpi_card("Vendors", total_vendors), unsafe_allow_html=True)
+        col2.markdown(kpi_card("High Risk", high_risk, "#C0392B"), unsafe_allow_html=True)
+        col1.markdown(kpi_card("Med Risk", medium_risk, "#B7670A"), unsafe_allow_html=True)
+        col2.markdown(kpi_card("OTIF", otif_str, "#1E7E4B"), unsafe_allow_html=True)
+        st.sidebar.markdown(kpi_card("Portfolio Spend", total_spend), unsafe_allow_html=True)
+
+    st.sidebar.markdown(
+        "<hr style='border-color:rgba(255,255,255,0.12);margin:0.75rem 0'>",
+        unsafe_allow_html=True,
+    )
+
+    # Filters — inject CSS to make selectbox readable on dark background
+    st.sidebar.markdown("""
+    <style>
+    [data-testid="stSidebar"] .stSelectbox [data-baseweb="select"] > div {
+        background: rgba(255,255,255,0.10) !important;
+        border-color: rgba(255,255,255,0.20) !important;
+        color: #FFFFFF !important;
+    }
+    [data-testid="stSidebar"] .stSelectbox [data-baseweb="select"] span {
+        color: #FFFFFF !important;
+    }
+    [data-testid="stSidebar"] .stSlider [data-testid="stTickBarMin"],
+    [data-testid="stSidebar"] .stSlider [data-testid="stTickBarMax"] {
+        color: #B8C9DB !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    st.sidebar.markdown(
+        "<div style='font-size:0.68rem;color:#B8C9DB;text-transform:uppercase;"
+        "letter-spacing:0.08em;margin-bottom:6px'>Filters</div>",
+        unsafe_allow_html=True,
+    )
 
     filters = {
-        "risk_tier": st.sidebar.selectbox(
-            "Risk Tier", ["All", "High", "Medium", "Low"]
-        ),
-        "industry": st.sidebar.selectbox(
-            "Industry", ["All"] + _get_industries()
-        ),
-        "country": st.sidebar.selectbox(
-            "Country", ["All"] + _get_countries()
-        ),
+        "risk_tier": st.sidebar.selectbox("Risk Tier", ["All", "High", "Medium", "Low"]),
+        "industry":  st.sidebar.selectbox("Industry",  ["All"] + _get_industries()),
+        "country":   st.sidebar.selectbox("Country",   ["All"] + _get_countries()),
     }
 
     spend_range = st.sidebar.slider(
         "Annual Spend ($)", 0, 10_000_000,
-        (0, 10_000_000), step=100_000,
-        format="$%d"
+        (0, 10_000_000), step=100_000, format="$%d"
     )
     filters["spend_min"] = spend_range[0] if spend_range[0] > 0 else None
     filters["spend_max"] = spend_range[1] if spend_range[1] < 10_000_000 else None
 
-    st.sidebar.divider()
-    if st.sidebar.button("🔄 Refresh Data"):
+    st.sidebar.markdown(
+        "<hr style='border-color:rgba(255,255,255,0.12);margin:0.75rem 0'>",
+        unsafe_allow_html=True,
+    )
+    if st.sidebar.button("Refresh Data"):
         st.cache_data.clear()
         st.rerun()
 
-    st.sidebar.caption("Data from PostgreSQL · srsid_db")
+    st.sidebar.markdown(
+        "<div style='font-size:0.68rem;color:rgba(255,255,255,0.30);margin-top:6px'>"
+        "PostgreSQL · srsid_db</div>",
+        unsafe_allow_html=True,
+    )
     return filters
+
+
+@st.cache_data(ttl=300)
+def load_filtered_vendor_ids(risk_tier=None, industry=None, country=None,
+                              spend_min=None, spend_max=None):
+    """Return tuple of vendor_ids matching current filters (tuple for cache key hashing)."""
+    is_filtered = any([
+        risk_tier  and risk_tier  != "All",
+        industry   and industry   != "All",
+        country    and country    != "All",
+        spend_min  is not None,
+        spend_max  is not None,
+    ])
+    if not is_filtered:
+        return None   # None = "no filter" → loaders return all data
+    df = load_vendors(risk_tier=risk_tier, industry=industry, country=country,
+                      spend_min=spend_min, spend_max=spend_max)
+    return tuple(df["vendor_id"].tolist()) if not df.empty else ()
+
+def _fkw(filters):
+    """Extract filter kwargs for load_vendors calls."""
+    return {k: v for k, v in filters.items()
+            if k in ["risk_tier","industry","country","spend_min","spend_max"]}
+
+def _vids(filters):
+    """Get filtered vendor_ids tuple for segment/news/alternatives loaders."""
+    return load_filtered_vendor_ids(**{k: v for k, v in filters.items()
+                                       if k in ["risk_tier","industry","country",
+                                                "spend_min","spend_max"]})
+
+
+
+
+def active_filter_bar(filters: dict):
+    """Show a compact banner when non-default filters are active."""
+    active = {k: v for k, v in filters.items()
+              if v not in (None, "All", 0) and k not in ("spend_min","spend_max")}
+    if filters.get("spend_min") or filters.get("spend_max"):
+        active["spend"] = (
+            f"${filters.get('spend_min', 0):,} – "
+            f"${filters.get('spend_max', 10_000_000):,}"
+        )
+    if active:
+        tags = " · ".join(f"<b>{v}</b>" for v in active.values())
+        st.markdown(
+            f"<div style='background:#E8F2FB;border-left:3px solid #1A6FBF;"
+            f"border-radius:4px;padding:6px 12px;margin-bottom:1rem;"
+            f"font-size:0.8rem;color:#0F2644'>"
+            f"Filtered by: {tags} — charts and tables reflect this selection.</div>",
+            unsafe_allow_html=True,
+        )
+    with DBClient() as db:
+        df = db.fetch_df(
+            "SELECT DISTINCT industry_category FROM vendors "
+            "WHERE industry_category IS NOT NULL ORDER BY industry_category"
+        )
+    return df["industry_category"].tolist() if not df.empty else []
 
 
 @st.cache_data(ttl=600)
@@ -319,31 +718,39 @@ def _get_countries() -> list:
 # TAB 1 — OVERVIEW
 # ─────────────────────────────────────────────────────────────────────────────
 
-def tab_overview():
-    st.header("📊 Executive Overview")
+def tab_overview(filters: dict):
+    st.header("Executive Overview")
+    active_filter_bar(filters)
 
-    summary = load_portfolio_summary()
+    f = {k: v for k, v in filters.items()
+         if k in ["risk_tier","industry","country","spend_min","spend_max"]}
+    is_filtered = any(v not in (None,"All") for v in f.values())
 
-    # KPI row
+    # KPIs — from filtered vendors if filter active, else portfolio summary
+    vendors = load_vendors(**_fkw(filters))
+    if is_filtered and not vendors.empty:
+        total_v  = len(vendors)
+        high     = (vendors["risk_label"]=="High").sum()
+        med      = (vendors["risk_label"]=="Medium").sum()
+        spend    = vendors["total_annual_spend"].sum()
+        otif_v   = vendors["otif_rate"].mean() if "otif_rate" in vendors.columns else None
+        otif_str = f"{otif_v*100:.1f}%" if pd.notna(otif_v) else "—"
+    else:
+        summary  = load_portfolio_summary()
+        total_v  = summary.get("total_vendors","—")
+        high     = summary.get("high_risk_count","—")
+        med      = summary.get("medium_risk_count","—")
+        spend    = summary.get("total_portfolio_spend")
+        otif_val = summary.get("avg_otif_rate")
+        otif_str = f"{otif_val*100:.1f}%" if otif_val else "—"
+
+    # KPI cards
     c1, c2, c3, c4, c5 = st.columns(5)
-    with c1:
-        metric_card("Total Vendors",
-                    summary.get("total_vendors", "—"), color="#2C3E50")
-    with c2:
-        metric_card("High Risk",
-                    summary.get("high_risk_count", "—"), color="#E74C3C")
-    with c3:
-        metric_card("Medium Risk",
-                    summary.get("medium_risk_count", "—"), color="#F39C12")
-    with c4:
-        metric_card("Portfolio Spend",
-                    fmt_spend(summary.get("total_portfolio_spend")),
-                    color="#2980B9")
-    with c5:
-        otif = summary.get("avg_otif_rate")
-        metric_card("Avg OTIF",
-                    f"{otif*100:.1f}%" if otif else "—",
-                    color="#27AE60")
+    with c1: metric_card("Total Vendors",    total_v,            color=BRAND["navy"])
+    with c2: metric_card("High Risk",        high,               color=COLORS["High"])
+    with c3: metric_card("Medium Risk",      med,                color=COLORS["Medium"])
+    with c4: metric_card("Portfolio Spend",  fmt_spend(spend),   color=BRAND["accent"])
+    with c5: metric_card("Avg OTIF",         otif_str,           color=COLORS["Low"])
 
     st.divider()
 
@@ -351,14 +758,13 @@ def tab_overview():
 
     with col1:
         st.subheader("Risk Distribution")
-        vendors = load_vendors()
         if not vendors.empty and "risk_label" in vendors.columns:
             rd = vendors["risk_label"].value_counts().to_dict()
             if PLOTLY:
                 fig = px.pie(names=list(rd.keys()), values=list(rd.values()),
                              color=list(rd.keys()),
                              color_discrete_map=COLORS, hole=0.45)
-                fig.update_layout(margin=dict(t=0, b=0))
+                apply_layout(fig, height=280)
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 st.bar_chart(rd)
@@ -374,8 +780,8 @@ def tab_overview():
                              labels={"x": "Spend ($)", "y": "Country"},
                              color=by_country.values,
                              color_continuous_scale="Blues")
-                fig.update_layout(yaxis=dict(autorange="reversed"),
-                                  margin=dict(t=10), showlegend=False)
+                fig.update_layout(yaxis=dict(autorange="reversed"), showlegend=False)
+                apply_layout(fig, height=280)
                 st.plotly_chart(fig, use_container_width=True)
 
     # Quarterly spend trend
@@ -390,7 +796,7 @@ def tab_overview():
             fig = px.line(qoq, x=x_col, y="total_spend",
                           labels={x_col: "Quarter", "total_spend": "Total Spend ($)"},
                           markers=True)
-            fig.update_layout(margin=dict(t=10))
+            apply_layout(fig)
             st.plotly_chart(fig, use_container_width=True)
         else:
             st.line_chart(qoq.set_index(x_col)["total_spend"])
@@ -415,7 +821,7 @@ def tab_overview():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def tab_risk(filters: dict):
-    st.header("⚠️ Risk Predictions")
+    st.header("Risk Predictions")
 
     risk_df = load_vendors(**{k: v for k, v in filters.items()
                                if k in ["risk_tier","industry","country",
@@ -434,7 +840,7 @@ def tab_risk(filters: dict):
         disp["total_annual_spend"] = disp["total_annual_spend"].apply(fmt_spend)
         st.dataframe(disp, use_container_width=True, hide_index=True)
     else:
-        st.success("✅ No High Risk suppliers in current filter")
+        st.success("No High Risk suppliers in current filter")
 
     col1, col2 = st.columns(2)
     with col1:
@@ -447,7 +853,7 @@ def tab_risk(filters: dict):
                           line_color="red",   annotation_text="High threshold")
             fig.add_vline(x=RISK_THRESHOLDS["medium"], line_dash="dash",
                           line_color="orange", annotation_text="Medium threshold")
-            fig.update_layout(margin=dict(t=10))
+            apply_layout(fig)
             st.plotly_chart(fig, use_container_width=True)
 
     with col2:
@@ -472,7 +878,7 @@ def tab_risk(filters: dict):
     disp.sort_values("composite_risk_score", ascending=False, inplace=True)
     st.dataframe(disp, use_container_width=True, hide_index=True)
 
-    st.download_button("📥 Export",
+    st.download_button("Export",
                        risk_df.to_csv(index=False).encode(),
                        "risk_scores.csv", "text/csv")
 
@@ -482,9 +888,9 @@ def tab_risk(filters: dict):
 # ─────────────────────────────────────────────────────────────────────────────
 
 def tab_segmentation(filters: dict):
-    st.header("🗂️ Supplier Segmentation")
+    st.header("Supplier Segmentation")
 
-    seg = load_segments()
+    seg = load_segments(vendor_ids=_vids(filters))
     if seg.empty:
         st.info("No segmentation data. Run ml/segmentation.py first.")
         return
@@ -494,24 +900,54 @@ def tab_segmentation(filters: dict):
     with col1:
         st.subheader("Kraljic Matrix")
         if PLOTLY and "supply_risk_score" in seg.columns:
+            seg_plot = seg.copy()
+
+            # Bug fix: bubble size — raw spend makes one vendor dominate the chart
+            # Use log10(spend) so $50M and $500K are distinguishable, not 100:1 pixels
+            if "total_annual_spend" in seg_plot.columns:
+                seg_plot["_bubble"] = np.log10(
+                    seg_plot["total_annual_spend"].clip(lower=1)
+                ).clip(lower=1)
+            else:
+                seg_plot["_bubble"] = 5
+
             fig = px.scatter(
-                seg,
+                seg_plot,
                 x="supply_risk_score",
                 y="profit_impact_score",
                 color="kraljic_segment",
                 color_discrete_map=COLORS,
                 hover_name="supplier_name",
-                hover_data=["total_annual_spend","country_code"],
-                size="total_annual_spend",
-                size_max=30,
+                hover_data={"total_annual_spend": True,
+                            "country_code": True,
+                            "_bubble": False},
+                size="_bubble",
+                size_max=20,
+                opacity=0.75,
                 labels={"supply_risk_score": "Supply Risk →",
                         "profit_impact_score": "Profit Impact →"},
             )
+            # Quadrant dividers at the median of each axis
             fig.add_vline(x=seg["supply_risk_score"].median(),
-                          line_dash="dash", line_color="gray")
+                          line_dash="dash", line_color="gray", line_width=1)
             fig.add_hline(y=seg["profit_impact_score"].median(),
-                          line_dash="dash", line_color="gray")
-            fig.update_layout(margin=dict(t=10))
+                          line_dash="dash", line_color="gray", line_width=1)
+            # Quadrant labels (inside the plot area)
+            sr_mid = seg["supply_risk_score"].median()
+            pi_mid = seg["profit_impact_score"].median()
+            for txt, ax, ay in [
+                ("Strategic",  sr_mid + 0.03, pi_mid + 0.03),
+                ("Leverage",   sr_mid - 0.03, pi_mid + 0.03),
+                ("Bottleneck", sr_mid + 0.03, pi_mid - 0.03),
+                ("Tactical",   sr_mid - 0.03, pi_mid - 0.03),
+            ]:
+                fig.add_annotation(
+                    x=ax, y=ay, text=txt,
+                    showarrow=False,
+                    font=dict(size=10, color="gray"),
+                    xanchor="left" if "Strategic" in txt or "Bottleneck" in txt else "right",
+                )
+            apply_layout(fig, height=380)
             st.plotly_chart(fig, use_container_width=True)
 
     with col2:
@@ -552,7 +988,7 @@ def tab_segmentation(filters: dict):
         action_df["total_annual_spend"] = action_df["total_annual_spend"].apply(fmt_spend)
         st.dataframe(action_df, use_container_width=True, hide_index=True)
 
-    st.download_button("📥 Export Segments",
+    st.download_button("Export Segments",
                        seg.to_csv(index=False).encode(),
                        "segments.csv", "text/csv")
 
@@ -561,8 +997,12 @@ def tab_segmentation(filters: dict):
 # TAB 4 — SPEND ANALYTICS
 # ─────────────────────────────────────────────────────────────────────────────
 
-def tab_spend():
-    st.header("💰 Spend Analytics")
+def tab_spend(filters: dict):
+    st.header("Spend Analytics")
+    active_filter_bar(filters)
+    f = {k: v for k, v in filters.items()
+         if k in ["risk_tier","industry","country","spend_min","spend_max"]}
+    vendors = load_vendors(**_fkw(filters))
 
     report  = load_spend_report()
     vendors = load_vendors()
@@ -612,8 +1052,8 @@ def tab_spend():
                         color=hhi_color)
             st.metric("Top 5 Vendor Concentration",
                       f"{co.get('top5_pct', 0):.1f}%",
-                      delta="⚠️ Exceeds 40% limit"
-                      if co.get("top5_exceeds_limit") else "✅ Within limit")
+                      delta="Exceeds 40% limit"
+                      if co.get("top5_exceeds_limit") else "Within limit")
             st.metric("Vendors Needing Diversification",
                       co.get("diversification_needed", 0))
 
@@ -666,7 +1106,7 @@ def tab_spend():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def tab_explainability():
-    st.header("🔍 Risk Explainability (SHAP)")
+    st.header("Risk Explainability (SHAP)")
 
     expl = load_explanations()
     if expl.empty:
@@ -701,7 +1141,7 @@ def tab_explainability():
                 drivers.append({"Feature": label, "SHAP": float(shap)})
         if row.get("mitigator_label") and pd.notna(row.get("mitigator_shap")):
             drivers.append({
-                "Feature": f"✅ {row['mitigator_label']} (mitigator)",
+                "Feature": f"{row['mitigator_label']} (mitigator)",
                 "SHAP": float(row["mitigator_shap"])
             })
 
@@ -742,15 +1182,17 @@ def tab_explainability():
 # TAB 6 — NEWS FEED
 # ─────────────────────────────────────────────────────────────────────────────
 
-def tab_news():
-    st.header("📰 Supplier News & Disruptions")
+def tab_news(filters: dict):
+    st.header("Supplier News & Disruptions")
+    active_filter_bar(filters)
 
     col1, col2 = st.columns([3, 1])
     with col2:
         days = st.selectbox("Lookback", [7, 14, 30, 60], index=2)
         disruption_only = st.checkbox("Disruptions only", value=False)
 
-    news = load_news(days=days, disruption_only=disruption_only)
+    news = load_news(days=days, disruption_only=disruption_only,
+                     vendor_ids=_vids(filters))
 
     if news.empty:
         st.info(f"No news articles in the last {days} days. "
@@ -820,7 +1262,7 @@ def tab_news():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def tab_vendor_profile():
-    st.header("🏢 Vendor Deep Dive")
+    st.header("Vendor Deep Dive")
 
     with DBClient() as db:
         vendor_list = db.fetch_df(
@@ -901,7 +1343,7 @@ def tab_vendor_profile():
                 st.write(f"**Cluster:** {seg.get('cluster_label','—')}")
                 action = seg.get("strategic_action")
                 if action:
-                    st.success(f"💡 {action}")
+                    st.success(f"{action}")
             else:
                 st.caption("No segment data. Run ml/segmentation.py")
 
@@ -926,19 +1368,26 @@ def tab_vendor_profile():
 # ─────────────────────────────────────────────────────────────────────────────
 
 @st.cache_data(ttl=300)
-def load_alternatives() -> pd.DataFrame:
+def load_alternatives(vendor_ids: tuple = None) -> pd.DataFrame:
     with DBClient() as db:
         if not db.table_exists("vendor_alternatives"):
             return pd.DataFrame()
-        return db.fetch_df("""
+        where  = ""
+        params = None
+        if vendor_ids:
+            placeholders = ",".join(["%s"] * len(vendor_ids))
+            where  = f"WHERE vendor_id IN ({placeholders})"
+            params = vendor_ids
+        return db.fetch_df(f"""
             SELECT vendor_id, supplier_name, risk_score, risk_tier,
                    alt_supplier_name, alt_risk_score, alt_risk_tier,
                    alt_country, alt_industry,
                    alternative_rank, similarity_score,
                    recommendation_reason
             FROM vendor_alternatives
+            {where}
             ORDER BY risk_score DESC, alternative_rank ASC
-        """)
+        """, params)
 
 
 @st.cache_data(ttl=300)
@@ -959,10 +1408,11 @@ def load_anomalies() -> pd.DataFrame:
         """)
 
 
-def tab_alternatives():
-    st.header("🔄 Alternative Suppliers & Anomalies")
+def tab_alternatives(filters: dict):
+    st.header("Alternative Suppliers & Anomalies")
+    active_filter_bar(filters)
 
-    alt_df  = load_alternatives()
+    alt_df  = load_alternatives(vendor_ids=_vids(filters))
     anom_df = load_anomalies()
 
     if alt_df.empty and anom_df.empty:
@@ -972,7 +1422,7 @@ def tab_alternatives():
         )
         return
 
-    tab_a, tab_b = st.tabs(["🔄 Alternative Suppliers", "⚡ Anomaly Detection"])
+    tab_a, tab_b = st.tabs(["Alternative Suppliers", "⚡ Anomaly Detection"])
 
     # ── Tab A: Alternatives ───────────────────────────────────────────────────
     with tab_a:
@@ -1021,9 +1471,9 @@ def tab_alternatives():
                             f"{r.get('alt_risk_tier','?')}</span>",
                             unsafe_allow_html=True
                         )
-                        c2.write(f"🌍 {r.get('alt_country','?')}")
-                        c3.write(f"🏭 {r.get('alt_industry','?')}")
-                        st.info(f"💡 {r.get('recommendation_reason','')}")
+                        c2.write(f"{r.get('alt_country','?')}")
+                        c3.write(f"{r.get('alt_industry','?')}")
+                        st.info(f"{r.get('recommendation_reason','')}")
             else:
                 # Show all high-risk vendors and their top-1 alternative
                 top1 = alt_df[alt_df["alternative_rank"] == 1].copy()
@@ -1038,7 +1488,7 @@ def tab_alternatives():
                 )
 
             st.download_button(
-                "📥 Export Alternatives",
+                "Export Alternatives",
                 alt_df.to_csv(index=False).encode(),
                 "alternative_suppliers.csv", "text/csv"
             )
@@ -1071,7 +1521,7 @@ def tab_alternatives():
                         anom_df, x="anomaly_if_score", nbins=30,
                         color_discrete_sequence=["#8E44AD"]
                     )
-                    fig.update_layout(margin=dict(t=10))
+                    apply_layout(fig)
                     st.plotly_chart(fig, use_container_width=True)
 
                 with col2:
@@ -1104,14 +1554,14 @@ def tab_alternatives():
                 st.dataframe(disp, use_container_width=True, hide_index=True)
 
             st.download_button(
-                "📥 Export Anomalies",
+                "Export Anomalies",
                 anom_df.to_csv(index=False).encode(),
                 "anomaly_report.csv", "text/csv"
             )
 
 
 def tab_vendor_scorecard():
-    st.header("📋 Vendor Scorecard")
+    st.header("Vendor Scorecard")
     st.caption(
         "All vendor evaluation metrics in one view. "
         "SAP-computed metrics update automatically when you re-run sap_loader.py. "
@@ -1181,7 +1631,7 @@ def tab_vendor_scorecard():
     st.divider()
 
     # ── Operational ───────────────────────────────────────────────────────────
-    st.subheader("🔧 Operational Performance")
+    st.subheader("Operational Performance")
     c1, c2, c3, c4, c5 = st.columns(5)
 
     def pct_m(col, label, val, target=None):
@@ -1205,7 +1655,7 @@ def tab_vendor_scorecard():
     st.divider()
 
     # ── Financial ─────────────────────────────────────────────────────────────
-    st.subheader("💰 Financial & Strategic")
+    st.subheader("Financial & Strategic")
     c1, c2, c3, c4 = st.columns(4)
     c1.metric("Financial Stability",     f"{v.get('financial_stability') or 0:.0f}/100")
     ppv = v.get("avg_price_variance_pct")
@@ -1215,14 +1665,14 @@ def tab_vendor_scorecard():
     sum_pct = v.get("sum_percentage")
     c3.metric("Contract Compliance",
               f"{sum_pct:.1f}%" if sum_pct else "N/A",
-              delta="Below 80% target" if sum_pct and sum_pct < 80 else "✅ On target",
+              delta="Below 80% target" if sum_pct and sum_pct < 80 else "On target",
               delta_color="inverse" if sum_pct and sum_pct < 80 else "normal")
     c4.metric("Savings Opportunity",     fmt_spend(v.get("savings_opportunity")))
 
     st.divider()
 
     # ── Risk ──────────────────────────────────────────────────────────────────
-    st.subheader("🛡️ Risk & Compliance")
+    st.subheader("Risk & Compliance")
     c1, c2, c3, c4 = st.columns(4)
     c1.metric("Risk Score",             f"{v.get('composite_risk_score') or 0:.3f}")
     c2.metric("Concentration Risk",     v.get("concentration_risk") or "—")
@@ -1233,7 +1683,7 @@ def tab_vendor_scorecard():
     st.divider()
 
     # ── Manual Scorecard ──────────────────────────────────────────────────────
-    st.subheader("✍️ Manual Scorecard Inputs")
+    st.subheader("Manual Scorecard Inputs")
     st.caption("Enter external assessment scores. These are saved to the database.")
 
     col1, col2 = st.columns(2)
@@ -1256,7 +1706,7 @@ def tab_vendor_scorecard():
 
     notes = st.text_area("Notes", value=v.get("scorecard_notes") or "", height=80)
 
-    if st.button("💾 Save Scorecard", type="primary"):
+    if st.button("Save Scorecard", type="primary"):
         with DBClient() as db:
             for col, dtype in [
                 ("defect_rate_ppm","FLOAT"),("innovation_score","FLOAT"),
@@ -1280,7 +1730,7 @@ def tab_vendor_scorecard():
                  cybersec or None, esg or None,
                  notes or None, selected_id)
             )
-        st.success("✅ Scorecard saved")
+        st.success("Scorecard saved")
         st.cache_data.clear()
 
     if v.get("scorecard_updated_at"):
@@ -1290,24 +1740,24 @@ def main():
     filters = render_sidebar()
 
     tabs = st.tabs([
-        "📊 Overview",
-        "⚠️ Risk",
-        "🗂️ Segmentation",
-        "💰 Spend",
-        "🔄 Alternatives",
-        "🔍 Explainability",
-        "📰 News",
-        "🏢 Vendor Profile",
-        "📋 Scorecard",
+        "Overview",
+        "Risk",
+        "Segmentation",
+        "Spend",
+        "Alternatives",
+        "Explainability",
+        "News",
+        "Vendor Profile",
+        "Scorecard",
     ])
 
-    with tabs[0]: tab_overview()
+    with tabs[0]: tab_overview(filters)
     with tabs[1]: tab_risk(filters)
     with tabs[2]: tab_segmentation(filters)
-    with tabs[3]: tab_spend()
-    with tabs[4]: tab_alternatives()
+    with tabs[3]: tab_spend(filters)
+    with tabs[4]: tab_alternatives(filters)
     with tabs[5]: tab_explainability()
-    with tabs[6]: tab_news()
+    with tabs[6]: tab_news(filters)
     with tabs[7]: tab_vendor_profile()
     with tabs[8]: tab_vendor_scorecard()
 

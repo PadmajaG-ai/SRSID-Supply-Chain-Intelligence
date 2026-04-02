@@ -811,34 +811,36 @@ def compute_evaluation_metrics(db: DBClient, dry_run: bool):
             UPDATE vendors v
             SET ottr_rate = sub.ottr
             FROM (
-                SELECT vendor_id,
+                SELECT LTRIM(vendor_id, '0') AS vid,
                        ROUND(AVG(CASE WHEN delay_days <= 0 THEN 1.0 ELSE 0.0 END)::NUMERIC, 4)
                        AS ottr
                 FROM delivery_events
                 WHERE promised_date IS NOT NULL
                   AND actual_date   IS NOT NULL
-                GROUP BY vendor_id
+                  AND vendor_id     IS NOT NULL
+                GROUP BY LTRIM(vendor_id, '0')
             ) sub
-            WHERE v.vendor_id = sub.vendor_id
+            WHERE LTRIM(v.vendor_id, '0') = sub.vid
         """),
         ("Lead time variability", """
             UPDATE vendors v
             SET lead_time_variability = sub.variability
             FROM (
-                SELECT vendor_id,
+                SELECT LTRIM(vendor_id, '0') AS vid,
                        ROUND(STDDEV(delay_days)::NUMERIC, 2) AS variability
                 FROM delivery_events
                 WHERE delay_days IS NOT NULL
-                GROUP BY vendor_id
+                  AND vendor_id  IS NOT NULL
+                GROUP BY LTRIM(vendor_id, '0')
                 HAVING COUNT(*) >= 3
             ) sub
-            WHERE v.vendor_id = sub.vendor_id
+            WHERE LTRIM(v.vendor_id, '0') = sub.vid
         """),
         ("Order accuracy rate", """
             UPDATE vendors v
             SET order_accuracy_rate = sub.accuracy
             FROM (
-                SELECT vendor_id,
+                SELECT LTRIM(vendor_id, '0') AS vid,
                        ROUND(AVG(
                            CASE
                                WHEN promised_qty > 0 AND actual_qty IS NOT NULL
@@ -848,25 +850,27 @@ def compute_evaluation_metrics(db: DBClient, dry_run: bool):
                        )::NUMERIC, 4) AS accuracy
                 FROM delivery_events
                 WHERE promised_qty > 0
-                GROUP BY vendor_id
+                  AND vendor_id IS NOT NULL
+                GROUP BY LTRIM(vendor_id, '0')
             ) sub
-            WHERE v.vendor_id = sub.vendor_id
+            WHERE LTRIM(v.vendor_id, '0') = sub.vid
         """),
         ("Purchase price variance", """
             UPDATE vendors v
             SET avg_price_variance_pct = sub.ppv_pct
             FROM (
-                SELECT vendor_id,
+                SELECT LTRIM(vendor_id, '0') AS vid,
                        ROUND((
                            (MAX(unit_price) - MIN(unit_price)) /
                            NULLIF(AVG(unit_price), 0) * 100
                        )::NUMERIC, 2) AS ppv_pct
                 FROM transactions
                 WHERE unit_price > 0
-                GROUP BY vendor_id
+                  AND vendor_id IS NOT NULL
+                GROUP BY LTRIM(vendor_id, '0')
                 HAVING COUNT(DISTINCT unit_price) > 1
             ) sub
-            WHERE v.vendor_id = sub.vendor_id
+            WHERE LTRIM(v.vendor_id, '0') = sub.vid
         """),
     ]
 

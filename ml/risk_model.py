@@ -54,15 +54,28 @@ MODEL_DIR  = PATHS["models"]
 REPORT_DIR = PATHS["reports"]
 
 FEATURE_COLS = [
+    # Core performance
     "financial_stability", "delivery_performance",
     "supply_risk_score", "profit_impact_score",
+    # Spend
     "total_annual_spend", "transaction_count",
-    "spend_pct_of_portfolio", "geo_risk_numeric",
-    "industry_risk_numeric", "news_sentiment_30d",
-    "disruption_count_30d", "otif_rate",
-    "avg_delay_days", "performance_composite",
-    "composite_risk_score", "delivery_risk_numeric",
-    "spend_concentration_flag", "news_risk_flag",
+    "spend_pct_of_portfolio",
+    # Geo + Industry risk
+    "geo_risk_numeric", "industry_risk_numeric",
+    # News signals
+    "news_sentiment_30d", "disruption_count_30d",
+    # Delivery metrics (SAP-computed)
+    "otif_rate", "avg_delay_days",
+    "ottr_rate",              # On-Time To Request — added
+    "lead_time_variability",  # STDDEV of delay days — added
+    "order_accuracy_rate",    # actual/promised qty — added
+    "avg_price_variance_pct", # PPV — added
+    # Composite signals
+    "performance_composite",
+    "composite_risk_score",
+    "delivery_risk_numeric",
+    "spend_concentration_flag",
+    "news_risk_flag",
 ]
 
 TARGET_COL = "risk_label_3class"

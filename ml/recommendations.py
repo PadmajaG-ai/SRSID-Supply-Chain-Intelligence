@@ -303,10 +303,11 @@ def run_zscore(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
     df["max_zscore"]           = z_scores.max(axis=1).round(4)
     df["zscore_feature"]       = z_scores.idxmax(axis=1)
-    df["anomaly_zscore_flag"]  = (df["max_zscore"] > 3.0)
+    # Use 3.5 (not 3.0) — reduces false positives in large homogeneous datasets
+    df["anomaly_zscore_flag"]  = (df["max_zscore"] > 3.5)
 
     n = df["anomaly_zscore_flag"].sum()
-    log.info(f"  Z-score: {n:,} outliers (|z| > 3)")
+    log.info(f"  Z-score: {n:,} outliers (|z| > 3.5)")
     return df
 
 
@@ -362,17 +363,20 @@ def run_rule_based(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def build_anomaly_report(df: pd.DataFrame) -> pd.DataFrame:
-    """Compile final anomaly report."""
+    """Compile final anomaly report — require 2+ flags to avoid false positives."""
     df = df.copy()
     df["total_anomaly_flags"] = (
         df["anomaly_if_flag"].astype(int) +
         df.get("anomaly_zscore_flag", pd.Series(False, index=df.index)).astype(int) +
         df.get("rule_based_flag",     pd.Series(False, index=df.index)).astype(int)
     )
-    df["is_anomalous"] = df["total_anomaly_flags"] >= 1
+    # Require at least 2 independent signals to flag as anomalous
+    # This prevents the z-score alone from flagging 90% of vendors
+    df["is_anomalous"] = df["total_anomaly_flags"] >= 2
 
     n_total = df["is_anomalous"].sum()
-    log.info(f"  Total anomalous vendors: {n_total:,} ({n_total/len(df)*100:.1f}%)")
+    pct     = n_total / len(df) * 100
+    log.info(f"  Total anomalous vendors: {n_total:,} ({pct:.1f}%) — threshold: 2+ signals")
     return df
 
 

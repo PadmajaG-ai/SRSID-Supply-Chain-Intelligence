@@ -48,6 +48,13 @@ NUMERIC_FEATURES = [
     "disruption_count_30d", "otif_rate",
     "avg_delay_days", "performance_composite",
     "composite_risk_score",
+    # SAP evaluation metrics — computed by sap_loader.py
+    # These are NULL until sap_loader runs compute_evaluation_metrics()
+    # Imputed to median (not dropped) so the model can train on vendors that have them
+    "ottr_rate",              # On-Time To Request %
+    "lead_time_variability",  # STDDEV of delay days
+    "order_accuracy_rate",    # actual qty / promised qty
+    "avg_price_variance_pct", # Purchase Price Variance %
 ]
 
 SPEND_CONCENTRATION_THRESHOLD = SPEND_CONFIG["top1_supplier_max"]
@@ -84,6 +91,8 @@ def load_from_postgres(db: DBClient) -> tuple[pd.DataFrame, pd.DataFrame, pd.Dat
             total_annual_spend, transaction_count,
             avg_order_value, spend_pct_of_portfolio,
             otif_rate, avg_delay_days,
+            ottr_rate, lead_time_variability,
+            order_accuracy_rate, avg_price_variance_pct,
             geo_risk, risk_label
             {spend_select}
         FROM vendors
@@ -237,11 +246,32 @@ def build_spend_features(df: pd.DataFrame, tx: pd.DataFrame) -> pd.DataFrame:
     else:
         df["spend_trend_numeric"] = 0.5
 
-    log_spend = np.log1p(df["total_annual_spend"].clip(0))
-    mn, mx = log_spend.min(), log_spend.max()
-    df["profit_impact_score"] = (
-        (log_spend - mn) / (mx - mn) if mx > mn else pd.Series(0.5, index=df.index)
-    )
+    # Profit impact = spend normalised WITHIN industry category
+    # This prevents US vendors dominating every quadrant simply due to
+    # transaction volume — a mid-sized German supplier should be "high profit
+    # impact" relative to other electronics vendors, not vs US wholesalers.
+    if "industry_category" in df.columns:
+        def industry_normalise(group):
+            log_s = np.log1p(group.clip(0))
+            mn, mx = log_s.min(), log_s.max()
+            if mx > mn:
+                return (log_s - mn) / (mx - mn)
+            return pd.Series(0.5, index=group.index)
+
+        df["profit_impact_score"] = (
+            df.groupby("industry_category")["total_annual_spend"]
+              .transform(industry_normalise)
+        )
+        log.info("  profit_impact_score: normalised within industry category")
+    else:
+        # Fallback: global log normalisation
+        log_spend = np.log1p(df["total_annual_spend"].clip(0))
+        mn, mx = log_spend.min(), log_spend.max()
+        df["profit_impact_score"] = (
+            (log_spend - mn) / (mx - mn) if mx > mn
+            else pd.Series(0.5, index=df.index)
+        )
+        log.info("  profit_impact_score: global normalisation (no industry column)")
     return df
 
 
