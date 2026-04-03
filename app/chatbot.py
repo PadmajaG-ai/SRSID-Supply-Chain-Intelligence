@@ -110,11 +110,23 @@ html, body, [class*="css"] { font-family: 'Inter', -apple-system, sans-serif !im
 # ─────────────────────────────────────────────────────────────────────────────
 # DATA LOADER  — cached, all from Postgres
 # ─────────────────────────────────────────────────────────────────────────────
+
+def _empty_data() -> dict:
+    """Return empty dataframes for all keys — used when DB is unreachable."""
+    empty = pd.DataFrame()
+    return dict(
+        summary={}, vendors=empty, segments=empty, explanations=empty,
+        news=empty, contracts=empty, delivery=empty, alternatives=empty,
+        anomalies=empty, quarterly=empty, feat_imp=empty,
+    )
+
+
 @st.cache_data(ttl=300)
 def load_data() -> dict:
-    with DBClient() as db:
-        summary     = db.get_portfolio_summary() or {}
-        vendors     = db.fetch_df("""
+    try:
+        with DBClient() as db:
+            summary     = db.get_portfolio_summary() or {}
+            vendors     = db.fetch_df("""
             SELECT vendor_id, supplier_name, country_code, industry_category,
                    risk_label, composite_risk_score, total_annual_spend,
                    transaction_count, delivery_performance, financial_stability,
@@ -127,73 +139,88 @@ def load_data() -> dict:
             FROM vendors WHERE is_active = TRUE
             ORDER BY composite_risk_score DESC NULLS LAST
         """)
-        segments    = db.fetch_df("""
-            SELECT s.vendor_id, s.supplier_name, s.kraljic_segment,
-                   s.abc_class, s.cluster_label, s.strategic_action,
-                   s.supply_risk_score, s.profit_impact_score,
-                   v.total_annual_spend, v.composite_risk_score,
-                   v.country_code, v.industry_category
-            FROM latest_segments s
-            LEFT JOIN vendors v ON s.vendor_id = v.vendor_id
-        """)
-        explanations = db.fetch_df("""
-            SELECT e.vendor_id, e.supplier_name, e.predicted_risk_tier,
-                   e.driver_1_label, e.driver_2_label, e.driver_3_label,
-                   e.mitigator_label, e.narrative
-            FROM latest_explanations e
-        """)
-        news        = db.fetch_df("""
-            SELECT n.vendor_id, n.supplier_name, n.title, n.source_name,
-                   n.published_at, n.sentiment_score, n.disruption_type,
-                   n.disruption_flag, n.url, v.country_code, v.industry_category
-            FROM vendor_news n
-            LEFT JOIN vendors v ON n.vendor_id = v.vendor_id
-            WHERE n.published_at >= NOW() - INTERVAL '30 days'
-            ORDER BY n.published_at DESC
-        """)
-        contracts   = db.fetch_df("""
-            SELECT c.vendor_id, c.supplier_name, c.contract_end,
-                   c.days_to_expiry, c.contract_status,
-                   v.total_annual_spend, v.risk_label
-            FROM contracts c
-            LEFT JOIN vendors v ON c.vendor_id = v.vendor_id
-        """)
-        delivery    = db.fetch_df("""
-            SELECT vendor_id, supplier_name,
-                   AVG(delay_days) AS avg_delay,
-                   STDDEV(delay_days) AS delay_std,
-                   AVG(otif::FLOAT)*100 AS otif_pct,
-                   COUNT(*) AS deliveries,
-                   SUM(CASE WHEN delay_days > 5 THEN 1 ELSE 0 END) AS sig_delays
-            FROM delivery_events
-            GROUP BY vendor_id, supplier_name
-        """)
-        alt_exists  = db.table_exists("vendor_alternatives")
-        alternatives = db.fetch_df("""
-            SELECT * FROM vendor_alternatives ORDER BY risk_score DESC, alternative_rank
-        """) if alt_exists else pd.DataFrame()
-        anom_exists = db.table_exists("vendor_anomalies")
-        anomalies   = db.fetch_df("""
-            SELECT * FROM vendor_anomalies WHERE is_anomalous = TRUE
-            ORDER BY total_anomaly_flags DESC
-        """) if anom_exists else pd.DataFrame()
-        quarterly   = db.fetch_df("""
-            SELECT year, quarter,
-                   CAST(year AS TEXT)||'-Q'||CAST(quarter AS TEXT) AS period,
-                   SUM(transaction_amount) AS total_spend,
-                   COUNT(DISTINCT vendor_id) AS vendor_count
-            FROM transactions WHERE year IS NOT NULL
-            GROUP BY year, quarter ORDER BY year, quarter
-        """)
-        fi_path     = Path(__file__).parent.parent / "reports" / "feature_importance.csv"
-        feat_imp    = pd.read_csv(fi_path) if fi_path.exists() else pd.DataFrame()
+            segments    = db.fetch_df("""
+                SELECT s.vendor_id, s.supplier_name, s.kraljic_segment,
+                       s.abc_class, s.cluster_label, s.strategic_action,
+                       s.supply_risk_score, s.profit_impact_score,
+                       v.total_annual_spend, v.composite_risk_score,
+                       v.country_code, v.industry_category
+                FROM latest_segments s
+                LEFT JOIN vendors v ON s.vendor_id = v.vendor_id
+            """)
+            explanations = db.fetch_df("""
+                SELECT e.vendor_id, e.supplier_name, e.predicted_risk_tier,
+                       e.driver_1_label, e.driver_2_label, e.driver_3_label,
+                       e.mitigator_label, e.narrative
+                FROM latest_explanations e
+            """)
+            news        = db.fetch_df("""
+                SELECT n.vendor_id, n.supplier_name, n.title, n.source_name,
+                       n.published_at, n.sentiment_score, n.disruption_type,
+                       n.disruption_flag, n.url, v.country_code, v.industry_category
+                FROM vendor_news n
+                LEFT JOIN vendors v ON n.vendor_id = v.vendor_id
+                WHERE n.published_at >= NOW() - INTERVAL '30 days'
+                ORDER BY n.published_at DESC
+            """)
+            contracts   = db.fetch_df("""
+                SELECT c.vendor_id, c.supplier_name, c.contract_end,
+                       c.days_to_expiry, c.contract_status,
+                       v.total_annual_spend, v.risk_label
+                FROM contracts c
+                LEFT JOIN vendors v ON c.vendor_id = v.vendor_id
+            """)
+            delivery    = db.fetch_df("""
+                SELECT vendor_id, supplier_name,
+                       AVG(delay_days) AS avg_delay,
+                       STDDEV(delay_days) AS delay_std,
+                       AVG(otif::FLOAT)*100 AS otif_pct,
+                       COUNT(*) AS deliveries,
+                       SUM(CASE WHEN delay_days > 5 THEN 1 ELSE 0 END) AS sig_delays
+                FROM delivery_events
+                GROUP BY vendor_id, supplier_name
+            """)
+            alt_exists  = db.table_exists("vendor_alternatives")
+            alternatives = db.fetch_df("""
+                SELECT * FROM vendor_alternatives ORDER BY risk_score DESC, alternative_rank
+            """) if alt_exists else pd.DataFrame()
+            anom_exists = db.table_exists("vendor_anomalies")
+            anomalies   = db.fetch_df("""
+                SELECT * FROM vendor_anomalies WHERE is_anomalous = TRUE
+                ORDER BY total_anomaly_flags DESC
+            """) if anom_exists else pd.DataFrame()
+            quarterly   = db.fetch_df("""
+                SELECT year, quarter,
+                       CAST(year AS TEXT)||'-Q'||CAST(quarter AS TEXT) AS period,
+                       SUM(transaction_amount) AS total_spend,
+                       COUNT(DISTINCT vendor_id) AS vendor_count
+                FROM transactions WHERE year IS NOT NULL
+                GROUP BY year, quarter ORDER BY year, quarter
+            """)
+            fi_path     = Path(__file__).parent.parent / "reports" / "feature_importance.csv"
+            feat_imp    = pd.read_csv(fi_path) if fi_path.exists() else pd.DataFrame()
 
-    return dict(
-        summary=summary, vendors=vendors, segments=segments,
-        explanations=explanations, news=news, contracts=contracts,
-        delivery=delivery, alternatives=alternatives, anomalies=anomalies,
-        quarterly=quarterly, feat_imp=feat_imp,
-    )
+        return dict(
+            summary=summary, vendors=vendors, segments=segments,
+            explanations=explanations, news=news, contracts=contracts,
+            delivery=delivery, alternatives=alternatives, anomalies=anomalies,
+            quarterly=quarterly, feat_imp=feat_imp,
+        )
+
+    except Exception as e:
+        # DB unreachable (e.g. Streamlit Cloud without a configured DB)
+        st.error(
+            "**Database not connected.** "
+            "Configure your PostgreSQL connection in Streamlit secrets:\n\n"
+            "Go to **App settings → Secrets** and add:\n"
+            "```\nDB_HOST = 'your-supabase-host.supabase.co'\n"
+            "DB_PORT = '5432'\n"
+            "DB_NAME = 'postgres'\n"
+            "DB_USER = 'postgres'\n"
+            "DB_PASSWORD = 'your-password'\n```\n\n"
+            f"*Error: {e}*"
+        )
+        return _empty_data()
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1265,7 +1292,7 @@ def resp_esg(d: dict) -> str:
     lines += [
         "ESG scores not yet populated for your vendors.\n",
         "**How to add ESG scores:**",
-        "1. Open the ** Scorecard** tab in the dashboard",
+        "1. Open the **Scorecard** tab in the dashboard",
         "2. Select each vendor and enter their ESG score (0–100)",
         "3. Source: EcoVadis, CDP, Sustainalytics, or internal assessments",
         "4. Scores are saved to Postgres and used in future ML runs\n",
@@ -1490,11 +1517,11 @@ def route(q: str, d: dict) -> tuple[str, str]:
 
 def _rag_response(q: str, d: dict) -> str:
     """Generate response using RAG + Flan-T5."""
-    from rag.retriever import retrieve, build_prompt, CHROMA_PATH
+    from rag.retriever import retrieve, build_prompt, is_available as rag_available
     import rag.llm as llm
 
-    # Graceful fallback if index not built yet
-    if not CHROMA_PATH.exists():
+    # Graceful fallback if pgvector index not built yet
+    if not rag_available():
         return (
             "The vector index has not been built yet.\n\n"
             "Run: `python rag/build_index.py`\n\n"
@@ -1862,9 +1889,9 @@ def main():
         # Generate and show assistant response
         with st.chat_message("assistant"):
             # Show different spinner depending on route
-            from rag.retriever import route_to_rag, CHROMA_PATH
+            from rag.retriever import route_to_rag, is_available as rag_available
             import rag.llm as _llm
-            rag_ready = CHROMA_PATH.exists() and _llm.is_available()
+            rag_ready = rag_available() and _llm.is_available()
             will_rag  = route_to_rag(pending_q) and rag_ready
 
             spinner_msg = "Searching vendor index..." if will_rag else "Querying Postgres..."

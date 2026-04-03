@@ -12,8 +12,47 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Load .env file if present (for API keys)
+# Load .env file if present (for local development)
 load_dotenv()
+
+
+def _get_db_config() -> dict:
+    """
+    Read DB credentials in priority order:
+    1. Streamlit secrets (when running on Streamlit Cloud)
+    2. Environment variables / .env file (local development)
+    3. Hardcoded defaults (local development fallback)
+    """
+    try:
+        import streamlit as st
+        if hasattr(st, "secrets") and "database" in st.secrets:
+            s = st.secrets["database"]
+            return {
+                "host":     s.get("DB_HOST",     "localhost"),
+                "port":     int(s.get("DB_PORT", 5432)),
+                "database": s.get("DB_NAME",     "srsid_db"),
+                "user":     s.get("DB_USER",     "srsid_user"),
+                "password": s.get("DB_PASSWORD", "srsid_pass123"),
+            }
+    except Exception:
+        pass  # Not running in Streamlit context — use env vars
+
+    return {
+        "host":     os.getenv("DB_HOST",     "localhost"),
+        "port":     int(os.getenv("DB_PORT", "5432")),
+        "database": os.getenv("DB_NAME",     "srsid_db"),
+        "user":     os.getenv("DB_USER",     "srsid_user"),
+        "password": os.getenv("DB_PASSWORD", "srsid_pass123"),
+    }
+
+
+DB_CONFIG = _get_db_config()
+
+# Full connection URL (used by psycopg2)
+DB_URL = (
+    f"postgresql://{DB_CONFIG['user']}:{DB_CONFIG['password']}"
+    f"@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['database']}"
+)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PROJECT PATHS
@@ -28,7 +67,6 @@ PATHS = {
     "phase3_xai":   PROJECT_ROOT / "phase3_xai",
 }
 
-# Create folders if they don't exist
 for p in PATHS.values():
     p.mkdir(parents=True, exist_ok=True)
 
@@ -42,24 +80,6 @@ SAP_PATH = Path(
 )
 
 KAGGLE_DATASET = "mustafakeser4/sap-dataset-bigquery-dataset"
-
-# ─────────────────────────────────────────────────────────────────────────────
-# POSTGRESQL DATABASE
-# ─────────────────────────────────────────────────────────────────────────────
-
-DB_CONFIG = {
-    "host":     os.getenv("DB_HOST",     "localhost"),
-    "port":     int(os.getenv("DB_PORT", "5432")),
-    "database": os.getenv("DB_NAME",     "srsid_db"),
-    "user":     os.getenv("DB_USER",     "srsid_user"),
-    "password": os.getenv("DB_PASSWORD", ""),
-}
-
-# Full connection URL (used by psycopg2 / SQLAlchemy)
-DB_URL = (
-    f"postgresql://{DB_CONFIG['user']}:{DB_CONFIG['password']}"
-    f"@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['database']}"
-)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # NEWS API KEYS

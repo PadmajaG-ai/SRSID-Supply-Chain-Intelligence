@@ -56,6 +56,96 @@ log = logging.getLogger(__name__)
 # SCHEMA RUNNER  — pure Python, no psql CLI needed (works on Windows)
 # ─────────────────────────────────────────────────────────────────────────────
 
+def _split_sql(sql: str) -> list[str]:
+    """
+    Split a SQL script into individual statements, correctly handling:
+    - Dollar-quoted strings: $$ ... $$ and $tag$ ... $tag$
+    - Single-quoted strings: '...'
+    - Line comments: -- ...
+    - Block comments: /* ... */
+    Simple semicolon-split breaks on PostgreSQL functions — this doesn't.
+    """
+    statements = []
+    current    = []
+    i          = 0
+    in_dollar  = False
+    dollar_tag = ""
+    in_single  = False
+    in_line_comment  = False
+    in_block_comment = False
+
+    while i < len(sql):
+        ch = sql[i]
+
+        # ── Line comment ──────────────────────────────────────────────────────
+        if not in_dollar and not in_single and not in_block_comment:
+            if ch == '-' and i+1 < len(sql) and sql[i+1] == '-':
+                in_line_comment = True
+        if in_line_comment:
+            current.append(ch)
+            if ch == '\n':
+                in_line_comment = False
+            i += 1
+            continue
+
+        # ── Block comment ─────────────────────────────────────────────────────
+        if not in_dollar and not in_single:
+            if ch == '/' and i+1 < len(sql) and sql[i+1] == '*':
+                in_block_comment = True
+        if in_block_comment:
+            current.append(ch)
+            if ch == '*' and i+1 < len(sql) and sql[i+1] == '/':
+                current.append('/')
+                i += 2
+                in_block_comment = False
+                continue
+            i += 1
+            continue
+
+        # ── Dollar-quoting ────────────────────────────────────────────────────
+        if not in_single and ch == '$':
+            # Find the closing $ of the tag
+            j = i + 1
+            while j < len(sql) and sql[j] != '$' and sql[j] not in ('\n', ' '):
+                j += 1
+            if j < len(sql) and sql[j] == '$':
+                tag = sql[i:j+1]   # e.g. $$ or $BODY$
+                if not in_dollar:
+                    in_dollar  = True
+                    dollar_tag = tag
+                    current.append(sql[i:j+1])
+                    i = j + 1
+                    continue
+                elif tag == dollar_tag:
+                    in_dollar = False
+                    current.append(sql[i:j+1])
+                    i = j + 1
+                    continue
+
+        # ── Single-quoted string ──────────────────────────────────────────────
+        if not in_dollar and ch == "'":
+            in_single = not in_single
+
+        # ── Statement terminator ──────────────────────────────────────────────
+        if ch == ';' and not in_dollar and not in_single:
+            stmt = ''.join(current).strip()
+            if stmt:
+                statements.append(stmt)
+            current = []
+            i += 1
+            continue
+
+        current.append(ch)
+        i += 1
+
+    # Catch any trailing statement without a semicolon
+    stmt = ''.join(current).strip()
+    if stmt:
+        statements.append(stmt)
+
+    return [s for s in statements if s and not s.startswith('--')]
+
+
 def run_schema(dry_run: bool) -> bool:
     """Execute schema.sql and schema_ext.sql via psycopg2 — no psql CLI needed."""
     if dry_run:
@@ -69,6 +159,18 @@ def run_schema(dry_run: bool) -> bool:
         log.error("  Cannot import DBClient — ensure db/db_client.py exists.")
         return False
 
+    # Check if tables already exist (skip-safe on re-runs)
+    try:
+        with DBClient() as db:
+            exists = db.table_exists("vendors")
+            if exists:
+                log.info("  Tables already exist — skipping schema (use --only schema to force re-apply)")
+                return True
+    except Exception as e:
+        log.error(f"  Cannot connect to database: {e}")
+        log.error("  For Supabase: check DB_HOST/DB_USER/DB_PASSWORD in .env")
+        return False
+
     sql_files = [Path("db/schema.sql"), Path("db/schema_ext.sql")]
     for sql_file in sql_files:
         if not sql_file.exists():
@@ -77,12 +179,10 @@ def run_schema(dry_run: bool) -> bool:
         log.info(f"  Applying {sql_file}...")
         try:
             with DBClient() as db:
-                sql = sql_file.read_text(encoding="utf-8")
-                # Split on semicolons and execute each statement
-                statements = [s.strip() for s in sql.split(";")
-                              if s.strip() and not s.strip().startswith("--")]
+                sql  = sql_file.read_text(encoding="utf-8")
+                stmts = _split_sql(sql)
                 ok, skip = 0, 0
-                for stmt in statements:
+                for stmt in stmts:
                     if not stmt:
                         continue
                     try:
@@ -91,17 +191,30 @@ def run_schema(dry_run: bool) -> bool:
                         ok += 1
                     except Exception as e:
                         db.conn.rollback()
-                        # "already exists" errors are expected on re-runs — not failures
-                        if any(kw in str(e).lower() for kw in
-                               ["already exists", "duplicate"]):
+                        msg = str(e).lower()
+                        if any(kw in msg for kw in ["already exists", "duplicate"]):
                             skip += 1
                         else:
-                            log.warning(f"    Statement warning: {e}")
+                            log.warning(f"    Skipped: {str(e)[:120]}")
                             skip += 1
-            log.info(f"  ✅ {sql_file.name}: {ok} statements applied, {skip} skipped")
+            log.info(f"  {sql_file.name}: {ok} applied, {skip} skipped")
         except Exception as e:
-            log.error(f"  ❌ Failed to apply {sql_file}: {e}")
+            log.error(f"  Failed to apply {sql_file}: {e}")
             return False
+
+    # Verify key tables were created
+    try:
+        with DBClient() as db:
+            missing = [t for t in ["vendors","transactions","vendor_news"]
+                       if not db.table_exists(t)]
+        if missing:
+            log.error(f"  Schema incomplete — missing tables: {missing}")
+            log.error("  Tip: paste db/schema.sql into the Supabase SQL Editor and run it there.")
+            return False
+        log.info("  All core tables verified.")
+    except Exception:
+        pass
+
     return True
 
 
@@ -109,57 +222,57 @@ STEPS = [
     {
         "name":     "schema",
         "label":    "Database schema",
-        "fn":       run_schema,          # ← Python function, not psql CLI
-        "timeout":  60,
-        "critical": False,               # Tables likely already exist — non-critical on re-run
+        "fn":       run_schema,
+        "timeout":  180,
+        "critical": True,
     },
     {
         "name":    "sap",
         "label":   "SAP data loader",
         "cmd":     [sys.executable, "ingestion/sap_loader.py"],
-        "timeout": 600,
+        "timeout": 1800,   # 30 min — bulk inserts to remote DB
         "critical": True,
     },
     {
         "name":    "spend",
         "label":   "Spend analytics",
         "cmd":     [sys.executable, "ml/spend_analytics.py"],
-        "timeout": 120,
+        "timeout": 600,    # 10 min
         "critical": False,
     },
     {
         "name":    "features",
         "label":   "Feature engineering",
         "cmd":     [sys.executable, "ml/features.py"],
-        "timeout": 180,
+        "timeout": 900,    # 15 min — reads 2,541 vendors from remote DB
         "critical": True,
     },
     {
         "name":    "risk_model",
         "label":   "Risk prediction model",
         "cmd":     [sys.executable, "ml/risk_model.py"],
-        "timeout": 300,
+        "timeout": 900,    # 15 min
         "critical": True,
     },
     {
         "name":    "segmentation",
         "label":   "Supplier segmentation",
         "cmd":     [sys.executable, "ml/segmentation.py"],
-        "timeout": 120,
+        "timeout": 600,    # 10 min
         "critical": False,
     },
     {
         "name":    "explainability",
         "label":   "SHAP explainability",
         "cmd":     [sys.executable, "ml/explainability.py"],
-        "timeout": 300,
+        "timeout": 900,    # 15 min — SHAP on 2,541 vendors
         "critical": False,
     },
     {
         "name":    "recommendations",
         "label":   "Alternatives + anomaly detection",
         "cmd":     [sys.executable, "ml/recommendations.py"],
-        "timeout": 300,
+        "timeout": 600,    # 10 min
         "critical": False,
     },
     {

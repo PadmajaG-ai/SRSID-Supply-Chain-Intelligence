@@ -331,41 +331,49 @@ def get_db():
 
 @st.cache_data(ttl=300)
 def load_portfolio_summary() -> dict:
-    with DBClient() as db:
-        return db.get_portfolio_summary()
+    try:
+        with DBClient() as db:
+            return db.get_portfolio_summary() or {}
+    except Exception as e:
+        st.error(
+            f"**Database not connected** — configure DB credentials in Streamlit secrets. *{e}*"
+        )
+        return {}
 
 
 @st.cache_data(ttl=300)
 def load_vendors(risk_tier=None, industry=None, country=None,
                   spend_min=None, spend_max=None) -> pd.DataFrame:
-    with DBClient() as db:
-        filters, params = [], []
-        filters.append("is_active = TRUE")
-        if risk_tier and risk_tier != "All":
-            filters.append("risk_label = %s"); params.append(risk_tier)
-        if industry and industry != "All":
-            filters.append("industry_category ILIKE %s"); params.append(f"%{industry}%")
-        if country and country != "All":
-            filters.append("country_code = %s"); params.append(country)
-        if spend_min is not None:
-            filters.append("total_annual_spend >= %s"); params.append(spend_min)
-        if spend_max is not None:
-            filters.append("total_annual_spend <= %s"); params.append(spend_max)
-
-        where = " AND ".join(filters)
-        sql = f"""
-            SELECT vendor_id, supplier_name, country_code,
-                   industry_category, risk_label,
-                   composite_risk_score, total_annual_spend,
-                   transaction_count, delivery_performance,
-                   financial_stability, otif_rate, avg_delay_days,
-                   news_sentiment_30d, disruption_count_30d,
-                   spend_pct_of_portfolio, geo_risk
-            FROM vendors
-            WHERE {where}
-            ORDER BY total_annual_spend DESC NULLS LAST
-        """
-        return db.fetch_df(sql, tuple(params) if params else None)
+    try:
+        with DBClient() as db:
+            filters, params = [], []
+            filters.append("is_active = TRUE")
+            if risk_tier and risk_tier != "All":
+                filters.append("risk_label = %s"); params.append(risk_tier)
+            if industry and industry != "All":
+                filters.append("industry_category ILIKE %s"); params.append(f"%{industry}%")
+            if country and country != "All":
+                filters.append("country_code = %s"); params.append(country)
+            if spend_min is not None:
+                filters.append("total_annual_spend >= %s"); params.append(spend_min)
+            if spend_max is not None:
+                filters.append("total_annual_spend <= %s"); params.append(spend_max)
+            where = " AND ".join(filters)
+            sql = f"""
+                SELECT vendor_id, supplier_name, country_code,
+                       industry_category, risk_label,
+                       composite_risk_score, total_annual_spend,
+                       transaction_count, delivery_performance,
+                       financial_stability, otif_rate, avg_delay_days,
+                       news_sentiment_30d, disruption_count_30d,
+                       spend_pct_of_portfolio, geo_risk
+                FROM vendors
+                WHERE {where}
+                ORDER BY total_annual_spend DESC NULLS LAST
+            """
+            return db.fetch_df(sql, tuple(params) if params else None)
+    except Exception:
+        return pd.DataFrame()
 
 
 @st.cache_data(ttl=300)

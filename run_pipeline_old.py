@@ -53,16 +53,75 @@ log = logging.getLogger(__name__)
 # ─────────────────────────────────────────────────────────────────────────────
 # STEP DEFINITIONS
 # ─────────────────────────────────────────────────────────────────────────────
+# SCHEMA RUNNER  — pure Python, no psql CLI needed (works on Windows)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def run_schema(dry_run: bool) -> bool:
+    """Execute schema.sql and schema_ext.sql via psycopg2 — no psql CLI needed."""
+    if dry_run:
+        log.info("  [DRY RUN] Would apply db/schema.sql + db/schema_ext.sql")
+        return True
+
+    sys.path.insert(0, str(Path(__file__).parent))
+    try:
+        from db.db_client import DBClient
+    except ImportError:
+        log.error("  Cannot import DBClient — ensure db/db_client.py exists.")
+        return False
+
+    # Check if tables already exist (skip-safe on re-runs)
+    try:
+        with DBClient() as db:
+            exists = db.table_exists("vendors")
+            if exists:
+                log.info("  Tables already exist — skipping schema (use --from schema to force re-apply)")
+                return True
+    except Exception as e:
+        log.error(f"  Cannot connect to database: {e}")
+        log.error("  For Supabase: check DB_HOST/DB_USER/DB_PASSWORD in .env or Streamlit secrets")
+        return False
+
+    sql_files = [Path("db/schema.sql"), Path("db/schema_ext.sql")]
+    for sql_file in sql_files:
+        if not sql_file.exists():
+            log.warning(f"  {sql_file} not found — skipping")
+            continue
+        log.info(f"  Applying {sql_file}...")
+        try:
+            with DBClient() as db:
+                sql = sql_file.read_text(encoding="utf-8")
+                statements = [s.strip() for s in sql.split(";")
+                              if s.strip() and not s.strip().startswith("--")]
+                ok, skip = 0, 0
+                for stmt in statements:
+                    if not stmt:
+                        continue
+                    try:
+                        db.execute(stmt)
+                        db.conn.commit()
+                        ok += 1
+                    except Exception as e:
+                        db.conn.rollback()
+                        if any(kw in str(e).lower() for kw in
+                               ["already exists", "duplicate"]):
+                            skip += 1
+                        else:
+                            log.warning(f"    Statement warning: {e}")
+                            skip += 1
+            log.info(f"  ✅ {sql_file.name}: {ok} statements applied, {skip} skipped")
+        except Exception as e:
+            log.error(f"  ❌ Failed to apply {sql_file}: {e}")
+            return False
+    return True
+
+
 STEPS = [
     {
-        "name":    "schema",
-        "label":   "Database schema",
-        "cmd":     ["./psql", "-U", "srsid_user", "-d", "srsid_db",
-                    "-h", "localhost", "-f", "db/schema.sql"],
-        "then":    ["./psql", "-U", "srsid_user", "-d", "srsid_db",
-                    "-h", "localhost", "-f", "db/schema_ext.sql"],
-        "timeout": 60,
-        "critical": True,
+        "name":     "schema",
+        "label":    "Database schema",
+        "fn":       run_schema,
+        "timeout":  120,
+        "critical": True,    # ← Critical: if tables don't exist, nothing else works
     },
     {
         "name":    "sap",
@@ -115,10 +174,12 @@ STEPS = [
     },
     {
         "name":    "news",
-        "label":   "News ingestion",
+        "label":   "News ingestion (sample: 200 vendors)",
+        # Pipeline runs a 200-vendor sample (~20 min).
+        # For full 2,541-vendor run: python news_ingestion.py --source gdelt --days 30
         "cmd":     [sys.executable, "news_ingestion.py",
-                    "--source", "gdelt", "--days", "30"],
-        "timeout": 600,
+                    "--source", "gdelt", "--days", "30", "--limit", "200"],
+        "timeout": 1800,      # 30 min for 200 vendors
         "critical": False,
     },
 ]
@@ -134,19 +195,34 @@ def run_step(step: dict, dry_run: bool) -> bool:
     """Run one pipeline step. Returns True if successful."""
     name    = step["name"]
     label   = step["label"]
-    timeout = step["timeout"]
+    timeout = step.get("timeout", 300)
 
     log.info(f"\n{'='*60}")
     log.info(f"  STEP: {label.upper()}")
     log.info(f"{'='*60}")
 
+    # ── Python function step (no subprocess) ──────────────────────────────────
+    if "fn" in step:
+        t0 = time.time()
+        try:
+            ok = step["fn"](dry_run)
+            elapsed = time.time() - t0
+            if ok:
+                log.info(f"  ✅ {label} completed in {elapsed:.1f}s")
+            else:
+                log.error(f"  ❌ {label} failed")
+            return ok
+        except Exception as e:
+            log.error(f"  ❌ {label} error: {e}")
+            return False
+
+    # ── Subprocess step ───────────────────────────────────────────────────────
     if dry_run:
         log.info(f"  [DRY RUN] Would run: {' '.join(step['cmd'])}")
         if step.get("then"):
             log.info(f"  [DRY RUN] Then run: {' '.join(step['then'])}")
         return True
 
-    # Primary command
     cmds = [step["cmd"]]
     if step.get("then"):
         cmds.append(step["then"])
@@ -155,12 +231,7 @@ def run_step(step: dict, dry_run: bool) -> bool:
         log.info(f"  Running: {' '.join(cmd)}")
         t0 = time.time()
         try:
-            result = subprocess.run(
-                cmd,
-                timeout=timeout,
-                capture_output=False,   # show output live
-                text=True,
-            )
+            result = subprocess.run(cmd, timeout=timeout, text=True)
             elapsed = time.time() - t0
             if result.returncode == 0:
                 log.info(f"  ✅ {label} completed in {elapsed:.1f}s")

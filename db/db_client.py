@@ -51,18 +51,34 @@ class DBClient:
     # ── Connection lifecycle ──────────────────────────────────────────────
 
     def connect(self) -> "DBClient":
-        """Open a connection to srsid_db."""
+        """Open a connection to the database.
+        Automatically adds sslmode=require for non-localhost hosts (e.g. Supabase).
+        """
         try:
-            self._conn = psycopg2.connect(DB_URL)
+            host = DB_CONFIG.get("host", "localhost")
+            is_remote = host not in ("localhost", "127.0.0.1", "::1")
+
+            if is_remote:
+                # Supabase and most cloud Postgres require SSL
+                connect_url = DB_URL + ("&sslmode=require"
+                                        if "?" in DB_URL else "?sslmode=require")
+            else:
+                connect_url = DB_URL
+
+            self._conn = psycopg2.connect(connect_url)
             self._conn.autocommit = False
-            log.debug("Connected to srsid_db")
+            log.debug(f"Connected to {host}:{DB_CONFIG.get('port', 5432)}")
             return self
         except psycopg2.OperationalError as e:
             log.error(f"Cannot connect to database: {e}")
             log.error(f"  Host    : {DB_CONFIG['host']}:{DB_CONFIG['port']}")
             log.error(f"  Database: {DB_CONFIG['database']}")
             log.error(f"  User    : {DB_CONFIG['user']}")
-            log.error("  Fix: check Postgres is running  →  pg_isready")
+            if "localhost" not in DB_CONFIG.get("host", "localhost"):
+                log.error("  Tip: Supabase requires sslmode=require — already added automatically")
+                log.error("  Check host/password in .env or Streamlit secrets")
+            else:
+                log.error("  Fix: check Postgres is running  →  pg_isready")
             raise
 
     def close(self):
