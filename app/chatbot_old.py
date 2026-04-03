@@ -98,16 +98,10 @@ html, body, [class*="css"] { font-family: 'Inter', -apple-system, sans-serif !im
 /* Chat input */
 [data-testid="stChatInput"] textarea {
     border-radius: 8px !important; font-size: 0.89rem !important;
-    border: 1px solid #CBD5E0 !important;
-    background: #FFFFFF !important;
-    color: #1A202C !important;
-}
-[data-testid="stChatInput"] textarea::placeholder {
-    color: #94A3B8 !important;
+    border: 1px solid #CBD5E0 !important; background: #FFFFFF !important;
 }
 [data-testid="stChatInput"]:focus-within {
-    border-color: #1A6FBF !important;
-    box-shadow: 0 0 0 3px rgba(26,111,191,0.1) !important;
+    border-color: #1A6FBF !important; box-shadow: 0 0 0 3px rgba(26,111,191,0.1) !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -320,11 +314,8 @@ INTENTS = {
                        "spend trend","spend breakdown","month-over-month","spend report"],
     "maverick":       ["maverick","off.contract","tail.spend","consolidat","no.*contract",
                        "spend.*no.*contract","over.budget","budget"],
-    "spend_category": ["category spend","by category","by risk category",
-                       "by department","which department",
-                       "spend.*industry","industry.*spend",
-                       "spend by industry","breakdown.*industry",
-                       "industry.*breakdown","average transaction"],
+    "spend_category": ["category spend","logistics.*spend","by category","by risk category",
+                       "by department","which department","spend.*industry","average transaction"],
     "top_vendors":    ["top.*vendor","top.*supplier.*spend","highest.*spend.*supplier",
                        "most.*spend.*supplier","biggest.*spend",
                        "spend.*vs.*perform","spend.*performance"],
@@ -764,37 +755,6 @@ def resp_supplier_news(d: dict, q: str) -> str:
     lines = ["**Vendors with most negative news sentiment (30 days):**\n"]
     for name, sent in neg.items():
         lines.append(f"• **{name}** — avg sentiment: {sent:+.2f}")
-    return "\n".join(lines)
-
-
-def resp_spend_by_industry(d: dict) -> str:
-    """Show spend breakdown aggregated by industry category."""
-    v = d["vendors"]
-    if "industry_category" not in v.columns or v.empty:
-        return "No industry data available."
-
-    total = v["total_annual_spend"].sum()
-    by_ind = (
-        v.groupby("industry_category")
-         .agg(
-             spend=("total_annual_spend", "sum"),
-             vendors=("vendor_id", "count"),
-             high_risk=("risk_label", lambda x: (x == "High").sum()),
-         )
-         .sort_values("spend", ascending=False)
-         .reset_index()
-    )
-
-    lines = ["**Spend by Industry:**\n"]
-    for _, r in by_ind.iterrows():
-        pct  = r["spend"] / total * 100 if total else 0
-        risk_note = f" | {int(r['high_risk'])} high risk" if r["high_risk"] > 0 else ""
-        lines.append(
-            f"• **{r['industry_category']}** — "
-            f"{fmt_money(r['spend'])} ({pct:.1f}%) "
-            f"| {int(r['vendors'])} vendors{risk_note}"
-        )
-    lines.append(f"\n**Total portfolio spend: {fmt_money(total)}**")
     return "\n".join(lines)
 
 
@@ -1634,7 +1594,7 @@ def _postgres_route(q: str, d: dict) -> tuple[str, str]:
         "supplier_sla":    lambda: resp_supplier_risk(d, q),
         "spend_quarter":   lambda: resp_spend_quarter(d, q),
         "maverick":        lambda: resp_maverick(d),
-        "spend_category":  lambda: resp_spend_by_industry(d),
+        "spend_category":  lambda: resp_supplier_spend(d, q),
         "top_vendors":     lambda: resp_supplier_spend(d, q),
         "savings":         lambda: resp_spend_at_risk(d),
         "otif":            lambda: resp_supplier_delivery(d, q),

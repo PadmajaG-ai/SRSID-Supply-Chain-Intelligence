@@ -704,22 +704,28 @@ def active_filter_bar(filters: dict):
 
 @st.cache_data(ttl=600)
 def _get_industries() -> list:
-    with DBClient() as db:
-        df = db.fetch_df(
-            "SELECT DISTINCT industry_category FROM vendors "
-            "WHERE industry_category IS NOT NULL ORDER BY industry_category"
-        )
-    return df["industry_category"].tolist() if not df.empty else []
+    try:
+        with DBClient() as db:
+            df = db.fetch_df(
+                "SELECT DISTINCT industry_category FROM vendors "
+                "WHERE industry_category IS NOT NULL ORDER BY industry_category"
+            )
+        return df["industry_category"].tolist() if not df.empty else []
+    except Exception:
+        return []
 
 
 @st.cache_data(ttl=600)
 def _get_countries() -> list:
-    with DBClient() as db:
-        df = db.fetch_df(
-            "SELECT DISTINCT country_code FROM vendors "
-            "WHERE country_code IS NOT NULL ORDER BY country_code"
-        )
-    return df["country_code"].tolist() if not df.empty else []
+    try:
+        with DBClient() as db:
+            df = db.fetch_df(
+                "SELECT DISTINCT country_code FROM vendors "
+                "WHERE country_code IS NOT NULL ORDER BY country_code"
+            )
+        return df["country_code"].tolist() if not df.empty else []
+    except Exception:
+        return []
 
 
 # ─────────────────────────────────────────────────────────────────────────────
