@@ -485,7 +485,22 @@ def load_quarterly_spend() -> pd.DataFrame:
 
 
 @st.cache_data(ttl=300)
+@st.cache_data(ttl=300)
 def load_feature_importance() -> pd.DataFrame:
+    """Load feature importance — from DB first, fallback to local CSV."""
+    try:
+        with DBClient() as db:
+            if db.table_exists("feature_importance"):
+                df = db.fetch_df(
+                    "SELECT feature, feature_label, importance "
+                    "FROM feature_importance "
+                    "ORDER BY importance DESC LIMIT 20"
+                )
+                if not df.empty:
+                    return df
+    except Exception:
+        pass
+    # Fallback: local CSV (only available when running locally)
     p = PATHS["reports"] / "feature_importance.csv"
     return pd.read_csv(p) if p.exists() else pd.DataFrame()
 
@@ -704,22 +719,28 @@ def active_filter_bar(filters: dict):
 
 @st.cache_data(ttl=600)
 def _get_industries() -> list:
-    with DBClient() as db:
-        df = db.fetch_df(
-            "SELECT DISTINCT industry_category FROM vendors "
-            "WHERE industry_category IS NOT NULL ORDER BY industry_category"
-        )
-    return df["industry_category"].tolist() if not df.empty else []
+    try:
+        with DBClient() as db:
+            df = db.fetch_df(
+                "SELECT DISTINCT industry_category FROM vendors "
+                "WHERE industry_category IS NOT NULL ORDER BY industry_category"
+            )
+        return df["industry_category"].tolist() if not df.empty else []
+    except Exception:
+        return []
 
 
 @st.cache_data(ttl=600)
 def _get_countries() -> list:
-    with DBClient() as db:
-        df = db.fetch_df(
-            "SELECT DISTINCT country_code FROM vendors "
-            "WHERE country_code IS NOT NULL ORDER BY country_code"
-        )
-    return df["country_code"].tolist() if not df.empty else []
+    try:
+        with DBClient() as db:
+            df = db.fetch_df(
+                "SELECT DISTINCT country_code FROM vendors "
+                "WHERE country_code IS NOT NULL ORDER BY country_code"
+            )
+        return df["country_code"].tolist() if not df.empty else []
+    except Exception:
+        return []
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -838,52 +859,81 @@ def tab_risk(filters: dict):
         st.info("No risk data. Run ml/risk_model.py first.")
         return
 
-    # High risk table
+    # Load alternatives and segments for enrichment
+    alts = load_alternatives(vendor_ids=_vids(filters))
+    segs = load_segments(vendor_ids=_vids(filters))
+
+    def enrich(df: pd.DataFrame) -> pd.DataFrame:
+        """Add best alternative + strategic action to each vendor row."""
+        out = df.copy()
+        # Best alternative per vendor (rank 1)
+        if not alts.empty:
+            best_alt = (alts[alts["alternative_rank"] == 1]
+                        [["vendor_id","alt_supplier_name",
+                          "alt_risk_tier","recommendation_reason"]]
+                        .drop_duplicates("vendor_id"))
+            out = out.merge(best_alt, on="vendor_id", how="left")
+        else:
+            out["alt_supplier_name"]    = "—"
+            out["alt_risk_tier"]        = "—"
+            out["recommendation_reason"]= "—"
+
+        # Strategic action from segmentation
+        if not segs.empty and "strategic_action" in segs.columns:
+            out = out.merge(
+                segs[["vendor_id","strategic_action"]].drop_duplicates("vendor_id"),
+                on="vendor_id", how="left"
+            )
+        else:
+            out["strategic_action"] = "—"
+
+        # Fill nulls
+        for c in ["alt_supplier_name","alt_risk_tier",
+                  "recommendation_reason","strategic_action"]:
+            if c in out.columns:
+                out[c] = out[c].fillna("—")
+        return out
+
+    # ── High Risk table ──────────────────────────────────────────────────────
     st.subheader("High Risk Suppliers")
     high = risk_df[risk_df["risk_label"] == "High"].head(20)
     if not high.empty:
-        disp = high[["supplier_name","risk_label","composite_risk_score",
-                      "total_annual_spend","country_code","industry_category",
-                      "delivery_performance","news_sentiment_30d"]].copy()
+        high_enr = enrich(high)
+        disp_cols = ["supplier_name","composite_risk_score","total_annual_spend",
+                     "country_code","industry_category","delivery_performance",
+                     "alt_supplier_name","alt_risk_tier",
+                     "recommendation_reason","strategic_action"]
+        disp = high_enr[[c for c in disp_cols if c in high_enr.columns]].copy()
         disp["total_annual_spend"] = disp["total_annual_spend"].apply(fmt_spend)
+        disp.columns = [c.replace("_"," ").title() for c in disp.columns]
         st.dataframe(disp, use_container_width=True, hide_index=True)
     else:
-        st.success("No High Risk suppliers in current filter")
+        st.success("No High Risk suppliers in current filter.")
 
-    col1, col2 = st.columns(2)
-    with col1:
-        st.subheader("Risk Score Distribution")
-        if PLOTLY and "composite_risk_score" in risk_df.columns:
-            fig = px.histogram(risk_df, x="composite_risk_score",
-                               nbins=30, color_discrete_sequence=["#E74C3C"])
-            from config import RISK_THRESHOLDS
-            fig.add_vline(x=RISK_THRESHOLDS["high"], line_dash="dash",
-                          line_color="red",   annotation_text="High threshold")
-            fig.add_vline(x=RISK_THRESHOLDS["medium"], line_dash="dash",
-                          line_color="orange", annotation_text="Medium threshold")
-            apply_layout(fig)
-            st.plotly_chart(fig, use_container_width=True)
+    # ── Risk Score Distribution (full width now that FI is removed) ──────────
+    st.subheader("Risk Score Distribution")
+    if PLOTLY and "composite_risk_score" in risk_df.columns:
+        fig = px.histogram(risk_df, x="composite_risk_score",
+                           nbins=30, color_discrete_sequence=["#E74C3C"])
+        from config import RISK_THRESHOLDS
+        fig.add_vline(x=RISK_THRESHOLDS["high"],   line_dash="dash",
+                      line_color="red",    annotation_text="High threshold")
+        fig.add_vline(x=RISK_THRESHOLDS["medium"], line_dash="dash",
+                      line_color="orange", annotation_text="Medium threshold")
+        apply_layout(fig)
+        st.plotly_chart(fig, use_container_width=True)
 
-    with col2:
-        st.subheader("Feature Importance")
-        fi = load_feature_importance()
-        if not fi.empty and PLOTLY:
-            label_col = "feature_label" if "feature_label" in fi.columns else "feature"
-            fig = px.bar(fi.head(12), x="importance", y=label_col,
-                         orientation="h",
-                         color="importance", color_continuous_scale="Reds",
-                         labels={"importance": "Importance", label_col: ""})
-            fig.update_layout(yaxis=dict(autorange="reversed"),
-                              margin=dict(t=10), showlegend=False)
-            st.plotly_chart(fig, use_container_width=True)
-
-    # Full table
+    # ── All Vendors table ────────────────────────────────────────────────────
     st.subheader("All Supplier Risk Scores")
+    all_enr = enrich(risk_df)
     disp_cols = ["supplier_name","risk_label","composite_risk_score",
                  "total_annual_spend","country_code","industry_category",
-                 "delivery_performance","otif_rate"]
-    disp = risk_df[[c for c in disp_cols if c in risk_df.columns]].copy()
+                 "delivery_performance","otif_rate",
+                 "alt_supplier_name","recommendation_reason","strategic_action"]
+    disp = all_enr[[c for c in disp_cols if c in all_enr.columns]].copy()
     disp.sort_values("composite_risk_score", ascending=False, inplace=True)
+    disp["total_annual_spend"] = disp["total_annual_spend"].apply(fmt_spend)
+    disp.columns = [c.replace("_"," ").title() for c in disp.columns]
     st.dataframe(disp, use_container_width=True, hide_index=True)
 
     st.download_button("Export",
@@ -1182,8 +1232,17 @@ def tab_explainability():
                      color="importance", color_continuous_scale="Reds",
                      labels={"importance": "Importance", label_col: ""})
         fig.update_layout(yaxis=dict(autorange="reversed"),
-                          margin=dict(t=10), showlegend=False)
+                          margin=dict(t=10), showlegend=False,
+                          height=420)
+        apply_layout(fig)
         st.plotly_chart(fig, use_container_width=True)
+    else:
+        st.info(
+            "Feature importance not yet available. "
+            "It is generated when the risk model runs. "
+            "Run `python ml/risk_model.py` locally — the chart will appear "
+            "on the next pipeline run once results are saved to the database."
+        )
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1270,7 +1329,8 @@ def tab_news(filters: dict):
 # ─────────────────────────────────────────────────────────────────────────────
 
 def tab_vendor_profile():
-    st.header("Vendor Deep Dive")
+    """Combined Vendor Profile + Scorecard tab."""
+    st.header("Vendor Profile & Scorecard")
 
     with DBClient() as db:
         vendor_list = db.fetch_df(
@@ -1289,86 +1349,178 @@ def tab_vendor_profile():
             vendor_list["vendor_id"] == vid
         ]["supplier_name"].iloc[0]
     )
+    if not selected:
+        return
 
-    if selected:
+    # Load full profile
+    with DBClient() as db:
+        profile = db.get_vendor_profile(selected)
+        existing_cols = set(db.fetch_df(
+            "SELECT column_name FROM information_schema.columns "
+            "WHERE table_name = 'vendors'"
+        )["column_name"].tolist())
+
+    if not profile:
+        st.warning("Vendor profile not found.")
+        return
+
+    v          = profile["vendor"]
+    seg        = profile.get("segment", {}) or {}
+    expl       = profile.get("explanation", {}) or {}
+    news_items = profile.get("news", []) or []
+
+    # Header
+    tier  = v.get("risk_label", "Unknown")
+    color = COLORS.get(tier, "#95A5A6")
+    st.markdown(
+        f"## {v.get('supplier_name','?')}"
+        f" &nbsp; <span style='background:{color};color:white;"
+        f"padding:3px 10px;border-radius:4px;font-size:0.85rem'>{tier}</span>",
+        unsafe_allow_html=True
+    )
+    st.caption(
+        f"{v.get('country_code','')} · "
+        f"{v.get('industry_category','')} · "
+        f"ID: {v.get('vendor_id','')} · "
+        f"Annual Spend: {fmt_spend(v.get('total_annual_spend'))}"
+    )
+    st.divider()
+
+    # ── Key metrics ──────────────────────────────────────────────────────────
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Annual Spend",       fmt_spend(v.get("total_annual_spend")))
+    c2.metric("OTIF Rate",          f"{(v.get('otif_rate') or 0)*100:.1f}%")
+    c3.metric("Risk Score",         f"{v.get('composite_risk_score') or 0:.3f}")
+    c4.metric("Disruptions (30d)",  v.get("disruption_count_30d", 0))
+    st.divider()
+
+    # ── Operational Performance ───────────────────────────────────────────────
+    st.subheader("Operational Performance")
+    c1, c2, c3, c4, c5 = st.columns(5)
+
+    def pct_m(col, label, val, target=None):
+        if val is None:
+            col.metric(label, "N/A"); return
+        pct   = val * 100 if val <= 1.0 else val
+        delta = f"{pct - target:+.1f}% vs {target:.0f}% target" if target else None
+        col.metric(label, f"{pct:.1f}%", delta=delta,
+                   delta_color="normal" if (target is None or pct >= target) else "inverse")
+
+    pct_m(c1, "OTD",            v.get("delivery_performance"), 95)
+    pct_m(c2, "OTIF",           v.get("otif_rate"),            95)
+    pct_m(c3, "OTTR",           v.get("ottr_rate"),            90)
+    pct_m(c4, "Order Accuracy", v.get("order_accuracy_rate"),  98)
+    lt = v.get("lead_time_variability")
+    c5.metric("Lead Time Var.",
+              f"±{lt:.1f}d" if lt is not None else "N/A",
+              delta="High" if lt and lt > 10 else None,
+              delta_color="inverse" if lt and lt > 10 else "normal")
+    st.divider()
+
+    # ── Financial & Strategic ─────────────────────────────────────────────────
+    st.subheader("Financial & Strategic")
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Financial Stability",  f"{v.get('financial_stability') or 0:.0f}/100")
+    ppv = v.get("avg_price_variance_pct")
+    c2.metric("PPV",                  f"{ppv:.1f}%" if ppv else "N/A",
+              delta="High" if ppv and ppv > 15 else None,
+              delta_color="inverse" if ppv and ppv > 15 else "normal")
+    sum_pct = v.get("sum_percentage")
+    c3.metric("Contract Compliance",
+              f"{sum_pct:.1f}%" if sum_pct else "N/A",
+              delta="Below target" if sum_pct and sum_pct < 80 else "On target",
+              delta_color="inverse" if sum_pct and sum_pct < 80 else "normal")
+    c4.metric("Savings Opportunity",  fmt_spend(v.get("savings_opportunity")))
+    st.divider()
+
+    # ── Risk Drivers + Segmentation ───────────────────────────────────────────
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("Risk Drivers")
+        if expl:
+            for i in range(1, 4):
+                label = expl.get(f"driver_{i}_label")
+                shap  = expl.get(f"driver_{i}_shap")
+                if label and shap:
+                    icon = "🔴" if float(shap) > 0 else "🟢"
+                    st.write(f"{icon} **{label}** ({float(shap):+.3f})")
+            narrative = expl.get("narrative")
+            if narrative:
+                st.info(narrative)
+        else:
+            st.caption("No explanation data. Run ml/explainability.py")
+
+    with col2:
+        st.subheader("Segmentation")
+        if seg:
+            st.write(f"**Kraljic:** {seg.get('kraljic_segment','—')}")
+            st.write(f"**ABC Class:** {seg.get('abc_class','—')}")
+            st.write(f"**Cluster:** {seg.get('cluster_label','—')}")
+            action = seg.get("strategic_action")
+            if action:
+                st.success(f"{action}")
+        else:
+            st.caption("No segment data. Run ml/segmentation.py")
+
+    st.divider()
+
+    # ── Manual Scorecard ──────────────────────────────────────────────────────
+    st.subheader("Scorecard Inputs")
+    st.caption("Enter external scores (EcoVadis, ISO 27001, QM inspections). Saved to Supabase.")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        defect_ppm = st.number_input(
+            "Defect Rate (PPM)", min_value=0.0, max_value=1_000_000.0,
+            value=float(v.get("defect_rate_ppm") or 0), step=10.0)
+        innovation = st.slider("Innovation Score (0–100)", 0, 100,
+                               int(v.get("innovation_score") or 0))
+    with col2:
+        cybersec   = st.slider("Cybersecurity Score (0–100)", 0, 100,
+                               int(v.get("cybersecurity_score") or 0))
+        esg        = st.slider("ESG Score (0–100)", 0, 100,
+                               int(v.get("esg_score") or 0))
+
+    notes = st.text_area("Notes", value=v.get("scorecard_notes") or "", height=80)
+
+    if st.button("Save Scorecard", type="primary"):
         with DBClient() as db:
-            profile = db.get_vendor_profile(selected)
+            for col, dtype in [
+                ("defect_rate_ppm","FLOAT"),("innovation_score","FLOAT"),
+                ("cybersecurity_score","FLOAT"),("esg_score","FLOAT"),
+                ("scorecard_notes","TEXT"),("scorecard_updated_at","TIMESTAMP")
+            ]:
+                db.add_column_if_missing("vendors", col, dtype)
+            db.execute(
+                "UPDATE vendors SET defect_rate_ppm=%s, innovation_score=%s,"
+                " cybersecurity_score=%s, esg_score=%s, scorecard_notes=%s,"
+                " scorecard_updated_at=NOW() WHERE vendor_id=%s",
+                (defect_ppm or None, innovation or None,
+                 cybersec or None, esg or None,
+                 notes or None, selected)
+            )
+        st.success("Scorecard saved.")
+        st.cache_data.clear()
 
-        if not profile:
-            st.warning("Vendor profile not found.")
-            return
+    if v.get("scorecard_updated_at"):
+        st.caption(f"Last updated: {str(v['scorecard_updated_at'])[:16]}")
+    st.divider()
 
-        v = profile["vendor"]
-        risk  = profile.get("risk", {}) or {}
-        seg   = profile.get("segment", {}) or {}
-        expl  = profile.get("explanation", {}) or {}
-        news_items = profile.get("news", []) or []
-
-        # Header
-        tier  = v.get("risk_label", "Unknown")
-        color = COLORS.get(tier, "#95A5A6")
-        st.markdown(
-            f"## {v.get('supplier_name','?')}"
-            f" &nbsp; <span style='background:{color};color:white;"
-            f"padding:3px 10px;border-radius:4px;font-size:0.85rem'>{tier}</span>",
-            unsafe_allow_html=True
-        )
-        st.caption(
-            f"{v.get('country_code','')} · "
-            f"{v.get('industry_category','')} · "
-            f"ID: {v.get('vendor_id','')}"
-        )
-
-        # Key metrics
-        c1, c2, c3, c4 = st.columns(4)
-        c1.metric("Annual Spend",    fmt_spend(v.get("total_annual_spend")))
-        c2.metric("OTIF Rate",       f"{(v.get('otif_rate') or 0)*100:.1f}%")
-        c3.metric("Risk Score",      f"{v.get('composite_risk_score') or 0:.3f}")
-        c4.metric("Disruptions (30d)", v.get("disruption_count_30d", 0))
-
-        col1, col2 = st.columns(2)
-
-        with col1:
-            st.subheader("Risk Drivers")
-            if expl:
-                for i in range(1, 4):
-                    label = expl.get(f"driver_{i}_label")
-                    shap  = expl.get(f"driver_{i}_shap")
-                    if label and shap:
-                        bar_color = "🔴" if float(shap) > 0 else "🟢"
-                        st.write(f"{bar_color} **{label}** ({float(shap):+.3f})")
-                narrative = expl.get("narrative")
-                if narrative:
-                    st.info(narrative)
-            else:
-                st.caption("No explanation data. Run ml/explainability.py")
-
-        with col2:
-            st.subheader("Segmentation")
-            if seg:
-                st.write(f"**Kraljic:** {seg.get('kraljic_segment','—')}")
-                st.write(f"**ABC Class:** {seg.get('abc_class','—')}")
-                st.write(f"**Cluster:** {seg.get('cluster_label','—')}")
-                action = seg.get("strategic_action")
-                if action:
-                    st.success(f"{action}")
-            else:
-                st.caption("No segment data. Run ml/segmentation.py")
-
-        # Recent news
-        if news_items:
-            st.subheader("Recent News")
-            for article in news_items[:5]:
-                with st.expander(article.get("title", "Article")[:80]):
-                    st.caption(
-                        f"{article.get('source_name','')} · "
-                        f"{str(article.get('published_at',''))[:10]}"
-                    )
-                    if article.get("disruption_type"):
-                        st.warning(f"Disruption: {article['disruption_type']}")
-                    url = article.get("url","")
-                    if url:
-                        st.markdown(f"[Read →]({url})")
+    # ── Recent News ───────────────────────────────────────────────────────────
+    if news_items:
+        st.subheader("Recent News")
+        for article in news_items[:5]:
+            with st.expander(article.get("title","Article")[:80]):
+                st.caption(
+                    f"{article.get('source_name','')} · "
+                    f"{str(article.get('published_at',''))[:10]}"
+                )
+                if article.get("disruption_type"):
+                    st.warning(f"Disruption: {article['disruption_type']}")
+                url = article.get("url","")
+                if url:
+                    st.markdown(f"[Read →]({url})")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1568,182 +1720,6 @@ def tab_alternatives(filters: dict):
             )
 
 
-def tab_vendor_scorecard():
-    st.header("Vendor Scorecard")
-    st.caption(
-        "All vendor evaluation metrics in one view. "
-        "SAP-computed metrics update automatically when you re-run sap_loader.py. "
-        "Manual scores (Defect Rate, Innovation, Cybersecurity, ESG) can be entered and saved."
-    )
-
-    with DBClient() as db:
-        vendor_list = db.fetch_df(
-            "SELECT vendor_id, supplier_name FROM vendors "
-            "WHERE is_active = TRUE ORDER BY supplier_name"
-        )
-
-    if vendor_list.empty:
-        st.info("No vendors loaded.")
-        return
-
-    selected_id = st.selectbox(
-        "Select vendor",
-        options=vendor_list["vendor_id"].tolist(),
-        format_func=lambda vid: vendor_list[
-            vendor_list["vendor_id"] == vid
-        ]["supplier_name"].iloc[0],
-        key="scorecard_vendor"
-    )
-    if not selected_id:
-        return
-
-    # Build column list dynamically — skip columns that don't exist yet
-    with DBClient() as db:
-        existing_cols = set(db.fetch_df(
-            "SELECT column_name FROM information_schema.columns "
-            "WHERE table_name = 'vendors'"
-        )["column_name"].tolist())
-
-    base_cols = [
-        "vendor_id","supplier_name","country_code","industry_category",
-        "risk_label","composite_risk_score","total_annual_spend",
-        "delivery_performance","otif_rate","avg_delay_days",
-        "financial_stability","sum_percentage","savings_opportunity",
-        "concentration_risk","disruption_count_30d","news_sentiment_30d","geo_risk",
-    ]
-    optional_cols = [
-        "ottr_rate","lead_time_variability","order_accuracy_rate",
-        "avg_price_variance_pct","defect_rate_ppm","innovation_score",
-        "cybersecurity_score","esg_score","scorecard_notes","scorecard_updated_at",
-    ]
-    select_cols = base_cols + [c for c in optional_cols if c in existing_cols]
-    col_str = ", ".join(select_cols)
-
-    with DBClient() as db:
-        v = db.fetch_one(f"SELECT {col_str} FROM vendors WHERE vendor_id = %s",
-                         (selected_id,))
-    if not v:
-        st.warning("Vendor not found.")
-        return
-
-    tier  = v.get("risk_label","Unknown")
-    color = COLORS.get(tier,"#95A5A6")
-    st.markdown(
-        f"## {v.get('supplier_name','')} &nbsp;"
-        f"<span style='background:{color};color:white;padding:3px 10px;"
-        f"border-radius:4px;font-size:0.85rem'>{tier} Risk</span>",
-        unsafe_allow_html=True
-    )
-    st.caption(f"{v.get('country_code','')} · {v.get('industry_category','')} · "
-               f"Annual Spend: {fmt_spend(v.get('total_annual_spend'))}")
-    st.divider()
-
-    # ── Operational ───────────────────────────────────────────────────────────
-    st.subheader("Operational Performance")
-    c1, c2, c3, c4, c5 = st.columns(5)
-
-    def pct_m(col, label, val, target=None):
-        if val is None:
-            col.metric(label, "N/A"); return
-        pct = val * 100 if val <= 1.0 else val
-        delta = f"{pct - target:+.1f}% vs {target:.0f}% target" if target else None
-        col.metric(label, f"{pct:.1f}%", delta=delta,
-                   delta_color="normal" if (target is None or pct >= target) else "inverse")
-
-    pct_m(c1, "OTD",            v.get("delivery_performance"), 95)
-    pct_m(c2, "OTIF",           v.get("otif_rate"),             95)
-    pct_m(c3, "OTTR",           v.get("ottr_rate"),             90)
-    pct_m(c4, "Order Accuracy", v.get("order_accuracy_rate"),   98)
-    lt = v.get("lead_time_variability")
-    c5.metric("Lead Time Variability",
-              f"±{lt:.1f}d" if lt is not None else "N/A",
-              delta="High" if lt and lt > 10 else None,
-              delta_color="inverse" if lt and lt > 10 else "normal")
-
-    st.divider()
-
-    # ── Financial ─────────────────────────────────────────────────────────────
-    st.subheader("Financial & Strategic")
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Financial Stability",     f"{v.get('financial_stability') or 0:.0f}/100")
-    ppv = v.get("avg_price_variance_pct")
-    c2.metric("PPV (Price Variance)",    f"{ppv:.1f}%" if ppv else "N/A",
-              delta="High" if ppv and ppv > 15 else None,
-              delta_color="inverse" if ppv and ppv > 15 else "normal")
-    sum_pct = v.get("sum_percentage")
-    c3.metric("Contract Compliance",
-              f"{sum_pct:.1f}%" if sum_pct else "N/A",
-              delta="Below 80% target" if sum_pct and sum_pct < 80 else "On target",
-              delta_color="inverse" if sum_pct and sum_pct < 80 else "normal")
-    c4.metric("Savings Opportunity",     fmt_spend(v.get("savings_opportunity")))
-
-    st.divider()
-
-    # ── Risk ──────────────────────────────────────────────────────────────────
-    st.subheader("Risk & Compliance")
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Risk Score",             f"{v.get('composite_risk_score') or 0:.3f}")
-    c2.metric("Concentration Risk",     v.get("concentration_risk") or "—")
-    c3.metric("Disruptions (30d)",      v.get("disruption_count_30d") or 0)
-    sent = v.get("news_sentiment_30d")
-    c4.metric("News Sentiment",         f"{sent:+.2f}" if sent is not None else "N/A")
-
-    st.divider()
-
-    # ── Manual Scorecard ──────────────────────────────────────────────────────
-    st.subheader("Manual Scorecard Inputs")
-    st.caption("Enter external assessment scores. These are saved to the database.")
-
-    col1, col2 = st.columns(2)
-    with col1:
-        defect_ppm  = st.number_input("Defect Rate (PPM)",
-                                       min_value=0.0, max_value=1_000_000.0,
-                                       value=float(v.get("defect_rate_ppm") or 0),
-                                       step=10.0,
-                                       help="From QM module or inspection reports")
-        innovation  = st.slider("Innovation Score (0–100)", 0, 100,
-                                 int(v.get("innovation_score") or 0),
-                                 help="How often does this vendor suggest improvements?")
-    with col2:
-        cybersec    = st.slider("Cybersecurity Score (0–100)", 0, 100,
-                                 int(v.get("cybersecurity_score") or 0),
-                                 help="ISO 27001 / SOC2 compliance level")
-        esg         = st.slider("ESG Score (0–100)", 0, 100,
-                                 int(v.get("esg_score") or 0),
-                                 help="Environmental, Social, Governance practices")
-
-    notes = st.text_area("Notes", value=v.get("scorecard_notes") or "", height=80)
-
-    if st.button("Save Scorecard", type="primary"):
-        with DBClient() as db:
-            for col, dtype in [
-                ("defect_rate_ppm","FLOAT"),("innovation_score","FLOAT"),
-                ("cybersecurity_score","FLOAT"),("esg_score","FLOAT"),
-                ("scorecard_notes","TEXT"),("scorecard_updated_at","TIMESTAMP")
-            ]:
-                db.add_column_if_missing("vendors", col, dtype)
-            db.execute("""
-                UPDATE vendors
-                SET defect_rate_ppm=%(d)s, innovation_score=%(i)s,
-                    cybersecurity_score=%(c)s, esg_score=%(e)s,
-                    scorecard_notes=%(n)s, scorecard_updated_at=NOW()
-                WHERE vendor_id=%(vid)s
-            """, None)
-            # Use positional params instead
-            db.execute(
-                "UPDATE vendors SET defect_rate_ppm=%s, innovation_score=%s,"
-                " cybersecurity_score=%s, esg_score=%s, scorecard_notes=%s,"
-                " scorecard_updated_at=NOW() WHERE vendor_id=%s",
-                (defect_ppm or None, innovation or None,
-                 cybersec or None, esg or None,
-                 notes or None, selected_id)
-            )
-        st.success("Scorecard saved")
-        st.cache_data.clear()
-
-    if v.get("scorecard_updated_at"):
-        st.caption(f"Last updated: {str(v['scorecard_updated_at'])[:16]}")
-
 def main():
     filters = render_sidebar()
 
@@ -1755,8 +1731,7 @@ def main():
         "Alternatives",
         "Explainability",
         "News",
-        "Vendor Profile",
-        "Scorecard",
+        "Vendor Profile & Scorecard",
     ])
 
     with tabs[0]: tab_overview(filters)
@@ -1767,7 +1742,6 @@ def main():
     with tabs[5]: tab_explainability()
     with tabs[6]: tab_news(filters)
     with tabs[7]: tab_vendor_profile()
-    with tabs[8]: tab_vendor_scorecard()
 
 
 if __name__ == "__main__":

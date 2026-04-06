@@ -171,21 +171,15 @@ def calculate_maverick(db: DBClient) -> pd.DataFrame:
 
     df["maverick_type"] = df.apply(classify_type, axis=1)
 
-    # Savings opportunity — industry-standard benchmarks (Ardent Partners / Hackett Group)
-    # Off-contract spend typically yields 15–25% savings when brought under contract.
-    # We cap at 40% of off-contract spend as the realistically addressable portion
-    # (not all vendors can be consolidated or brought under contract immediately).
-    ADDRESSABLE_RATE = 0.40   # 40% of off-contract spend is realistically actionable
+    # Savings opportunity (off-contract vendors typically have 15–25% savings potential)
     savings_rate_map = {
-        "Off-Contract (High Value)": 0.20,   # Large spend — negotiate volume discounts
-        "Off-Contract (Regular)":    0.15,   # Standard rate renegotiation
-        "Emergency / One-Off":       0.25,   # Eliminate/consolidate one-off purchases
+        "Off-Contract (High Value)": 0.20,
+        "Off-Contract (Regular)":    0.15,
+        "Emergency / One-Off":       0.25,
         "Contracted":                0.00,
     }
     df["savings_opportunity"] = df.apply(
-        lambda r: r["total_spend"]
-                  * ADDRESSABLE_RATE                                    # only addressable portion
-                  * savings_rate_map.get(r["maverick_type"], 0),        # × savings rate
+        lambda r: r["total_spend"] * savings_rate_map.get(r["maverick_type"], 0),
         axis=1
     ).round(2)
 
@@ -480,133 +474,6 @@ def write_spend_analytics(sum_df: pd.DataFrame,
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 5. SPEND BY MATERIAL GROUP (SAP spend category)
-# Uses the material_group (MATKL) field from transactions table.
-# This is the closest equivalent to a spend category in SAP PO data.
-# ─────────────────────────────────────────────────────────────────────────────
-
-def calculate_spend_by_category(db: DBClient) -> pd.DataFrame:
-    """
-    Aggregates spend by SAP material_group (spend category).
-    Returns category-level breakdown with maverick and risk signals.
-    Writes results to spend_by_category table for dashboard use.
-    """
-    log.info("Calculating spend by material group (category)...")
-
-    # Check if material_group column exists in transactions
-    has_matgrp = db.scalar("""
-        SELECT COUNT(*) FROM information_schema.columns
-        WHERE table_name = 'transactions' AND column_name = 'material_group'
-    """) or 0
-
-    if not has_matgrp:
-        log.warning("  material_group column not found in transactions — skipping")
-        return pd.DataFrame()
-
-    df = db.fetch_df("""
-        SELECT
-            COALESCE(NULLIF(TRIM(t.material_group), ''), 'Unclassified')
-                                                    AS material_group,
-            COUNT(DISTINCT t.vendor_id)             AS vendor_count,
-            COUNT(*)                                AS transaction_count,
-            SUM(t.transaction_amount)               AS total_spend,
-            AVG(t.transaction_amount)               AS avg_transaction,
-            -- Maverick: no active contract for that vendor
-            COUNT(DISTINCT t.vendor_id) FILTER (
-                WHERE c.vendor_id IS NULL
-            )                                       AS maverick_vendor_count,
-            SUM(t.transaction_amount) FILTER (
-                WHERE c.vendor_id IS NULL
-            )                                       AS maverick_spend,
-            -- High risk vendor spend in this category
-            SUM(t.transaction_amount) FILTER (
-                WHERE v.risk_label = 'High'
-            )                                       AS high_risk_spend
-        FROM transactions t
-        LEFT JOIN (
-            SELECT DISTINCT vendor_id
-            FROM contracts WHERE contract_status NOT IN ('Expired')
-        ) c ON t.vendor_id = c.vendor_id
-        LEFT JOIN vendors v ON t.vendor_id = v.vendor_id
-        WHERE t.transaction_amount > 0
-        GROUP BY 1
-        ORDER BY total_spend DESC
-    """)
-
-    if df.empty:
-        log.warning("  No transaction data for category analysis")
-        return df
-
-    total_spend = df["total_spend"].sum()
-    df["spend_pct"]        = (df["total_spend"] / total_spend * 100).round(2)
-    df["maverick_pct"]     = (df["maverick_spend"].fillna(0)
-                               / df["total_spend"] * 100).round(2)
-    df["high_risk_pct"]    = (df["high_risk_spend"].fillna(0)
-                               / df["total_spend"] * 100).round(2)
-
-    # Savings opportunity per category (same methodology as maverick calculation)
-    ADDRESSABLE_RATE = 0.40
-    df["savings_opportunity"] = (
-        df["maverick_spend"].fillna(0) * ADDRESSABLE_RATE * 0.18  # blended rate
-    ).round(2)
-
-    log.info(f"  {len(df)} material groups found")
-    log.info(f"  Top 3: {df['material_group'].head(3).tolist()}")
-
-    # Persist to DB for dashboard use
-    try:
-        db.execute("""
-            CREATE TABLE IF NOT EXISTS spend_by_category (
-                id                  SERIAL PRIMARY KEY,
-                material_group      TEXT,
-                vendor_count        INT,
-                transaction_count   INT,
-                total_spend         FLOAT,
-                avg_transaction     FLOAT,
-                spend_pct           FLOAT,
-                maverick_vendor_count INT,
-                maverick_spend      FLOAT,
-                maverick_pct        FLOAT,
-                high_risk_spend     FLOAT,
-                high_risk_pct       FLOAT,
-                savings_opportunity FLOAT,
-                run_date            TIMESTAMP DEFAULT NOW()
-            )
-        """)
-        db.conn.commit()
-        db.execute("DELETE FROM spend_by_category")
-        for _, row in df.iterrows():
-            db.execute("""
-                INSERT INTO spend_by_category (
-                    material_group, vendor_count, transaction_count,
-                    total_spend, avg_transaction, spend_pct,
-                    maverick_vendor_count, maverick_spend, maverick_pct,
-                    high_risk_spend, high_risk_pct, savings_opportunity
-                ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-            """, (
-                str(row["material_group"]),
-                int(row["vendor_count"]),
-                int(row["transaction_count"]),
-                float(row["total_spend"]),
-                float(row["avg_transaction"]),
-                float(row["spend_pct"]),
-                int(row["maverick_vendor_count"] or 0),
-                float(row["maverick_spend"] or 0),
-                float(row["maverick_pct"]),
-                float(row["high_risk_spend"] or 0),
-                float(row["high_risk_pct"]),
-                float(row["savings_opportunity"]),
-            ))
-        db.conn.commit()
-        log.info(f"  Saved {len(df)} category rows to spend_by_category table")
-    except Exception as e:
-        log.warning(f"  Could not save to spend_by_category: {e}")
-        db.conn.rollback()
-
-    return df
-
-
-# ─────────────────────────────────────────────────────────────────────────────
 # MAIN
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -617,13 +484,12 @@ def main():
 
     with DBClient() as db:
 
-        # Run all analytics modules
+        # Run all 4 analytics modules
         sum_df              = calculate_sum(db)
         maverick_df         = calculate_maverick(db)
         conc_portfolio, \
         concentration_df    = calculate_concentration(db)
         qoq_df              = calculate_qoq_trend(db)
-        category_df         = calculate_spend_by_category(db)
 
         # Write back + generate reports
         report = write_spend_analytics(

@@ -98,10 +98,16 @@ html, body, [class*="css"] { font-family: 'Inter', -apple-system, sans-serif !im
 /* Chat input */
 [data-testid="stChatInput"] textarea {
     border-radius: 8px !important; font-size: 0.89rem !important;
-    border: 1px solid #CBD5E0 !important; background: #FFFFFF !important;
+    border: 1px solid #CBD5E0 !important;
+    background: #FFFFFF !important;
+    color: #1A202C !important;
+}
+[data-testid="stChatInput"] textarea::placeholder {
+    color: #94A3B8 !important;
 }
 [data-testid="stChatInput"]:focus-within {
-    border-color: #1A6FBF !important; box-shadow: 0 0 0 3px rgba(26,111,191,0.1) !important;
+    border-color: #1A6FBF !important;
+    box-shadow: 0 0 0 3px rgba(26,111,191,0.1) !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -118,6 +124,7 @@ def _empty_data() -> dict:
         summary={}, vendors=empty, segments=empty, explanations=empty,
         news=empty, contracts=empty, delivery=empty, alternatives=empty,
         anomalies=empty, quarterly=empty, feat_imp=empty,
+        spend_categories=empty,
     )
 
 
@@ -199,12 +206,21 @@ def load_data() -> dict:
             """)
             fi_path     = Path(__file__).parent.parent / "reports" / "feature_importance.csv"
             feat_imp    = pd.read_csv(fi_path) if fi_path.exists() else pd.DataFrame()
+            cat_exists  = db.table_exists("spend_by_category")
+            spend_categories = db.fetch_df("""
+                SELECT material_group, total_spend, spend_pct,
+                       maverick_pct, high_risk_pct, savings_opportunity,
+                       vendor_count, transaction_count
+                FROM spend_by_category
+                ORDER BY total_spend DESC
+            """) if cat_exists else pd.DataFrame()
 
         return dict(
             summary=summary, vendors=vendors, segments=segments,
             explanations=explanations, news=news, contracts=contracts,
             delivery=delivery, alternatives=alternatives, anomalies=anomalies,
             quarterly=quarterly, feat_imp=feat_imp,
+            spend_categories=spend_categories,
         )
 
     except Exception as e:
@@ -314,12 +330,20 @@ INTENTS = {
                        "spend trend","spend breakdown","month-over-month","spend report"],
     "maverick":       ["maverick","off.contract","tail.spend","consolidat","no.*contract",
                        "spend.*no.*contract","over.budget","budget"],
-    "spend_category": ["category spend","logistics.*spend","by category","by risk category",
-                       "by department","which department","spend.*industry","average transaction"],
+    "spend_category": ["category spend","by category","by risk category",
+                       "by department","which department",
+                       "spend.*industry","industry.*spend",
+                       "spend by industry","breakdown.*industry",
+                       "industry.*breakdown","average transaction",
+                       "material group","material.*group","spend.*category",
+                       "category.*spend","which category","by material",
+                       "spend breakdown","breakdown.*spend"],
     "top_vendors":    ["top.*vendor","top.*supplier.*spend","highest.*spend.*supplier",
                        "most.*spend.*supplier","biggest.*spend",
                        "spend.*vs.*perform","spend.*performance"],
-    "savings":        ["save","saving","move.*spend","shift.*spend","cost.*saving",
+    "savings":        ["saving.*opportun","opportun.*saving","how much.*save",
+                       "cost.*saving","saving.*potential","off.contract.*saving",
+                       "maverick.*saving","reduce.*spend","consolidat.*saving",
                        "roi.*diversif","price hike","commodity","cost impact"],
 
     # Cat 4: Operational Performance
@@ -389,6 +413,9 @@ def resp_help() -> str:
 - "What is our total spend last quarter?"
 - "Where is our maverick spend?"
 - "Show spend concentration risk"
+- "Show spend by industry"
+- "Show spend by material group"
+- "What is our savings opportunity?"
 - "Which vendors have no long-term contract?"
 - "Which contracts expire in the next 60 days?"
 - "Predict spend for next quarter"
@@ -755,6 +782,118 @@ def resp_supplier_news(d: dict, q: str) -> str:
     lines = ["**Vendors with most negative news sentiment (30 days):**\n"]
     for name, sent in neg.items():
         lines.append(f"• **{name}** — avg sentiment: {sent:+.2f}")
+    return "\n".join(lines)
+
+
+def resp_spend_by_category(d: dict) -> str:
+    """Show spend breakdown by SAP material group (spend category)."""
+    cat = d.get("spend_categories", pd.DataFrame())
+
+    if cat.empty:
+        # Fallback to industry breakdown if category table not yet generated
+        return (
+            "Spend by material group not yet generated.\n\n"
+            "Run `python ml/spend_analytics.py` to build the category breakdown.\n\n"
+            "In the meantime, here's spend by industry:\n\n"
+            + resp_spend_by_industry(d)
+        )
+
+    total = cat["total_spend"].sum()
+    lines = ["**Spend by Material Group (SAP MATKL):**\n"]
+    for _, r in cat.head(12).iterrows():
+        risk_flag = " ⚠️" if r.get("high_risk_pct", 0) > 30 else ""
+        mav_flag  = " 🔴" if r.get("maverick_pct",  0) > 50 else ""
+        lines.append(
+            f"• **{r['material_group']}** — "
+            f"{fmt_money(r['total_spend'])} ({r['spend_pct']:.1f}%)"
+            f" | {int(r.get('vendor_count',0))} vendors"
+            f" | {r.get('maverick_pct',0):.0f}% off-contract{mav_flag}"
+            f" | {r.get('high_risk_pct',0):.0f}% high risk{risk_flag}"
+        )
+    lines.append(f"\n**Total: {fmt_money(total)}**")
+    lines.append(
+        "\n*🔴 = >50% off-contract spend  ⚠️ = >30% high-risk spend*"
+    )
+    return "\n".join(lines)
+
+
+def resp_savings_opportunity(d: dict) -> str:
+    """Show savings opportunity from off-contract spend."""
+    v   = d["vendors"]
+    cat = d.get("spend_categories", pd.DataFrame())
+
+    total_spend = v["total_annual_spend"].sum() if not v.empty else 0
+
+    # Get savings from vendor-level data
+    if "savings_opportunity" in v.columns:
+        vendor_savings = v["savings_opportunity"].sum()
+        mav_vendors    = v[v["is_maverick"] == True] if "is_maverick" in v.columns \
+                         else pd.DataFrame()
+        mav_spend      = mav_vendors["total_annual_spend"].sum() \
+                         if not mav_vendors.empty else 0
+        mav_count      = len(mav_vendors)
+    else:
+        vendor_savings = mav_spend = mav_count = 0
+
+    lines = [
+        "**Savings Opportunity — Off-Contract Spend**\n",
+        f"Total portfolio spend: **{fmt_money(total_spend)}**",
+        f"Off-contract (maverick) vendors: **{mav_count}**",
+        f"Off-contract spend: **{fmt_money(mav_spend)}** "
+        f"({mav_spend/total_spend*100:.1f}% of portfolio)\n" if total_spend else "",
+        f"**Estimated savings opportunity: {fmt_money(vendor_savings)}**",
+        f"*(40% addressable × 15–25% off-contract savings rate)*\n",
+    ]
+
+    # Top categories with savings potential
+    if not cat.empty and "savings_opportunity" in cat.columns:
+        lines.append("**Biggest savings by material group:**")
+        for _, r in cat.nlargest(5, "savings_opportunity").iterrows():
+            lines.append(
+                f"• **{r['material_group']}** — "
+                f"Est. {fmt_money(r['savings_opportunity'])} savings "
+                f"({r.get('maverick_pct',0):.0f}% off-contract)"
+            )
+        lines.append("")
+
+    lines += [
+        "**How to capture these savings:**",
+        "1. Create framework agreements for high-spend off-contract vendors",
+        "2. Consolidate Emergency/One-Off purchases into approved supplier lists",
+        "3. Mandate POs above $10K threshold to capture off-contract tail spend",
+        "4. Prioritise Strategic and Leverage segment vendors for contract coverage",
+    ]
+    return "\n".join(lines)
+
+
+def resp_spend_by_industry(d: dict) -> str:
+    """Show spend breakdown aggregated by industry category."""
+    v = d["vendors"]
+    if "industry_category" not in v.columns or v.empty:
+        return "No industry data available."
+
+    total = v["total_annual_spend"].sum()
+    by_ind = (
+        v.groupby("industry_category")
+         .agg(
+             spend=("total_annual_spend", "sum"),
+             vendors=("vendor_id", "count"),
+             high_risk=("risk_label", lambda x: (x == "High").sum()),
+         )
+         .sort_values("spend", ascending=False)
+         .reset_index()
+    )
+
+    lines = ["**Spend by Industry:**\n"]
+    for _, r in by_ind.iterrows():
+        pct  = r["spend"] / total * 100 if total else 0
+        risk_note = f" | {int(r['high_risk'])} high risk" if r["high_risk"] > 0 else ""
+        lines.append(
+            f"• **{r['industry_category']}** — "
+            f"{fmt_money(r['spend'])} ({pct:.1f}%) "
+            f"| {int(r['vendors'])} vendors{risk_note}"
+        )
+    lines.append(f"\n**Total portfolio spend: {fmt_money(total)}**")
     return "\n".join(lines)
 
 
@@ -1594,9 +1733,12 @@ def _postgres_route(q: str, d: dict) -> tuple[str, str]:
         "supplier_sla":    lambda: resp_supplier_risk(d, q),
         "spend_quarter":   lambda: resp_spend_quarter(d, q),
         "maverick":        lambda: resp_maverick(d),
-        "spend_category":  lambda: resp_supplier_spend(d, q),
+        "spend_category":  lambda: resp_spend_by_category(d)
+                                   if any(kw in q.lower() for kw in
+                                          ["material","category","matkl"])
+                                   else resp_spend_by_industry(d),
         "top_vendors":     lambda: resp_supplier_spend(d, q),
-        "savings":         lambda: resp_spend_at_risk(d),
+        "savings":         lambda: resp_savings_opportunity(d),
         "otif":            lambda: resp_supplier_delivery(d, q),
         "delay":           lambda: resp_supplier_delivery(d, q),
         "news_delivery_corr": lambda: _resp_news_delay_corr(d),
@@ -1718,8 +1860,8 @@ QUICK_QUESTIONS = [
     ("Spend",        [
         "What is our total spend this quarter?",
         "Where is our maverick spend?",
-        "Show spend concentration risk",
-        "Which vendors have no long-term contract?",
+        "Show spend by material group",
+        "What is our savings opportunity?",
     ]),
     ("Alternatives", [
         "Who are our top backup suppliers?",

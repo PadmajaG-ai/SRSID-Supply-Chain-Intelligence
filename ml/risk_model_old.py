@@ -302,38 +302,11 @@ def main():
     best_eval  = evaluations[best_name]
     log.info(f"Best model: {best_name}  F1={best_eval['f1_weighted']}")
 
-    # Feature importance — save to CSV and to Supabase
+    # Feature importance
     fi = get_feature_importance(best_model, feature_names)
     if not fi.empty:
         fi.to_csv(REPORT_DIR / "feature_importance.csv", index=False)
         log.info(f"Top 5 features: {fi['feature'].head(5).tolist()}")
-        # Also write to Supabase so Streamlit Cloud can read it
-        try:
-            from db.db_client import DBClient
-            with DBClient() as db:
-                db.execute("""
-                    CREATE TABLE IF NOT EXISTS feature_importance (
-                        id            SERIAL PRIMARY KEY,
-                        feature       TEXT,
-                        feature_label TEXT,
-                        importance    FLOAT,
-                        run_date      TIMESTAMP DEFAULT NOW()
-                    )
-                """)
-                db.conn.commit()
-                # Replace previous run
-                db.execute("DELETE FROM feature_importance")
-                for _, row in fi.iterrows():
-                    db.execute(
-                        "INSERT INTO feature_importance "
-                        "(feature, feature_label, importance) VALUES (%s, %s, %s)",
-                        (row["feature"], row.get("feature_label", row["feature"]),
-                         float(row["importance"]))
-                    )
-                db.conn.commit()
-                log.info(f"Feature importance saved to Supabase ({len(fi)} features)")
-        except Exception as e:
-            log.warning(f"Could not save feature importance to DB: {e}")
 
     # Save models to disk
     MODEL_DIR.mkdir(exist_ok=True)
