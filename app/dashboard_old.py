@@ -1093,6 +1093,7 @@ def tab_spend(filters: dict):
         with c4:
             metric_card("Savings Opportunity",
                         fmt_spend(op.get("total_savings_opportunity", 0)),
+                        delta="40% addressable × 15–25% savings rate",
                         color="#8E44AD")
 
         st.divider()
@@ -1158,12 +1159,187 @@ def tab_spend(filters: dict):
         )
         st.dataframe(top, use_container_width=True, hide_index=True)
 
+    st.divider()
 
-# ─────────────────────────────────────────────────────────────────────────────
-# TAB 5 — EXPLAINABILITY
-# ─────────────────────────────────────────────────────────────────────────────
+    # ── Spend by Material Group (SAP spend category) ──────────────────────────
+    st.subheader("Spend by Material Group")
+    st.caption(
+        "SAP material group (MATKL) from purchase orders — "
+        "the closest equivalent to a spend category in PO data."
+    )
+    try:
+        with DBClient() as db:
+            cat_df = db.fetch_df("""
+                SELECT material_group, vendor_count, transaction_count,
+                       total_spend, spend_pct, maverick_pct,
+                       high_risk_pct, savings_opportunity
+                FROM spend_by_category
+                ORDER BY total_spend DESC
+                LIMIT 30
+            """) if db.table_exists("spend_by_category") else pd.DataFrame()
+    except Exception:
+        cat_df = pd.DataFrame()
 
-def tab_explainability():
+    if cat_df.empty:
+        st.info("Category data not yet available. Run `python ml/spend_analytics.py` to generate.")
+    else:
+        col1, col2 = st.columns(2)
+        with col1:
+            if PLOTLY:
+                fig = px.bar(
+                    cat_df.head(15),
+                    x="total_spend", y="material_group",
+                    orientation="h",
+                    color="high_risk_pct",
+                    color_continuous_scale="RdYlGn_r",
+                    labels={"total_spend": "Total Spend",
+                            "material_group": "Material Group",
+                            "high_risk_pct": "% High Risk"},
+                    title="Spend by category (colour = % high risk)"
+                )
+                fig.update_layout(yaxis=dict(autorange="reversed"),
+                                  margin=dict(t=40), height=450)
+                apply_layout(fig)
+                st.plotly_chart(fig, use_container_width=True)
+
+        with col2:
+            if PLOTLY:
+                fig2 = px.bar(
+                    cat_df.head(15),
+                    x="savings_opportunity", y="material_group",
+                    orientation="h",
+                    color="maverick_pct",
+                    color_continuous_scale="Oranges",
+                    labels={"savings_opportunity": "Savings Opportunity ($)",
+                            "material_group": "Material Group",
+                            "maverick_pct": "% Off-Contract"},
+                    title="Savings opportunity by category"
+                )
+                fig2.update_layout(yaxis=dict(autorange="reversed"),
+                                   margin=dict(t=40), height=450)
+                apply_layout(fig2)
+                st.plotly_chart(fig2, use_container_width=True)
+
+        # Detail table
+        disp = cat_df.copy()
+        disp["total_spend"]         = disp["total_spend"].apply(fmt_spend)
+        disp["savings_opportunity"] = disp["savings_opportunity"].apply(fmt_spend)
+        disp["spend_pct"]           = disp["spend_pct"].apply(lambda x: f"{x:.1f}%")
+        disp["maverick_pct"]        = disp["maverick_pct"].apply(lambda x: f"{x:.1f}%")
+        disp["high_risk_pct"]       = disp["high_risk_pct"].apply(lambda x: f"{x:.1f}%")
+        disp.columns = [c.replace("_"," ").title() for c in disp.columns]
+        st.dataframe(disp, use_container_width=True, hide_index=True)
+
+        # Methodology note
+        with st.expander("How is savings opportunity calculated?"):
+            st.markdown("""
+**Methodology (Ardent Partners / Hackett Group benchmarks):**
+
+| Vendor Type | Addressable Portion | Savings Rate | Basis |
+|---|---|---|---|
+| Off-Contract (High Value) | 40% of spend | 20% | Volume consolidation potential |
+| Off-Contract (Regular) | 40% of spend | 15% | Standard renegotiation |
+| Emergency / One-Off | 40% of spend | 25% | Eliminate/consolidate purchases |
+
+**Savings opportunity = off-contract spend × 40% addressable × savings rate**
+
+The 40% addressable factor reflects that not all off-contract spend can realistically
+be brought under contract immediately (supplier relationships, business continuity,
+strategic purchases). This aligns with Hackett Group's finding that world-class
+procurement organisations address 35–45% of addressable spend in annual initiatives.
+
+*Note: All vendors show as off-contract because the SAP dataset contracts table
+has no active contracts populated. In a live deployment, contracted vendors
+would be excluded from this calculation.*
+            """)
+
+    st.divider()
+
+    # ── UNSPSC Taxonomy View ──────────────────────────────────────────────────
+    st.subheader("Spend by UNSPSC Segment")
+    st.caption(
+        "UN Standard Products and Services Code (UNSPSC v25) — "
+        "internationally recognised spend taxonomy, classified from SAP material groups."
+    )
+    try:
+        with DBClient() as db:
+            unspsc_df = db.fetch_df("""
+                SELECT unspsc_segment, unspsc_code, unspsc_segment_name,
+                       vendor_count, transaction_count, total_spend,
+                       spend_pct, classification_method
+                FROM unspsc_spend_summary
+                ORDER BY total_spend DESC
+                LIMIT 25
+            """) if db.table_exists("unspsc_spend_summary") else pd.DataFrame()
+    except Exception:
+        unspsc_df = pd.DataFrame()
+
+    if unspsc_df.empty:
+        st.info(
+            "UNSPSC classification not yet run. "
+            "Execute `python ingestion/unspsc_classifier.py` to classify "
+            "transactions against the UNSPSC v25 taxonomy."
+        )
+    else:
+        col1, col2 = st.columns(2)
+        with col1:
+            if PLOTLY:
+                fig = px.bar(
+                    unspsc_df.head(12),
+                    x="total_spend",
+                    y="unspsc_segment_name",
+                    orientation="h",
+                    color="spend_pct",
+                    color_continuous_scale="Blues",
+                    labels={
+                        "total_spend":        "Total Spend",
+                        "unspsc_segment_name":"UNSPSC Segment",
+                        "spend_pct":          "% of Portfolio"
+                    },
+                    title="Spend by UNSPSC segment"
+                )
+                fig.update_layout(yaxis=dict(autorange="reversed"),
+                                  margin=dict(t=40), height=420)
+                apply_layout(fig)
+                st.plotly_chart(fig, use_container_width=True)
+        with col2:
+            # Coverage doughnut
+            if PLOTLY and "classification_method" in unspsc_df.columns:
+                method_counts = unspsc_df.groupby("classification_method")[
+                    "total_spend"].sum().reset_index()
+                method_counts.columns = ["Method", "Spend"]
+                fig2 = px.pie(
+                    method_counts,
+                    values="Spend",
+                    names="Method",
+                    title="Classification coverage by method",
+                    hole=0.45,
+                    color_discrete_sequence=["#1A6FBF","#1D9E75","#E07B00","#95A5A6"],
+                )
+                fig2.update_traces(textposition="outside",
+                                   textinfo="percent+label")
+                fig2.update_layout(margin=dict(t=40, b=10),
+                                   showlegend=False, height=420)
+                st.plotly_chart(fig2, use_container_width=True)
+
+        # Detail table
+        disp = unspsc_df.copy()
+        disp["total_spend"]   = disp["total_spend"].apply(fmt_spend)
+        disp["spend_pct"]     = disp["spend_pct"].apply(lambda x: f"{x:.1f}%")
+        disp.rename(columns={
+            "unspsc_segment":      "Segment",
+            "unspsc_code":         "UNSPSC Code",
+            "unspsc_segment_name": "Segment Name",
+            "vendor_count":        "Vendors",
+            "transaction_count":   "Transactions",
+            "total_spend":         "Spend",
+            "spend_pct":           "% Portfolio",
+            "classification_method": "Method",
+        }, inplace=True)
+        st.dataframe(disp, use_container_width=True, hide_index=True)
+
+
+
     st.header("Risk Explainability (SHAP)")
 
     expl = load_explanations()
@@ -1712,6 +1888,70 @@ def tab_alternatives(filters: dict):
                 disp["total_annual_spend"] = disp["total_annual_spend"].apply(fmt_spend)
                 disp["anomaly_if_score"]   = disp["anomaly_if_score"].round(3)
                 st.dataframe(disp, use_container_width=True, hide_index=True)
+
+            # ── Anomalies by spend category ───────────────────────────────────
+            st.subheader("Anomalies by Spend Category")
+            st.caption("Which material groups contain the most anomalous vendors?")
+            try:
+                with DBClient() as db:
+                    cat_anom = db.fetch_df("""
+                        SELECT
+                            COALESCE(NULLIF(TRIM(t.material_group),''), 'Unclassified')
+                                                        AS material_group,
+                            COUNT(DISTINCT t.vendor_id) AS total_vendors,
+                            COUNT(DISTINCT t.vendor_id) FILTER (
+                                WHERE va.is_anomalous = TRUE
+                            )                           AS anomalous_vendors,
+                            SUM(t.transaction_amount)   AS total_spend,
+                            SUM(t.transaction_amount) FILTER (
+                                WHERE va.is_anomalous = TRUE
+                            )                           AS anomalous_spend
+                        FROM transactions t
+                        JOIN vendor_anomalies va ON t.vendor_id = va.vendor_id
+                        WHERE t.transaction_amount > 0
+                        GROUP BY 1
+                        HAVING COUNT(DISTINCT t.vendor_id) FILTER (
+                            WHERE va.is_anomalous = TRUE) > 0
+                        ORDER BY anomalous_vendors DESC
+                        LIMIT 20
+                    """) if db.table_exists("vendor_anomalies") else pd.DataFrame()
+            except Exception:
+                cat_anom = pd.DataFrame()
+
+            if not cat_anom.empty:
+                cat_anom["anomaly_rate"] = (
+                    cat_anom["anomalous_vendors"] / cat_anom["total_vendors"] * 100
+                ).round(1)
+                cat_anom["anomalous_spend"] = cat_anom["anomalous_spend"].fillna(0)
+
+                if PLOTLY:
+                    fig = px.bar(
+                        cat_anom.head(15),
+                        x="anomalous_vendors",
+                        y="material_group",
+                        orientation="h",
+                        color="anomaly_rate",
+                        color_continuous_scale="Reds",
+                        labels={
+                            "anomalous_vendors": "Anomalous Vendor Count",
+                            "material_group":    "Material Group",
+                            "anomaly_rate":      "Anomaly Rate %"
+                        },
+                    )
+                    fig.update_layout(yaxis=dict(autorange="reversed"),
+                                      margin=dict(t=10), height=380)
+                    apply_layout(fig)
+                    st.plotly_chart(fig, use_container_width=True)
+
+                disp2 = cat_anom.copy()
+                disp2["total_spend"]     = disp2["total_spend"].apply(fmt_spend)
+                disp2["anomalous_spend"] = disp2["anomalous_spend"].apply(fmt_spend)
+                disp2["anomaly_rate"]    = disp2["anomaly_rate"].apply(
+                    lambda x: f"{x:.1f}%")
+                disp2.columns = [c.replace("_"," ").title() for c in disp2.columns]
+                st.dataframe(disp2, use_container_width=True, hide_index=True)
+            else:
+                st.caption("Run `python ml/spend_analytics.py` first to generate category data.")
 
             st.download_button(
                 "Export Anomalies",

@@ -1161,41 +1161,47 @@ def tab_spend(filters: dict):
 
     st.divider()
 
-    # ── Spend by Material Group (SAP spend category) ──────────────────────────
-    st.subheader("Spend by Material Group")
+    # ── Spend by UNSPSC Segment (UN standard taxonomy) ───────────────────────
+    st.subheader("Spend by UNSPSC Segment")
     st.caption(
-        "SAP material group (MATKL) from purchase orders — "
-        "the closest equivalent to a spend category in PO data."
+        "UN Standard Products and Services Code (UNSPSC v25) — "
+        "internationally recognised spend taxonomy, mapped from SAP material groups."
     )
     try:
         with DBClient() as db:
-            cat_df = db.fetch_df("""
-                SELECT material_group, vendor_count, transaction_count,
-                       total_spend, spend_pct, maverick_pct,
-                       high_risk_pct, savings_opportunity
-                FROM spend_by_category
+            unspsc_df = db.fetch_df("""
+                SELECT unspsc_segment, unspsc_code, unspsc_segment_name,
+                       vendor_count, transaction_count,
+                       total_spend, spend_pct, classification_method
+                FROM unspsc_spend_summary
                 ORDER BY total_spend DESC
-                LIMIT 30
-            """) if db.table_exists("spend_by_category") else pd.DataFrame()
+                LIMIT 25
+            """) if db.table_exists("unspsc_spend_summary") else pd.DataFrame()
     except Exception:
-        cat_df = pd.DataFrame()
+        unspsc_df = pd.DataFrame()
 
-    if cat_df.empty:
-        st.info("Category data not yet available. Run `python ml/spend_analytics.py` to generate.")
+    if unspsc_df.empty:
+        st.info(
+            "UNSPSC classification not yet run. "
+            "Execute `python ingestion/unspsc_classifier.py` to classify "
+            "transactions against the UNSPSC v25 taxonomy."
+        )
     else:
         col1, col2 = st.columns(2)
         with col1:
             if PLOTLY:
                 fig = px.bar(
-                    cat_df.head(15),
-                    x="total_spend", y="material_group",
+                    unspsc_df.head(15),
+                    x="total_spend", y="unspsc_segment_name",
                     orientation="h",
-                    color="high_risk_pct",
-                    color_continuous_scale="RdYlGn_r",
-                    labels={"total_spend": "Total Spend",
-                            "material_group": "Material Group",
-                            "high_risk_pct": "% High Risk"},
-                    title="Spend by category (colour = % high risk)"
+                    color="spend_pct",
+                    color_continuous_scale="Blues",
+                    labels={
+                        "total_spend":         "Total Spend",
+                        "unspsc_segment_name": "UNSPSC Segment",
+                        "spend_pct":           "% of Portfolio",
+                    },
+                    title="Spend by UNSPSC segment"
                 )
                 fig.update_layout(yaxis=dict(autorange="reversed"),
                                   margin=dict(t=40), height=450)
@@ -1203,57 +1209,60 @@ def tab_spend(filters: dict):
                 st.plotly_chart(fig, use_container_width=True)
 
         with col2:
-            if PLOTLY:
-                fig2 = px.bar(
-                    cat_df.head(15),
-                    x="savings_opportunity", y="material_group",
-                    orientation="h",
-                    color="maverick_pct",
-                    color_continuous_scale="Oranges",
-                    labels={"savings_opportunity": "Savings Opportunity ($)",
-                            "material_group": "Material Group",
-                            "maverick_pct": "% Off-Contract"},
-                    title="Savings opportunity by category"
+            if PLOTLY and "classification_method" in unspsc_df.columns:
+                method_counts = (
+                    unspsc_df.groupby("classification_method")["total_spend"]
+                    .sum().reset_index()
                 )
-                fig2.update_layout(yaxis=dict(autorange="reversed"),
-                                   margin=dict(t=40), height=450)
-                apply_layout(fig2)
+                method_counts.columns = ["Method", "Spend"]
+                fig2 = px.pie(
+                    method_counts, values="Spend", names="Method",
+                    title="Classification coverage by method",
+                    hole=0.45,
+                    color_discrete_sequence=["#1A6FBF","#1D9E75",
+                                             "#E07B00","#95A5A6"],
+                )
+                fig2.update_traces(textposition="outside",
+                                   textinfo="percent+label")
+                fig2.update_layout(margin=dict(t=40, b=10),
+                                   showlegend=False, height=450)
                 st.plotly_chart(fig2, use_container_width=True)
 
-        # Detail table
-        disp = cat_df.copy()
-        disp["total_spend"]         = disp["total_spend"].apply(fmt_spend)
-        disp["savings_opportunity"] = disp["savings_opportunity"].apply(fmt_spend)
-        disp["spend_pct"]           = disp["spend_pct"].apply(lambda x: f"{x:.1f}%")
-        disp["maverick_pct"]        = disp["maverick_pct"].apply(lambda x: f"{x:.1f}%")
-        disp["high_risk_pct"]       = disp["high_risk_pct"].apply(lambda x: f"{x:.1f}%")
-        disp.columns = [c.replace("_"," ").title() for c in disp.columns]
+        disp = unspsc_df.copy()
+        disp["total_spend"] = disp["total_spend"].apply(fmt_spend)
+        disp["spend_pct"]   = disp["spend_pct"].apply(lambda x: f"{x:.1f}%")
+        disp.rename(columns={
+            "unspsc_segment":        "Segment",
+            "unspsc_code":           "UNSPSC Code",
+            "unspsc_segment_name":   "Segment Name",
+            "vendor_count":          "Vendors",
+            "transaction_count":     "Transactions",
+            "total_spend":           "Spend",
+            "spend_pct":             "% Portfolio",
+            "classification_method": "Method",
+        }, inplace=True)
         st.dataframe(disp, use_container_width=True, hide_index=True)
 
-        # Methodology note
-        with st.expander("How is savings opportunity calculated?"):
-            st.markdown("""
+    with st.expander("How is savings opportunity calculated?"):
+        st.markdown("""
 **Methodology (Ardent Partners / Hackett Group benchmarks):**
 
 | Vendor Type | Addressable Portion | Savings Rate | Basis |
 |---|---|---|---|
-| Off-Contract (High Value) | 40% of spend | 20% | Volume consolidation potential |
-| Off-Contract (Regular) | 40% of spend | 15% | Standard renegotiation |
-| Emergency / One-Off | 40% of spend | 25% | Eliminate/consolidate purchases |
+| Off-Contract (High Value) | 40% | 20% | Volume consolidation |
+| Off-Contract (Regular) | 40% | 15% | Standard renegotiation |
+| Emergency / One-Off | 40% | 25% | Eliminate one-off purchases |
 
 **Savings opportunity = off-contract spend × 40% addressable × savings rate**
 
-The 40% addressable factor reflects that not all off-contract spend can realistically
-be brought under contract immediately (supplier relationships, business continuity,
-strategic purchases). This aligns with Hackett Group's finding that world-class
-procurement organisations address 35–45% of addressable spend in annual initiatives.
-
-*Note: All vendors show as off-contract because the SAP dataset contracts table
-has no active contracts populated. In a live deployment, contracted vendors
-would be excluded from this calculation.*
-            """)
+*Note: All vendors show as off-contract because the SAP dataset contracts table has
+no active contracts. In a live deployment, contracted vendors are excluded.*
+        """)
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# TAB 5 — EXPLAINABILITY
+# ─────────────────────────────────────────────────────────────────────────────
 
 def tab_explainability():
     st.header("Risk Explainability (SHAP)")

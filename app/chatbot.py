@@ -124,7 +124,7 @@ def _empty_data() -> dict:
         summary={}, vendors=empty, segments=empty, explanations=empty,
         news=empty, contracts=empty, delivery=empty, alternatives=empty,
         anomalies=empty, quarterly=empty, feat_imp=empty,
-        spend_categories=empty,
+        spend_categories=empty, unspsc_data=empty,
     )
 
 
@@ -214,6 +214,14 @@ def load_data() -> dict:
                 FROM spend_by_category
                 ORDER BY total_spend DESC
             """) if cat_exists else pd.DataFrame()
+            unspsc_exists = db.table_exists("unspsc_spend_summary")
+            unspsc_data   = db.fetch_df("""
+                SELECT unspsc_segment, unspsc_code, unspsc_segment_name,
+                       vendor_count, transaction_count,
+                       total_spend, spend_pct, classification_method
+                FROM unspsc_spend_summary
+                ORDER BY total_spend DESC
+            """) if unspsc_exists else pd.DataFrame()
 
         return dict(
             summary=summary, vendors=vendors, segments=segments,
@@ -221,6 +229,7 @@ def load_data() -> dict:
             delivery=delivery, alternatives=alternatives, anomalies=anomalies,
             quarterly=quarterly, feat_imp=feat_imp,
             spend_categories=spend_categories,
+            unspsc_data=unspsc_data,
         )
 
     except Exception as e:
@@ -338,6 +347,9 @@ INTENTS = {
                        "material group","material.*group","spend.*category",
                        "category.*spend","which category","by material",
                        "spend breakdown","breakdown.*spend"],
+    "unspsc":         ["unspsc","un standard","product.*service.*code",
+                       "spend.*taxonomy","taxonomy.*spend",
+                       "un code","standard taxonomy","spend classification"],
     "top_vendors":    ["top.*vendor","top.*supplier.*spend","highest.*spend.*supplier",
                        "most.*spend.*supplier","biggest.*spend",
                        "spend.*vs.*perform","spend.*performance"],
@@ -415,6 +427,7 @@ def resp_help() -> str:
 - "Show spend concentration risk"
 - "Show spend by industry"
 - "Show spend by material group"
+- "Show spend by UNSPSC segment"
 - "What is our savings opportunity?"
 - "Which vendors have no long-term contract?"
 - "Which contracts expire in the next 60 days?"
@@ -782,6 +795,53 @@ def resp_supplier_news(d: dict, q: str) -> str:
     lines = ["**Vendors with most negative news sentiment (30 days):**\n"]
     for name, sent in neg.items():
         lines.append(f"• **{name}** — avg sentiment: {sent:+.2f}")
+    return "\n".join(lines)
+
+
+def resp_unspsc(d: dict) -> str:
+    """Show spend breakdown by UNSPSC segment (UN standard taxonomy)."""
+    unspsc = d.get("unspsc_data", pd.DataFrame())
+
+    if unspsc.empty:
+        return (
+            "UNSPSC classification has not been run yet.\n\n"
+            "Run `python ingestion/unspsc_classifier.py` to map your SAP "
+            "material groups to the UN Standard Products and Services Code (UNSPSC v25) taxonomy.\n\n"
+            "In the meantime, here's spend by material group:\n\n"
+            + resp_spend_by_category(d)
+        )
+
+    total = unspsc["total_spend"].sum()
+    lines = [
+        "**Spend by UNSPSC Segment (UN Standard Products & Services Code v25):**\n"
+    ]
+
+    for _, r in unspsc.head(12).iterrows():
+        code = r.get("unspsc_code", "")
+        name = r.get("unspsc_segment_name", r.get("unspsc_segment", "Unknown"))
+        spend = r.get("total_spend", 0)
+        pct   = r.get("spend_pct", spend / total * 100 if total else 0)
+        method = r.get("classification_method", "")
+        method_tag = " *(ML)*" if "ml" in str(method) else ""
+        lines.append(
+            f"• **[{code}] {name[:50]}** — "
+            f"{fmt_money(spend)} ({pct:.1f}%){method_tag}"
+        )
+
+    lines.append(f"\n**Total: {fmt_money(total)}**")
+
+    # Coverage quality note
+    if "classification_method" in unspsc.columns:
+        unknown_pct = unspsc[unspsc["classification_method"] == "unknown"][
+            "spend_pct"].sum()
+        if unknown_pct > 10:
+            lines.append(
+                f"\n*{unknown_pct:.0f}% of spend could not be mapped to UNSPSC — "
+                "improve coverage by enriching SAP material group descriptions.*"
+            )
+        else:
+            lines.append(f"\n*UNSPSC coverage: {100-unknown_pct:.0f}% of spend classified.*")
+
     return "\n".join(lines)
 
 
@@ -1747,6 +1807,7 @@ def _postgres_route(q: str, d: dict) -> tuple[str, str]:
                                    if any(kw in q.lower() for kw in
                                           ["material","category","matkl"])
                                    else resp_spend_by_industry(d),
+        "unspsc":          lambda: resp_unspsc(d),
         "top_vendors":     lambda: resp_supplier_spend(d, q),
         "savings":         lambda: resp_savings_opportunity(d),
         "otif":            lambda: resp_supplier_delivery(d, q),

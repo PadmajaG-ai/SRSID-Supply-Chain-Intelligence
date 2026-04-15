@@ -29,7 +29,7 @@ def _get_db_config() -> dict:
             s = st.secrets["database"]
             return {
                 "host":     s.get("DB_HOST",     "localhost"),
-                "port":     int(s.get("DB_PORT", 5432)),
+                "port":     int(s.get("DB_PORT", "5432")),
                 "database": s.get("DB_NAME",     "srsid_db"),
                 "user":     s.get("DB_USER",     "srsid_user"),
                 "password": s.get("DB_PASSWORD", "srsid_pass123"),

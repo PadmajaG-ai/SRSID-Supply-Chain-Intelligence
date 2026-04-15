@@ -67,7 +67,7 @@ class DBClient:
 
             self._conn = psycopg2.connect(connect_url)
             self._conn.autocommit = False
-            log.debug(f"Connected to {host}:{DB_CONFIG.get('port', 5432)}")
+            log.debug(f"Connected to {host}:{DB_CONFIG.get('port', '5432')}")
             return self
         except psycopg2.OperationalError as e:
             log.error(f"Cannot connect to database: {e}")
