@@ -280,6 +280,92 @@ hr {{
 .stDownloadButton > button:hover {{
     background: {BRAND['accent_light']} !important;
 }}
+
+/* ── CSS variables so metric_card works on any background ── */
+:root {{
+    --srsid-card:   #FFFFFF;
+    --srsid-border: #E2E8F0;
+    --srsid-muted:  #64748B;
+    --srsid-navy:   #0F2644;
+    --srsid-bg:     #F5F7FA;
+}}
+
+/* ── Text visibility fixes ── */
+.stMarkdown p, .stMarkdown li, .stMarkdown td, .stMarkdown th {{
+    color: {BRAND['text_primary']} !important;
+}}
+.stCaption, .stCaption p {{
+    color: {BRAND['text_muted']} !important;
+}}
+[data-testid="stText"] {{
+    color: {BRAND['text_primary']} !important;
+}}
+.stAlert p, .stInfo p, .stWarning p, .stSuccess p, .stError p {{
+    color: inherit !important;
+}}
+
+/* ── Elevated dataframe tables ── */
+[data-testid="stDataFrame"] {{
+    border: 1px solid {BRAND['border']} !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+}}
+[data-testid="stDataFrame"] table {{
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    width: 100% !important;
+}}
+[data-testid="stDataFrame"] thead tr th {{
+    background: {BRAND['navy']} !important;
+    color: #FFFFFF !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    padding: 10px 14px !important;
+    border-bottom: 2px solid {BRAND['accent']} !important;
+    white-space: nowrap !important;
+}}
+[data-testid="stDataFrame"] tbody tr:nth-child(even) td {{
+    background: {BRAND['bg']} !important;
+}}
+[data-testid="stDataFrame"] tbody tr:nth-child(odd) td {{
+    background: #FFFFFF !important;
+}}
+[data-testid="stDataFrame"] tbody tr:hover td {{
+    background: {BRAND['accent_light']} !important;
+    transition: background 0.12s ease !important;
+}}
+[data-testid="stDataFrame"] tbody td {{
+    font-size: 0.82rem !important;
+    color: {BRAND['text_primary']} !important;
+    padding: 9px 14px !important;
+    border-bottom: 1px solid {BRAND['border']} !important;
+}}
+[data-testid="stDataFrame"] tbody tr:last-child td {{
+    border-bottom: none !important;
+}}
+
+/* ── Subheader text visibility ── */
+h2, h3, .stSubheader {{
+    color: {BRAND['navy']} !important;
+}}
+
+/* ── Info / warning boxes text ── */
+.stInfo, .stWarning, .stSuccess, .stError {{
+    border-radius: 6px !important;
+}}
+div[data-testid="stMarkdownContainer"] p {{
+    color: {BRAND['text_primary']};
+}}
+
+/* ── Expander content text ── */
+.streamlit-expanderContent p,
+.streamlit-expanderContent li,
+.streamlit-expanderContent td {{
+    color: {BRAND['text_primary']} !important;
+}}
 </style>
 """, unsafe_allow_html=True)
 
@@ -287,7 +373,7 @@ hr {{
 
 # ── Plotly chart defaults ──────────────────────────────────────────────────────
 PLOTLY_LAYOUT = dict(
-    font=dict(family="Inter, -apple-system, sans-serif", size=12, color="#1A202C"),
+    font=dict(family="Inter, -apple-system, sans-serif", size=12, color="#334155"),
     paper_bgcolor="rgba(0,0,0,0)",
     plot_bgcolor="rgba(0,0,0,0)",
     margin=dict(t=40, b=20, l=10, r=10),
@@ -313,7 +399,7 @@ def apply_layout(fig, title=None, height=300):
     fig.update_layout(**PLOTLY_LAYOUT, height=height)
     if title:
         fig.update_layout(
-            title=dict(text=title, font=dict(size=13, color="#0F2644", weight=600),
+            title=dict(text=title, font=dict(size=13, color="#1A3A5C"),
                        x=0, xanchor="left", pad=dict(l=0, b=8))
         )
     return fig
@@ -420,15 +506,40 @@ def load_segments(vendor_ids: tuple = None) -> pd.DataFrame:
 @st.cache_data(ttl=300)
 def load_explanations() -> pd.DataFrame:
     with DBClient() as db:
-        return db.fetch_df("""
-            SELECT e.vendor_id, e.supplier_name,
-                   e.predicted_risk_tier,
-                   e.driver_1_label, e.driver_1_shap,
-                   e.driver_2_label, e.driver_2_shap,
-                   e.driver_3_label, e.driver_3_shap,
-                   e.mitigator_label, e.mitigator_shap,
-                   e.narrative,
-                   v.total_annual_spend, v.risk_label
+        # Check which columns actually exist — LIME cols added by explainability.py
+        existing = set(db.fetch_df(
+            "SELECT column_name FROM information_schema.columns "
+            "WHERE table_name = 'explanations'"
+        )["column_name"].tolist())
+
+        # Core SHAP columns (always present)
+        cols = [
+            "e.vendor_id", "e.supplier_name", "e.predicted_risk_tier",
+            "e.driver_1_label", "e.driver_1_shap", "e.driver_1_value",
+            "e.driver_2_label", "e.driver_2_shap", "e.driver_2_value",
+            "e.driver_3_label", "e.driver_3_shap", "e.driver_3_value",
+            "e.mitigator_label", "e.mitigator_shap",
+            "e.narrative",
+            "v.total_annual_spend", "v.risk_label",
+        ]
+        # LIME columns — only add if they exist in the table
+        lime_cols = [
+            ("lime_driver_1_label",  "e.lime_driver_1_label"),
+            ("lime_driver_1_weight", "e.lime_driver_1_weight"),
+            ("lime_driver_2_label",  "e.lime_driver_2_label"),
+            ("lime_driver_2_weight", "e.lime_driver_2_weight"),
+            ("lime_driver_3_label",  "e.lime_driver_3_label"),
+            ("lime_driver_3_weight", "e.lime_driver_3_weight"),
+            ("lime_narrative",       "e.lime_narrative"),
+            ("methods_agree",        "e.methods_agree"),
+        ]
+        for col_name, col_expr in lime_cols:
+            if col_name in existing:
+                cols.append(col_expr)
+
+        select_clause = ",\n                   ".join(cols)
+        return db.fetch_df(f"""
+            SELECT {select_clause}
             FROM latest_explanations e
             LEFT JOIN vendors v ON e.vendor_id = v.vendor_id
         """)
@@ -520,16 +631,17 @@ def load_model_eval() -> dict:
 
 def metric_card(label: str, value, delta=None, color="#1A6FBF", border_top=True):
     border = f"border-top: 3px solid {color};" if border_top else ""
-    delta_html = (f"<div style='font-size:0.72rem;color:#64748B;"
+    delta_html = (f"<div style='font-size:0.72rem;color:var(--srsid-muted,#64748B);"
                   f"margin-top:4px'>{delta}</div>") if delta else ""
     st.markdown(
-        f"""<div style='background:#FFFFFF;{border}border-radius:6px;
-                        padding:1rem 1.25rem;border:1px solid #E2E8F0;
-                        box-shadow:0 1px 3px rgba(0,0,0,0.05)'>
-            <div style='font-size:0.72rem;color:#64748B;text-transform:uppercase;
-                        letter-spacing:0.05em;font-weight:500'>{label}</div>
-            <div style='font-size:1.6rem;font-weight:700;color:{color};
-                        margin-top:4px;letter-spacing:-0.02em'>{value}</div>
+        f"""<div style='background:var(--srsid-card,#FFFFFF);{border}border-radius:8px;
+                        padding:1rem 1.25rem;border:1px solid var(--srsid-border,#E2E8F0);
+                        box-shadow:0 2px 6px rgba(0,0,0,0.06)'>
+            <div style='font-size:0.70rem;color:var(--srsid-muted,#64748B);
+                        text-transform:uppercase;letter-spacing:0.06em;
+                        font-weight:600;margin-bottom:6px'>{label}</div>
+            <div style='font-size:1.55rem;font-weight:700;color:{color};
+                        letter-spacing:-0.02em;line-height:1.1'>{value}</div>
             {delta_html}</div>""",
         unsafe_allow_html=True,
     )
@@ -542,6 +654,23 @@ def fmt_spend(v):
     if abs(v) >= 1e6: return f"${v/1e6:.1f}M"
     if abs(v) >= 1e3: return f"${v/1e3:.0f}K"
     return f"${v:.0f}"
+
+def styled_table(df: pd.DataFrame, height: int = 400,
+                 hide_index: bool = True) -> None:
+    """
+    Render a dataframe with elevated styling:
+    — dark navy header row
+    — alternating row shading
+    — hover highlight
+    — consistent font and padding
+    All controlled via CSS injected in the global style block.
+    """
+    st.dataframe(
+        df,
+        use_container_width=True,
+        hide_index=hide_index,
+        height=height,
+    )
 
 
 def risk_badge(tier: str) -> str:
@@ -906,7 +1035,7 @@ def tab_risk(filters: dict):
         disp = high_enr[[c for c in disp_cols if c in high_enr.columns]].copy()
         disp["total_annual_spend"] = disp["total_annual_spend"].apply(fmt_spend)
         disp.columns = [c.replace("_"," ").title() for c in disp.columns]
-        st.dataframe(disp, use_container_width=True, hide_index=True)
+        styled_table(disp)
     else:
         st.success("No High Risk suppliers in current filter.")
 
@@ -934,7 +1063,7 @@ def tab_risk(filters: dict):
     disp.sort_values("composite_risk_score", ascending=False, inplace=True)
     disp["total_annual_spend"] = disp["total_annual_spend"].apply(fmt_spend)
     disp.columns = [c.replace("_"," ").title() for c in disp.columns]
-    st.dataframe(disp, use_container_width=True, hide_index=True)
+    styled_table(disp)
 
     st.download_button("Export",
                        risk_df.to_csv(index=False).encode(),
@@ -1044,7 +1173,7 @@ def tab_segmentation(filters: dict):
                      .sort_values("total_annual_spend", ascending=False)
                      .head(30))
         action_df["total_annual_spend"] = action_df["total_annual_spend"].apply(fmt_spend)
-        st.dataframe(action_df, use_container_width=True, hide_index=True)
+        styled_table(action_df)
 
     st.download_button("Export Segments",
                        seg.to_csv(index=False).encode(),
@@ -1157,7 +1286,7 @@ def tab_spend(filters: dict):
         top["spend_pct_of_portfolio"] = top["spend_pct_of_portfolio"].apply(
             lambda x: f"{x:.2f}%" if x else "—"
         )
-        st.dataframe(top, use_container_width=True, hide_index=True)
+        styled_table(top)
 
     st.divider()
 
@@ -1241,7 +1370,7 @@ def tab_spend(filters: dict):
             "spend_pct":             "% Portfolio",
             "classification_method": "Method",
         }, inplace=True)
-        st.dataframe(disp, use_container_width=True, hide_index=True)
+        styled_table(disp)
 
     with st.expander("How is savings opportunity calculated?"):
         st.markdown("""
@@ -1265,7 +1394,14 @@ no active contracts. In a live deployment, contracted vendors are excluded.*
 # ─────────────────────────────────────────────────────────────────────────────
 
 def tab_explainability():
-    st.header("Risk Explainability (SHAP)")
+    st.header("Risk Explainability — SHAP & LIME")
+    st.caption(
+        "Dual-method explainability. **SHAP** computes globally consistent "
+        "feature attributions using game theory. **LIME** fits a local "
+        "linear model around each vendor to explain why *this specific* "
+        "prediction was made. Cross-validation between methods increases "
+        "trust in the explanation."
+    )
 
     expl = load_explanations()
     if expl.empty:
@@ -1279,52 +1415,120 @@ def tab_explainability():
     if selected:
         row = expl[expl["supplier_name"] == selected].iloc[0]
 
+        # ── Risk tier + agreement badge ─────────────────────────────────────
         tier  = row.get("predicted_risk_tier", "Unknown")
         color = COLORS.get(tier, "#95A5A6")
-        st.markdown(
-            f"**Risk Classification:** "
+        agree = row.get("methods_agree", "")
+
+        badge_html = (
             f"<span style='background:{color};color:white;padding:3px 10px;"
-            f"border-radius:4px'>{tier}</span>",
-            unsafe_allow_html=True
+            f"border-radius:4px;font-size:0.85rem'>{tier}</span>"
         )
+        if agree:
+            agree_color = "#1E7E4B" if agree == "YES" else "#B7670A"
+            badge_html += (
+                f" &nbsp; <span style='background:{agree_color};color:white;"
+                f"padding:3px 10px;border-radius:4px;font-size:0.75rem'>"
+                f"SHAP & LIME agree: {agree}</span>"
+            )
+        st.markdown(f"**Risk Classification:** {badge_html}",
+                    unsafe_allow_html=True)
 
-        if pd.notna(row.get("narrative")):
-            st.info(row["narrative"])
+        narr = row.get("narrative")
+        if narr and pd.notna(narr) and str(narr) != "nan":
+            st.info(str(narr))
 
-        # Driver chart
-        drivers = []
+        # ── Side-by-side SHAP + LIME charts ─────────────────────────────────
+        col1, col2 = st.columns(2)
+
+        # SHAP drivers
+        shap_drivers = []
         for i in range(1, 4):
             label = row.get(f"driver_{i}_label")
             shap  = row.get(f"driver_{i}_shap")
             if label and pd.notna(shap):
-                drivers.append({"Feature": label, "SHAP": float(shap)})
+                shap_drivers.append({"Feature": label, "SHAP": float(shap)})
         if row.get("mitigator_label") and pd.notna(row.get("mitigator_shap")):
-            drivers.append({
+            shap_drivers.append({
                 "Feature": f"{row['mitigator_label']} (mitigator)",
                 "SHAP": float(row["mitigator_shap"])
             })
 
-        if drivers and PLOTLY:
-            d_df = pd.DataFrame(drivers)
-            colors = ["#E74C3C" if v > 0 else "#27AE60" for v in d_df["SHAP"]]
-            fig = go.Figure(go.Bar(
-                x=d_df["SHAP"], y=d_df["Feature"],
-                orientation="h",
-                marker_color=colors,
-                text=[f"{v:+.3f}" for v in d_df["SHAP"]],
-                textposition="outside",
-            ))
-            fig.update_layout(
-                title="Risk Drivers (red = increases risk, green = reduces risk)",
-                xaxis_title="SHAP Value",
-                yaxis=dict(autorange="reversed"),
-                margin=dict(t=40, b=10),
-                height=300,
-            )
-            st.plotly_chart(fig, use_container_width=True)
+        with col1:
+            st.markdown("**SHAP — global attribution**")
+            if shap_drivers and PLOTLY:
+                d_df = pd.DataFrame(shap_drivers)
+                colors = ["#E74C3C" if v > 0 else "#27AE60" for v in d_df["SHAP"]]
+                fig = go.Figure(go.Bar(
+                    x=d_df["SHAP"], y=d_df["Feature"],
+                    orientation="h",
+                    marker_color=colors,
+                    text=[f"{v:+.3f}" for v in d_df["SHAP"]],
+                    textposition="outside",
+                ))
+                fig.update_layout(
+                    xaxis_title="SHAP Value",
+                    yaxis=dict(autorange="reversed"),
+                    margin=dict(t=20, b=10),
+                    height=300,
+                )
+                apply_layout(fig)
+                st.plotly_chart(fig, use_container_width=True)
+            else:
+                st.caption("No SHAP data for this vendor.")
 
-    # Global feature importance
+        # LIME drivers
+        lime_drivers = []
+        for i in range(1, 4):
+            ll = row.get(f"lime_driver_{i}_label")
+            lw = row.get(f"lime_driver_{i}_weight")
+            if ll and pd.notna(lw):
+                lime_drivers.append({"Feature": ll, "LIME": float(lw)})
+
+        with col2:
+            st.markdown("**LIME — local approximation**")
+            if lime_drivers and PLOTLY:
+                l_df   = pd.DataFrame(lime_drivers)
+                colors = ["#E74C3C" if v > 0 else "#27AE60" for v in l_df["LIME"]]
+                # Format text labels so tiny weights still show sign
+                def _fmt(v):
+                    if abs(v) < 1e-6:   return "≈ 0"
+                    if abs(v) < 0.001:  return f"{v:+.2e}"
+                    return f"{v:+.3f}"
+                fig = go.Figure(go.Bar(
+                    x=l_df["LIME"], y=l_df["Feature"],
+                    orientation="h",
+                    marker_color=colors,
+                    text=[_fmt(v) for v in l_df["LIME"]],
+                    textposition="outside",
+                ))
+                fig.update_layout(
+                    xaxis_title="LIME Weight",
+                    yaxis=dict(autorange="reversed"),
+                    margin=dict(t=20, b=10),
+                    height=300,
+                )
+                apply_layout(fig)
+                st.plotly_chart(fig, use_container_width=True)
+            else:
+                st.caption("No LIME data for this vendor. "
+                           "Install lime and re-run ml/explainability.py")
+
+        # ── LIME narrative expander ─────────────────────────────────────────
+        lime_narr = row.get("lime_narrative")
+        if lime_narr and pd.notna(lime_narr) and str(lime_narr) != "nan":
+            with st.expander("LIME local-explanation narrative"):
+                st.write(str(lime_narr))
+
+        st.divider()
+
+    # ── Global feature importance ───────────────────────────────────────────
     st.subheader("Global Feature Importance")
+    st.caption(
+        "Average feature importance computed by the risk model across all "
+        "2,541 vendors. Use this to understand which features the model "
+        "relies on most globally, independent of any single supplier."
+    )
     fi = load_feature_importance()
     if not fi.empty and PLOTLY:
         label_col = "feature_label" if "feature_label" in fi.columns else "feature"
@@ -1540,15 +1744,93 @@ def tab_vendor_profile():
     with col1:
         st.subheader("Risk Drivers")
         if expl:
+            drivers_found = False
+
+            # ── SHAP drivers ─────────────────────────────────────────────────
+            shap_drivers = []
             for i in range(1, 4):
                 label = expl.get(f"driver_{i}_label")
                 shap  = expl.get(f"driver_{i}_shap")
-                if label and shap:
-                    icon = "🔴" if float(shap) > 0 else "🟢"
-                    st.write(f"{icon} **{label}** ({float(shap):+.3f})")
+                if label and shap is not None:
+                    shap_drivers.append((label, shap,
+                                         expl.get(f"driver_{i}_value", "")))
+
+            if shap_drivers:
+                drivers_found = True
+                st.caption("**SHAP** — global feature attribution")
+                for label, shap, value in shap_drivers:
+                    icon    = "🔴" if float(shap) > 0 else "🟢"
+                    val_str = f" = {value}" if value else ""
+                    st.markdown(
+                        f"{icon} **{label}**{val_str} "
+                        f"<span style='color:#64748B;font-size:0.82rem'>"
+                        f"(SHAP: {float(shap):+.3f})</span>",
+                        unsafe_allow_html=True
+                    )
+                mit_label = expl.get("mitigator_label")
+                mit_shap  = expl.get("mitigator_shap")
+                if mit_label and mit_shap is not None:
+                    st.markdown(
+                        f"🟢 **{mit_label}** "
+                        f"<span style='color:#64748B;font-size:0.82rem'>"
+                        f"(mitigator, SHAP: {float(mit_shap):+.3f})</span>",
+                        unsafe_allow_html=True
+                    )
+
+            # ── LIME drivers ──────────────────────────────────────────────────
+            lime_drivers = []
+            for i in range(1, 4):
+                ll = expl.get(f"lime_driver_{i}_label")
+                lw = expl.get(f"lime_driver_{i}_weight")
+                if ll and lw is not None:
+                    lime_drivers.append((ll, lw))
+
+            if lime_drivers:
+                drivers_found = True
+                st.caption("**LIME** — local approximation for this vendor")
+                for label, weight in lime_drivers:
+                    w = float(weight)
+                    # Format based on magnitude so sign + precision are both clear
+                    if abs(w) < 0.001:
+                        # Very small — show 'negligible' with actual direction
+                        if abs(w) < 1e-6:
+                            weight_str = "≈ 0 (negligible local effect)"
+                            icon = "⚪"
+                        else:
+                            # Use scientific notation to preserve sign + magnitude
+                            weight_str = f"{w:+.2e}"
+                            icon = "🔴" if w > 0 else "🟢"
+                    else:
+                        weight_str = f"{w:+.3f}"
+                        icon = "🔴" if w > 0 else "🟢"
+                    st.markdown(
+                        f"{icon} **{label}** "
+                        f"<span style='color:#64748B;font-size:0.82rem'>"
+                        f"(LIME weight: {weight_str})</span>",
+                        unsafe_allow_html=True
+                    )
+                agree = expl.get("methods_agree", "")
+                if agree:
+                    badge_color = "#1E7E4B" if agree == "YES" else "#B7670A"
+                    st.markdown(
+                        f"<span style='background:{badge_color};color:white;"
+                        f"padding:2px 8px;border-radius:4px;font-size:0.75rem'>"
+                        f"SHAP & LIME agree: {agree}</span>",
+                        unsafe_allow_html=True
+                    )
+
+            if not drivers_found:
+                st.caption("Explanation data exists but values are NULL — "
+                           "re-run ml/explainability.py to regenerate.")
+
+            # Narratives
             narrative = expl.get("narrative")
-            if narrative:
-                st.info(narrative)
+            if narrative and pd.notna(narrative) and str(narrative) != "nan":
+                st.info(str(narrative))
+            lime_narr = expl.get("lime_narrative")
+            if lime_narr:
+                with st.expander("LIME local explanation"):
+                    st.write(lime_narr)
         else:
             st.caption("No explanation data. Run ml/explainability.py")
 
@@ -1812,7 +2094,7 @@ def tab_alternatives(filters: dict):
                 ]].copy()
                 disp["total_annual_spend"] = disp["total_annual_spend"].apply(fmt_spend)
                 disp["anomaly_if_score"]   = disp["anomaly_if_score"].round(3)
-                st.dataframe(disp, use_container_width=True, hide_index=True)
+                styled_table(disp)
 
             # ── Anomalies by spend category ───────────────────────────────────
             st.subheader("Anomalies by Spend Category")
@@ -1874,7 +2156,7 @@ def tab_alternatives(filters: dict):
                 disp2["anomaly_rate"]    = disp2["anomaly_rate"].apply(
                     lambda x: f"{x:.1f}%")
                 disp2.columns = [c.replace("_"," ").title() for c in disp2.columns]
-                st.dataframe(disp2, use_container_width=True, hide_index=True)
+                styled_table(disp2)
             else:
                 st.caption("Run `python ml/spend_analytics.py` first to generate category data.")
 

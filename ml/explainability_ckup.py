@@ -55,28 +55,15 @@ MODEL_DIR  = PATHS["models"]
 RUN_DATE   = datetime.now()
 
 FEATURE_COLS = [
-    # Core performance
     "financial_stability", "delivery_performance",
     "supply_risk_score", "profit_impact_score",
-    # Spend
     "total_annual_spend", "transaction_count",
-    "spend_pct_of_portfolio",
-    # Geo + Industry risk
-    "geo_risk_numeric", "industry_risk_numeric",
-    # News signals
-    "news_sentiment_30d", "disruption_count_30d",
-    # Delivery metrics (SAP-computed)
-    "otif_rate", "avg_delay_days",
-    "ottr_rate",
-    "lead_time_variability",
-    "order_accuracy_rate",
-    "avg_price_variance_pct",
-    # Composite signals
-    "performance_composite",
-    "composite_risk_score",
-    "delivery_risk_numeric",
-    "spend_concentration_flag",
-    "news_risk_flag",
+    "spend_pct_of_portfolio", "geo_risk_numeric",
+    "industry_risk_numeric", "news_sentiment_30d",
+    "disruption_count_30d", "otif_rate",
+    "avg_delay_days", "performance_composite",
+    "composite_risk_score", "delivery_risk_numeric",
+    "spend_concentration_flag", "news_risk_flag",
 ]
 
 FEATURE_LABELS = {
@@ -133,42 +120,38 @@ def load_model_and_features():
 
 
 def compute_shap_values(model, X: np.ndarray, model_type: str):
-    """Compute SHAP values for ALL vendors.
-    TreeExplainer is exact and fast enough for tree models on 2.5k rows.
+    """Compute SHAP values — handles tree and linear models.
     Falls back to permutation importance if SHAP fails."""
-    n_total = len(X)
+    sample_size = min(ML_CONFIG.get("shap_sample_size", 500), len(X))
+    X_sample    = X[:sample_size]
 
     if not SHAP_AVAILABLE:
-        log.warning("shap not installed -- using permutation importance fallback")
-        return _permutation_importance_fallback(model, X), n_total
+        log.warning("shap not installed — using permutation importance fallback")
+        return _permutation_importance_fallback(model, X_sample), sample_size
 
-    # Try TreeExplainer on FULL dataset -- exact, runs in seconds for tree models
+    # Try TreeExplainer (works for XGBoost, RandomForest, GradientBoosting)
     try:
         explainer   = shap.TreeExplainer(model)
-        shap_values = explainer.shap_values(X)
-        log.info(f"  SHAP TreeExplainer OK: ALL {n_total} vendors, "
-                 f"output type={type(shap_values).__name__}")
-        return shap_values, n_total
+        shap_values = explainer.shap_values(X_sample)
+        log.info(f"  SHAP TreeExplainer OK: {sample_size} samples, "
+                 f"output type={type(shap_values)}")
+        return shap_values, sample_size
     except Exception as e:
         log.warning(f"  TreeExplainer failed: {e}")
-        log.warning(f"  Model n_features: {getattr(model, 'n_features_in_', '?')}, "
-                    f"Current X shape: {X.shape}")
-        log.warning(f"  FIX: Retrain the model -- python ml/risk_model.py")
 
-    # Kernel fallback on a sample -- slow, only if TreeExplainer fails
+    # Try KernelExplainer (model-agnostic, slower but universal)
     try:
-        sample_n    = min(500, n_total)
-        background  = shap.sample(X, min(50, n_total))
+        background  = shap.sample(X_sample, min(50, len(X_sample)))
         explainer   = shap.KernelExplainer(model.predict_proba, background)
-        shap_values = explainer.shap_values(X[:sample_n])
-        log.info(f"  SHAP KernelExplainer OK: {sample_n} samples")
-        return shap_values, sample_n
+        shap_values = explainer.shap_values(X_sample[:100])  # limit for speed
+        log.info(f"  SHAP KernelExplainer OK: 100 samples")
+        return shap_values, min(100, sample_size)
     except Exception as e:
         log.warning(f"  KernelExplainer failed: {e}")
 
-    # Permutation importance -- always works, global only
-    log.warning("  All SHAP methods failed -- using permutation importance fallback")
-    return _permutation_importance_fallback(model, X), n_total
+    # Final fallback: permutation importance (always works)
+    log.warning("  All SHAP methods failed — using permutation importance fallback")
+    return _permutation_importance_fallback(model, X_sample), sample_size
 
 
 def _permutation_importance_fallback(model, X: np.ndarray):
@@ -368,13 +351,7 @@ def compute_lime_explanation(lime_explainer, model, x_instance: np.ndarray,
         return record
 
     except Exception as e:
-        # Log first failure at WARNING level so we see it, then drop to DEBUG
-        if not getattr(compute_lime_explanation, "_warned", False):
-            log.warning(f"  LIME failed on first vendor: {e}")
-            log.warning(f"  Subsequent LIME errors will be suppressed. Check:")
-            log.warning(f"    - Does model.predict_proba() work with current features?")
-            log.warning(f"    - Run: python debug_shap_lime.py")
-            compute_lime_explanation._warned = True
+        log.debug(f"  LIME explanation failed for instance: {e}")
         return {}
 
 
@@ -487,39 +464,27 @@ def main():
     imputer   = SimpleImputer(strategy="median")
     X         = imputer.fit_transform(X_raw)
 
-    # Predicted risk tiers — ALWAYS use string labels
-    TIER_LABELS = ["Low", "Medium", "High"]
+    # Predicted risk tiers
     try:
         y_pred = model.predict(X)
-        # XGBoost returns integer class indices 0,1,2 -- always decode
-        # RF may return integer or string -- handle both
-        if len(y_pred) > 0:
-            first = y_pred[0]
-            if isinstance(first, (int, np.integer)) or (
-                hasattr(first, "item") and isinstance(first.item(), int)
-            ):
-                tiers = [TIER_LABELS[int(p)] if 0 <= int(p) < 3 else "Low"
-                         for p in y_pred]
-            else:
-                # Already strings -- but make sure they are valid labels
-                tiers = [str(p) if str(p) in TIER_LABELS else "Low"
-                         for p in y_pred]
+        # Try to get class names from model
+        class_names = list(model.classes_) if hasattr(model, "classes_") else \
+                      ["Low","Medium","High"]
+        # Decode if numeric
+        if len(y_pred) > 0 and isinstance(y_pred[0], (int, np.integer)):
+            tiers = [class_names[p] if p < len(class_names) else "Low"
+                     for p in y_pred]
         else:
-            tiers = []
-    except Exception as e:
-        log.warning(f"  model.predict failed: {e} -- falling back to labels from CSV")
+            tiers = list(y_pred)
+    except Exception:
         tiers = df.get("risk_label_3class",
                        pd.Series(["Low"] * len(df))).tolist()
-
-    # Distribution check
-    from collections import Counter
-    log.info(f"  Tier distribution: {dict(Counter(tiers))}")
 
     # Compute SHAP
     shap_vals, n_sample = compute_shap_values(model, X, model_type)
 
-    # Build LIME explainer
-    class_names = TIER_LABELS
+    # Build LIME explainer (uses full training matrix for context)
+    class_names  = ["Low", "Medium", "High"]
     lime_explainer = build_lime_explainer(model, X, feat_cols, class_names)
     lime_count   = 0
 
