@@ -1,0 +1,25 @@
+name: Hello World
+
+# This 'on:' block tells GitHub WHEN to run this workflow.
+# 'push' = every time anyone pushes to any branch.
+on:
+  push:
+  workflow_dispatch:   # also lets you trigger it manually from the GitHub UI
+
+# A workflow contains one or more 'jobs'. Each job runs on a fresh VM.
+jobs:
+  greet:
+    name: Say hello
+    runs-on: ubuntu-latest    # GitHub provides this VM for free
+
+    # Each job has 'steps' which run sequentially on that VM
+    steps:
+      - name: Print greeting
+        run: echo "Hello from GitHub Actions! This ran on $(date)"
+
+      - name: Show environment
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch:     ${{ github.ref_name }}"
+          echo "Commit:     ${{ github.sha }}"
+          echo "Triggered by: ${{ github.actor }}"
