@@ -569,11 +569,78 @@ def load_news(days: int = 30, disruption_only: bool = False,
 
 @st.cache_data(ttl=300)
 def load_spend_report() -> dict:
+    """
+    Load spend intelligence report. Tries local JSON first (faster),
+    then falls back to recomputing from Supabase (works on Streamlit Cloud
+    where the local JSON file doesn't exist).
+    """
     p = PATHS["reports"] / "spend_intelligence_report.json"
     if p.exists():
-        with open(p) as f:
-            return json.load(f)
-    return {}
+        try:
+            with open(p) as f:
+                return json.load(f)
+        except Exception:
+            pass
+
+    # Fallback — recompute from database
+    try:
+        with DBClient() as db:
+            stats = db.fetch_one("""
+                SELECT
+                    SUM(total_annual_spend)       AS total_spend,
+                    SUM(CASE WHEN under_contract THEN total_annual_spend ELSE 0 END)
+                                                  AS spend_under_contract,
+                    SUM(CASE WHEN is_maverick    THEN total_annual_spend ELSE 0 END)
+                                                  AS maverick_spend,
+                    SUM(savings_opportunity)      AS total_savings,
+                    COUNT(*) FILTER (WHERE NOT COALESCE(under_contract, FALSE))
+                                                  AS vendors_no_contract
+                FROM vendors
+            """)
+            if not stats:
+                return {}
+
+            total = stats.get("total_spend") or 0
+            sum_v = stats.get("spend_under_contract") or 0
+            mav   = stats.get("maverick_spend") or 0
+            sum_pct = (sum_v / total * 100) if total else 0
+            mav_pct = (mav   / total * 100) if total else 0
+
+            # Get HHI from concentration calculation
+            conc_df = db.fetch_df("""
+                SELECT 
+                    SUM(POWER(spend_pct_of_portfolio, 2)) AS hhi
+                FROM vendors
+                WHERE spend_pct_of_portfolio > 0
+            """)
+            hhi = (conc_df.iloc[0]["hhi"] * 10000) if not conc_df.empty else 0
+
+            return {
+                "spend_intelligence": {
+                    "total_portfolio_spend":   round(float(total), 2),
+                    "spend_under_management":  round(float(sum_v), 2),
+                    "sum_percentage":          round(sum_pct, 2),
+                    "sum_target":              ">80%",
+                    "maverick_spend":          round(float(mav), 2),
+                    "maverick_percentage":     round(mav_pct, 2),
+                    "maverick_target":         "<10%",
+                },
+                "concentration": {
+                    "hhi":                     round(float(hhi), 0),
+                    "hhi_status":              "HIGH" if hhi > 2500 else "MODERATE" if hhi > 1500 else "HEALTHY",
+                },
+                "opportunity": {
+                    "total_savings_opportunity": round(
+                        float(stats.get("total_savings") or 0), 2
+                    ),
+                    "vendors_needing_contracts": int(
+                        stats.get("vendors_no_contract") or 0
+                    ),
+                },
+            }
+    except Exception as e:
+        st.warning(f"Could not load spend data: {e}")
+        return {}
 
 
 @st.cache_data(ttl=300)
